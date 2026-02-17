@@ -59,7 +59,7 @@ var markets = [
   },
 ];
 
-function getScoreColor(score) {
+function getScoreColor(score: number) {
   if (score >= 90) return "#c62828";
   if (score >= 80) return "#e65100";
   if (score >= 70) return "#f9a825";
@@ -72,7 +72,7 @@ function getMarkerSize(mivi) {
   return 13;
 }
 
-function makeBar(label, score) {
+function makePopup(m) {
   var color = getScoreColor(score);
   return "<div style='margin:4px 0;'>" +
     "<div style='display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px;'>" +
