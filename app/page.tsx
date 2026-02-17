@@ -59,20 +59,20 @@ var markets = [
   },
 ];
 
-function getScoreColor(score: number) {
+function getScoreColor(score: number): string {
   if (score >= 90) return "#c62828";
   if (score >= 80) return "#e65100";
   if (score >= 70) return "#f9a825";
   return "#2e7d32";
 }
 
-function getMarkerSize(mivi) {
+function getMarkerSize(mivi: number): number {
   if (mivi >= 90) return 20;
   if (mivi >= 80) return 16;
   return 13;
 }
 
-function makePopup(m) {
+function makeBar(label: string, score: number): string {
   var color = getScoreColor(score);
   return "<div style='margin:4px 0;'>" +
     "<div style='display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px;'>" +
@@ -82,7 +82,7 @@ function makePopup(m) {
     "</div></div>";
 }
 
-function makePopup(m) {
+function makePopup(m: any): string {
   var color = getScoreColor(m.mivi);
   return "<div style='font-family:Arial;padding:8px;min-width:240px;'>" +
     "<div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;'>" +
