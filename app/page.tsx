@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-var MAPBOX_TOKEN = "pk.eyJ1IjoiZ25hcmx5c2FzcXVhdGNoNzYiLCJhIjoiY21sbGQ2ZDdyMDYwcjNmcTA2eWRjMXZicCJ9.GXkQU4qkiXpHEivDd3DG7g";
+var MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
 var markets = [
   {
