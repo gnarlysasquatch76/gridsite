@@ -571,6 +571,19 @@ export default function Home() {
     map.setFilter(SCORED_SITES_LAYER, conditions);
   }, [minMW, selectedState]);
 
+  // Apply filters to power plants map layer
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map || !map.getLayer(POWER_PLANTS_LAYER)) return;
+
+    var conditions: any[] = ["all"];
+    conditions.push([">=", ["get", "total_capacity_mw"], minMW]);
+    if (selectedState) {
+      conditions.push(["==", ["get", "state"], selectedState]);
+    }
+    map.setFilter(POWER_PLANTS_LAYER, conditions);
+  }, [minMW, selectedState]);
+
   return (
     <div className="flex h-screen w-screen overflow-hidden">
       {/* Sidebar */}
