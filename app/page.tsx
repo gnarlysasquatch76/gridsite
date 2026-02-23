@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -61,6 +61,15 @@ export default function Home() {
     queueWithdrawals: false,
   });
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
+  var [legendOpen, setLegendOpen] = useState(true);
+
+  var filteredSites = useMemo(function () {
+    return scoredSites.filter(function (site) {
+      if (site.total_capacity_mw < minMW) return false;
+      if (selectedState && site.state !== selectedState) return false;
+      return true;
+    });
+  }, [scoredSites, minMW, selectedState]);
 
   function toggleLayer(key: keyof typeof layers) {
     setLayers(function (prev) {
@@ -549,6 +558,19 @@ export default function Home() {
     }
   }, [buildScoredSitePopupHTML]);
 
+  // Apply filters to scored sites map layer
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map || !map.getLayer(SCORED_SITES_LAYER)) return;
+
+    var conditions: any[] = ["all"];
+    conditions.push([">=", ["get", "total_capacity_mw"], minMW]);
+    if (selectedState) {
+      conditions.push(["==", ["get", "state"], selectedState]);
+    }
+    map.setFilter(SCORED_SITES_LAYER, conditions);
+  }, [minMW, selectedState]);
+
   return (
     <div className="flex h-screen w-screen overflow-hidden">
       {/* Sidebar */}
@@ -669,7 +691,7 @@ export default function Home() {
             onClick={() => setResultsOpen(!resultsOpen)}
             className="w-full px-5 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-300 hover:text-white shrink-0"
           >
-            Results {scoredSites.length > 0 && <span className="text-slate-500 normal-case tracking-normal font-normal">({scoredSites.length})</span>}
+            Results {scoredSites.length > 0 && <span className="text-slate-500 normal-case tracking-normal font-normal">({filteredSites.length})</span>}
             <span>{resultsOpen ? "−" : "+"}</span>
           </button>
           {resultsOpen && (
@@ -679,7 +701,12 @@ export default function Home() {
                   Loading scored sites...
                 </p>
               )}
-              {scoredSites.map(function (site, idx) {
+              {scoredSites.length > 0 && filteredSites.length === 0 && (
+                <p className="text-xs text-slate-500 text-center pt-4 pb-2">
+                  No sites match current filters
+                </p>
+              )}
+              {filteredSites.map(function (site, idx) {
                 var scoreColor = site.composite_score >= 85 ? "bg-yellow-500 text-black"
                   : site.composite_score >= 75 ? "bg-yellow-600 text-black"
                   : "bg-yellow-700 text-white";
@@ -715,7 +742,62 @@ export default function Home() {
       </div>
 
       {/* Map */}
-      <div ref={mapContainer} className="flex-1 h-full" />
+      <div className="flex-1 h-full relative">
+        <div ref={mapContainer} className="w-full h-full" />
+
+        {/* Legend */}
+        <div className="absolute bottom-6 right-2 z-10">
+          {legendOpen ? (
+            <div className="bg-[#1B2A4A]/90 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2.5 text-xs text-slate-200 min-w-[180px]">
+              <button
+                onClick={() => setLegendOpen(false)}
+                className="w-full flex items-center justify-between mb-2"
+              >
+                <span className="font-semibold text-[11px] uppercase tracking-wider text-slate-300">Legend</span>
+                <span className="text-slate-400 hover:text-white text-sm leading-none">&times;</span>
+              </button>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-yellow-400 text-sm leading-none">&#9733;</span>
+                  <span>Scored Site</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e]"></span>
+                  <span>Operating Plant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#f97316]"></span>
+                  <span>Retiring Plant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444]"></span>
+                  <span>Retired Plant</span>
+                </div>
+                <div className="border-t border-white/10 my-1.5"></div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#22d3ee]"></span>
+                  <span>138-229 kV Sub</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#38bdf8]"></span>
+                  <span>230-344 kV Sub</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#818cf8]"></span>
+                  <span>345 kV+ Sub</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <button
+              onClick={() => setLegendOpen(true)}
+              className="bg-[#1B2A4A]/90 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2 text-[11px] font-semibold uppercase tracking-wider text-slate-300 hover:text-white"
+            >
+              Legend
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
