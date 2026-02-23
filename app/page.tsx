@@ -22,6 +22,9 @@ var PLACEHOLDER_SITES = [
 
 var POWER_PLANTS_SOURCE = "power-plants";
 var POWER_PLANTS_LAYER = "power-plants-circles";
+var SUBSTATIONS_SOURCE = "substations";
+var SUBSTATIONS_LAYER = "substations-diamonds";
+var DIAMOND_ICON = "diamond-icon";
 
 export default function Home() {
   var mapContainer = useRef<HTMLDivElement>(null);
@@ -75,6 +78,47 @@ export default function Home() {
     return html;
   }, []);
 
+  // Build popup HTML for a substation feature
+  var buildSubstationPopupHTML = useCallback(function (props: Record<string, any>): string {
+    var name = props.NAME || "Unknown";
+    var city = props.CITY || "";
+    var state = props.STATE || "";
+    var location = [city, state].filter(Boolean).join(", ");
+    var maxVolt = props.MAX_VOLT != null ? Number(props.MAX_VOLT) : null;
+    var minVolt = props.MIN_VOLT != null ? Number(props.MIN_VOLT) : null;
+    var status = props.STATUS || "Unknown";
+    var type = props.TYPE || "";
+    var lines = props.LINES != null ? Number(props.LINES) : null;
+
+    var voltColor = "#22d3ee";
+    if (maxVolt != null && maxVolt >= 345) voltColor = "#a78bfa";
+    else if (maxVolt != null && maxVolt >= 230) voltColor = "#38bdf8";
+
+    var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+      "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + name + "</div>" +
+      "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + location + "</div>" +
+      "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+        "<span style=\"background:" + voltColor + ";color:#0f172a;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" +
+          (maxVolt != null ? maxVolt + " kV" : "N/A") + "</span>" +
+        (type ? "<span style=\"background:#334155;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + type + "</span>" : "") +
+      "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Status</span><strong>" + status + "</strong></div>";
+
+    if (maxVolt != null) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Max Voltage</span><strong>" + maxVolt + " kV</strong></div>";
+    }
+    if (minVolt != null) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Min Voltage</span><strong>" + minVolt + " kV</strong></div>";
+    }
+    if (lines != null) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Connected Lines</span><strong>" + lines + "</strong></div>";
+    }
+
+    html += "</div></div>";
+    return html;
+  }, []);
+
   // Initialize map
   useEffect(function () {
     if (!mapContainer.current) return;
@@ -90,6 +134,25 @@ export default function Home() {
     map.addControl(new mapboxgl.NavigationControl());
 
     map.on("load", function () {
+      // Create diamond icon for substations layer
+      var size = 20;
+      var canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      var ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.beginPath();
+        ctx.moveTo(size / 2, 1);
+        ctx.lineTo(size - 1, size / 2);
+        ctx.lineTo(size / 2, size - 1);
+        ctx.lineTo(1, size / 2);
+        ctx.closePath();
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+        var imageData = ctx.getImageData(0, 0, size, size);
+        map.addImage(DIAMOND_ICON, imageData, { sdf: true });
+      }
+
       mapLoaded.current = true;
     });
 
@@ -192,6 +255,90 @@ export default function Home() {
       map.on("load", setupLayer);
     }
   }, [layers.powerPlants, buildPopupHTML]);
+
+  // Toggle substations layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      if (map.getLayer(SUBSTATIONS_LAYER)) {
+        map.setLayoutProperty(
+          SUBSTATIONS_LAYER,
+          "visibility",
+          layers.substations ? "visible" : "none"
+        );
+        return;
+      }
+
+      if (!layers.substations) return;
+
+      map.addSource(SUBSTATIONS_SOURCE, {
+        type: "geojson",
+        data: "/data/substations.geojson",
+      });
+
+      map.addLayer({
+        id: SUBSTATIONS_LAYER,
+        type: "symbol",
+        source: SUBSTATIONS_SOURCE,
+        layout: {
+          "icon-image": DIAMOND_ICON,
+          "icon-size": [
+            "step", ["get", "MAX_VOLT"],
+            0.4,   // default < 230 kV
+            230, 0.55,
+            345, 0.7,
+            500, 0.9,
+          ],
+          "icon-allow-overlap": true,
+        },
+        paint: {
+          "icon-color": [
+            "step", ["get", "MAX_VOLT"],
+            "#22d3ee",  // cyan < 230 kV
+            230, "#38bdf8",  // light blue
+            345, "#818cf8",  // indigo
+            500, "#a78bfa",  // purple
+          ],
+          "icon-opacity": 0.9,
+        },
+      });
+
+      map.on("click", SUBSTATIONS_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var props = feature.properties as Record<string, any>;
+
+        if (typeof props.MAX_VOLT === "string") props.MAX_VOLT = parseFloat(props.MAX_VOLT);
+        if (typeof props.MIN_VOLT === "string") props.MIN_VOLT = parseFloat(props.MIN_VOLT);
+        if (typeof props.LINES === "string") props.LINES = parseFloat(props.LINES);
+
+        if (popupRef.current) popupRef.current.remove();
+
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "300px" })
+          .setLngLat(coords)
+          .setHTML(buildSubstationPopupHTML(props))
+          .addTo(map!);
+      });
+
+      map.on("mouseenter", SUBSTATIONS_LAYER, function () {
+        map!.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", SUBSTATIONS_LAYER, function () {
+        map!.getCanvas().style.cursor = "";
+      });
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.substations, buildSubstationPopupHTML]);
 
   return (
     <div className="flex h-screen w-screen overflow-hidden">
