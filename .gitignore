@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw data files (large, not for version control)
+/data/
+
+# claude code
+.claude/

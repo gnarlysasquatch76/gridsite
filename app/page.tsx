@@ -1,174 +1,353 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 var MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
-var markets = [
-  {
-    name: "Jackson Hole", state: "WY", lat: 43.4799, lng: -110.7624,
-    mivi: 92, isolation: 95, housingGap: 94, employer: 90, regulatory: 82, infrastructure: 78,
-    medianHome: "$1.78M", avgWage: "$22/hr", closureDays: 34, topEmployer: "Jackson Hole Mountain Resort"
-  },
-  {
-    name: "Telluride", state: "CO", lat: 37.9375, lng: -107.8123,
-    mivi: 89, isolation: 97, housingGap: 91, employer: 85, regulatory: 80, infrastructure: 72,
-    medianHome: "$1.9M", avgWage: "$24/hr", closureDays: 28, topEmployer: "Telluride Ski Resort"
-  },
-  {
-    name: "Big Sky", state: "MT", lat: 45.2833, lng: -111.4014,
-    mivi: 86, isolation: 88, housingGap: 87, employer: 88, regulatory: 76, infrastructure: 70,
-    medianHome: "$1.6M", avgWage: "$21/hr", closureDays: 22, topEmployer: "Big Sky Resort"
-  },
-  {
-    name: "Vail", state: "CO", lat: 39.6403, lng: -106.3742,
-    mivi: 84, isolation: 82, housingGap: 88, employer: 92, regulatory: 78, infrastructure: 80,
-    medianHome: "$2.5M", avgWage: "$20/hr", closureDays: 18, topEmployer: "Vail Resorts"
-  },
-  {
-    name: "Steamboat Springs", state: "CO", lat: 40.485, lng: -106.8317,
-    mivi: 81, isolation: 75, housingGap: 82, employer: 84, regulatory: 84, infrastructure: 82,
-    medianHome: "$1.2M", avgWage: "$21/hr", closureDays: 15, topEmployer: "Steamboat Resort"
-  },
-  {
-    name: "Park City", state: "UT", lat: 40.6461, lng: -111.498,
-    mivi: 78, isolation: 65, housingGap: 85, employer: 86, regulatory: 80, infrastructure: 88,
-    medianHome: "$3.2M", avgWage: "$22/hr", closureDays: 8, topEmployer: "Deer Valley Resort"
-  },
-  {
-    name: "Aspen", state: "CO", lat: 39.1911, lng: -106.8175,
-    mivi: 83, isolation: 80, housingGap: 90, employer: 87, regulatory: 72, infrastructure: 75,
-    medianHome: "$3.5M", avgWage: "$25/hr", closureDays: 20, topEmployer: "Aspen Skiing Company"
-  },
-  {
-    name: "Breckenridge", state: "CO", lat: 39.4817, lng: -106.0384,
-    mivi: 77, isolation: 78, housingGap: 80, employer: 82, regulatory: 76, infrastructure: 82,
-    medianHome: "$1.4M", avgWage: "$20/hr", closureDays: 18, topEmployer: "Vail Resorts"
-  },
-  {
-    name: "Whitefish", state: "MT", lat: 48.4106, lng: -114.3528,
-    mivi: 74, isolation: 70, housingGap: 76, employer: 78, regulatory: 80, infrastructure: 76,
-    medianHome: "$850K", avgWage: "$19/hr", closureDays: 12, topEmployer: "Whitefish Mountain Resort"
-  },
-  {
-    name: "Sun Valley", state: "ID", lat: 43.6977, lng: -114.3514,
-    mivi: 79, isolation: 76, housingGap: 83, employer: 80, regulatory: 78, infrastructure: 74,
-    medianHome: "$1.5M", avgWage: "$21/hr", closureDays: 14, topEmployer: "Sun Valley Resort"
-  },
+var US_STATES = [
+  "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
+  "HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+  "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
+  "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+  "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY",
 ];
 
-function getScoreColor(score: number): string {
-  if (score >= 90) return "#c62828";
-  if (score >= 80) return "#e65100";
-  if (score >= 70) return "#f9a825";
-  return "#2e7d32";
-}
+var PLACEHOLDER_SITES = [
+  { name: "Kearny Generating Station", state: "NJ", score: 87, mw: 410 },
+  { name: "Huntley Power Plant", state: "NY", score: 82, mw: 380 },
+  { name: "Chalk Point Station", state: "MD", score: 78, mw: 355 },
+];
 
-function getMarkerSize(mivi: number): number {
-  if (mivi >= 90) return 20;
-  if (mivi >= 80) return 16;
-  return 13;
-}
-
-function makeBar(label: string, score: number): string {
-  var color = getScoreColor(score);
-  return "<div style='margin:4px 0;'>" +
-    "<div style='display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px;'>" +
-    "<span>" + label + "</span><span style='font-weight:bold;color:" + color + ";'>" + score + "</span></div>" +
-    "<div style='background:#e0e0e0;border-radius:3px;height:6px;'>" +
-    "<div style='background:" + color + ";border-radius:3px;height:6px;width:" + score + "%;'></div>" +
-    "</div></div>";
-}
-
-function makePopup(m: any): string {
-  var color = getScoreColor(m.mivi);
-  return "<div style='font-family:Arial;padding:8px;min-width:240px;'>" +
-    "<div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;'>" +
-    "<div><strong style='font-size:15px;color:#1B2A4A;'>" + m.name + "</strong>" +
-    "<br/><span style='color:#666;font-size:11px;'>" + m.state + "</span></div>" +
-    "<div style='background:" + color + ";color:white;border-radius:6px;padding:4px 10px;font-size:18px;font-weight:bold;'>" + m.mivi + "</div></div>" +
-    "<div style='border-top:1px solid #e0e0e0;padding-top:8px;'>" +
-    makeBar("Geographic Isolation", m.isolation) +
-    makeBar("Housing Gap Severity", m.housingGap) +
-    makeBar("Employer Concentration", m.employer) +
-    makeBar("Regulatory Environment", m.regulatory) +
-    makeBar("Infrastructure Feasibility", m.infrastructure) +
-    "</div>" +
-    "<div style='border-top:1px solid #e0e0e0;margin-top:8px;padding-top:8px;font-size:11px;color:#666;'>" +
-    "<div style='display:flex;justify-content:space-between;margin:2px 0;'><span>Median Home Price</span><strong style='color:#333;'>" + m.medianHome + "</strong></div>" +
-    "<div style='display:flex;justify-content:space-between;margin:2px 0;'><span>Avg Resort Wage</span><strong style='color:#333;'>" + m.avgWage + "</strong></div>" +
-    "<div style='display:flex;justify-content:space-between;margin:2px 0;'><span>Winter Closure Days/Yr</span><strong style='color:#333;'>" + m.closureDays + "</strong></div>" +
-    "<div style='display:flex;justify-content:space-between;margin:2px 0;'><span>Top Employer</span><strong style='color:#333;'>" + m.topEmployer + "</strong></div>" +
-    "</div></div>";
-}
+var POWER_PLANTS_SOURCE = "power-plants";
+var POWER_PLANTS_LAYER = "power-plants-circles";
 
 export default function Home() {
-  var mapContainer = useRef(null);
+  var mapContainer = useRef<HTMLDivElement>(null);
+  var mapRef = useRef<mapboxgl.Map | null>(null);
+  var mapLoaded = useRef(false);
+  var popupRef = useRef<mapboxgl.Popup | null>(null);
 
-  useEffect(function() {
+  var [layersOpen, setLayersOpen] = useState(true);
+  var [filtersOpen, setFiltersOpen] = useState(true);
+  var [resultsOpen, setResultsOpen] = useState(true);
+  var [minMW, setMinMW] = useState(50);
+  var [selectedState, setSelectedState] = useState("");
+  var [layers, setLayers] = useState({
+    powerPlants: false,
+    substations: false,
+    transmissionLines: false,
+    queueWithdrawals: false,
+  });
+
+  function toggleLayer(key: keyof typeof layers) {
+    setLayers(function (prev) {
+      return { ...prev, [key]: !prev[key] };
+    });
+  }
+
+  // Build popup HTML for a power plant feature
+  var buildPopupHTML = useCallback(function (props: Record<string, any>): string {
+    var statusColors: Record<string, string> = {
+      operating: "#22c55e",
+      retiring: "#f97316",
+      retired: "#ef4444",
+    };
+    var color = statusColors[props.status] || "#94a3b8";
+    var statusLabel = props.status.charAt(0).toUpperCase() + props.status.slice(1);
+
+    var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+      "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + props.plant_name + "</div>" +
+      "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + props.state + "</div>" +
+      "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+        "<span style=\"background:" + color + ";color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + statusLabel + "</span>" +
+      "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Capacity</span><strong>" + props.total_capacity_mw.toLocaleString() + " MW</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Fuel Type</span><strong>" + props.fuel_type + "</strong></div>";
+
+    if (props.planned_retirement_date) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Planned Retirement</span><strong>" + props.planned_retirement_date + "</strong></div>";
+    }
+
+    html += "</div></div>";
+    return html;
+  }, []);
+
+  // Initialize map
+  useEffect(function () {
     if (!mapContainer.current) return;
 
     var map = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/dark-v11",
-      center: [-109.5, 43.0],
-      zoom: 5.2,
+      center: [-98.5, 39.8],
+      zoom: 4,
       accessToken: MAPBOX_TOKEN,
     });
 
     map.addControl(new mapboxgl.NavigationControl());
 
-    map.on("load", function() {
-      for (var i = 0; i < markets.length; i++) {
-        var m = markets[i];
-        var size = getMarkerSize(m.mivi);
-        var el = document.createElement("div");
-        el.style.width = size + "px";
-        el.style.height = size + "px";
-        el.style.backgroundColor = getScoreColor(m.mivi);
-        el.style.borderRadius = "50%";
-        el.style.border = "2px solid white";
-        el.style.cursor = "pointer";
-        el.style.boxShadow = "0 0 8px rgba(0,0,0,0.5)";
-
-        new mapboxgl.Marker(el)
-          .setLngLat([m.lng, m.lat])
-          .setPopup(new mapboxgl.Popup({ offset: 15, maxWidth: "300px" }).setHTML(makePopup(m)))
-          .addTo(map);
-      }
+    map.on("load", function () {
+      mapLoaded.current = true;
     });
 
-    return function() { map.remove(); };
+    mapRef.current = map;
+
+    return function () {
+      mapLoaded.current = false;
+      mapRef.current = null;
+      map.remove();
+    };
   }, []);
 
+  // Toggle power plants layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      // If layer already exists, just toggle visibility
+      if (map.getLayer(POWER_PLANTS_LAYER)) {
+        map.setLayoutProperty(
+          POWER_PLANTS_LAYER,
+          "visibility",
+          layers.powerPlants ? "visible" : "none"
+        );
+        return;
+      }
+
+      // Only add source+layer when toggling on for the first time
+      if (!layers.powerPlants) return;
+
+      map.addSource(POWER_PLANTS_SOURCE, {
+        type: "geojson",
+        data: "/data/power-plants.geojson",
+      });
+
+      map.addLayer({
+        id: POWER_PLANTS_LAYER,
+        type: "circle",
+        source: POWER_PLANTS_SOURCE,
+        paint: {
+          "circle-color": [
+            "match",
+            ["get", "status"],
+            "operating", "#22c55e",
+            "retiring", "#f97316",
+            "retired", "#ef4444",
+            "#94a3b8",
+          ],
+          "circle-radius": [
+            "interpolate", ["linear"], ["get", "total_capacity_mw"],
+            50, 3,
+            500, 7,
+            2000, 12,
+            5000, 18,
+          ],
+          "circle-opacity": 0.85,
+          "circle-stroke-color": "#ffffff",
+          "circle-stroke-width": 0.5,
+        },
+      });
+
+      // Click handler for popups
+      map.on("click", POWER_PLANTS_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var props = feature.properties as Record<string, any>;
+
+        // Parse stringified values from Mapbox
+        if (typeof props.total_capacity_mw === "string") {
+          props.total_capacity_mw = parseFloat(props.total_capacity_mw);
+        }
+
+        // Close existing popup
+        if (popupRef.current) {
+          popupRef.current.remove();
+        }
+
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "300px" })
+          .setLngLat(coords)
+          .setHTML(buildPopupHTML(props))
+          .addTo(map!);
+      });
+
+      // Pointer cursor on hover
+      map.on("mouseenter", POWER_PLANTS_LAYER, function () {
+        map!.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", POWER_PLANTS_LAYER, function () {
+        map!.getCanvas().style.cursor = "";
+      });
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.powerPlants, buildPopupHTML]);
+
   return (
-    <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
-      <div style={{ position: "absolute", top: 20, left: 20, zIndex: 1, backgroundColor: "rgba(27,42,74,0.95)", padding: "14px 22px", borderRadius: "8px", boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
-        <span style={{ color: "white", fontFamily: "Arial", fontSize: "20px", fontWeight: "bold" }}>GridSite</span>
-        <span style={{ color: "#2E75B6", fontFamily: "Arial", fontSize: "12px", marginLeft: "10px", letterSpacing: "1px" }}>MIVI MODULE</span>
+    <div className="flex h-screen w-screen overflow-hidden">
+      {/* Sidebar */}
+      <div className="w-1/4 min-w-[280px] h-full bg-[#1B2A4A] text-white overflow-y-auto flex flex-col">
+        {/* Header */}
+        <div className="px-5 pt-6 pb-4 border-b border-white/10">
+          <h1 className="text-2xl font-bold tracking-tight">GridSite</h1>
+          <p className="text-sm text-slate-400 mt-1">
+            Adaptive Reuse Site Intelligence
+          </p>
+        </div>
+
+        {/* Data Layers */}
+        <div className="border-b border-white/10">
+          <button
+            onClick={() => setLayersOpen(!layersOpen)}
+            className="w-full px-5 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-300 hover:text-white"
+          >
+            Data Layers
+            <span>{layersOpen ? "−" : "+"}</span>
+          </button>
+          {layersOpen && (
+            <div className="px-5 pb-4 space-y-2.5">
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.powerPlants}
+                  onChange={() => toggleLayer("powerPlants")}
+                  className="accent-blue-500"
+                />
+                Power Plants (EIA-860)
+              </label>
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.substations}
+                  onChange={() => toggleLayer("substations")}
+                  className="accent-blue-500"
+                />
+                Substations (HIFLD)
+              </label>
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.transmissionLines}
+                  onChange={() => toggleLayer("transmissionLines")}
+                  className="accent-blue-500"
+                />
+                Transmission Lines (HIFLD)
+              </label>
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.queueWithdrawals}
+                  onChange={() => toggleLayer("queueWithdrawals")}
+                  className="accent-blue-500"
+                />
+                Queue Withdrawals (ISO)
+              </label>
+            </div>
+          )}
+        </div>
+
+        {/* Filters */}
+        <div className="border-b border-white/10">
+          <button
+            onClick={() => setFiltersOpen(!filtersOpen)}
+            className="w-full px-5 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-300 hover:text-white"
+          >
+            Filters
+            <span>{filtersOpen ? "−" : "+"}</span>
+          </button>
+          {filtersOpen && (
+            <div className="px-5 pb-4 space-y-4">
+              <div>
+                <label className="block text-xs text-slate-400 mb-1.5">
+                  Minimum MW Capacity: <span className="text-white font-medium">{minMW} MW</span>
+                </label>
+                <input
+                  type="range"
+                  min={50}
+                  max={500}
+                  value={minMW}
+                  onChange={(e) => setMinMW(Number(e.target.value))}
+                  className="w-full accent-blue-500"
+                />
+                <div className="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                  <span>50 MW</span>
+                  <span>500 MW</span>
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs text-slate-400 mb-1.5">
+                  State
+                </label>
+                <select
+                  value={selectedState}
+                  onChange={(e) => setSelectedState(e.target.value)}
+                  className="w-full bg-[#0f1b33] border border-white/10 rounded px-3 py-2 text-sm text-white"
+                >
+                  <option value="">All States</option>
+                  {US_STATES.map(function (st) {
+                    return (
+                      <option key={st} value={st}>
+                        {st}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Results */}
+        <div className="flex-1">
+          <button
+            onClick={() => setResultsOpen(!resultsOpen)}
+            className="w-full px-5 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-300 hover:text-white"
+          >
+            Results
+            <span>{resultsOpen ? "−" : "+"}</span>
+          </button>
+          {resultsOpen && (
+            <div className="px-5 pb-4 space-y-3">
+              {PLACEHOLDER_SITES.map(function (site) {
+                return (
+                  <div
+                    key={site.name}
+                    className="bg-[#0f1b33] rounded-lg p-3.5 border border-white/5"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <div className="text-sm font-medium">{site.name}</div>
+                        <div className="text-xs text-slate-400 mt-0.5">
+                          {site.state} &middot; {site.mw} MW
+                        </div>
+                      </div>
+                      <div className="bg-blue-600 text-white text-xs font-bold rounded px-2 py-1">
+                        {site.score}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              <p className="text-xs text-slate-500 text-center pt-2">
+                No data loaded — connect sources to populate results
+              </p>
+            </div>
+          )}
+        </div>
       </div>
-      <div style={{ position: "absolute", bottom: 30, left: 20, zIndex: 1, backgroundColor: "rgba(27,42,74,0.9)", padding: "12px 16px", borderRadius: "8px", fontFamily: "Arial", fontSize: "11px", color: "white" }}>
-        <div style={{ fontWeight: "bold", marginBottom: "6px" }}>MIVI Score</div>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
-          <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#c62828" }}></div>
-          <span>90+ Critical Need</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
-          <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#e65100" }}></div>
-          <span>80-89 High Need</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
-          <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#f9a825" }}></div>
-          <span>70-79 Moderate</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#2e7d32" }}></div>
-          <span>Below 70</span>
-        </div>
-      </div>
-      <div ref={mapContainer} style={{ width: "100%", height: "100%" }} />
+
+      {/* Map */}
+      <div ref={mapContainer} className="flex-1 h-full" />
     </div>
   );
 }
