@@ -14,17 +14,34 @@ var US_STATES = [
   "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY",
 ];
 
-var PLACEHOLDER_SITES = [
-  { name: "Kearny Generating Station", state: "NJ", score: 87, mw: 410 },
-  { name: "Huntley Power Plant", state: "NY", score: 82, mw: 380 },
-  { name: "Chalk Point Station", state: "MD", score: 78, mw: 355 },
-];
-
 var POWER_PLANTS_SOURCE = "power-plants";
 var POWER_PLANTS_LAYER = "power-plants-circles";
 var SUBSTATIONS_SOURCE = "substations";
 var SUBSTATIONS_LAYER = "substations-diamonds";
+var SCORED_SITES_SOURCE = "scored-sites";
+var SCORED_SITES_LAYER = "scored-sites-stars";
 var DIAMOND_ICON = "diamond-icon";
+var STAR_ICON = "star-icon";
+
+interface ScoredSite {
+  plant_name: string;
+  state: string;
+  latitude: number;
+  longitude: number;
+  total_capacity_mw: number;
+  fuel_type: string;
+  status: string;
+  planned_retirement_date?: string;
+  composite_score: number;
+  power_access: number;
+  grid_capacity: number;
+  site_characteristics: number;
+  connectivity: number;
+  risk_factors: number;
+  nearest_sub_name: string;
+  nearest_sub_distance_miles: number;
+  nearest_sub_voltage_kv: number;
+}
 
 export default function Home() {
   var mapContainer = useRef<HTMLDivElement>(null);
@@ -43,6 +60,7 @@ export default function Home() {
     transmissionLines: false,
     queueWithdrawals: false,
   });
+  var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
 
   function toggleLayer(key: keyof typeof layers) {
     setLayers(function (prev) {
@@ -119,6 +137,66 @@ export default function Home() {
     return html;
   }, []);
 
+  // Build popup HTML for a scored site feature
+  var buildScoredSitePopupHTML = useCallback(function (s: ScoredSite): string {
+    function bar(label: string, value: number, weight: string): string {
+      var barColor = value >= 80 ? "#eab308" : value >= 60 ? "#a3a3a3" : "#78716c";
+      return "<div style=\"margin:3px 0;\">" +
+        "<div style=\"display:flex;justify-content:space-between;font-size:11px;\">" +
+          "<span>" + label + " <span style=\"color:#94a3b8;\">(" + weight + ")</span></span>" +
+          "<strong style=\"color:" + barColor + ";\">" + value + "</strong>" +
+        "</div>" +
+        "<div style=\"background:#1e293b;border-radius:3px;height:5px;margin-top:2px;\">" +
+          "<div style=\"background:" + barColor + ";border-radius:3px;height:5px;width:" + value + "%;\"></div>" +
+        "</div></div>";
+    }
+
+    return "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:260px;\">" +
+      "<div style=\"display:flex;justify-content:space-between;align-items:start;margin-bottom:4px;\">" +
+        "<div>" +
+          "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;\">" + s.plant_name + "</div>" +
+          "<div style=\"font-size:12px;color:#64748b;\">" + s.state + " &middot; " + s.total_capacity_mw.toLocaleString() + " MW</div>" +
+        "</div>" +
+        "<div style=\"background:#eab308;color:#0f172a;border-radius:6px;padding:4px 10px;font-size:18px;font-weight:bold;min-width:44px;text-align:center;\">" + s.composite_score + "</div>" +
+      "</div>" +
+      "<div style=\"font-size:11px;color:#64748b;margin-bottom:6px;\">" + s.fuel_type + " &middot; " + s.status + "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;\">" +
+        bar("Power Access", s.power_access, "30%") +
+        bar("Grid Capacity", s.grid_capacity, "20%") +
+        bar("Site Characteristics", s.site_characteristics, "20%") +
+        bar("Connectivity", s.connectivity, "15%") +
+        bar("Risk Factors", s.risk_factors, "15%") +
+      "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;margin-top:6px;padding-top:6px;font-size:11px;color:#64748b;\">" +
+        "<div style=\"display:flex;justify-content:space-between;margin:2px 0;\"><span>Nearest 345kV+ Sub</span><strong style=\"color:#334155;\">" + s.nearest_sub_name + "</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:2px 0;\"><span>Distance</span><strong style=\"color:#334155;\">" + s.nearest_sub_distance_miles + " mi</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:2px 0;\"><span>Sub Voltage</span><strong style=\"color:#334155;\">" + s.nearest_sub_voltage_kv + " kV</strong></div>" +
+      "</div></div>";
+  }, []);
+
+  // Fly to a scored site and show its popup
+  var flyToSite = useCallback(function (site: ScoredSite) {
+    var map = mapRef.current;
+    if (!map) return;
+
+    map.flyTo({
+      center: [site.longitude, site.latitude],
+      zoom: 10,
+      duration: 1500,
+    });
+
+    if (popupRef.current) popupRef.current.remove();
+
+    // Open popup after fly animation
+    map.once("moveend", function () {
+      if (!mapRef.current) return;
+      popupRef.current = new mapboxgl.Popup({ offset: 14, maxWidth: "340px" })
+        .setLngLat([site.longitude, site.latitude])
+        .setHTML(buildScoredSitePopupHTML(site))
+        .addTo(mapRef.current);
+    });
+  }, [buildScoredSitePopupHTML]);
+
   // Initialize map
   useEffect(function () {
     if (!mapContainer.current) return;
@@ -151,6 +229,33 @@ export default function Home() {
         ctx.fill();
         var imageData = ctx.getImageData(0, 0, size, size);
         map.addImage(DIAMOND_ICON, imageData, { sdf: true });
+      }
+
+      // Create star icon for scored sites layer
+      var starSize = 24;
+      var starCanvas = document.createElement("canvas");
+      starCanvas.width = starSize;
+      starCanvas.height = starSize;
+      var starCtx = starCanvas.getContext("2d");
+      if (starCtx) {
+        var cx = starSize / 2;
+        var cy = starSize / 2;
+        var outerR = starSize / 2 - 1;
+        var innerR = outerR * 0.4;
+        starCtx.beginPath();
+        for (var i = 0; i < 10; i++) {
+          var r = i % 2 === 0 ? outerR : innerR;
+          var angle = (Math.PI / 2 * -1) + (Math.PI / 5) * i;
+          var px = cx + r * Math.cos(angle);
+          var py = cy + r * Math.sin(angle);
+          if (i === 0) starCtx.moveTo(px, py);
+          else starCtx.lineTo(px, py);
+        }
+        starCtx.closePath();
+        starCtx.fillStyle = "#ffffff";
+        starCtx.fill();
+        var starImageData = starCtx.getImageData(0, 0, starSize, starSize);
+        map.addImage(STAR_ICON, starImageData, { sdf: true });
       }
 
       mapLoaded.current = true;
@@ -340,6 +445,110 @@ export default function Home() {
     }
   }, [layers.substations, buildSubstationPopupHTML]);
 
+  // Load scored sites on mount — always-visible star layer
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupScoredLayer() {
+      if (!map) return;
+      if (map.getSource(SCORED_SITES_SOURCE)) return;
+
+      fetch("/data/scored-sites.geojson")
+        .then(function (res) { return res.json(); })
+        .then(function (geojson) {
+          // Populate sidebar state
+          var sites: ScoredSite[] = geojson.features
+            .map(function (f: any) { return f.properties as ScoredSite; })
+            .sort(function (a: ScoredSite, b: ScoredSite) { return b.composite_score - a.composite_score; });
+          setScoredSites(sites);
+
+          // Add source + layer if map is still alive
+          if (!map || map.getSource(SCORED_SITES_SOURCE)) return;
+
+          map.addSource(SCORED_SITES_SOURCE, {
+            type: "geojson",
+            data: geojson,
+          });
+
+          map.addLayer({
+            id: SCORED_SITES_LAYER,
+            type: "symbol",
+            source: SCORED_SITES_SOURCE,
+            layout: {
+              "icon-image": STAR_ICON,
+              "icon-size": [
+                "interpolate", ["linear"], ["get", "composite_score"],
+                50, 0.5,
+                70, 0.7,
+                85, 0.9,
+                95, 1.1,
+              ],
+              "icon-allow-overlap": true,
+            },
+            paint: {
+              "icon-color": [
+                "interpolate", ["linear"], ["get", "composite_score"],
+                50, "#a16207",
+                70, "#ca8a04",
+                85, "#eab308",
+                95, "#facc15",
+              ],
+              "icon-opacity": 0.95,
+              "icon-halo-color": "#000000",
+              "icon-halo-width": 0.5,
+            },
+          });
+
+          // Click handler
+          map.on("click", SCORED_SITES_LAYER, function (e) {
+            if (!e.features || e.features.length === 0) return;
+            var props = e.features[0].properties as Record<string, any>;
+            // Parse numeric values that Mapbox stringifies
+            var site: ScoredSite = {
+              plant_name: props.plant_name,
+              state: props.state,
+              latitude: parseFloat(props.latitude),
+              longitude: parseFloat(props.longitude),
+              total_capacity_mw: parseFloat(props.total_capacity_mw),
+              fuel_type: props.fuel_type,
+              status: props.status,
+              planned_retirement_date: props.planned_retirement_date || undefined,
+              composite_score: parseFloat(props.composite_score),
+              power_access: parseFloat(props.power_access),
+              grid_capacity: parseFloat(props.grid_capacity),
+              site_characteristics: parseFloat(props.site_characteristics),
+              connectivity: parseFloat(props.connectivity),
+              risk_factors: parseFloat(props.risk_factors),
+              nearest_sub_name: props.nearest_sub_name,
+              nearest_sub_distance_miles: parseFloat(props.nearest_sub_distance_miles),
+              nearest_sub_voltage_kv: parseFloat(props.nearest_sub_voltage_kv),
+            };
+
+            if (popupRef.current) popupRef.current.remove();
+            var coords = (e.features[0].geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+            popupRef.current = new mapboxgl.Popup({ offset: 14, maxWidth: "340px" })
+              .setLngLat(coords)
+              .setHTML(buildScoredSitePopupHTML(site))
+              .addTo(map!);
+          });
+
+          map.on("mouseenter", SCORED_SITES_LAYER, function () {
+            map!.getCanvas().style.cursor = "pointer";
+          });
+          map.on("mouseleave", SCORED_SITES_LAYER, function () {
+            map!.getCanvas().style.cursor = "";
+          });
+        });
+    }
+
+    if (mapLoaded.current) {
+      setupScoredLayer();
+    } else {
+      map.on("load", setupScoredLayer);
+    }
+  }, [buildScoredSitePopupHTML]);
+
   return (
     <div className="flex h-screen w-screen overflow-hidden">
       {/* Sidebar */}
@@ -455,39 +664,51 @@ export default function Home() {
         </div>
 
         {/* Results */}
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col min-h-0">
           <button
             onClick={() => setResultsOpen(!resultsOpen)}
-            className="w-full px-5 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-300 hover:text-white"
+            className="w-full px-5 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-300 hover:text-white shrink-0"
           >
-            Results
+            Results {scoredSites.length > 0 && <span className="text-slate-500 normal-case tracking-normal font-normal">({scoredSites.length})</span>}
             <span>{resultsOpen ? "−" : "+"}</span>
           </button>
           {resultsOpen && (
-            <div className="px-5 pb-4 space-y-3">
-              {PLACEHOLDER_SITES.map(function (site) {
+            <div className="px-5 pb-4 space-y-2 overflow-y-auto flex-1">
+              {scoredSites.length === 0 && (
+                <p className="text-xs text-slate-500 text-center pt-2">
+                  Loading scored sites...
+                </p>
+              )}
+              {scoredSites.map(function (site, idx) {
+                var scoreColor = site.composite_score >= 85 ? "bg-yellow-500 text-black"
+                  : site.composite_score >= 75 ? "bg-yellow-600 text-black"
+                  : "bg-yellow-700 text-white";
                 return (
-                  <div
-                    key={site.name}
-                    className="bg-[#0f1b33] rounded-lg p-3.5 border border-white/5"
+                  <button
+                    key={site.plant_name + "-" + site.state}
+                    onClick={() => flyToSite(site)}
+                    className="w-full text-left bg-[#0f1b33] rounded-lg p-3 border border-white/5 hover:border-yellow-500/30 hover:bg-[#132040] transition-colors"
                   >
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <div className="text-sm font-medium">{site.name}</div>
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-medium truncate">
+                          <span className="text-slate-500 mr-1.5">{idx + 1}.</span>
+                          {site.plant_name}
+                        </div>
                         <div className="text-xs text-slate-400 mt-0.5">
-                          {site.state} &middot; {site.mw} MW
+                          {site.state} &middot; {site.total_capacity_mw.toLocaleString()} MW
+                        </div>
+                        <div className="text-[11px] text-slate-500 mt-0.5">
+                          {site.nearest_sub_distance_miles} mi to {site.nearest_sub_voltage_kv} kV sub
                         </div>
                       </div>
-                      <div className="bg-blue-600 text-white text-xs font-bold rounded px-2 py-1">
-                        {site.score}
+                      <div className={"text-xs font-bold rounded px-2 py-1 shrink-0 " + scoreColor}>
+                        {site.composite_score}
                       </div>
                     </div>
-                  </div>
+                  </button>
                 );
               })}
-              <p className="text-xs text-slate-500 text-center pt-2">
-                No data loaded — connect sources to populate results
-              </p>
             </div>
           )}
         </div>
