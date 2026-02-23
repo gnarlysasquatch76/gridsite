@@ -18,6 +18,8 @@ var POWER_PLANTS_SOURCE = "power-plants";
 var POWER_PLANTS_LAYER = "power-plants-circles";
 var SUBSTATIONS_SOURCE = "substations";
 var SUBSTATIONS_LAYER = "substations-diamonds";
+var TRANSMISSION_LINES_SOURCE = "transmission-lines";
+var TRANSMISSION_LINES_LAYER = "transmission-lines-lines";
 var SCORED_SITES_SOURCE = "scored-sites";
 var SCORED_SITES_LAYER = "scored-sites-stars";
 var DIAMOND_ICON = "diamond-icon";
@@ -140,6 +142,41 @@ export default function Home() {
     }
     if (lines != null) {
       html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Connected Lines</span><strong>" + lines + "</strong></div>";
+    }
+
+    html += "</div></div>";
+    return html;
+  }, []);
+
+  // Build popup HTML for a transmission line feature
+  var buildTransmissionLinePopupHTML = useCallback(function (props: Record<string, any>): string {
+    var voltage = props.VOLTAGE != null ? Number(props.VOLTAGE) : null;
+    var voltClass = props.VOLT_CLASS || "";
+    var owner = props.OWNER || "Unknown";
+    var status = props.STATUS || "Unknown";
+    var type = props.TYPE || "";
+    var sub1 = props.SUB_1 || "";
+    var sub2 = props.SUB_2 || "";
+
+    var voltColor = "#22d3ee";
+    if (voltage != null && voltage >= 500) voltColor = "#a78bfa";
+    else if (voltage != null && voltage >= 345) voltColor = "#818cf8";
+    else if (voltage != null && voltage >= 230) voltColor = "#38bdf8";
+
+    var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+      "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">Transmission Line</div>" +
+      "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+        "<span style=\"background:" + voltColor + ";color:#0f172a;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" +
+          (voltage != null ? voltage + " kV" : voltClass) + "</span>" +
+        (type ? "<span style=\"background:#334155;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + type + "</span>" : "") +
+      "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Owner</span><strong>" + owner + "</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Status</span><strong>" + status + "</strong></div>";
+
+    if (sub1 || sub2) {
+      var route = [sub1, sub2].filter(Boolean).join(" → ");
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Route</span><strong>" + route + "</strong></div>";
     }
 
     html += "</div></div>";
@@ -453,6 +490,87 @@ export default function Home() {
       map.on("load", setupLayer);
     }
   }, [layers.substations, buildSubstationPopupHTML]);
+
+  // Toggle transmission lines layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      if (map.getLayer(TRANSMISSION_LINES_LAYER)) {
+        map.setLayoutProperty(
+          TRANSMISSION_LINES_LAYER,
+          "visibility",
+          layers.transmissionLines ? "visible" : "none"
+        );
+        return;
+      }
+
+      if (!layers.transmissionLines) return;
+
+      map.addSource(TRANSMISSION_LINES_SOURCE, {
+        type: "geojson",
+        data: "/data/transmission-lines.geojson",
+      });
+
+      map.addLayer({
+        id: TRANSMISSION_LINES_LAYER,
+        type: "line",
+        source: TRANSMISSION_LINES_SOURCE,
+        layout: {
+          "line-cap": "round",
+          "line-join": "round",
+        },
+        paint: {
+          "line-color": [
+            "step", ["get", "VOLTAGE"],
+            "#22d3ee",  // 138-229 kV — cyan
+            230, "#38bdf8",  // 230-344 kV — light blue
+            345, "#818cf8",  // 345-499 kV — indigo
+            500, "#a78bfa",  // 500+ kV — purple
+          ],
+          "line-width": [
+            "step", ["get", "VOLTAGE"],
+            1,      // 138-229 kV
+            230, 1.5,  // 230-344 kV
+            345, 2.5,  // 345-499 kV
+            500, 3.5,  // 500+ kV
+          ],
+          "line-opacity": 0.7,
+        },
+      });
+
+      map.on("click", TRANSMISSION_LINES_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var props = feature.properties as Record<string, any>;
+
+        if (typeof props.VOLTAGE === "string") props.VOLTAGE = parseFloat(props.VOLTAGE);
+
+        if (popupRef.current) popupRef.current.remove();
+
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "320px" })
+          .setLngLat(e.lngLat)
+          .setHTML(buildTransmissionLinePopupHTML(props))
+          .addTo(map!);
+      });
+
+      map.on("mouseenter", TRANSMISSION_LINES_LAYER, function () {
+        map!.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", TRANSMISSION_LINES_LAYER, function () {
+        map!.getCanvas().style.cursor = "";
+      });
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.transmissionLines, buildTransmissionLinePopupHTML]);
 
   // Load scored sites on mount — always-visible star layer
   useEffect(function () {
@@ -798,6 +916,23 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#818cf8]"></span>
                   <span>345 kV+ Sub</span>
+                </div>
+                <div className="border-t border-white/10 my-1.5"></div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-4 h-[1px] bg-[#22d3ee] rounded"></span>
+                  <span>138-229 kV Line</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-4 h-[2px] bg-[#38bdf8] rounded"></span>
+                  <span>230-344 kV Line</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-4 h-[3px] bg-[#818cf8] rounded"></span>
+                  <span>345-499 kV Line</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-4 h-[4px] bg-[#a78bfa] rounded"></span>
+                  <span>500 kV+ Line</span>
                 </div>
               </div>
             </div>
