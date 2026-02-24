@@ -1,16 +1,19 @@
 """
-Score retired/retiring power plants for data center adaptive reuse potential.
+Score sites for data center adaptive reuse potential.
 
-Reads power-plants.geojson, substations.geojson, and queue-withdrawals.geojson,
-scores each retired/retiring plant (>= 50 MW) on a 0-100 composite scale,
-and outputs the top 100 sites to scored-sites.geojson.
+Scores two site types using the same 5-dimension model:
+  1. Retired/retiring power plants (>= 50 MW) from power-plants.geojson
+  2. EPA brownfield sites from epa-brownfields.geojson
+
+All sites are scored on a 0-100 composite scale and ranked together.
+The top 100 are output to scored-sites.geojson.
 
 Scoring model (5 dimensions, weighted):
-  Power Access        (30%) - substation proximity, plant capacity, interconnection voltage
-  Grid Capacity       (20%) - plant MW, substation lines, nearby queue withdrawals
-  Site Characteristics (20%) - fuel type reuse suitability, capacity scale
-  Connectivity        (15%) - proximity to population centers, broadband coverage proxy
-  Risk Factors        (15%) - contamination risk, retirement status, flood zone exposure
+  Power Access        (30%) - substation proximity, capacity/site potential, voltage
+  Grid Capacity       (20%) - capacity/grid infrastructure, substation lines, queue withdrawals
+  Site Characteristics (20%) - reuse suitability, scale
+  Connectivity        (15%) - proximity to population centers, broadband coverage
+  Risk Factors        (15%) - contamination/environmental risk, flood zone exposure
 """
 
 import json
@@ -21,30 +24,24 @@ SCRIPT_DIR = os.path.dirname(__file__)
 PLANTS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "power-plants.geojson")
 SUBSTATIONS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "substations.geojson")
 QUEUE_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "queue-withdrawals.geojson")
+BROWNFIELDS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "epa-brownfields.geojson")
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "scored-sites.geojson")
 
 TOP_N = 100
 
-# FEMA high-risk flood zone states/regions. Plants in these coastal/riverine
-# counties face higher flood risk. We use state + longitude/latitude heuristics
-# to identify sites in FEMA Special Flood Hazard Areas (SFHA).
-# Coastal counties within 50 miles of coast and below 30ft elevation proxy.
+# FEMA high-risk flood zone states/regions
 FLOOD_RISK_STATES = {
     "LA", "FL", "TX", "MS", "AL",  # Gulf Coast
     "SC", "NC",                      # Atlantic hurricane coast
 }
 
-# States with moderate flood risk (riverine/coastal but less extreme)
 MODERATE_FLOOD_STATES = {
     "NJ", "DE", "MD", "VA",  # Mid-Atlantic
     "GA", "CT", "RI", "MA",  # Coastal states
     "HI",                      # Island
 }
 
-# Broadband coverage tiers by state (FCC BDC data summary).
-# Percentage of locations with 100/20 Mbps+ service ("served").
-# Sourced from FCC Broadband Data Collection June 2024 state-level stats.
-# Higher = better broadband coverage = better connectivity score.
+# FCC BDC broadband coverage by state (% of locations with 100/20+ Mbps)
 BROADBAND_COVERAGE = {
     "NJ": 97, "CT": 96, "MA": 96, "RI": 95, "MD": 95, "DE": 94,
     "NY": 93, "VA": 93, "NH": 92, "PA": 91, "FL": 91, "IL": 90,
@@ -60,7 +57,7 @@ BROADBAND_COVERAGE = {
 
 def haversine_miles(lat1, lon1, lat2, lon2):
     """Great-circle distance between two points in miles."""
-    R = 3958.8  # Earth radius in miles
+    R = 3958.8
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
     a = (math.sin(dlat / 2) ** 2 +
@@ -76,22 +73,20 @@ def clamp(val, lo=0.0, hi=100.0):
 def is_coastal_location(lat, lon, state):
     """Heuristic: is this site likely in a FEMA Special Flood Hazard Area?"""
     if state in FLOOD_RISK_STATES:
-        # Gulf/Atlantic coast: most of these states have widespread flood zones
-        # Sites closer to coast (lower elevation proxy) score worse
         if state == "FL":
-            return True  # Nearly all of FL is flood-prone
+            return True
         if state == "LA":
             if lat < 31.0:
-                return True  # Southern LA is extremely flood-prone
-            return lon < -91.0  # Mississippi River corridor
+                return True
+            return lon < -91.0
         if state == "TX":
-            return lon > -97.0 and lat < 30.5  # Houston/Gulf Coast corridor
+            return lon > -97.0 and lat < 30.5
         if state == "MS":
             return lat < 31.5
         if state == "AL":
             return lat < 31.5
         if state in ("NC", "SC"):
-            return lon > -80.0  # Coastal plain
+            return lon > -80.0
         return True
     return False
 
@@ -99,25 +94,20 @@ def is_coastal_location(lat, lon, state):
 # ── Dimension scorers ──────────────────────────────────────────────────────
 
 
-def score_power_access(plant, nearest_sub):
+def score_power_access(site, nearest_sub):
     """
-    30% weight. Based on:
-    - Distance to nearest 345kV+ substation (closer = better)
-    - Plant's own nameplate capacity (higher = better existing interconnection)
-    - Nearest substation voltage (higher = better)
+    30% weight.
+    Power plants: distance + capacity + voltage
+    Brownfields: distance + voltage (no existing capacity)
     """
     dist = nearest_sub["distance_miles"]
     max_volt = nearest_sub["max_volt"]
-    capacity = plant["total_capacity_mw"]
+    capacity = site.get("total_capacity_mw", 0)
 
-    # Distance score: 100 at 0 mi, 0 at 50+ mi (linear decay)
+    # Distance score: 100 at 0 mi, 0 at 50+ mi
     dist_score = clamp(100 - (dist * 2))
 
-    # Capacity score: existing interconnection capacity is valuable
-    # 100 at >= 2000 MW, scales linearly from 50 MW
-    cap_score = clamp((capacity - 50) / 1950 * 100)
-
-    # Voltage bonus: 345=base, 500=good, 765=great
+    # Voltage bonus
     volt_score = 60
     if max_volt >= 765:
         volt_score = 100
@@ -126,100 +116,92 @@ def score_power_access(plant, nearest_sub):
     elif max_volt >= 345:
         volt_score = 70
 
-    return dist_score * 0.50 + cap_score * 0.30 + volt_score * 0.20
+    if site["site_type"] == "power_plant":
+        cap_score = clamp((capacity - 50) / 1950 * 100)
+        return dist_score * 0.50 + cap_score * 0.30 + volt_score * 0.20
+    else:
+        # Brownfields: no existing capacity, weight distance + voltage more
+        return dist_score * 0.65 + volt_score * 0.35
 
 
-def score_grid_capacity(plant, nearest_sub, nearby_withdrawals):
+def score_grid_capacity(site, nearest_sub, nearby_withdrawals):
     """
-    20% weight. Based on:
-    - Plant capacity as proxy for existing grid headroom
-    - Number of transmission lines at nearest substation
-    - Nearby queue withdrawals (within 20 mi): more = more studied grid capacity,
-      indicates interconnection infrastructure has been evaluated
+    20% weight.
+    Power plants: capacity + lines + queue withdrawals
+    Brownfields: lines + queue withdrawals (no existing capacity)
     """
-    capacity = plant["total_capacity_mw"]
     lines = nearest_sub.get("lines") or 0
-
-    # Capacity proxy: larger plant = more grid infrastructure already present
-    cap_score = clamp((capacity - 50) / 2950 * 100)  # 0 at 50MW, 100 at 3000MW
-
-    # Lines score: more connections = more grid flexibility
-    # Typically 2-12 lines; score 100 at 8+
     lines_score = clamp(lines / 8 * 100)
 
-    # Queue withdrawals score: nearby withdrawn projects indicate
-    # the grid has been studied for generation interconnection.
-    # More withdrawn projects = more evaluated capacity = better understood grid.
-    # 0 withdrawals = 30 (baseline), 5+ = 90, 15+ = 100
     qw_count = nearby_withdrawals["count"]
     qw_mw = nearby_withdrawals["total_mw"]
     if qw_count == 0:
         qw_score = 30
     else:
         count_score = clamp(30 + qw_count * 5, 30, 100)
-        # MW bonus: large withdrawn capacity means major grid studies were done
         mw_bonus = clamp(qw_mw / 5000 * 20, 0, 20)
         qw_score = clamp(count_score + mw_bonus)
 
-    return cap_score * 0.40 + lines_score * 0.30 + qw_score * 0.30
+    if site["site_type"] == "power_plant":
+        capacity = site.get("total_capacity_mw", 0)
+        cap_score = clamp((capacity - 50) / 2950 * 100)
+        return cap_score * 0.40 + lines_score * 0.30 + qw_score * 0.30
+    else:
+        # Brownfields: no capacity, weight lines + withdrawals
+        return lines_score * 0.45 + qw_score * 0.55
 
 
-def score_site_characteristics(plant):
+def score_site_characteristics(site):
     """
-    20% weight. Based on:
-    - Fuel type suitability for structural reuse
-    - Capacity scale (larger sites = more developable land)
+    20% weight.
+    Power plants: fuel type suitability + capacity scale
+    Brownfields: base reuse score (already cleared/assessed for redevelopment)
     """
-    fuel = plant["fuel_type"]
-    capacity = plant["total_capacity_mw"]
+    if site["site_type"] == "power_plant":
+        fuel = site["fuel_type"]
+        capacity = site.get("total_capacity_mw", 0)
 
-    # Fuel type reuse suitability scores
-    # Coal/gas plants have large flat footprints, heavy-duty foundations, water access
-    fuel_scores = {
-        "Conventional Steam Coal": 90,
-        "Natural Gas Fired Combined Cycle": 95,
-        "Natural Gas Fired Combustion Turbine": 80,
-        "Natural Gas Steam Turbine": 85,
-        "Nuclear": 50,  # Decommissioning complexity
-        "Petroleum Liquids": 70,
-        "Petroleum Coke": 70,
-        "Coal Integrated Gasification Combined Cycle": 80,
-        "Other Gases": 65,
-        "Other Waste Biomass": 55,
-        "Wood/Wood Waste Biomass": 55,
-        "Municipal Solid Waste": 45,
-        "Landfill Gas": 40,
-        "Conventional Hydroelectric": 30,  # Not easily repurposed
-        "Onshore Wind Turbine": 20,  # Distributed, no central structure
-        "Solar Photovoltaic": 25,
-        "Geothermal": 35,
-        "All Other": 50,
-    }
-    fuel_score = fuel_scores.get(fuel, 50)
+        fuel_scores = {
+            "Conventional Steam Coal": 90,
+            "Natural Gas Fired Combined Cycle": 95,
+            "Natural Gas Fired Combustion Turbine": 80,
+            "Natural Gas Steam Turbine": 85,
+            "Nuclear": 50,
+            "Petroleum Liquids": 70,
+            "Petroleum Coke": 70,
+            "Coal Integrated Gasification Combined Cycle": 80,
+            "Other Gases": 65,
+            "Other Waste Biomass": 55,
+            "Wood/Wood Waste Biomass": 55,
+            "Municipal Solid Waste": 45,
+            "Landfill Gas": 40,
+            "Conventional Hydroelectric": 30,
+            "Onshore Wind Turbine": 20,
+            "Solar Photovoltaic": 25,
+            "Geothermal": 35,
+            "All Other": 50,
+        }
+        fuel_score = fuel_scores.get(fuel, 50)
+        scale_score = clamp((capacity - 50) / 1450 * 100)
+        return fuel_score * 0.60 + scale_score * 0.40
+    else:
+        # Brownfields are assessed/cleared for redevelopment — good reuse potential
+        # but unknown structural footprint, so moderate-high base score
+        return 65
 
-    # Scale score: larger sites have more room for data center campus
-    scale_score = clamp((capacity - 50) / 1450 * 100)  # 100 at 1500 MW
 
-    return fuel_score * 0.60 + scale_score * 0.40
-
-
-def score_connectivity(plant):
+def score_connectivity(site):
     """
-    15% weight. Based on:
-    - Proximity to population centers (longitude proxy: eastern US has more fiber/POPs)
-    - Latitude band (mid-latitudes 30-43 are population-dense corridor)
-    - State broadband coverage (FCC BDC data: % of locations with 100/20+ Mbps)
+    15% weight. Same for both site types:
+    longitude proxy + latitude band + broadband coverage
     """
-    lat = plant["latitude"]
-    lon = plant["longitude"]
-    state = plant["state"]
+    lat = site["latitude"]
+    lon = site["longitude"]
+    state = site["state"]
 
-    # Longitude score: eastern US (more fiber, more POPs)
-    # -70 (East Coast) = 100, -120 (West Coast) = 40, further west = lower
     lon_score = clamp(100 - (lon + 70) * -1.2) if lon < -70 else 100
     lon_score = clamp(lon_score)
 
-    # Latitude score: mid-latitudes (30-43) are population-dense corridor
     if 33 <= lat <= 43:
         lat_score = 90
     elif 28 <= lat <= 48:
@@ -227,8 +209,6 @@ def score_connectivity(plant):
     else:
         lat_score = 40
 
-    # Broadband coverage score from FCC data
-    # Scale: 70% coverage = 40 score, 90%+ = 90 score
     bb_pct = BROADBAND_COVERAGE.get(state, 80)
     if bb_pct >= 95:
         bb_score = 95
@@ -246,54 +226,57 @@ def score_connectivity(plant):
     return lon_score * 0.40 + lat_score * 0.30 + bb_score * 0.30
 
 
-def score_risk_factors(plant):
+def score_risk_factors(site):
     """
-    15% weight. Based on:
-    - Fuel type contamination risk (coal ash, nuclear waste, etc.)
-    - Status: retiring (still operating) is lower risk than already retired
-    - FEMA flood zone exposure: sites in high-risk flood areas score lower
+    15% weight.
+    Power plants: contamination + status + flood
+    Brownfields: brownfield contamination risk + flood
     """
-    fuel = plant["fuel_type"]
-    status = plant["status"]
-    state = plant["state"]
-    lat = plant["latitude"]
-    lon = plant["longitude"]
+    state = site["state"]
+    lat = site["latitude"]
+    lon = site["longitude"]
 
-    # Contamination risk (lower risk = higher score)
-    contamination_scores = {
-        "Conventional Steam Coal": 45,  # Coal ash ponds
-        "Coal Integrated Gasification Combined Cycle": 50,
-        "Nuclear": 20,  # Long decommissioning, NRC oversight
-        "Petroleum Liquids": 55,
-        "Petroleum Coke": 50,
-        "Municipal Solid Waste": 40,
-        "Other Waste Biomass": 50,
-        "Landfill Gas": 45,
-        "Natural Gas Fired Combined Cycle": 85,
-        "Natural Gas Fired Combustion Turbine": 85,
-        "Natural Gas Steam Turbine": 80,
-        "Wood/Wood Waste Biomass": 70,
-        "Other Gases": 65,
-        "Conventional Hydroelectric": 90,
-        "Onshore Wind Turbine": 95,
-        "Solar Photovoltaic": 95,
-        "Geothermal": 60,
-        "All Other": 60,
-    }
-    contam_score = contamination_scores.get(fuel, 60)
-
-    # Status: retiring plants still have active infrastructure and staff
-    status_score = 80 if status == "retiring" else 65
-
-    # Flood zone risk: sites NOT in flood zones score higher
+    # Flood zone risk
     if is_coastal_location(lat, lon, state):
-        flood_score = 35  # High flood risk
+        flood_score = 35
     elif state in MODERATE_FLOOD_STATES:
-        flood_score = 65  # Moderate flood risk
+        flood_score = 65
     else:
-        flood_score = 90  # Low flood risk
+        flood_score = 90
 
-    return contam_score * 0.50 + status_score * 0.20 + flood_score * 0.30
+    if site["site_type"] == "power_plant":
+        fuel = site["fuel_type"]
+        status = site.get("status", "retired")
+
+        contamination_scores = {
+            "Conventional Steam Coal": 45,
+            "Coal Integrated Gasification Combined Cycle": 50,
+            "Nuclear": 20,
+            "Petroleum Liquids": 55,
+            "Petroleum Coke": 50,
+            "Municipal Solid Waste": 40,
+            "Other Waste Biomass": 50,
+            "Landfill Gas": 45,
+            "Natural Gas Fired Combined Cycle": 85,
+            "Natural Gas Fired Combustion Turbine": 85,
+            "Natural Gas Steam Turbine": 80,
+            "Wood/Wood Waste Biomass": 70,
+            "Other Gases": 65,
+            "Conventional Hydroelectric": 90,
+            "Onshore Wind Turbine": 95,
+            "Solar Photovoltaic": 95,
+            "Geothermal": 60,
+            "All Other": 60,
+        }
+        contam_score = contamination_scores.get(fuel, 60)
+        status_score = 80 if status == "retiring" else 65
+        return contam_score * 0.50 + status_score * 0.20 + flood_score * 0.30
+    else:
+        # Brownfields have known contamination (they're on the EPA list),
+        # but they've been assessed and are in the remediation pipeline.
+        # Moderate risk — better than coal/nuclear, worse than clean gas.
+        contam_score = 55
+        return contam_score * 0.65 + flood_score * 0.35
 
 
 # ── Main ───────────────────────────────────────────────────────────────────
@@ -321,13 +304,42 @@ def main():
     with open(QUEUE_FILE) as f:
         queue_geojson = json.load(f)
 
+    # Load brownfields if available
+    brownfield_sites = []
+    if os.path.exists(BROWNFIELDS_FILE):
+        with open(BROWNFIELDS_FILE) as f:
+            bf_geojson = json.load(f)
+        for feat in bf_geojson["features"]:
+            p = feat["properties"]
+            coords = feat["geometry"]["coordinates"]
+            brownfield_sites.append({
+                "plant_name": p.get("name", "Unknown"),
+                "state": p.get("state", ""),
+                "latitude": coords[1],
+                "longitude": coords[0],
+                "total_capacity_mw": 0,
+                "fuel_type": "Brownfield",
+                "status": "brownfield",
+                "site_type": "brownfield",
+                "city": p.get("city", ""),
+                "county": p.get("county", ""),
+            })
+        print("  Brownfield sites loaded: " + str(len(brownfield_sites)))
+    else:
+        print("  Brownfields file not found, skipping")
+
     # Filter to retired/retiring plants
-    candidates = []
+    plant_candidates = []
     for feat in plants_geojson["features"]:
         p = feat["properties"]
         if p["status"] in ("retired", "retiring"):
-            candidates.append(p)
-    print("  Retired/retiring plants (>= 50 MW): " + str(len(candidates)))
+            p["site_type"] = "power_plant"
+            plant_candidates.append(p)
+    print("  Retired/retiring plants (>= 50 MW): " + str(len(plant_candidates)))
+
+    # Combine all candidates
+    candidates = plant_candidates + brownfield_sites
+    print("  Total candidates: " + str(len(candidates)))
 
     # Filter substations to 345kV+
     hv_subs = []
@@ -338,7 +350,6 @@ def main():
             hv_subs.append(p)
     print("  Substations >= 345 kV: " + str(len(hv_subs)))
 
-    # Pre-extract substation coords for distance calc
     sub_coords = []
     for s in hv_subs:
         sub_coords.append({
@@ -349,7 +360,7 @@ def main():
             "name": s.get("NAME", ""),
         })
 
-    # Pre-extract queue withdrawal coords for proximity analysis
+    # Pre-extract queue withdrawal coords
     qw_points = []
     for feat in queue_geojson["features"]:
         coords = feat["geometry"]["coordinates"]
@@ -365,9 +376,12 @@ def main():
     print("Scoring " + str(len(candidates)) + " sites...")
 
     scored = []
-    for plant in candidates:
-        lat = plant["latitude"]
-        lon = plant["longitude"]
+    for idx, site in enumerate(candidates):
+        if (idx + 1) % 10000 == 0:
+            print("  Scored {:,} / {:,}...".format(idx + 1, len(candidates)))
+
+        lat = site["latitude"]
+        lon = site["longitude"]
 
         # Find nearest 345kV+ substation
         best_dist = float("inf")
@@ -386,13 +400,11 @@ def main():
         }
 
         # Count queue withdrawals within 20 miles
-        # Use bbox pre-filter for performance (20 mi ~ 0.29 deg lat)
         deg_delta = 20 / 69.0
         lon_delta = deg_delta / max(math.cos(math.radians(lat)), 0.01)
         qw_count = 0
         qw_total_mw = 0.0
         for qw in qw_points:
-            # Bbox pre-filter
             if abs(qw["lat"] - lat) > deg_delta:
                 continue
             if abs(qw["lon"] - lon) > lon_delta:
@@ -405,24 +417,24 @@ def main():
         nearby_qw = {"count": qw_count, "total_mw": qw_total_mw}
 
         # Score each dimension
-        pa = score_power_access(plant, nearest)
-        gc = score_grid_capacity(plant, nearest, nearby_qw)
-        sc_val = score_site_characteristics(plant)
-        co = score_connectivity(plant)
-        rf = score_risk_factors(plant)
+        pa = score_power_access(site, nearest)
+        gc = score_grid_capacity(site, nearest, nearby_qw)
+        sc_val = score_site_characteristics(site)
+        co = score_connectivity(site)
+        rf = score_risk_factors(site)
 
         composite = (pa * 0.30) + (gc * 0.20) + (sc_val * 0.20) + (co * 0.15) + (rf * 0.15)
         composite = round(clamp(composite), 1)
 
         scored.append({
-            "plant_name": plant["plant_name"],
-            "state": plant["state"],
+            "plant_name": site["plant_name"],
+            "state": site["state"],
             "latitude": lat,
             "longitude": lon,
-            "total_capacity_mw": plant["total_capacity_mw"],
-            "fuel_type": plant["fuel_type"],
-            "status": plant["status"],
-            "planned_retirement_date": plant.get("planned_retirement_date"),
+            "total_capacity_mw": site.get("total_capacity_mw", 0),
+            "fuel_type": site.get("fuel_type", "Brownfield"),
+            "status": site.get("status", "brownfield"),
+            "planned_retirement_date": site.get("planned_retirement_date"),
             "composite_score": composite,
             "power_access": round(pa, 1),
             "grid_capacity": round(gc, 1),
@@ -432,6 +444,7 @@ def main():
             "nearest_sub_name": nearest["name"],
             "nearest_sub_distance_miles": round(best_dist, 1),
             "nearest_sub_voltage_kv": nearest["max_volt"],
+            "site_type": site["site_type"],
         })
 
     # Sort by composite score descending, take top N
@@ -481,7 +494,6 @@ def main():
             new_st = top[i]["state"] if i < len(top) else ""
             new_sc = str(top[i]["composite_score"]) if i < len(top) else ""
 
-            # Mark changes
             marker = ""
             if i < len(old_top10) and i < len(top):
                 if old_top10[i]["plant_name"] != top[i]["plant_name"]:
@@ -496,22 +508,25 @@ def main():
 
     # ── Print summary table ───────────────────────────────────────────────
     print("")
-    print("=" * 130)
-    print("TOP 20 ADAPTIVE REUSE SITES (UPDATED SCORING)")
-    print("=" * 130)
-    header = "{:>3}  {:<30} {:>2}  {:>7}  {:>12}  {:>5}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6}".format(
-        "#", "Plant Name", "ST", "Score", "Capacity MW", "PwrAc", "Grid", "Site", "Conn", "Risk", "SubMi", "SubkV"
+    print("=" * 140)
+    print("TOP 20 ADAPTIVE REUSE SITES (ALL SITE TYPES)")
+    print("=" * 140)
+    header = "{:>3}  {:<30} {:>2}  {:>7}  {:>12}  {:>10}  {:>5}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6}".format(
+        "#", "Site Name", "ST", "Score", "Capacity MW", "Type", "PwrAc", "Grid", "Site", "Conn", "Risk", "SubMi", "SubkV"
     )
     print(header)
-    print("-" * 130)
+    print("-" * 140)
     for i, s in enumerate(top[:20]):
         name = s["plant_name"][:30]
-        print("{:>3}  {:<30} {:>2}  {:>7}  {:>10,.0f}  {:>5}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6,.0f}".format(
+        site_type = "Plant" if s["site_type"] == "power_plant" else "Brown"
+        cap_str = "{:>10,.0f}".format(s["total_capacity_mw"]) if s["total_capacity_mw"] > 0 else "       N/A"
+        print("{:>3}  {:<30} {:>2}  {:>7}  {}  {:>10}  {:>5}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6,.0f}".format(
             i + 1,
             name,
             s["state"],
             s["composite_score"],
-            s["total_capacity_mw"],
+            cap_str,
+            site_type,
             s["power_access"],
             s["grid_capacity"],
             s["site_characteristics"],
@@ -521,9 +536,13 @@ def main():
             s["nearest_sub_voltage_kv"],
         ))
 
+    # Count by type
+    plant_count = sum(1 for s in top if s["site_type"] == "power_plant")
+    bf_count = sum(1 for s in top if s["site_type"] == "brownfield")
     print("")
     print("Output: " + OUTPUT_FILE + " (" + str(file_size) + " KB)")
-    print("Top " + str(TOP_N) + " sites saved, " + str(len(scored)) + " total scored")
+    print("Top " + str(TOP_N) + " sites: " + str(plant_count) + " power plants, " + str(bf_count) + " brownfields")
+    print("Total scored: " + str(len(scored)))
 
     # Score distribution
     brackets = {"90+": 0, "80-89": 0, "70-79": 0, "60-69": 0, "<60": 0}

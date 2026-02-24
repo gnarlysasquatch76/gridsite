@@ -27,7 +27,8 @@
         "risk_factors": 75.0,
         "nearest_sub_name": "MYSTIC",
         "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -56,7 +57,8 @@
         "risk_factors": 62.5,
         "nearest_sub_name": "PARADISE",
         "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 500.0
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -85,7 +87,8 @@
         "risk_factors": 65.5,
         "nearest_sub_name": "ROCKPORT STATION",
         "nearest_sub_distance_miles": 0.5,
-        "nearest_sub_voltage_kv": 765.0
+        "nearest_sub_voltage_kv": 765.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -114,7 +117,8 @@
         "risk_factors": 62.5,
         "nearest_sub_name": "UNKNOWN113590",
         "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -143,7 +147,8 @@
         "risk_factors": 62.5,
         "nearest_sub_name": "UNKNOWN113592",
         "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -172,7 +177,8 @@
         "risk_factors": 65.5,
         "nearest_sub_name": "UNKNOWN128355",
         "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -201,7 +207,8 @@
         "risk_factors": 62.5,
         "nearest_sub_name": "HOMER CITY",
         "nearest_sub_distance_miles": 0.3,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -230,7 +237,8 @@
         "risk_factors": 62.5,
         "nearest_sub_name": "MANSFIELD STATION",
         "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -259,7 +267,8 @@
         "risk_factors": 62.5,
         "nearest_sub_name": "UNKNOWN111064",
         "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -288,7 +297,8 @@
         "risk_factors": 62.5,
         "nearest_sub_name": "CONESVILLE STATION",
         "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -317,7 +327,98 @@
         "risk_factors": 80.0,
         "nearest_sub_name": "COLLINS",
         "nearest_sub_distance_miles": 2.4,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.07531,
+          40.15886
+        ]
+      },
+      "properties": {
+        "plant_name": "44 NORTH LIBERTY STREET",
+        "state": "OH",
+        "latitude": 40.15886,
+        "longitude": -83.07531,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 84.6,
+        "power_access": 95.2,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 86.2,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "CORRIDOR",
+        "nearest_sub_distance_miles": 3.7,
+        "nearest_sub_voltage_kv": 765.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.373565,
+          40.960475
+        ]
+      },
+      "properties": {
+        "plant_name": "C & M PLATING COMPANY INC",
+        "state": "IN",
+        "latitude": 40.960475,
+        "longitude": -85.373565,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 84.5,
+        "power_access": 97.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 82.1,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "SORENSON",
+        "nearest_sub_distance_miles": 2.3,
+        "nearest_sub_voltage_kv": 765.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5812,
+          41.50045
+        ]
+      },
+      "properties": {
+        "plant_name": "SUNNYSIDE/DAVLISA LANDFILL",
+        "state": "PA",
+        "latitude": 41.50045,
+        "longitude": -75.5812,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 84.4,
+        "power_access": 92.8,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.8,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "LACKAWANNA",
+        "nearest_sub_distance_miles": 1.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -346,7 +447,98 @@
         "risk_factors": 55.0,
         "nearest_sub_name": "UNKNOWN115708",
         "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "power_plant"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.066264,
+          39.735255
+        ]
+      },
+      "properties": {
+        "plant_name": "LOCUST AVENUE EAST PARCEL",
+        "state": "PA",
+        "latitude": 39.735255,
+        "longitude": -80.066264,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 84.0,
+        "power_access": 92.4,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 87.7,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "UNKNOWN123487",
+        "nearest_sub_distance_miles": 1.8,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.066264,
+          39.735255
+        ]
+      },
+      "properties": {
+        "plant_name": "LOCUST AVENUE NORTH PARCEL",
+        "state": "PA",
+        "latitude": 39.735255,
+        "longitude": -80.066264,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 84.0,
+        "power_access": 92.4,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 87.7,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "UNKNOWN123487",
+        "nearest_sub_distance_miles": 1.8,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.066264,
+          39.735255
+        ]
+      },
+      "properties": {
+        "plant_name": "LOCUST AVENUE SOUTH PARCEL",
+        "state": "PA",
+        "latitude": 39.735255,
+        "longitude": -80.066264,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 84.0,
+        "power_access": 92.4,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 87.7,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "UNKNOWN123487",
+        "nearest_sub_distance_miles": 1.8,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -375,7 +567,8 @@
         "risk_factors": 65.5,
         "nearest_sub_name": "TIDD",
         "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -404,7 +597,188 @@
         "risk_factors": 65.5,
         "nearest_sub_name": "WILSON",
         "nearest_sub_distance_miles": 8.4,
-        "nearest_sub_voltage_kv": 500.0
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "power_plant"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.765444,
+          40.216028
+        ]
+      },
+      "properties": {
+        "plant_name": "PERRY SCRAP METALS SITE",
+        "state": "PA",
+        "latitude": 40.216028,
+        "longitude": -79.765444,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.8,
+        "power_access": 91.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 87.8,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "YUKON",
+        "nearest_sub_distance_miles": 2.2,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.259498,
+          39.804318
+        ]
+      },
+      "properties": {
+        "plant_name": "MARTIN/HUFFNAGLE",
+        "state": "PA",
+        "latitude": 39.804318,
+        "longitude": -76.259498,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.7,
+        "power_access": 90.7,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.5,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "PEACH BOTTOM",
+        "nearest_sub_distance_miles": 3.1,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.274679,
+          41.522501
+        ]
+      },
+      "properties": {
+        "plant_name": "FORMER KEY BANK",
+        "state": "IN",
+        "latitude": 41.522501,
+        "longitude": -86.274679,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.6,
+        "power_access": 94.2,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 81.7,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUMONT",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 765.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2754,
+          41.52456
+        ]
+      },
+      "properties": {
+        "plant_name": "UNDEVELOPED PARCELS",
+        "state": "IN",
+        "latitude": 41.52456,
+        "longitude": -86.2754,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.6,
+        "power_access": 94.3,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 81.7,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUMONT",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 765.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.49805,
+          40.59498
+        ]
+      },
+      "properties": {
+        "plant_name": "WENZ MEMORIAL",
+        "state": "PA",
+        "latitude": 40.59498,
+        "longitude": -75.49805,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.6,
+        "power_access": 90.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 3.6,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34737,
+          40.12802
+        ]
+      },
+      "properties": {
+        "plant_name": "AMATEX",
+        "state": "PA",
+        "latitude": 40.12802,
+        "longitude": -75.34737,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.6,
+        "power_access": 90.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 3.6,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -433,7 +807,1778 @@
         "risk_factors": 65.5,
         "nearest_sub_name": "SHAWNEE",
         "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "power_plant"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34213,
+          40.11553
+        ]
+      },
+      "properties": {
+        "plant_name": "AIRY STREET PRISON",
+        "state": "PA",
+        "latitude": 40.11553,
+        "longitude": -75.34213,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.4,
+        "power_access": 89.3,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.2,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.32777,
+          40.11232
+        ]
+      },
+      "properties": {
+        "plant_name": "LABORERS LOCAL #135",
+        "state": "PA",
+        "latitude": 40.11232,
+        "longitude": -75.32777,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.4,
+        "power_access": 89.3,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.2,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34534,
+          40.11832
+        ]
+      },
+      "properties": {
+        "plant_name": "STONY CREEK SITE",
+        "state": "PA",
+        "latitude": 40.11832,
+        "longitude": -75.34534,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.4,
+        "power_access": 89.4,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.1,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34559,
+          40.11987
+        ]
+      },
+      "properties": {
+        "plant_name": "WRIGHT SALES AND SERVICE",
+        "state": "PA",
+        "latitude": 40.11987,
+        "longitude": -75.34559,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.4,
+        "power_access": 89.5,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.0,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22795,
+          40.15624
+        ]
+      },
+      "properties": {
+        "plant_name": "AMBLER BOILER HOUSE PARKING EXPANSION",
+        "state": "PA",
+        "latitude": 40.15624,
+        "longitude": -75.22795,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.0,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.228625,
+          40.153472
+        ]
+      },
+      "properties": {
+        "plant_name": "BORIT ASBESTOS",
+        "state": "PA",
+        "latitude": 40.153472,
+        "longitude": -75.228625,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.0,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34282,
+          40.11307
+        ]
+      },
+      "properties": {
+        "plant_name": "201 DEKALB STREET",
+        "state": "PA",
+        "latitude": 40.11307,
+        "longitude": -75.34282,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34278,
+          40.11312
+        ]
+      },
+      "properties": {
+        "plant_name": "203 DEKALB STREET",
+        "state": "PA",
+        "latitude": 40.11312,
+        "longitude": -75.34278,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34276,
+          40.11315
+        ]
+      },
+      "properties": {
+        "plant_name": "205 DEKALB STREET",
+        "state": "PA",
+        "latitude": 40.11315,
+        "longitude": -75.34276,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.33754,
+          40.11115
+        ]
+      },
+      "properties": {
+        "plant_name": "207 WALNUT STREET",
+        "state": "PA",
+        "latitude": 40.11115,
+        "longitude": -75.33754,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34271,
+          40.11321
+        ]
+      },
+      "properties": {
+        "plant_name": "207-209 DEKALB STREET",
+        "state": "PA",
+        "latitude": 40.11321,
+        "longitude": -75.34271,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34268,
+          40.11326
+        ]
+      },
+      "properties": {
+        "plant_name": "211 DEKALB STREET",
+        "state": "PA",
+        "latitude": 40.11326,
+        "longitude": -75.34268,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34263,
+          40.11332
+        ]
+      },
+      "properties": {
+        "plant_name": "215 DEKALB STREET",
+        "state": "PA",
+        "latitude": 40.11332,
+        "longitude": -75.34263,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34149,
+          40.11168
+        ]
+      },
+      "properties": {
+        "plant_name": "220 EAST WASHINGTON ST",
+        "state": "PA",
+        "latitude": 40.11168,
+        "longitude": -75.34149,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34255,
+          40.11343
+        ]
+      },
+      "properties": {
+        "plant_name": "223 DEKALB STREET",
+        "state": "PA",
+        "latitude": 40.11343,
+        "longitude": -75.34255,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34062,
+          40.11136
+        ]
+      },
+      "properties": {
+        "plant_name": "260 E WASHINGTON STREET",
+        "state": "PA",
+        "latitude": 40.11136,
+        "longitude": -75.34062,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.33927,
+          40.11349
+        ]
+      },
+      "properties": {
+        "plant_name": "275 E PENN STREET",
+        "state": "PA",
+        "latitude": 40.11349,
+        "longitude": -75.33927,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.2,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.3403,
+          40.11124
+        ]
+      },
+      "properties": {
+        "plant_name": "300 EAST WASHINGTON STREET",
+        "state": "PA",
+        "latitude": 40.11124,
+        "longitude": -75.3403,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.33998,
+          40.11112
+        ]
+      },
+      "properties": {
+        "plant_name": "326 E WASHINGTON STREET",
+        "state": "PA",
+        "latitude": 40.11112,
+        "longitude": -75.33998,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.33951,
+          40.11094
+        ]
+      },
+      "properties": {
+        "plant_name": "346 E WASHINGTON STREET",
+        "state": "PA",
+        "latitude": 40.11094,
+        "longitude": -75.33951,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.337101,
+          40.11004
+        ]
+      },
+      "properties": {
+        "plant_name": "500 E. WASHINGTON STREET",
+        "state": "PA",
+        "latitude": 40.11004,
+        "longitude": -75.337101,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.35571,
+          40.11704
+        ]
+      },
+      "properties": {
+        "plant_name": "700 E WASHINGTON STREET",
+        "state": "PA",
+        "latitude": 40.11704,
+        "longitude": -75.35571,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34321,
+          40.1131
+        ]
+      },
+      "properties": {
+        "plant_name": "73 E LAFAYETTE STREET",
+        "state": "PA",
+        "latitude": 40.1131,
+        "longitude": -75.34321,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34289,
+          40.11394
+        ]
+      },
+      "properties": {
+        "plant_name": "74 EAST MAIN STREET",
+        "state": "PA",
+        "latitude": 40.11394,
+        "longitude": -75.34289,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.3428,
+          40.11391
+        ]
+      },
+      "properties": {
+        "plant_name": "78 EAST MAIN STREET",
+        "state": "PA",
+        "latitude": 40.11391,
+        "longitude": -75.3428,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34275,
+          40.11389
+        ]
+      },
+      "properties": {
+        "plant_name": "82 EAST MAIN STREET",
+        "state": "PA",
+        "latitude": 40.11389,
+        "longitude": -75.34275,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34261,
+          40.11384
+        ]
+      },
+      "properties": {
+        "plant_name": "86 EAST MAIN STREET",
+        "state": "PA",
+        "latitude": 40.11384,
+        "longitude": -75.34261,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34255,
+          40.11381
+        ]
+      },
+      "properties": {
+        "plant_name": "88 EAST MAIN STREET",
+        "state": "PA",
+        "latitude": 40.11381,
+        "longitude": -75.34255,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34251,
+          40.1138
+        ]
+      },
+      "properties": {
+        "plant_name": "90 EAST MAIN STREET",
+        "state": "PA",
+        "latitude": 40.1138,
+        "longitude": -75.34251,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34197,
+          40.11185
+        ]
+      },
+      "properties": {
+        "plant_name": "ACCORD MECHANICAL",
+        "state": "PA",
+        "latitude": 40.11185,
+        "longitude": -75.34197,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.33803,
+          40.11216
+        ]
+      },
+      "properties": {
+        "plant_name": "COMPONENT ENTERPRISES",
+        "state": "PA",
+        "latitude": 40.11216,
+        "longitude": -75.33803,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34298,
+          40.11397
+        ]
+      },
+      "properties": {
+        "plant_name": "DILUCIA SITE 1",
+        "state": "PA",
+        "latitude": 40.11397,
+        "longitude": -75.34298,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34281,
+          40.11391
+        ]
+      },
+      "properties": {
+        "plant_name": "DILUCIA SITE 2",
+        "state": "PA",
+        "latitude": 40.11391,
+        "longitude": -75.34281,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34268,
+          40.11386
+        ]
+      },
+      "properties": {
+        "plant_name": "DILUCIA SITE 3",
+        "state": "PA",
+        "latitude": 40.11386,
+        "longitude": -75.34268,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34263,
+          40.11384
+        ]
+      },
+      "properties": {
+        "plant_name": "DILUCIA SITE 4",
+        "state": "PA",
+        "latitude": 40.11384,
+        "longitude": -75.34263,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34252,
+          40.1138
+        ]
+      },
+      "properties": {
+        "plant_name": "DILUCIA SITE 5",
+        "state": "PA",
+        "latitude": 40.1138,
+        "longitude": -75.34252,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.344588,
+          40.11409
+        ]
+      },
+      "properties": {
+        "plant_name": "EAST MAIN STREET PROPERTIES",
+        "state": "PA",
+        "latitude": 40.11409,
+        "longitude": -75.344588,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.4,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.3592,
+          40.11868
+        ]
+      },
+      "properties": {
+        "plant_name": "FORMER NORRIS LAUNDRY",
+        "state": "PA",
+        "latitude": 40.11868,
+        "longitude": -75.3592,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.3415,
+          40.1134
+        ]
+      },
+      "properties": {
+        "plant_name": "HUMANE FIRE ENGINE COMPANY",
+        "state": "PA",
+        "latitude": 40.1134,
+        "longitude": -75.3415,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34232,
+          40.11373
+        ]
+      },
+      "properties": {
+        "plant_name": "MAIN & DEKALB",
+        "state": "PA",
+        "latitude": 40.11373,
+        "longitude": -75.34232,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34563,
+          40.11495
+        ]
+      },
+      "properties": {
+        "plant_name": "MAIN AND CHERRY STREET",
+        "state": "PA",
+        "latitude": 40.11495,
+        "longitude": -75.34563,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.1,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.3,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34258,
+          40.11206
+        ]
+      },
+      "properties": {
+        "plant_name": "REILLY GLASS",
+        "state": "PA",
+        "latitude": 40.11206,
+        "longitude": -75.34258,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.3,
+        "power_access": 89.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.9672,
+          40.47795
+        ]
+      },
+      "properties": {
+        "plant_name": "HULCE'S SUPERMARKET",
+        "state": "IN",
+        "latitude": 40.47795,
+        "longitude": -85.9672,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 96.4,
+        "grid_capacity": 94.4,
+        "site_characteristics": 65,
+        "connectivity": 81.8,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "GREENTOWN",
+        "nearest_sub_distance_miles": 2.7,
+        "nearest_sub_voltage_kv": 765.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.87131,
+          40.941352
+        ]
+      },
+      "properties": {
+        "plant_name": "BECZAK ENVIRONMENTAL CENTER",
+        "state": "NY",
+        "latitude": 40.941352,
+        "longitude": -73.87131,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.5,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUNWOODIE",
+        "nearest_sub_distance_miles": 0.7,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.87131,
+          40.941352
+        ]
+      },
+      "properties": {
+        "plant_name": "EXCELSIOR BAG CORP.",
+        "state": "NY",
+        "latitude": 40.941352,
+        "longitude": -73.87131,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.5,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUNWOODIE",
+        "nearest_sub_distance_miles": 0.7,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.87131,
+          40.941352
+        ]
+      },
+      "properties": {
+        "plant_name": "HUDSON VIEW",
+        "state": "NY",
+        "latitude": 40.941352,
+        "longitude": -73.87131,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.5,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUNWOODIE",
+        "nearest_sub_distance_miles": 0.7,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.87131,
+          40.941352
+        ]
+      },
+      "properties": {
+        "plant_name": "LIBERTY LINES",
+        "state": "NY",
+        "latitude": 40.941352,
+        "longitude": -73.87131,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.5,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUNWOODIE",
+        "nearest_sub_distance_miles": 0.7,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.87131,
+          40.941352
+        ]
+      },
+      "properties": {
+        "plant_name": "SUN CHEMICAL",
+        "state": "NY",
+        "latitude": 40.941352,
+        "longitude": -73.87131,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.5,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUNWOODIE",
+        "nearest_sub_distance_miles": 0.7,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.87205,
+          40.95519
+        ]
+      },
+      "properties": {
+        "plant_name": "YONKERS CITY OF YONKERS FIRE STATION 10",
+        "state": "NY",
+        "latitude": 40.95519,
+        "longitude": -73.87205,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.4,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "SPRAIN BROOK",
+        "nearest_sub_distance_miles": 0.8,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.48009,
+          40.60309
+        ]
+      },
+      "properties": {
+        "plant_name": "1021 W. TURNER STREET",
+        "state": "PA",
+        "latitude": 40.60309,
+        "longitude": -75.48009,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.6,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 4.7,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22585,
+          40.15298
+        ]
+      },
+      "properties": {
+        "plant_name": "119 W. BUTLER PIKE",
+        "state": "PA",
+        "latitude": 40.15298,
+        "longitude": -75.22585,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.7,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.0,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.6,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.224127,
+          40.151251
+        ]
+      },
+      "properties": {
+        "plant_name": "AMBLER BOILER HOUSE",
+        "state": "PA",
+        "latitude": 40.151251,
+        "longitude": -75.224127,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.6,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.0,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.7,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22531,
+          40.15097
+        ]
+      },
+      "properties": {
+        "plant_name": "THE CROSSINGS AT AMBLER STATION",
+        "state": "PA",
+        "latitude": 40.15097,
+        "longitude": -75.22531,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.6,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.0,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.7,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.50049,
+          40.52871
+        ]
+      },
+      "properties": {
+        "plant_name": "840 BROAD STREET",
+        "state": "PA",
+        "latitude": 40.52871,
+        "longitude": -75.50049,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.50452,
+          40.52557
+        ]
+      },
+      "properties": {
+        "plant_name": "FORMER RODALE PRINTING PRESS",
+        "state": "PA",
+        "latitude": 40.52557,
+        "longitude": -75.50452,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.33403,
+          40.10889
+        ]
+      },
+      "properties": {
+        "plant_name": "600 E. WASHINGTON STREET",
+        "state": "PA",
+        "latitude": 40.10889,
+        "longitude": -75.33403,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.36082,
+          40.1183
+        ]
+      },
+      "properties": {
+        "plant_name": "BUTTONWOOD STREET",
+        "state": "PA",
+        "latitude": 40.1183,
+        "longitude": -75.36082,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.8,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.6,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34376,
+          40.11163
+        ]
+      },
+      "properties": {
+        "plant_name": "CAMBER SPORTSWEAR",
+        "state": "PA",
+        "latitude": 40.11163,
+        "longitude": -75.34376,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.35934,
+          40.11784
+        ]
+      },
+      "properties": {
+        "plant_name": "HOWIE CORPORATION",
+        "state": "PA",
+        "latitude": 40.11784,
+        "longitude": -75.35934,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.2,
+        "power_access": 88.9,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WHITPAIN",
+        "nearest_sub_distance_miles": 4.5,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -462,7 +2607,8 @@
         "risk_factors": 85.5,
         "nearest_sub_name": "JOHNSONVILLE",
         "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 500.0
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "power_plant"
       }
     },
     {
@@ -470,86 +2616,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.9658,
-          35.5975
+          -75.473942,
+          40.601592
         ]
       },
       "properties": {
-        "plant_name": "Marshall (NC)",
-        "state": "NC",
-        "latitude": 35.5975,
-        "longitude": -80.9658,
-        "total_capacity_mw": 2119.0,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retiring",
-        "planned_retirement_date": "2034-12",
-        "composite_score": 82.7,
-        "power_access": 84.8,
-        "grid_capacity": 69.7,
-        "site_characteristics": 91.0,
-        "connectivity": 84.2,
-        "risk_factors": 83.0,
-        "nearest_sub_name": "MCGUIRE",
-        "nearest_sub_distance_miles": 12.2,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -91.1164,
-          30.2743
-        ]
-      },
-      "properties": {
-        "plant_name": "Willow Glen",
-        "state": "LA",
-        "latitude": 30.2743,
-        "longitude": -91.1164,
-        "total_capacity_mw": 2178.0,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2018-03",
-        "composite_score": 82.7,
-        "power_access": 96.6,
-        "grid_capacity": 77.1,
-        "site_characteristics": 91.0,
-        "connectivity": 70.4,
-        "risk_factors": 63.5,
-        "nearest_sub_name": "WILLOW GLEN (500KV)",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -79.9275,
-          39.855556
-        ]
-      },
-      "properties": {
-        "plant_name": "Hatfields Ferry Power Station",
+        "plant_name": "809 HAMILTON BLVD",
         "state": "PA",
-        "latitude": 39.855556,
-        "longitude": -79.9275,
-        "total_capacity_mw": 1728.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2013-10",
-        "composite_score": 82.6,
-        "power_access": 92.5,
-        "grid_capacity": 67.8,
-        "site_characteristics": 94.0,
-        "connectivity": 87.7,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "HATFIELD",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 500.0
+        "latitude": 40.601592,
+        "longitude": -75.473942,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.1,
+        "power_access": 88.3,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 5.0,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -557,28 +2646,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -87.9861,
-          36.0278
+          -75.47511,
+          40.59895
         ]
       },
       "properties": {
-        "plant_name": "Johnsonville",
-        "state": "TN",
-        "latitude": 36.0278,
-        "longitude": -87.9861,
-        "total_capacity_mw": 1893.2,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2025-03",
-        "composite_score": 82.4,
-        "power_access": 95.0,
-        "grid_capacity": 68.2,
-        "site_characteristics": 94.0,
-        "connectivity": 80.9,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "JOHNSONVILLE",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 500.0
+        "plant_name": "912 JACKSON STREET",
+        "state": "PA",
+        "latitude": 40.59895,
+        "longitude": -75.47511,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.1,
+        "power_access": 88.4,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 4.9,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -586,28 +2676,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -87.6539,
-          36.3903
+          -75.47554,
+          40.59624
         ]
       },
       "properties": {
-        "plant_name": "Cumberland (TN)",
-        "state": "TN",
-        "latitude": 36.3903,
-        "longitude": -87.6539,
-        "total_capacity_mw": 2600.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2028-12",
-        "composite_score": 82.3,
-        "power_access": 96.8,
-        "grid_capacity": 62.3,
-        "site_characteristics": 94.0,
-        "connectivity": 81.0,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "CUMBERLAND 500KV",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
+        "plant_name": "ALLENTOWN METAL WORKS",
+        "state": "PA",
+        "latitude": 40.59624,
+        "longitude": -75.47554,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.1,
+        "power_access": 88.5,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 4.8,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -615,434 +2706,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -88.5553,
-          30.5322
+          -75.47532,
+          40.59551
         ]
       },
       "properties": {
-        "plant_name": "Victor J Daniel Jr",
-        "state": "MS",
-        "latitude": 30.5322,
-        "longitude": -88.5553,
-        "total_capacity_mw": 2229.0,
-        "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 82.2,
-        "power_access": 96.9,
-        "grid_capacity": 70.1,
-        "site_characteristics": 97.0,
-        "connectivity": 62.6,
-        "risk_factors": 69.0,
-        "nearest_sub_name": "DANIEL STATION",
-        "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -88.12383,
-          41.494636
-        ]
-      },
-      "properties": {
-        "plant_name": "Joliet 29",
-        "state": "IL",
-        "latitude": 41.494636,
-        "longitude": -88.12383,
-        "total_capacity_mw": 1320.0,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2023-09",
-        "composite_score": 82.1,
-        "power_access": 83.1,
-        "grid_capacity": 77.2,
-        "site_characteristics": 86.0,
-        "connectivity": 83.8,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "JOLIET",
-        "nearest_sub_distance_miles": 0.5,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -108.4386,
-          36.8006
-        ]
-      },
-      "properties": {
-        "plant_name": "San Juan",
-        "state": "NM",
-        "latitude": 36.8006,
-        "longitude": -108.4386,
-        "total_capacity_mw": 1848.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2022-09",
-        "composite_score": 82.0,
-        "power_access": 91.4,
-        "grid_capacity": 84.4,
-        "site_characteristics": 94.0,
-        "connectivity": 63.5,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "SAN JUAN",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -81.6797,
-          39.5908
-        ]
-      },
-      "properties": {
-        "plant_name": "Muskingum River",
-        "state": "OH",
-        "latitude": 39.5908,
-        "longitude": -81.6797,
-        "total_capacity_mw": 1529.4,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2015-05",
-        "composite_score": 82.0,
-        "power_access": 86.5,
-        "grid_capacity": 73.9,
-        "site_characteristics": 94.0,
-        "connectivity": 86.9,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "MUSKINGUM RIVER",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -94.97944,
-          29.486667
-        ]
-      },
-      "properties": {
-        "plant_name": "P H Robinson",
-        "state": "TX",
-        "latitude": 29.486667,
-        "longitude": -94.97944,
-        "total_capacity_mw": 2314.5,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2009-10",
-        "composite_score": 81.9,
-        "power_access": 93.8,
-        "grid_capacity": 76.7,
-        "site_characteristics": 91.0,
-        "connectivity": 71.5,
-        "risk_factors": 63.5,
-        "nearest_sub_name": "PH ROBINSON",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -108.4814,
-          36.69
-        ]
-      },
-      "properties": {
-        "plant_name": "Four Corners",
-        "state": "NM",
-        "latitude": 36.69,
-        "longitude": -108.4814,
-        "total_capacity_mw": 1636.2,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2031-12",
-        "composite_score": 81.8,
-        "power_access": 91.1,
-        "grid_capacity": 81.5,
-        "site_characteristics": 94.0,
-        "connectivity": 63.5,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "FOUR CORNERS",
-        "nearest_sub_distance_miles": 0.3,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.0417,
-          33.0917
-        ]
-      },
-      "properties": {
-        "plant_name": "Monticello",
-        "state": "TX",
-        "latitude": 33.0917,
-        "longitude": -95.0417,
-        "total_capacity_mw": 1980.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2018-01",
-        "composite_score": 81.6,
-        "power_access": 93.7,
-        "grid_capacity": 68.7,
-        "site_characteristics": 94.0,
-        "connectivity": 77.5,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "UNKNOWN310398",
-        "nearest_sub_distance_miles": 0.0,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.1931,
-          41.7103
-        ]
-      },
-      "properties": {
-        "plant_name": "Brayton Point",
-        "state": "MA",
-        "latitude": 41.7103,
-        "longitude": -71.1931,
-        "total_capacity_mw": 1610.9,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2017-06",
-        "composite_score": 81.6,
-        "power_access": 87.8,
-        "grid_capacity": 69.9,
-        "site_characteristics": 94.0,
-        "connectivity": 94.9,
-        "risk_factors": 55.0,
-        "nearest_sub_name": "FALL RIVER",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.6977,
-          28.9656
-        ]
-      },
-      "properties": {
-        "plant_name": "Crystal River",
-        "state": "FL",
-        "latitude": 28.9656,
-        "longitude": -82.6977,
-        "total_capacity_mw": 1854.7,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2018-12",
-        "composite_score": 81.4,
-        "power_access": 94.4,
-        "grid_capacity": 76.4,
-        "site_characteristics": 94.0,
-        "connectivity": 80.4,
-        "risk_factors": 46.0,
-        "nearest_sub_name": "CRYSTAL RIVER",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -74.0722,
-          40.7478
-        ]
-      },
-      "properties": {
-        "plant_name": "PSEG Hudson Generating Station",
-        "state": "NJ",
-        "latitude": 40.7478,
-        "longitude": -74.0722,
-        "total_capacity_mw": 1229.6,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2017-06",
-        "composite_score": 81.4,
-        "power_access": 82.0,
-        "grid_capacity": 76.0,
-        "site_characteristics": 83.5,
-        "connectivity": 93.5,
-        "risk_factors": 72.5,
-        "nearest_sub_name": "MARION",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -86.20074,
-          42.910296
-        ]
-      },
-      "properties": {
-        "plant_name": "J H Campbell",
-        "state": "MI",
-        "latitude": 42.910296,
-        "longitude": -86.20074,
-        "total_capacity_mw": 1560.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2026-02",
-        "composite_score": 80.9,
-        "power_access": 87.2,
-        "grid_capacity": 69.5,
-        "site_characteristics": 94.0,
-        "connectivity": 81.7,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "UNKNOWN128736",
-        "nearest_sub_distance_miles": 0.0,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -88.1236,
-          41.4388
-        ]
-      },
-      "properties": {
-        "plant_name": "Elwood Energy LLC",
-        "state": "IL",
-        "latitude": 41.4388,
-        "longitude": -88.1236,
-        "total_capacity_mw": 1344.0,
-        "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retiring",
-        "planned_retirement_date": "2026-07",
-        "composite_score": 80.4,
-        "power_access": 83.5,
-        "grid_capacity": 66.3,
-        "site_characteristics": 83.7,
-        "connectivity": 83.8,
-        "risk_factors": 85.5,
-        "nearest_sub_name": "ELWOOD",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.7822,
-          36.804837
-        ]
-      },
-      "properties": {
-        "plant_name": "Dynegy Moss Landing Power Plant Hybrid",
-        "state": "CA",
-        "latitude": 36.804837,
-        "longitude": -121.7822,
-        "total_capacity_mw": 1404.0,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2016-12",
-        "composite_score": 80.4,
-        "power_access": 87.6,
-        "grid_capacity": 71.6,
-        "site_characteristics": 88.4,
-        "connectivity": 67.6,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "MOSS LANDING",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.8945,
-          38.039168
-        ]
-      },
-      "properties": {
-        "plant_name": "Pittsburg Power",
-        "state": "CA",
-        "latitude": 38.039168,
-        "longitude": -121.8945,
-        "total_capacity_mw": 2257.5,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2017-01",
-        "composite_score": 80.3,
-        "power_access": 73.1,
-        "grid_capacity": 89.9,
-        "site_characteristics": 91.0,
-        "connectivity": 67.6,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "TRACY",
-        "nearest_sub_distance_miles": 23.9,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.495,
-          42.7756
-        ]
-      },
-      "properties": {
-        "plant_name": "Belle River",
-        "state": "MI",
-        "latitude": 42.7756,
-        "longitude": -82.495,
-        "total_capacity_mw": 1664.4,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2028-12",
-        "composite_score": 80.1,
+        "plant_name": "BRIDGEWORKS PROPERTY",
+        "state": "PA",
+        "latitude": 40.59551,
+        "longitude": -75.47532,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.1,
         "power_access": 88.6,
-        "grid_capacity": 62.0,
-        "site_characteristics": 94.0,
-        "connectivity": 83.5,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "UNKNOWN128518",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 4.8,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -1050,1246 +2736,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -93.8931,
-          45.3808
+          -73.88435,
+          40.94237
         ]
       },
       "properties": {
-        "plant_name": "Sherburne County",
-        "state": "MN",
-        "latitude": 45.3808,
-        "longitude": -93.8931,
-        "total_capacity_mw": 1704.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2026-12",
-        "composite_score": 80.1,
-        "power_access": 89.0,
-        "grid_capacity": 69.9,
-        "site_characteristics": 94.0,
-        "connectivity": 72.0,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "SHERBURNE COUNTY",
-        "nearest_sub_distance_miles": 0.5,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.4719,
-          42.7642
-        ]
-      },
-      "properties": {
-        "plant_name": "St Clair",
-        "state": "MI",
-        "latitude": 42.7642,
-        "longitude": -82.4719,
-        "total_capacity_mw": 1552.4,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2024-06",
-        "composite_score": 79.6,
-        "power_access": 87.0,
-        "grid_capacity": 64.3,
-        "site_characteristics": 94.0,
-        "connectivity": 83.5,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "ST. CLAIR",
-        "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -111.3886,
-          36.9047
-        ]
-      },
-      "properties": {
-        "plant_name": "Navajo",
-        "state": "AZ",
-        "latitude": 36.9047,
-        "longitude": -111.3886,
-        "total_capacity_mw": 2409.3,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2019-11",
-        "composite_score": 79.6,
-        "power_access": 96.6,
-        "grid_capacity": 59.7,
-        "site_characteristics": 94.0,
-        "connectivity": 69.6,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "NAVAJO",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.5194,
-          35.8992
-        ]
-      },
-      "properties": {
-        "plant_name": "Kingston",
-        "state": "TN",
-        "latitude": 35.8992,
-        "longitude": -84.5194,
-        "total_capacity_mw": 1700.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 79.3,
-        "power_access": 84.4,
-        "grid_capacity": 64.8,
-        "site_characteristics": 94.0,
-        "connectivity": 82.5,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "UNKNOWN115540",
-        "nearest_sub_distance_miles": 8.0,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.2981,
-          38.9917
-        ]
-      },
-      "properties": {
-        "plant_name": "Walter C Beckjord",
-        "state": "OH",
-        "latitude": 38.9917,
-        "longitude": -84.2981,
-        "total_capacity_mw": 1432.9,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2014-12",
-        "composite_score": 79.3,
-        "power_access": 84.8,
-        "grid_capacity": 65.8,
-        "site_characteristics": 92.1,
-        "connectivity": 85.6,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "PIERCE",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -88.0629,
-          41.6334
-        ]
-      },
-      "properties": {
-        "plant_name": "Will County",
-        "state": "IL",
-        "latitude": 41.6334,
-        "longitude": -88.0629,
-        "total_capacity_mw": 1268.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2022-06",
-        "composite_score": 79.1,
-        "power_access": 81.1,
-        "grid_capacity": 76.5,
-        "site_characteristics": 87.6,
-        "connectivity": 83.8,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "LOCKPORT",
-        "nearest_sub_distance_miles": 1.7,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -85.9103,
-          38.0525
-        ]
-      },
-      "properties": {
-        "plant_name": "Mill Creek (KY)",
-        "state": "KY",
-        "latitude": 38.0525,
-        "longitude": -85.9103,
-        "total_capacity_mw": 1361.7,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2027-06",
-        "composite_score": 79.0,
-        "power_access": 84.0,
-        "grid_capacity": 70.3,
-        "site_characteristics": 90.2,
-        "connectivity": 78.9,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "MILL CREEK STATION",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.2894,
-          36.190278
-        ]
-      },
-      "properties": {
-        "plant_name": "GREC",
-        "state": "OK",
-        "latitude": 36.190278,
-        "longitude": -95.2894,
-        "total_capacity_mw": 1194.3,
-        "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
-        "planned_retirement_date": "2026-06",
-        "composite_score": 78.6,
-        "power_access": 81.4,
-        "grid_capacity": 62.4,
-        "site_characteristics": 88.6,
-        "connectivity": 74.4,
-        "risk_factors": 85.5,
-        "nearest_sub_name": "UNKNOWN118391",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -90.14868,
-          35.074087
-        ]
-      },
-      "properties": {
-        "plant_name": "Allen",
-        "state": "TN",
-        "latitude": 35.074087,
-        "longitude": -90.14868,
-        "total_capacity_mw": 1491.6,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2025-05",
-        "composite_score": 78.5,
-        "power_access": 87.5,
-        "grid_capacity": 60.8,
-        "site_characteristics": 93.8,
-        "connectivity": 79.8,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "UNKNOWN115609",
-        "nearest_sub_distance_miles": 1.6,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.53715,
-          39.182073
-        ]
-      },
-      "properties": {
-        "plant_name": "Brandon Shores",
-        "state": "MD",
-        "latitude": 39.182073,
-        "longitude": -76.53715,
-        "total_capacity_mw": 1370.2,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2029-05",
-        "composite_score": 78.4,
-        "power_access": 75.3,
-        "grid_capacity": 75.9,
-        "site_characteristics": 90.4,
-        "connectivity": 92.4,
-        "risk_factors": 58.0,
-        "nearest_sub_name": "WAUGH CHAPEL",
-        "nearest_sub_distance_miles": 12.0,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -89.49639,
-          39.590556
-        ]
-      },
-      "properties": {
-        "plant_name": "Kincaid Generation LLC",
-        "state": "IL",
-        "latitude": 39.590556,
-        "longitude": -89.49639,
-        "total_capacity_mw": 1319.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 78.3,
-        "power_access": 83.3,
-        "grid_capacity": 66.0,
-        "site_characteristics": 89.0,
-        "connectivity": 83.1,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "KINCAID STATION",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.2289,
-          38.8675
-        ]
-      },
-      "properties": {
-        "plant_name": "W H Zimmer",
-        "state": "OH",
-        "latitude": 38.8675,
-        "longitude": -84.2289,
-        "total_capacity_mw": 1425.6,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2022-05",
-        "composite_score": 78.3,
-        "power_access": 84.9,
-        "grid_capacity": 60.9,
-        "site_characteristics": 91.9,
-        "connectivity": 85.7,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "ZIMMER",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.4036,
-          27.7944
-        ]
-      },
-      "properties": {
-        "plant_name": "Big Bend",
-        "state": "FL",
-        "latitude": 27.7944,
-        "longitude": -82.4036,
-        "total_capacity_mw": 1797.0,
-        "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
-        "planned_retirement_date": "2040-01",
-        "composite_score": 78.2,
-        "power_access": 70.1,
-        "grid_capacity": 83.7,
-        "site_characteristics": 97.0,
-        "connectivity": 71.5,
-        "risk_factors": 69.0,
-        "nearest_sub_name": "LAKE TARPON",
-        "nearest_sub_distance_miles": 23.8,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.5747,
-          38.2081
-        ]
-      },
-      "properties": {
-        "plant_name": "Comanche (CO)",
-        "state": "CO",
-        "latitude": 38.2081,
-        "longitude": -104.5747,
-        "total_capacity_mw": 1252.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2026-12",
-        "composite_score": 78.1,
-        "power_access": 82.3,
-        "grid_capacity": 76.3,
-        "site_characteristics": 87.2,
-        "connectivity": 72.9,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "COMANCHE",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -109.1639,
-          34.3186
-        ]
-      },
-      "properties": {
-        "plant_name": "Springerville",
-        "state": "AZ",
-        "latitude": 34.3186,
-        "longitude": -109.1639,
-        "total_capacity_mw": 1779.2,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 78.0,
-        "power_access": 90.1,
-        "grid_capacity": 58.7,
-        "site_characteristics": 94.0,
-        "connectivity": 70.7,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "SPRINGERVILLE",
-        "nearest_sub_distance_miles": 0.5,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -112.5802,
-          39.509731
-        ]
-      },
-      "properties": {
-        "plant_name": "Intermountain Power Project",
-        "state": "UT",
-        "latitude": 39.509731,
-        "longitude": -112.5802,
-        "total_capacity_mw": 1640.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2025-11",
-        "composite_score": 77.9,
-        "power_access": 90.9,
-        "grid_capacity": 60.6,
-        "site_characteristics": 94.0,
-        "connectivity": 69.1,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "INTERMOUNTAIN",
-        "nearest_sub_distance_miles": 0.6,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -107.5912,
-          40.4627
-        ]
-      },
-      "properties": {
-        "plant_name": "Craig (CO)",
-        "state": "CO",
-        "latitude": 40.4627,
-        "longitude": -107.5912,
-        "total_capacity_mw": 1427.6,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2026-03",
-        "composite_score": 77.6,
-        "power_access": 84.5,
-        "grid_capacity": 66.6,
-        "site_characteristics": 92.0,
-        "connectivity": 71.5,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "CRAIG",
-        "nearest_sub_distance_miles": 0.7,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.5266,
-          34.09118
-        ]
-      },
-      "properties": {
-        "plant_name": "Etiwanda Generating Station",
-        "state": "CA",
-        "latitude": 34.09118,
-        "longitude": -117.5266,
-        "total_capacity_mw": 1050.1,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2018-05",
-        "composite_score": 77.5,
-        "power_access": 81.9,
-        "grid_capacity": 73.6,
-        "site_characteristics": 78.6,
-        "connectivity": 69.7,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "RANCHO VISTA",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.3833,
-          37.3822
-        ]
-      },
-      "properties": {
-        "plant_name": "Chesterfield",
-        "state": "VA",
-        "latitude": 37.3822,
-        "longitude": -77.3833,
-        "total_capacity_mw": 1352.9,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2023-05",
-        "composite_score": 77.4,
-        "power_access": 74.1,
-        "grid_capacity": 77.7,
-        "site_characteristics": 89.9,
-        "connectivity": 89.0,
-        "risk_factors": 55.0,
-        "nearest_sub_name": "CHICKAHOMINY",
-        "nearest_sub_distance_miles": 12.9,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -87.19649,
-          33.644344
-        ]
-      },
-      "properties": {
-        "plant_name": "Gorgas",
-        "state": "AL",
-        "latitude": 33.644344,
-        "longitude": -87.19649,
-        "total_capacity_mw": 1416.7,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2019-04",
-        "composite_score": 77.4,
-        "power_access": 79.9,
-        "grid_capacity": 70.0,
-        "site_characteristics": 91.7,
-        "connectivity": 78.2,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "UNKNOWN109244",
-        "nearest_sub_distance_miles": 8.2,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -81.4425,
-          41.6711
-        ]
-      },
-      "properties": {
-        "plant_name": "FirstEnergy Eastlake",
-        "state": "OH",
-        "latitude": 41.6711,
-        "longitude": -81.4425,
-        "total_capacity_mw": 1289.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2020-02",
-        "composite_score": 77.2,
-        "power_access": 82.9,
-        "grid_capacity": 61.5,
-        "site_characteristics": 88.2,
-        "connectivity": 87.0,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "EASTLAKE STATION",
-        "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -89.8544,
-          38.205
-        ]
-      },
-      "properties": {
-        "plant_name": "Baldwin Energy Complex",
-        "state": "IL",
-        "latitude": 38.205,
-        "longitude": -89.8544,
-        "total_capacity_mw": 1259.6,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 76.9,
-        "power_access": 82.5,
-        "grid_capacity": 62.3,
-        "site_characteristics": 87.4,
-        "connectivity": 83.0,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "BALDWIN STATION",
-        "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -90.9306,
-          32.2831
-        ]
-      },
-      "properties": {
-        "plant_name": "Baxter Wilson",
-        "state": "MS",
-        "latitude": 32.2831,
-        "longitude": -90.9306,
-        "total_capacity_mw": 1327.6,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2023-03",
-        "composite_score": 76.9,
-        "power_access": 86.5,
-        "grid_capacity": 62.4,
-        "site_characteristics": 86.2,
-        "connectivity": 61.5,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "BAXTER WILSON",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.4611,
-          37.2144
-        ]
-      },
-      "properties": {
-        "plant_name": "Yorktown",
-        "state": "VA",
-        "latitude": 37.2144,
-        "longitude": -76.4611,
-        "total_capacity_mw": 1257.0,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2023-05",
-        "composite_score": 76.8,
-        "power_access": 77.5,
-        "grid_capacity": 62.0,
-        "site_characteristics": 84.3,
-        "connectivity": 89.4,
-        "risk_factors": 72.5,
-        "nearest_sub_name": "SKIFFES CREEK SWITCHING STATION",
-        "nearest_sub_distance_miles": 8.1,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -102.57,
-          34.186494
-        ]
-      },
-      "properties": {
-        "plant_name": "Tolk",
-        "state": "TX",
-        "latitude": 34.186494,
-        "longitude": -102.57,
-        "total_capacity_mw": 1135.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2028-12",
-        "composite_score": 76.7,
-        "power_access": 80.3,
-        "grid_capacity": 74.7,
-        "site_characteristics": 84.0,
-        "connectivity": 73.9,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "UNKNOWN307714",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -110.3033,
-          34.9394
-        ]
-      },
-      "properties": {
-        "plant_name": "Cholla",
-        "state": "AZ",
-        "latitude": 34.9394,
-        "longitude": -110.3033,
-        "total_capacity_mw": 1128.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2025-03",
-        "composite_score": 76.6,
-        "power_access": 83.5,
-        "grid_capacity": 74.6,
-        "site_characteristics": 83.8,
-        "connectivity": 70.2,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "CHOLLA",
-        "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.2806,
-          38.5367
-        ]
-      },
-      "properties": {
-        "plant_name": "Possum Point",
-        "state": "VA",
-        "latitude": 38.5367,
-        "longitude": -77.2806,
-        "total_capacity_mw": 1372.9,
-        "fuel_type": "Petroleum Liquids",
-        "status": "retired",
-        "planned_retirement_date": "2020-12",
-        "composite_score": 76.5,
-        "power_access": 86.3,
-        "grid_capacity": 62.9,
-        "site_characteristics": 78.5,
-        "connectivity": 89.0,
-        "risk_factors": 60.0,
-        "nearest_sub_name": "UNKNOWN116662",
-        "nearest_sub_distance_miles": 1.0,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.1984,
-          26.0686
-        ]
-      },
-      "properties": {
-        "plant_name": "Lauderdale",
-        "state": "FL",
-        "latitude": 26.0686,
-        "longitude": -80.1984,
-        "total_capacity_mw": 1794.8,
-        "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
-        "planned_retirement_date": "2018-12",
-        "composite_score": 76.2,
-        "power_access": 83.1,
-        "grid_capacity": 55.2,
-        "site_characteristics": 97.0,
-        "connectivity": 72.6,
-        "risk_factors": 66.0,
-        "nearest_sub_name": "CONSERVATION",
-        "nearest_sub_distance_miles": 10.7,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.3203,
-          29.309722
-        ]
-      },
-      "properties": {
-        "plant_name": "J K Spruce",
-        "state": "TX",
-        "latitude": 29.309722,
-        "longitude": -98.3203,
-        "total_capacity_mw": 1488.5,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2028-12",
-        "composite_score": 76.1,
-        "power_access": 85.9,
-        "grid_capacity": 56.4,
-        "site_characteristics": 93.7,
-        "connectivity": 69.9,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "CALAVERAS 345 SWITCHYARD",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.5628,
-          27.0536
-        ]
-      },
-      "properties": {
-        "plant_name": "Martin",
-        "state": "FL",
-        "latitude": 27.0536,
-        "longitude": -80.5628,
-        "total_capacity_mw": 1869.0,
-        "fuel_type": "Petroleum Liquids",
-        "status": "retired",
-        "planned_retirement_date": "2018-12",
-        "composite_score": 76.1,
-        "power_access": 94.7,
-        "grid_capacity": 63.7,
-        "site_characteristics": 82.0,
-        "connectivity": 72.4,
-        "risk_factors": 51.0,
-        "nearest_sub_name": "MARTIN",
-        "nearest_sub_distance_miles": 0.3,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -106.4318,
-          31.983587
-        ]
-      },
-      "properties": {
-        "plant_name": "Newman",
-        "state": "TX",
-        "latitude": 31.983587,
-        "longitude": -106.4318,
-        "total_capacity_mw": 1109.8,
-        "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 75.8,
-        "power_access": 80.1,
-        "grid_capacity": 58.9,
-        "site_characteristics": 86.2,
-        "connectivity": 66.0,
-        "risk_factors": 85.5,
-        "nearest_sub_name": "NEWMAN",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.8036,
-          39.1128
-        ]
-      },
-      "properties": {
-        "plant_name": "Miami Fort",
-        "state": "OH",
-        "latitude": 39.1128,
-        "longitude": -84.8036,
-        "total_capacity_mw": 1180.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 75.3,
-        "power_access": 81.3,
-        "grid_capacity": 56.1,
-        "site_characteristics": 85.2,
-        "connectivity": 85.4,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "MIAMI",
-        "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -101.7472,
-          35.29816
-        ]
-      },
-      "properties": {
-        "plant_name": "Harrington",
-        "state": "TX",
-        "latitude": 35.29816,
-        "longitude": -101.7472,
-        "total_capacity_mw": 1080.0,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retiring",
-        "planned_retirement_date": "2036-12",
-        "composite_score": 75.2,
-        "power_access": 69.9,
-        "grid_capacity": 74.0,
-        "site_characteristics": 79.4,
-        "connectivity": 74.3,
-        "risk_factors": 83.0,
-        "nearest_sub_name": "POTTER COUNTY",
-        "nearest_sub_distance_miles": 9.9,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.03528,
-          42.339167
-        ]
-      },
-      "properties": {
-        "plant_name": "New Boston Generating Station",
-        "state": "MA",
-        "latitude": 42.339167,
-        "longitude": -71.03528,
-        "total_capacity_mw": 717.7,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2007-09",
-        "composite_score": 75.1,
-        "power_access": 74.1,
-        "grid_capacity": 69.1,
-        "site_characteristics": 69.4,
-        "connectivity": 95.0,
-        "risk_factors": 72.5,
-        "nearest_sub_name": "K STREET",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -87.0261,
-          41.2164
-        ]
-      },
-      "properties": {
-        "plant_name": "R M Schahfer",
-        "state": "IN",
-        "latitude": 41.2164,
-        "longitude": -87.0261,
-        "total_capacity_mw": 1105.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2026-06",
-        "composite_score": 75.0,
-        "power_access": 79.9,
-        "grid_capacity": 62.1,
-        "site_characteristics": 83.1,
-        "connectivity": 81.3,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "SCHAHFER STATION",
-        "nearest_sub_distance_miles": 0.3,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -89.4203,
-          43.4864
-        ]
-      },
-      "properties": {
-        "plant_name": "Columbia (WI)",
-        "state": "WI",
-        "latitude": 43.4864,
-        "longitude": -89.4203,
-        "total_capacity_mw": 1112.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2029-12",
-        "composite_score": 75.0,
-        "power_access": 80.2,
-        "grid_capacity": 66.7,
-        "site_characteristics": 83.3,
-        "connectivity": 74.2,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "COLUMBIA",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -88.85889,
-          37.2094
-        ]
-      },
-      "properties": {
-        "plant_name": "Joppa Steam",
-        "state": "IL",
-        "latitude": 37.2094,
-        "longitude": -88.85889,
-        "total_capacity_mw": 1099.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2022-08",
-        "composite_score": 75.0,
-        "power_access": 79.7,
-        "grid_capacity": 63.0,
-        "site_characteristics": 83.0,
-        "connectivity": 83.4,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "JOPPA 345",
-        "nearest_sub_distance_miles": 0.4,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -87.9033,
-          42.5381
-        ]
-      },
-      "properties": {
-        "plant_name": "Pleasant Prairie",
-        "state": "WI",
-        "latitude": 42.5381,
-        "longitude": -87.9033,
-        "total_capacity_mw": 1235.2,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2018-04",
-        "composite_score": 74.8,
-        "power_access": 82.0,
-        "grid_capacity": 56.6,
-        "site_characteristics": 86.7,
-        "connectivity": 80.9,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "PLEASANT PRAIRIE",
-        "nearest_sub_distance_miles": 0.3,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.9767,
-          38.3592
-        ]
-      },
-      "properties": {
-        "plant_name": "Morgantown Generating Plant",
-        "state": "MD",
-        "latitude": 38.3592,
-        "longitude": -76.9767,
-        "total_capacity_mw": 1288.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2022-09",
-        "composite_score": 74.6,
-        "power_access": 65.2,
-        "grid_capacity": 76.8,
-        "site_characteristics": 88.2,
-        "connectivity": 92.2,
-        "risk_factors": 55.0,
-        "nearest_sub_name": "CHALK POINT",
-        "nearest_sub_distance_miles": 20.9,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -87.0261,
-          41.2164
-        ]
-      },
-      "properties": {
-        "plant_name": "R M Schahfer",
-        "state": "IN",
-        "latitude": 41.2164,
-        "longitude": -87.0261,
-        "total_capacity_mw": 1096.4,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2021-10",
-        "composite_score": 74.5,
-        "power_access": 79.8,
-        "grid_capacity": 62.0,
-        "site_characteristics": 82.9,
-        "connectivity": 81.3,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "SCHAHFER STATION",
-        "nearest_sub_distance_miles": 0.3,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -81.9231,
-          38.9669
-        ]
-      },
-      "properties": {
-        "plant_name": "Philip Sporn",
-        "state": "WV",
-        "latitude": 38.9669,
-        "longitude": -81.9231,
-        "total_capacity_mw": 1105.5,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2015-11",
-        "composite_score": 74.5,
-        "power_access": 79.7,
-        "grid_capacity": 65.8,
-        "site_characteristics": 83.1,
-        "connectivity": 76.3,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "SPORN",
-        "nearest_sub_distance_miles": 0.5,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.395,
-          33.8504
-        ]
-      },
-      "properties": {
-        "plant_name": "AES Redondo Beach LLC",
-        "state": "CA",
-        "latitude": 33.8504,
-        "longitude": -118.395,
-        "total_capacity_mw": 1316.4,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2023-12",
-        "composite_score": 74.2,
-        "power_access": 63.9,
-        "grid_capacity": 77.2,
-        "site_characteristics": 85.9,
-        "connectivity": 69.3,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "STATION E (TOLUCA)",
-        "nearest_sub_distance_miles": 22.6,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.9527,
-          41.270556
-        ]
-      },
-      "properties": {
-        "plant_name": "Indian Point 2",
+        "plant_name": "470 NEPPERHAN AVENUE",
         "state": "NY",
-        "latitude": 41.270556,
-        "longitude": -73.9527,
-        "total_capacity_mw": 1299.0,
-        "fuel_type": "Nuclear",
-        "status": "retired",
-        "planned_retirement_date": "2020-04",
-        "composite_score": 74.2,
-        "power_access": 82.7,
-        "grid_capacity": 76.9,
-        "site_characteristics": 64.5,
+        "latitude": 40.94237,
+        "longitude": -73.88435,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 87.7,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
         "connectivity": 90.6,
-        "risk_factors": 50.0,
-        "nearest_sub_name": "BUCHANAN",
-        "nearest_sub_distance_miles": 0.5,
-        "nearest_sub_voltage_kv": 345.0
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUNWOODIE",
+        "nearest_sub_distance_miles": 1.4,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2297,28 +2766,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -90.26316,
-          38.131248
+          -73.88193,
+          40.94701
         ]
       },
       "properties": {
-        "plant_name": "Rush Island",
-        "state": "MO",
-        "latitude": 38.131248,
-        "longitude": -90.26316,
-        "total_capacity_mw": 1242.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2024-10",
-        "composite_score": 74.0,
-        "power_access": 82.2,
-        "grid_capacity": 55.2,
-        "site_characteristics": 86.9,
-        "connectivity": 76.8,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "RUSH ISLAND",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "plant_name": "CITY COMPOSTING FACILITY",
+        "state": "NY",
+        "latitude": 40.94701,
+        "longitude": -73.88193,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 87.7,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "DUNWOODIE",
+        "nearest_sub_distance_miles": 1.4,
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2326,289 +2796,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -96.36761,
-          33.628143
+          -73.867371,
+          40.976875
         ]
       },
       "properties": {
-        "plant_name": "Valley (TX)",
-        "state": "TX",
-        "latitude": 33.628143,
-        "longitude": -96.36761,
-        "total_capacity_mw": 1175.4,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2015-10",
-        "composite_score": 74.0,
-        "power_access": 81.2,
-        "grid_capacity": 48.5,
-        "site_characteristics": 82.0,
-        "connectivity": 76.8,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "UNKNOWN303249",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.6861,
-          38.5444
-        ]
-      },
-      "properties": {
-        "plant_name": "Chalk Point Steam",
-        "state": "MD",
-        "latitude": 38.5444,
-        "longitude": -76.6861,
-        "total_capacity_mw": 728.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2021-06",
-        "composite_score": 73.4,
-        "power_access": 76.3,
-        "grid_capacity": 69.2,
-        "site_characteristics": 72.7,
-        "connectivity": 92.3,
-        "risk_factors": 55.0,
-        "nearest_sub_name": "CHALK POINT",
-        "nearest_sub_distance_miles": 1.1,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.1567,
-          36.0211
-        ]
-      },
-      "properties": {
-        "plant_name": "Bull Run",
-        "state": "TN",
-        "latitude": 36.0211,
-        "longitude": -84.1567,
-        "total_capacity_mw": 950.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2023-09",
-        "composite_score": 73.3,
-        "power_access": 80.7,
-        "grid_capacity": 57.6,
-        "site_characteristics": 78.8,
-        "connectivity": 82.7,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "BULL RUN",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.8594,
-          39.0814
-        ]
-      },
-      "properties": {
-        "plant_name": "Tanners Creek",
-        "state": "IN",
-        "latitude": 39.0814,
-        "longitude": -84.8594,
-        "total_capacity_mw": 1100.1,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2015-06",
-        "composite_score": 73.3,
-        "power_access": 80.0,
-        "grid_capacity": 55.0,
-        "site_characteristics": 83.0,
-        "connectivity": 82.4,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "UNKNOWN124885",
-        "nearest_sub_distance_miles": 0.1,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.2983,
-          33.195
-        ]
-      },
-      "properties": {
-        "plant_name": "Harllee Branch",
-        "state": "GA",
-        "latitude": 33.195,
-        "longitude": -83.2983,
-        "total_capacity_mw": 1746.2,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2015-04",
-        "composite_score": 73.3,
-        "power_access": 67.2,
-        "grid_capacity": 68.0,
-        "site_characteristics": 94.0,
-        "connectivity": 83.1,
-        "risk_factors": 55.0,
-        "nearest_sub_name": "WARTHEN SUBSTATION",
-        "nearest_sub_distance_miles": 25.9,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -114.5917,
-          35.1458
-        ]
-      },
-      "properties": {
-        "plant_name": "Mohave",
-        "state": "NV",
-        "latitude": 35.1458,
-        "longitude": -114.5917,
-        "total_capacity_mw": 1636.2,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2012-07",
-        "composite_score": 73.3,
-        "power_access": 91.2,
-        "grid_capacity": 38.0,
-        "site_characteristics": 94.0,
-        "connectivity": 68.1,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "MOHAVE",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9645,
-          39.807275
-        ]
-      },
-      "properties": {
-        "plant_name": "Cherokee",
-        "state": "CO",
-        "latitude": 39.807275,
-        "longitude": -104.9645,
-        "total_capacity_mw": 1006.4,
-        "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
-        "planned_retirement_date": "2027-12",
-        "composite_score": 73.2,
-        "power_access": 60.7,
-        "grid_capacity": 73.0,
-        "site_characteristics": 83.4,
-        "connectivity": 72.7,
-        "risk_factors": 85.5,
-        "nearest_sub_name": "SMOKY HILL",
-        "nearest_sub_distance_miles": 18.0,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -96.0544,
-          31.8206
-        ]
-      },
-      "properties": {
-        "plant_name": "Big Brown",
-        "state": "TX",
-        "latitude": 31.8206,
-        "longitude": -96.0544,
-        "total_capacity_mw": 1186.8,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2018-02",
-        "composite_score": 73.2,
-        "power_access": 81.3,
-        "grid_capacity": 58.7,
-        "site_characteristics": 85.4,
-        "connectivity": 71.0,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "BIG BROWN",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.3019,
-          36.7711
-        ]
-      },
-      "properties": {
-        "plant_name": "Chesapeake",
-        "state": "VA",
-        "latitude": 36.7711,
-        "longitude": -76.3019,
-        "total_capacity_mw": 761.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2019-06",
-        "composite_score": 72.8,
-        "power_access": 75.0,
-        "grid_capacity": 69.6,
-        "site_characteristics": 73.6,
-        "connectivity": 89.5,
-        "risk_factors": 55.0,
-        "nearest_sub_name": "YADKIN",
-        "nearest_sub_distance_miles": 3.0,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -74.09646,
-          40.737283
-        ]
-      },
-      "properties": {
-        "plant_name": "PSEG Kearny Generating Station",
-        "state": "NJ",
-        "latitude": 40.737283,
-        "longitude": -74.09646,
-        "total_capacity_mw": 604.9,
-        "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2014-08",
-        "composite_score": 72.7,
-        "power_access": 71.0,
-        "grid_capacity": 67.5,
-        "site_characteristics": 63.3,
-        "connectivity": 93.5,
-        "risk_factors": 75.0,
-        "nearest_sub_name": "MARION",
+        "plant_name": "CSX RAILROAD",
+        "state": "NY",
+        "latitude": 40.976875,
+        "longitude": -73.867371,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 87.6,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 90.6,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "SPRAIN BROOK",
         "nearest_sub_distance_miles": 1.5,
-        "nearest_sub_voltage_kv": 345.0
+        "nearest_sub_voltage_kv": 345.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2616,28 +2826,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -90.29025,
-          38.915479
+          -75.47226,
+          40.6012
         ]
       },
       "properties": {
-        "plant_name": "Sioux",
-        "state": "MO",
-        "latitude": 38.915479,
-        "longitude": -90.29025,
-        "total_capacity_mw": 1099.4,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
-        "planned_retirement_date": "2028-12",
-        "composite_score": 72.6,
-        "power_access": 80.0,
-        "grid_capacity": 53.2,
-        "site_characteristics": 82.9,
-        "connectivity": 76.8,
-        "risk_factors": 65.5,
-        "nearest_sub_name": "SIOUX",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "plant_name": "24 S. HALL STREET",
+        "state": "PA",
+        "latitude": 40.6012,
+        "longitude": -75.47226,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 88.2,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 5.1,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2645,28 +2856,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9048,
-          40.787
+          -75.47303,
+          40.60345
         ]
       },
       "properties": {
-        "plant_name": "Astoria Gas Turbines",
-        "state": "NY",
-        "latitude": 40.787,
-        "longitude": -73.9048,
-        "total_capacity_mw": 666.1,
-        "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2023-05",
-        "composite_score": 72.4,
-        "power_access": 73.2,
-        "grid_capacity": 57.1,
-        "site_characteristics": 65.0,
-        "connectivity": 90.6,
-        "risk_factors": 82.5,
-        "nearest_sub_name": "EAST ASTORIA",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "plant_name": "716-718 LINDEN STREET G3LSNY00",
+        "state": "PA",
+        "latitude": 40.60345,
+        "longitude": -75.47303,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 88.2,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 5.1,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2674,28 +2886,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -74.1206,
-          40.7372
+          -75.46952,
+          40.60281
         ]
       },
       "properties": {
-        "plant_name": "PSEG Essex Generating Station",
-        "state": "NJ",
-        "latitude": 40.7372,
-        "longitude": -74.1206,
-        "total_capacity_mw": 595.2,
-        "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2022-06",
-        "composite_score": 72.3,
-        "power_access": 69.7,
-        "grid_capacity": 67.4,
-        "site_characteristics": 63.0,
-        "connectivity": 93.5,
-        "risk_factors": 75.0,
-        "nearest_sub_name": "MARION",
-        "nearest_sub_distance_miles": 2.7,
-        "nearest_sub_voltage_kv": 345.0
+        "plant_name": "AMERICUS HOTEL",
+        "state": "PA",
+        "latitude": 40.60281,
+        "longitude": -75.46952,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 88.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 5.2,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2703,28 +2916,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -87.72291,
-          41.82848
+          -75.46957,
+          40.60118
         ]
       },
       "properties": {
-        "plant_name": "Crawford",
-        "state": "IL",
-        "latitude": 41.82848,
-        "longitude": -87.72291,
-        "total_capacity_mw": 805.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2012-08",
-        "composite_score": 72.3,
-        "power_access": 75.4,
-        "grid_capacity": 63.8,
-        "site_characteristics": 74.8,
-        "connectivity": 84.0,
-        "risk_factors": 62.5,
-        "nearest_sub_name": "UNKNOWN122269",
-        "nearest_sub_distance_miles": 0.2,
-        "nearest_sub_voltage_kv": 345.0
+        "plant_name": "HAROLD'S BUILDING",
+        "state": "PA",
+        "latitude": 40.60118,
+        "longitude": -75.46957,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 88.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 5.2,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2732,28 +2946,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -90.1458,
-          29.9472
+          -75.47007,
+          40.60337
         ]
       },
       "properties": {
-        "plant_name": "Nine Mile Point",
-        "state": "LA",
-        "latitude": 29.9472,
-        "longitude": -90.1458,
-        "total_capacity_mw": 2439.7,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retiring",
-        "planned_retirement_date": "2033-06",
-        "composite_score": 72.0,
-        "power_access": 76.9,
-        "grid_capacity": 50.6,
-        "site_characteristics": 91.0,
-        "connectivity": 70.8,
-        "risk_factors": 66.5,
-        "nearest_sub_name": "WATERFORD 500KV",
-        "nearest_sub_distance_miles": 20.1,
-        "nearest_sub_voltage_kv": 500.0
+        "plant_name": "SAL'S SPAGHETTI HOUSE (G3FZNY00)",
+        "state": "PA",
+        "latitude": 40.60337,
+        "longitude": -75.47007,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 88.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 5.2,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     },
     {
@@ -2761,144 +2976,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -120.8566,
-          35.372167
+          -75.47384,
+          40.60895
         ]
       },
       "properties": {
-        "plant_name": "Dynegy Morro Bay LLC",
-        "state": "CA",
-        "latitude": 35.372167,
-        "longitude": -120.8566,
-        "total_capacity_mw": 1056.2,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2014-02",
-        "composite_score": 72.0,
-        "power_access": 71.7,
-        "grid_capacity": 62.4,
-        "site_characteristics": 78.8,
-        "connectivity": 68.1,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "DIABLO CANYON",
-        "nearest_sub_distance_miles": 10.8,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.4276,
-          33.918151
-        ]
-      },
-      "properties": {
-        "plant_name": "Scattergood",
-        "state": "CA",
-        "latitude": 33.918151,
-        "longitude": -118.4276,
-        "total_capacity_mw": 876.0,
-        "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
-        "planned_retirement_date": "2029-12",
-        "composite_score": 71.8,
-        "power_access": 61.5,
-        "grid_capacity": 71.2,
-        "site_characteristics": 79.8,
-        "connectivity": 69.3,
-        "risk_factors": 85.5,
-        "nearest_sub_name": "STATION E (TOLUCA)",
-        "nearest_sub_distance_miles": 18.2,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -88.1153,
-          41.4931
-        ]
-      },
-      "properties": {
-        "plant_name": "Joliet 9",
-        "state": "IL",
-        "latitude": 41.4931,
-        "longitude": -88.1153,
-        "total_capacity_mw": 507.6,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
-        "planned_retirement_date": "2023-06",
-        "composite_score": 71.8,
-        "power_access": 71.0,
-        "grid_capacity": 66.2,
-        "site_characteristics": 63.6,
-        "connectivity": 83.8,
-        "risk_factors": 80.0,
-        "nearest_sub_name": "JOLIET",
-        "nearest_sub_distance_miles": 0.0,
-        "nearest_sub_voltage_kv": 345.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.8075,
-          33.0606
-        ]
-      },
-      "properties": {
-        "plant_name": "Scherer",
-        "state": "GA",
-        "latitude": 33.0606,
-        "longitude": -83.8075,
-        "total_capacity_mw": 891.0,
-        "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
-        "planned_retirement_date": "2022-01",
-        "composite_score": 71.8,
-        "power_access": 79.6,
-        "grid_capacity": 59.1,
-        "site_characteristics": 77.2,
-        "connectivity": 82.9,
-        "risk_factors": 55.0,
-        "nearest_sub_name": "UNKNOWN115783",
-        "nearest_sub_distance_miles": 0.3,
-        "nearest_sub_voltage_kv": 500.0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -93.878,
-          30.0242
-        ]
-      },
-      "properties": {
-        "plant_name": "Sabine",
-        "state": "TX",
-        "latitude": 30.0242,
-        "longitude": -93.878,
-        "total_capacity_mw": 1811.8,
-        "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retiring",
-        "planned_retirement_date": "2026-06",
-        "composite_score": 71.6,
-        "power_access": 80.9,
-        "grid_capacity": 41.8,
-        "site_characteristics": 91.0,
-        "connectivity": 72.0,
-        "risk_factors": 66.5,
-        "nearest_sub_name": "UNKNOWN301966",
-        "nearest_sub_distance_miles": 10.2,
-        "nearest_sub_voltage_kv": 345.0
+        "plant_name": "ST. LUKE'S NEIGHBORHOOD CENTER",
+        "state": "PA",
+        "latitude": 40.60895,
+        "longitude": -75.47384,
+        "total_capacity_mw": 0,
+        "fuel_type": "Brownfield",
+        "status": "brownfield",
+        "planned_retirement_date": null,
+        "composite_score": 83.0,
+        "power_access": 88.0,
+        "grid_capacity": 100.0,
+        "site_characteristics": 65,
+        "connectivity": 89.9,
+        "risk_factors": 67.2,
+        "nearest_sub_name": "WESCOSVILLE",
+        "nearest_sub_distance_miles": 5.2,
+        "nearest_sub_voltage_kv": 500.0,
+        "site_type": "brownfield"
       }
     }
   ]

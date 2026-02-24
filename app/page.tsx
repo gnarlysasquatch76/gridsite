@@ -34,6 +34,8 @@ var FLOOD_ZONES_SOURCE = "flood-zones";
 var FLOOD_ZONES_LAYER = "flood-zones-raster";
 var BROADBAND_SOURCE = "broadband";
 var BROADBAND_LAYER = "broadband-raster";
+var BROWNFIELDS_SOURCE = "brownfields";
+var BROWNFIELDS_LAYER = "brownfields-circles";
 var DIAMOND_ICON = "diamond-icon";
 var STAR_ICON = "star-icon";
 var TRIANGLE_ICON = "triangle-icon";
@@ -110,6 +112,7 @@ export default function Home() {
     queueWithdrawals: false,
     floodZones: false,
     broadband: false,
+    brownfields: false,
   });
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
   var [legendOpen, setLegendOpen] = useState(true);
@@ -1029,6 +1032,96 @@ export default function Home() {
     }
   }, [layers.broadband]);
 
+  // Toggle brownfield sites layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      if (map.getLayer(BROWNFIELDS_LAYER)) {
+        map.setLayoutProperty(
+          BROWNFIELDS_LAYER,
+          "visibility",
+          layers.brownfields ? "visible" : "none"
+        );
+        return;
+      }
+
+      if (!layers.brownfields) return;
+
+      map.addSource(BROWNFIELDS_SOURCE, {
+        type: "geojson",
+        data: "/data/epa-brownfields.geojson",
+      });
+
+      map.addLayer({
+        id: BROWNFIELDS_LAYER,
+        type: "circle",
+        source: BROWNFIELDS_SOURCE,
+        paint: {
+          "circle-color": "#a0845c",
+          "circle-radius": [
+            "interpolate", ["linear"], ["zoom"],
+            4, 1.5,
+            8, 3,
+            12, 5,
+          ],
+          "circle-opacity": 0.75,
+          "circle-stroke-color": "#d4a853",
+          "circle-stroke-width": 0.5,
+        },
+      });
+
+      map.on("click", BROWNFIELDS_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var p = feature.properties as Record<string, any>;
+
+        var name = p.name || "Unknown";
+        var city = p.city || "";
+        var state = p.state || "";
+        var location = [city, state].filter(Boolean).join(", ");
+        var address = p.address || "";
+
+        var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:200px;\">" +
+          "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + name + "</div>" +
+          "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + location + "</div>" +
+          "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+            "<span style=\"background:#a0845c;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">Brownfield</span>" +
+          "</div>" +
+          "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">";
+
+        if (address) {
+          html += "<div style=\"margin:3px 0;\">" + address + "</div>";
+        }
+
+        html += "</div></div>";
+
+        if (popupRef.current) popupRef.current.remove();
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "300px" })
+          .setLngLat(coords)
+          .setHTML(html)
+          .addTo(map!);
+      });
+
+      map.on("mouseenter", BROWNFIELDS_LAYER, function () {
+        map!.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", BROWNFIELDS_LAYER, function () {
+        map!.getCanvas().style.cursor = "";
+      });
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.brownfields]);
+
   // Load scored sites on mount — always-visible star layer
   useEffect(function () {
     var map = mapRef.current;
@@ -1247,6 +1340,15 @@ export default function Home() {
                   className="accent-blue-500"
                 />
                 Broadband (FCC)
+              </label>
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.brownfields}
+                  onChange={() => toggleLayer("brownfields")}
+                  className="accent-blue-500"
+                />
+                Brownfield Sites (EPA)
               </label>
             </div>
           )}
@@ -1551,6 +1653,10 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#2ca02c] opacity-60"></span>
                   <span>Broadband Coverage</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#a0845c]"></span>
+                  <span>Brownfield Site</span>
                 </div>
                 <div className="border-t border-white/10 my-1.5"></div>
                 <div className="flex items-center gap-2">
