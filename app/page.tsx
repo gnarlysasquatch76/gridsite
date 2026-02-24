@@ -38,6 +38,9 @@ var BROWNFIELDS_SOURCE = "brownfields";
 var BROWNFIELDS_LAYER = "brownfields-circles";
 var DATA_CENTERS_SOURCE = "data-centers";
 var DATA_CENTERS_LAYER = "data-centers-squares";
+var UTILITY_TERRITORIES_SOURCE = "utility-territories";
+var UTILITY_TERRITORIES_LAYER = "utility-territories-fill";
+var UTILITY_TERRITORIES_OUTLINE_LAYER = "utility-territories-outline";
 var DIAMOND_ICON = "diamond-icon";
 var STAR_ICON = "star-icon";
 var TRIANGLE_ICON = "triangle-icon";
@@ -144,6 +147,7 @@ export default function Home() {
     broadband: false,
     brownfields: false,
     dataCenters: false,
+    utilityTerritories: false,
   });
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
   var [legendOpen, setLegendOpen] = useState(true);
@@ -1424,6 +1428,139 @@ export default function Home() {
     }
   }, [layers.dataCenters]);
 
+  // Toggle utility territories layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      if (map.getLayer(UTILITY_TERRITORIES_LAYER)) {
+        map.setLayoutProperty(
+          UTILITY_TERRITORIES_LAYER,
+          "visibility",
+          layers.utilityTerritories ? "visible" : "none"
+        );
+        map.setLayoutProperty(
+          UTILITY_TERRITORIES_OUTLINE_LAYER,
+          "visibility",
+          layers.utilityTerritories ? "visible" : "none"
+        );
+        return;
+      }
+
+      if (!layers.utilityTerritories) return;
+
+      map.addSource(UTILITY_TERRITORIES_SOURCE, {
+        type: "geojson",
+        data: "/data/utility-territories.geojson",
+      });
+
+      // Insert below brownfields layer so territories sit above raster but below point/line layers
+      var beforeLayer: string | undefined;
+      if (map.getLayer(BROWNFIELDS_LAYER)) beforeLayer = BROWNFIELDS_LAYER;
+      else if (map.getLayer(POWER_PLANTS_LAYER)) beforeLayer = POWER_PLANTS_LAYER;
+      else if (map.getLayer(TRANSMISSION_LINES_LAYER)) beforeLayer = TRANSMISSION_LINES_LAYER;
+      else if (map.getLayer(SUBSTATIONS_LAYER)) beforeLayer = SUBSTATIONS_LAYER;
+
+      map.addLayer({
+        id: UTILITY_TERRITORIES_LAYER,
+        type: "fill",
+        source: UTILITY_TERRITORIES_SOURCE,
+        paint: {
+          "fill-color": [
+            "match", ["get", "ratio_class"],
+            "surplus", "#22c55e",
+            "balanced", "#f59e0b",
+            "constrained", "#ef4444",
+            "unknown", "#94a3b8",
+            "#94a3b8",
+          ],
+          "fill-opacity": [
+            "match", ["get", "ratio_class"],
+            "surplus", 0.25,
+            "balanced", 0.25,
+            "constrained", 0.25,
+            "unknown", 0.15,
+            0.15,
+          ],
+        },
+      }, beforeLayer);
+
+      map.addLayer({
+        id: UTILITY_TERRITORIES_OUTLINE_LAYER,
+        type: "line",
+        source: UTILITY_TERRITORIES_SOURCE,
+        paint: {
+          "line-color": "#94a3b8",
+          "line-opacity": 0.4,
+          "line-width": 0.5,
+        },
+      }, beforeLayer);
+
+      map.on("click", UTILITY_TERRITORIES_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var p = feature.properties as Record<string, any>;
+
+        var name = p.name || "Unknown";
+        var state = p.state || "";
+        var utilType = p.utility_type || "";
+        var capacityMw = p.capacity_mw;
+        var avgLoadMw = p.avg_load_mw;
+        var ratio = p.ratio;
+        var ratioClass = p.ratio_class || "unknown";
+
+        var ratioColor = ratioClass === "surplus" ? "#22c55e" : ratioClass === "balanced" ? "#f59e0b" : ratioClass === "constrained" ? "#ef4444" : "#94a3b8";
+        var ratioLabel = ratioClass === "surplus" ? "Surplus" : ratioClass === "balanced" ? "Balanced" : ratioClass === "constrained" ? "Constrained" : "No Data";
+
+        var metaLine = [utilType, state ? "State: " + state : ""].filter(Boolean).join(" \u00b7 ");
+
+        var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+          "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + name + "</div>" +
+          (metaLine ? "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + metaLine + "</div>" : "") +
+          "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">";
+
+        if (capacityMw !== null && capacityMw !== undefined) {
+          html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Capacity</span><strong>" + Number(capacityMw).toLocaleString() + " MW</strong></div>";
+        }
+        if (avgLoadMw !== null && avgLoadMw !== undefined) {
+          html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Avg Load</span><strong>" + Number(avgLoadMw).toLocaleString() + " MW</strong></div>";
+        }
+        if (ratio !== null && ratio !== undefined) {
+          html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Ratio</span><strong>" + Number(ratio).toFixed(2) + "</strong></div>";
+        }
+
+        html += "<div style=\"display:flex;align-items:center;gap:6px;margin-top:6px;\">" +
+          "<span style=\"display:inline-block;width:10px;height:10px;border-radius:50%;background:" + ratioColor + ";\"></span>" +
+          "<span style=\"font-weight:600;color:" + ratioColor + ";\">" + ratioLabel + "</span>" +
+          "</div>";
+
+        html += "</div></div>";
+
+        if (popupRef.current) popupRef.current.remove();
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "320px" })
+          .setLngLat(e.lngLat)
+          .setHTML(html)
+          .addTo(map!);
+      });
+
+      map.on("mouseenter", UTILITY_TERRITORIES_LAYER, function () {
+        map!.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", UTILITY_TERRITORIES_LAYER, function () {
+        map!.getCanvas().style.cursor = "";
+      });
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.utilityTerritories]);
+
   // Load scored sites on mount — always-visible star layer
   useEffect(function () {
     var map = mapRef.current;
@@ -1660,6 +1797,15 @@ export default function Home() {
                   className="accent-blue-500"
                 />
                 Data Centers (OSM)
+              </label>
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.utilityTerritories}
+                  onChange={() => toggleLayer("utilityTerritories")}
+                  className="accent-blue-500"
+                />
+                Utility Territories (EIA)
               </label>
             </div>
           )}
@@ -1979,6 +2125,19 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#06b6d4]"></span>
                   <span>Data Center</span>
+                </div>
+                <div className="border-t border-white/10 my-1.5"></div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#22c55e] opacity-60"></span>
+                  <span>Surplus Territory (&gt;1.5x)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#f59e0b] opacity-60"></span>
+                  <span>Balanced Territory</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#ef4444] opacity-60"></span>
+                  <span>Constrained Territory</span>
                 </div>
                 <div className="border-t border-white/10 my-1.5"></div>
                 <div className="flex items-center gap-2">
