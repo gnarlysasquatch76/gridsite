@@ -20,10 +20,13 @@ var SUBSTATIONS_SOURCE = "substations";
 var SUBSTATIONS_LAYER = "substations-diamonds";
 var TRANSMISSION_LINES_SOURCE = "transmission-lines";
 var TRANSMISSION_LINES_LAYER = "transmission-lines-lines";
+var QUEUE_WITHDRAWALS_SOURCE = "queue-withdrawals";
+var QUEUE_WITHDRAWALS_LAYER = "queue-withdrawals-triangles";
 var SCORED_SITES_SOURCE = "scored-sites";
 var SCORED_SITES_LAYER = "scored-sites-stars";
 var DIAMOND_ICON = "diamond-icon";
 var STAR_ICON = "star-icon";
+var TRIANGLE_ICON = "triangle-icon";
 
 interface ScoredSite {
   plant_name: string;
@@ -183,6 +186,48 @@ export default function Home() {
     return html;
   }, []);
 
+  // Build popup HTML for a queue withdrawal feature
+  var buildQueuePopupHTML = useCallback(function (props: Record<string, any>): string {
+    var name = props.project_name || props.q_id || "Unknown";
+    var county = props.county || "";
+    var state = props.state || "";
+    var location = [county, state].filter(Boolean).join(", ");
+    var totalMW = props.total_mw != null ? Number(props.total_mw) : null;
+    var fuelType = props.fuel_type || "Unknown";
+    var entity = props.entity || "";
+    var poi = props.poi_name || "";
+    var qDate = props.q_date || "";
+    var wdDate = props.wd_date || "";
+
+    var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+      "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + name + "</div>" +
+      "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + location + "</div>" +
+      "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+        "<span style=\"background:#f97316;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">Withdrawn</span>" +
+        "<span style=\"background:#334155;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + fuelType + "</span>" +
+      "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">";
+
+    if (totalMW != null) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Capacity</span><strong>" + totalMW.toLocaleString() + " MW</strong></div>";
+    }
+    if (entity) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>ISO/RTO</span><strong>" + entity + "</strong></div>";
+    }
+    if (poi) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>POI</span><strong>" + poi + "</strong></div>";
+    }
+    if (qDate) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Queue Date</span><strong>" + qDate + "</strong></div>";
+    }
+    if (wdDate) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Withdrawn</span><strong>" + wdDate + "</strong></div>";
+    }
+
+    html += "</div></div>";
+    return html;
+  }, []);
+
   // Build popup HTML for a scored site feature
   var buildScoredSitePopupHTML = useCallback(function (s: ScoredSite): string {
     function bar(label: string, value: number, weight: string): string {
@@ -302,6 +347,24 @@ export default function Home() {
         starCtx.fill();
         var starImageData = starCtx.getImageData(0, 0, starSize, starSize);
         map.addImage(STAR_ICON, starImageData, { sdf: true });
+      }
+
+      // Create triangle icon for queue withdrawals layer
+      var triSize = 18;
+      var triCanvas = document.createElement("canvas");
+      triCanvas.width = triSize;
+      triCanvas.height = triSize;
+      var triCtx = triCanvas.getContext("2d");
+      if (triCtx) {
+        triCtx.beginPath();
+        triCtx.moveTo(triSize / 2, 1);
+        triCtx.lineTo(triSize - 1, triSize - 1);
+        triCtx.lineTo(1, triSize - 1);
+        triCtx.closePath();
+        triCtx.fillStyle = "#ffffff";
+        triCtx.fill();
+        var triImageData = triCtx.getImageData(0, 0, triSize, triSize);
+        map.addImage(TRIANGLE_ICON, triImageData, { sdf: true });
       }
 
       mapLoaded.current = true;
@@ -571,6 +634,81 @@ export default function Home() {
       map.on("load", setupLayer);
     }
   }, [layers.transmissionLines, buildTransmissionLinePopupHTML]);
+
+  // Toggle queue withdrawals layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      if (map.getLayer(QUEUE_WITHDRAWALS_LAYER)) {
+        map.setLayoutProperty(
+          QUEUE_WITHDRAWALS_LAYER,
+          "visibility",
+          layers.queueWithdrawals ? "visible" : "none"
+        );
+        return;
+      }
+
+      if (!layers.queueWithdrawals) return;
+
+      map.addSource(QUEUE_WITHDRAWALS_SOURCE, {
+        type: "geojson",
+        data: "/data/queue-withdrawals.geojson",
+      });
+
+      map.addLayer({
+        id: QUEUE_WITHDRAWALS_LAYER,
+        type: "symbol",
+        source: QUEUE_WITHDRAWALS_SOURCE,
+        layout: {
+          "icon-image": TRIANGLE_ICON,
+          "icon-size": [
+            "interpolate", ["linear"], ["get", "total_mw"],
+            50, 0.4,
+            500, 0.7,
+            2000, 1.0,
+          ],
+          "icon-allow-overlap": true,
+        },
+        paint: {
+          "icon-color": "#f97316",
+          "icon-opacity": 0.85,
+        },
+      });
+
+      map.on("click", QUEUE_WITHDRAWALS_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var props = feature.properties as Record<string, any>;
+
+        if (typeof props.total_mw === "string") props.total_mw = parseFloat(props.total_mw);
+
+        if (popupRef.current) popupRef.current.remove();
+
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "320px" })
+          .setLngLat(coords)
+          .setHTML(buildQueuePopupHTML(props))
+          .addTo(map!);
+      });
+
+      map.on("mouseenter", QUEUE_WITHDRAWALS_LAYER, function () {
+        map!.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", QUEUE_WITHDRAWALS_LAYER, function () {
+        map!.getCanvas().style.cursor = "";
+      });
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.queueWithdrawals, buildQueuePopupHTML]);
 
   // Load scored sites on mount — always-visible star layer
   useEffect(function () {
@@ -903,6 +1041,10 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444]"></span>
                   <span>Retired Plant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-orange-500 text-[10px] leading-none">&#9650;</span>
+                  <span>Queue Withdrawal</span>
                 </div>
                 <div className="border-t border-white/10 my-1.5"></div>
                 <div className="flex items-center gap-2">
