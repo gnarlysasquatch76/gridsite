@@ -1,0 +1,917 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.91731837,
+          39.51558068
+        ]
+      },
+      "properties": {
+        "name": "AP South",
+        "iso": "PJM",
+        "avg_atc_mw": 1850,
+        "atc_class": "high",
+        "source_sub": "BEDINGTON",
+        "sink_sub": "BLACK OAK",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.91731837,
+          39.51558068
+        ]
+      },
+      "properties": {
+        "name": "Bedington-Black Oak",
+        "iso": "PJM",
+        "avg_atc_mw": 1200,
+        "atc_class": "high",
+        "source_sub": "BEDINGTON",
+        "sink_sub": "BLACK OAK",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.54039286,
+          39.68741801
+        ]
+      },
+      "properties": {
+        "name": "5004/5005 Interface",
+        "iso": "PJM",
+        "avg_atc_mw": 2800,
+        "atc_class": "high",
+        "source_sub": "CONASTONE",
+        "sink_sub": "PEACH BOTTOM",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.74218205,
+          40.54434979
+        ]
+      },
+      "properties": {
+        "name": "Central East Interface",
+        "iso": "PJM",
+        "avg_atc_mw": 2200,
+        "atc_class": "high",
+        "source_sub": "BRANCHBURG",
+        "sink_sub": "ELROY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.48529155,
+          40.40553315
+        ]
+      },
+      "properties": {
+        "name": "CETO East",
+        "iso": "PJM",
+        "avg_atc_mw": 1600,
+        "atc_class": "high",
+        "source_sub": "DEANS",
+        "sink_sub": "SAYREVILLE",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.57012828,
+          39.22734966
+        ]
+      },
+      "properties": {
+        "name": "PJM-MISO Interface",
+        "iso": "PJM",
+        "avg_atc_mw": 3200,
+        "atc_class": "high",
+        "source_sub": "BREED",
+        "sink_sub": "SULLIVAN",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.74218205,
+          40.54434979
+        ]
+      },
+      "properties": {
+        "name": "PJM-NYISO Interface",
+        "iso": "PJM",
+        "avg_atc_mw": 1900,
+        "atc_class": "high",
+        "source_sub": "BRANCHBURG",
+        "sink_sub": "RAMAPO",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.40587584,
+          37.08538825
+        ]
+      },
+      "properties": {
+        "name": "PJM South",
+        "iso": "PJM",
+        "avg_atc_mw": 4100,
+        "atc_class": "high",
+        "source_sub": "CARSON",
+        "sink_sub": "POSSUM POINT",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.68896133,
+          38.56030499
+        ]
+      },
+      "properties": {
+        "name": "PEPCO Import",
+        "iso": "PJM",
+        "avg_atc_mw": 1400,
+        "atc_class": "high",
+        "source_sub": "CHALK POINT",
+        "sink_sub": "BRIGHTSEAT",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22252574,
+          43.17871443
+        ]
+      },
+      "properties": {
+        "name": "Central East",
+        "iso": "NYISO",
+        "avg_atc_mw": 2750,
+        "atc_class": "high",
+        "source_sub": "MARCY",
+        "sink_sub": "NEW SCOTLAND",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.90419959,
+          42.60918555
+        ]
+      },
+      "properties": {
+        "name": "Total East",
+        "iso": "NYISO",
+        "avg_atc_mw": 3950,
+        "atc_class": "high",
+        "source_sub": "NEW SCOTLAND",
+        "sink_sub": "PLEASANT VALLEY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.84744196,
+          42.26486877
+        ]
+      },
+      "properties": {
+        "name": "UPNY-SENY",
+        "iso": "NYISO",
+        "avg_atc_mw": 5150,
+        "atc_class": "high",
+        "source_sub": "LEEDS",
+        "sink_sub": "PLEASANT VALLEY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.80441504,
+          45.00408149
+        ]
+      },
+      "properties": {
+        "name": "Moses-South",
+        "iso": "NYISO",
+        "avg_atc_mw": 1100,
+        "atc_class": "high",
+        "source_sub": "MOSES",
+        "sink_sub": "WILLIS",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.52914424,
+          45.39723189
+        ]
+      },
+      "properties": {
+        "name": "West Central",
+        "iso": "NYISO",
+        "avg_atc_mw": 1950,
+        "atc_class": "high",
+        "source_sub": "ROCHESTER",
+        "sink_sub": "CLAY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.85731297,
+          40.94027597
+        ]
+      },
+      "properties": {
+        "name": "Dunwoodie-Shore Rd",
+        "iso": "NYISO",
+        "avg_atc_mw": 3150,
+        "atc_class": "high",
+        "source_sub": "DUNWOODIE",
+        "sink_sub": "SHORE ROAD",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22252574,
+          43.17871443
+        ]
+      },
+      "properties": {
+        "name": "NY-NE Interface",
+        "iso": "NYISO",
+        "avg_atc_mw": 1400,
+        "atc_class": "high",
+        "source_sub": "MARCY",
+        "sink_sub": "NEW SCOTLAND",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53039198,
+          42.56843852
+        ]
+      },
+      "properties": {
+        "name": "NE-NY AC Ties",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 1200,
+        "atc_class": "high",
+        "source_sub": "SANDY POND",
+        "sink_sub": "ALPS",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.75386283,
+          44.74025914
+        ]
+      },
+      "properties": {
+        "name": "Orrington South",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 1150,
+        "atc_class": "high",
+        "source_sub": "ORRINGTON",
+        "sink_sub": "SUROWIEC",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53039198,
+          42.56843852
+        ]
+      },
+      "properties": {
+        "name": "Boston Import",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 4600,
+        "atc_class": "high",
+        "source_sub": "SANDY POND",
+        "sink_sub": "MILLBURY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.16537146,
+          41.31481411
+        ]
+      },
+      "properties": {
+        "name": "CT Import",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 3400,
+        "atc_class": "high",
+        "source_sub": "MILLSTONE",
+        "sink_sub": "NORWALK",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.75386283,
+          44.74025914
+        ]
+      },
+      "properties": {
+        "name": "Maine Import",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 1050,
+        "atc_class": "high",
+        "source_sub": "ORRINGTON",
+        "sink_sub": "CHESTER",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.4987876,
+          44.11888219
+        ]
+      },
+      "properties": {
+        "name": "North-South",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 2600,
+        "atc_class": "high",
+        "source_sub": "GRANITE",
+        "sink_sub": "SANDY POND",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.75386283,
+          44.74025914
+        ]
+      },
+      "properties": {
+        "name": "NE-NB Interface",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 1000,
+        "atc_class": "high",
+        "source_sub": "ORRINGTON",
+        "sink_sub": "KEENE ROAD",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.5900338,
+          43.27131121
+        ]
+      },
+      "properties": {
+        "name": "Cross Sound Cable (NE)",
+        "iso": "ISO-NE",
+        "avg_atc_mw": 330,
+        "atc_class": "high",
+        "source_sub": "EAST HAVEN",
+        "sink_sub": "SHORE ROAD",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.54445038,
+          39.23581521
+        ]
+      },
+      "properties": {
+        "name": "MISO-PJM Interface",
+        "iso": "MISO",
+        "avg_atc_mw": 3200,
+        "atc_class": "high",
+        "source_sub": "SULLIVAN",
+        "sink_sub": "BREED",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.9144932,
+          42.76826805
+        ]
+      },
+      "properties": {
+        "name": "Michigan-Ontario",
+        "iso": "MISO",
+        "avg_atc_mw": 1500,
+        "atc_class": "high",
+        "source_sub": "LAMBTON",
+        "sink_sub": "ST CLAIR",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9049447,
+          39.55022725
+        ]
+      },
+      "properties": {
+        "name": "MISO North-South",
+        "iso": "MISO",
+        "avg_atc_mw": 2000,
+        "atc_class": "high",
+        "source_sub": "PRAIRIE ISLAND",
+        "sink_sub": "LANSING",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.06395693,
+          29.95055306
+        ]
+      },
+      "properties": {
+        "name": "MISO South Import",
+        "iso": "MISO",
+        "avg_atc_mw": 2800,
+        "atc_class": "high",
+        "source_sub": "DELTA",
+        "sink_sub": "WEST POINT",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.16453951,
+          39.16938625
+        ]
+      },
+      "properties": {
+        "name": "MISO-SPP North",
+        "iso": "MISO",
+        "avg_atc_mw": 1600,
+        "atc_class": "high",
+        "source_sub": "SIBLEY",
+        "sink_sub": "OVERTON",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.41050621,
+          30.42858929
+        ]
+      },
+      "properties": {
+        "name": "MISO-SPP South",
+        "iso": "MISO",
+        "avg_atc_mw": 800,
+        "atc_class": "high",
+        "source_sub": "ACADIANA",
+        "sink_sub": "HARTBURG",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.46506033,
+          36.2052377
+        ]
+      },
+      "properties": {
+        "name": "MISO-TVA Interface",
+        "iso": "MISO",
+        "avg_atc_mw": 1200,
+        "atc_class": "high",
+        "source_sub": "WILSON",
+        "sink_sub": "DRESDEN",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.3062704,
+          41.72651908
+        ]
+      },
+      "properties": {
+        "name": "MISO Central Corridor",
+        "iso": "MISO",
+        "avg_atc_mw": 2100,
+        "atc_class": "high",
+        "source_sub": "QUAD CITIES",
+        "sink_sub": "NELSON DEWEY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.57491547,
+          38.92432558
+        ]
+      },
+      "properties": {
+        "name": "SPP-MISO North",
+        "iso": "SPP",
+        "avg_atc_mw": 1600,
+        "atc_class": "high",
+        "source_sub": "OVERTON",
+        "sink_sub": "SIBLEY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.73866407,
+          30.26666816
+        ]
+      },
+      "properties": {
+        "name": "SPP-MISO South",
+        "iso": "SPP",
+        "avg_atc_mw": 800,
+        "atc_class": "high",
+        "source_sub": "HARTBURG",
+        "sink_sub": "ACADIANA",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.11706986,
+          37.30451599
+        ]
+      },
+      "properties": {
+        "name": "SPP-AECI Interface",
+        "iso": "SPP",
+        "avg_atc_mw": 650,
+        "atc_class": "high",
+        "source_sub": "NEOSHO",
+        "sink_sub": "RIVERTON",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.36838216,
+          36.31179888
+        ]
+      },
+      "properties": {
+        "name": "SPP North-South",
+        "iso": "SPP",
+        "avg_atc_mw": 2300,
+        "atc_class": "high",
+        "source_sub": "WOODWARD",
+        "sink_sub": "COMANCHE",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.85850114,
+          34.37783096
+        ]
+      },
+      "properties": {
+        "name": "SPP-ERCOT DC Tie",
+        "iso": "SPP",
+        "avg_atc_mw": 220,
+        "atc_class": "high",
+        "source_sub": "OKLAUNION",
+        "sink_sub": "VERNON",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.8434125,
+          33.8690973
+        ]
+      },
+      "properties": {
+        "name": "SPP West Corridor",
+        "iso": "SPP",
+        "avg_atc_mw": 1400,
+        "atc_class": "high",
+        "source_sub": "TUCO",
+        "sink_sub": "HITCHLAND",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.4330346,
+          44.12910013
+        ]
+      },
+      "properties": {
+        "name": "SPP-WAPA Interface",
+        "iso": "SPP",
+        "avg_atc_mw": 400,
+        "atc_class": "high",
+        "source_sub": "FORT THOMPSON",
+        "sink_sub": "BIG BEND",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.51923056,
+          37.7928213
+        ]
+      },
+      "properties": {
+        "name": "SPP Kansas Corridor",
+        "iso": "SPP",
+        "avg_atc_mw": 1800,
+        "atc_class": "high",
+        "source_sub": "WICHITA",
+        "sink_sub": "WOLF CREEK",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.0216989,
+          37.0530644
+        ]
+      },
+      "properties": {
+        "name": "Path 15 (N-S)",
+        "iso": "CAISO",
+        "avg_atc_mw": 2700,
+        "atc_class": "high",
+        "source_sub": "LOS BANOS",
+        "sink_sub": "GATES",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.41609206,
+          27.37203277
+        ]
+      },
+      "properties": {
+        "name": "Path 26 (N-S)",
+        "iso": "CAISO",
+        "avg_atc_mw": 3700,
+        "atc_class": "high",
+        "source_sub": "MIDWAY",
+        "sink_sub": "VINCENT",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.3165815,
+          42.00609922
+        ]
+      },
+      "properties": {
+        "name": "COI (Pacific AC)",
+        "iso": "CAISO",
+        "avg_atc_mw": 4800,
+        "atc_class": "high",
+        "source_sub": "MALIN",
+        "sink_sub": "ROUND MOUNTAIN",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4811313,
+          34.31252826
+        ]
+      },
+      "properties": {
+        "name": "PDCI (Pacific DC)",
+        "iso": "CAISO",
+        "avg_atc_mw": 3100,
+        "atc_class": "high",
+        "source_sub": "SYLMAR",
+        "sink_sub": "CELILO",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.368744,
+          34.36669147
+        ]
+      },
+      "properties": {
+        "name": "SCE Import",
+        "iso": "CAISO",
+        "avg_atc_mw": 5800,
+        "atc_class": "high",
+        "source_sub": "LUGO",
+        "sink_sub": "MIRA LOMA",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9841846,
+          32.6796375
+        ]
+      },
+      "properties": {
+        "name": "SDG&E Import",
+        "iso": "CAISO",
+        "avg_atc_mw": 3900,
+        "atc_class": "high",
+        "source_sub": "MIGUEL",
+        "sink_sub": "IMPERIAL VALLEY",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.0085351,
+          35.7973238
+        ]
+      },
+      "properties": {
+        "name": "Eldorado-Ivanpah",
+        "iso": "CAISO",
+        "avg_atc_mw": 2200,
+        "atc_class": "high",
+        "source_sub": "ELDORADO",
+        "sink_sub": "IVANPAH",
+        "source": "curated_fallback"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.8590542,
+          33.38472508
+        ]
+      },
+      "properties": {
+        "name": "Palo Verde Interface",
+        "iso": "CAISO",
+        "avg_atc_mw": 5200,
+        "atc_class": "high",
+        "source_sub": "PALO VERDE",
+        "sink_sub": "DEVERS",
+        "source": "curated_fallback"
+      }
+    }
+  ]
+}

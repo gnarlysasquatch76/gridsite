@@ -307,6 +307,10 @@ export default function Sidebar(props: SidebarProps) {
                           <span>Grid Pricing (LMP)</span>
                           <span style={{ color: subColor(s.lmp_score) }} className="font-medium">{s.lmp_score} <span className="text-slate-500">(${s.nearest_lmp_avg}/MWh)</span></span>
                         </div>
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Transfer Capability (ATC)</span>
+                          <span style={{ color: subColor(s.atc_score) }} className="font-medium">{s.atc_score} <span className="text-slate-500">({s.nearest_atc_mw} MW)</span></span>
+                        </div>
                       </div>
                     </div>
                   );
@@ -452,6 +456,21 @@ export default function Sidebar(props: SidebarProps) {
                     <div className="text-xs text-slate-400 flex justify-between">
                       <span>Avg LMP</span>
                       <span className="text-slate-200 font-medium">${selectedSite.nearest_lmp_avg}/MWh</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Nearest ATC Interface */}
+                {selectedSite.nearest_atc_interface && (
+                  <div className="space-y-1.5">
+                    <div className="text-xs font-semibold text-slate-300">Nearest ATC Interface</div>
+                    <div className="text-xs text-slate-400 flex justify-between">
+                      <span>Interface</span>
+                      <span className="text-slate-200 font-medium">{selectedSite.nearest_atc_interface}</span>
+                    </div>
+                    <div className="text-xs text-slate-400 flex justify-between">
+                      <span>Avg ATC</span>
+                      <span className="text-slate-200 font-medium">{selectedSite.nearest_atc_mw} MW</span>
                     </div>
                   </div>
                 )}

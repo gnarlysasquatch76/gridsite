@@ -36,6 +36,7 @@ PLANTS_FILE = os.path.join(DATA_DIR, "power-plants.geojson")
 BROWNFIELDS_FILE = os.path.join(DATA_DIR, "epa-brownfields.geojson")
 QUEUE_FILE = os.path.join(DATA_DIR, "queue-withdrawals.geojson")
 LMP_NODES_FILE = os.path.join(DATA_DIR, "lmp-nodes.geojson")
+ATC_FILE = os.path.join(DATA_DIR, "oasis-atc.geojson")
 OUTPUT_FILE = os.path.join(DATA_DIR, "opportunities.geojson")
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
@@ -297,7 +298,38 @@ def find_nearest_lmp(lat, lon, lmp_nodes):
     return best["name"], best["avg_lmp"], compute_lmp_score(best["avg_lmp"])
 
 
-def score_site(site, sub_coords, qw_points, lmp_nodes):
+def compute_atc_score(avg_atc_mw):
+    """ATC scoring. High ATC = more transfer capability = high score."""
+    if avg_atc_mw >= 500:
+        return 95
+    elif avg_atc_mw >= 300:
+        return 85
+    elif avg_atc_mw >= 200:
+        return 75
+    elif avg_atc_mw >= 100:
+        return 60
+    elif avg_atc_mw >= 50:
+        return 45
+    elif avg_atc_mw >= 25:
+        return 30
+    return 20
+
+
+def find_nearest_atc(lat, lon, atc_nodes):
+    """Find nearest ATC interface and return (name, avg_atc_mw, atc_score)."""
+    best_dist = float("inf")
+    best = None
+    for n in atc_nodes:
+        d = haversine_miles(lat, lon, n["lat"], n["lon"])
+        if d < best_dist:
+            best_dist = d
+            best = n
+    if not best:
+        return "", 0, 50
+    return best["name"], best["avg_atc_mw"], compute_atc_score(best["avg_atc_mw"])
+
+
+def score_site(site, sub_coords, qw_points, lmp_nodes, atc_nodes=None):
     """Score an opportunity site using the 4-dimension model.
 
     Returns dict with all scoring fields matching ScoredSite interface.
@@ -337,6 +369,12 @@ def score_site(site, sub_coords, qw_points, lmp_nodes):
     # ── LMP ──
     lmp_name, lmp_avg, lmp_s = find_nearest_lmp(lat, lon, lmp_nodes)
 
+    # ── ATC ──
+    if atc_nodes:
+        atc_name, atc_mw, atc_s = find_nearest_atc(lat, lon, atc_nodes)
+    else:
+        atc_name, atc_mw, atc_s = "", 0, 50
+
     # ── Time to Power (50%) ──
     dist_s = compute_sub_distance(best_dist)
     volt_s = compute_sub_voltage(best_sub["max_volt"])
@@ -346,12 +384,12 @@ def score_site(site, sub_coords, qw_points, lmp_nodes):
     if opp_type == "retired_plant":
         cap = site.get("total_capacity_mw", 0)
         gen_s = compute_gen_capacity(cap)
-        ttp = (dist_s * 0.21 + gen_s * 0.17 + volt_s * 0.13 +
-               lines_s * 0.13 + qw_s * 0.21 + lmp_s * 0.15)
+        ttp = (dist_s * 0.18 + gen_s * 0.15 + volt_s * 0.11 +
+               lines_s * 0.11 + qw_s * 0.18 + lmp_s * 0.14 + atc_s * 0.13)
     else:
         gen_s = 0
-        ttp = (dist_s * 0.30 + volt_s * 0.17 + lines_s * 0.17 +
-               qw_s * 0.21 + lmp_s * 0.15)
+        ttp = (dist_s * 0.25 + volt_s * 0.15 + lines_s * 0.15 +
+               qw_s * 0.18 + lmp_s * 0.14 + atc_s * 0.13)
 
     # ── Site Readiness (20%) ──
     if opp_type == "retired_plant":
@@ -425,6 +463,9 @@ def score_site(site, sub_coords, qw_points, lmp_nodes):
         "lmp_score": r(lmp_s),
         "nearest_lmp_avg": r(lmp_avg),
         "nearest_lmp_node": lmp_name,
+        "atc_score": r(atc_s),
+        "nearest_atc_mw": r(atc_mw),
+        "nearest_atc_interface": atc_name,
         "nearest_sub_name": best_sub["name"],
         "nearest_sub_distance_miles": r(best_dist),
         "nearest_sub_voltage_kv": best_sub["max_volt"],
@@ -607,6 +648,23 @@ def main():
             "total_mw": float(p.get("total_mw") or 0),
         })
     print("  Queue withdrawals: {:,}".format(len(qw_points)))
+
+    # Load ATC interfaces
+    atc_nodes = []
+    if os.path.exists(ATC_FILE):
+        with open(ATC_FILE) as f:
+            atc_geojson = json.load(f)
+        for feat in atc_geojson["features"]:
+            c = feat["geometry"]["coordinates"]
+            p = feat["properties"]
+            atc_nodes.append({
+                "lat": c[1], "lon": c[0],
+                "name": p.get("name", ""),
+                "avg_atc_mw": float(p.get("avg_atc_mw", 0)),
+            })
+        print("  ATC interfaces: {:,}".format(len(atc_nodes)))
+    else:
+        print("  ATC file not found, skipping")
 
     # Power plants (retired/retiring)
     retired_plants = []
@@ -861,7 +919,7 @@ def main():
 
     scored = []
     for site in raw_sites:
-        result = score_site(site, all_hv_subs, qw_points, lmp_nodes)
+        result = score_site(site, all_hv_subs, qw_points, lmp_nodes, atc_nodes)
         if result:
             scored.append(result)
 

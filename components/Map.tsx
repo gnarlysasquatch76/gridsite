@@ -21,6 +21,7 @@ import {
   DATA_CENTERS_SOURCE, DATA_CENTERS_LAYER,
   UTILITY_TERRITORIES_SOURCE, UTILITY_TERRITORIES_LAYER, UTILITY_TERRITORIES_OUTLINE_LAYER,
   LMP_NODES_SOURCE, LMP_NODES_LAYER,
+  OASIS_ATC_SOURCE, OASIS_ATC_LAYER,
   OPPORTUNITIES_SOURCE, OPPORTUNITIES_LAYER,
   OPPORTUNITY_LABELS, OPPORTUNITY_COLORS,
   DIAMOND_ICON, STAR_ICON, TRIANGLE_ICON, SQUARE_ICON,
@@ -56,6 +57,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
   var transmissionLinesCache = useRef<GeoJSON.FeatureCollection | null>(null);
   var queueWithdrawalsCache = useRef<GeoJSON.FeatureCollection | null>(null);
   var lmpNodesCache = useRef<GeoJSON.FeatureCollection | null>(null);
+  var atcDataCache = useRef<GeoJSON.FeatureCollection | null>(null);
 
   // --- Proximity Analysis ---
 
@@ -380,6 +382,29 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       "</div></div>";
   }, []);
 
+  var buildAtcPopupHTML = useCallback(function (props: Record<string, any>): string {
+    var name = props.name || "Unknown";
+    var iso = props.iso || "";
+    var avgAtc = props.avg_atc_mw != null ? Number(props.avg_atc_mw) : 0;
+    var atcClass = props.atc_class || "moderate";
+    var classColor = atcClass === "high" ? "#22c55e" : atcClass === "moderate" ? "#eab308" : "#ef4444";
+    var classLabel = atcClass === "high" ? "High (>200 MW)" : atcClass === "moderate" ? "Moderate (50-200)" : "Low (<50 MW)";
+    var sourceSub = props.source_sub || "";
+    var sinkSub = props.sink_sub || "";
+
+    return "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+      "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + name + "</div>" +
+      "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + iso + "</div>" +
+      "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+        "<span style=\"background:" + classColor + ";color:" + (atcClass === "low" ? "#fff" : "#000") + ";border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + classLabel + "</span>" +
+      "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Avg ATC</span><strong>" + avgAtc.toLocaleString() + " MW</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Source Sub</span><strong>" + sourceSub + "</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Sink Sub</span><strong>" + sinkSub + "</strong></div>" +
+      "</div></div>";
+  }, []);
+
   var buildOpportunityPopupHTML = useCallback(function (s: ScoredSite): string {
     var oppType = s.opportunity_type || "";
     var oppLabel = OPPORTUNITY_LABELS[oppType] || oppType;
@@ -439,8 +464,14 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       var lmpRes = await fetch("/data/lmp-nodes.geojson");
       lmpNodesCache.current = await lmpRes.json();
     }
+    if (!atcDataCache.current) {
+      try {
+        var atcRes = await fetch("/data/oasis-atc.geojson");
+        if (atcRes.ok) atcDataCache.current = await atcRes.json();
+      } catch (e) { /* ATC data may not exist yet */ }
+    }
 
-    var site = computeLocationScore(lng, lat, substationsCache.current!, queueWithdrawalsCache.current!, lmpNodesCache.current);
+    var site = computeLocationScore(lng, lat, substationsCache.current!, queueWithdrawalsCache.current!, lmpNodesCache.current, atcDataCache.current);
     if (!site) return;
 
     if (popupRef.current) popupRef.current.remove();
@@ -948,6 +979,40 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
     if (mapLoaded.current) setup(); else map.on("load", setup);
   }, [layers.lmpNodes, buildLmpPopupHTML]);
 
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+    function setup() {
+      if (!map) return;
+      if (map.getLayer(OASIS_ATC_LAYER)) {
+        map.setLayoutProperty(OASIS_ATC_LAYER, "visibility", layers.oasisAtc ? "visible" : "none");
+        return;
+      }
+      if (!layers.oasisAtc) return;
+      map.addSource(OASIS_ATC_SOURCE, { type: "geojson", data: "/data/oasis-atc.geojson" });
+      map.addLayer({
+        id: OASIS_ATC_LAYER, type: "circle", source: OASIS_ATC_SOURCE,
+        paint: {
+          "circle-color": ["match", ["get", "atc_class"], "high", "#22c55e", "moderate", "#eab308", "low", "#ef4444", "#94a3b8"],
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 4, 8, 7, 12, 10],
+          "circle-opacity": 0.85, "circle-stroke-color": "#ffffff", "circle-stroke-width": 1,
+        },
+      });
+      map.on("click", OASIS_ATC_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var p = feature.properties as Record<string, any>;
+        if (typeof p.avg_atc_mw === "string") p.avg_atc_mw = parseFloat(p.avg_atc_mw);
+        if (popupRef.current) popupRef.current.remove();
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "300px" }).setLngLat(coords).setHTML(buildAtcPopupHTML(p)).addTo(map!);
+      });
+      map.on("mouseenter", OASIS_ATC_LAYER, function () { map!.getCanvas().style.cursor = "pointer"; });
+      map.on("mouseleave", OASIS_ATC_LAYER, function () { map!.getCanvas().style.cursor = ""; });
+    }
+    if (mapLoaded.current) setup(); else map.on("load", setup);
+  }, [layers.oasisAtc, buildAtcPopupHTML]);
+
   // --- Load opportunity sites ---
 
   useEffect(function () {
@@ -1006,6 +1071,8 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               flood_zone_score: pf(p.flood_zone_score),
               lmp_score: pf(p.lmp_score), nearest_lmp_avg: pf(p.nearest_lmp_avg),
               nearest_lmp_node: p.nearest_lmp_node || "",
+              atc_score: pf(p.atc_score), nearest_atc_mw: pf(p.nearest_atc_mw),
+              nearest_atc_interface: p.nearest_atc_interface || "",
               nearest_sub_name: p.nearest_sub_name,
               nearest_sub_distance_miles: pf(p.nearest_sub_distance_miles),
               nearest_sub_voltage_kv: pf(p.nearest_sub_voltage_kv),
@@ -1077,6 +1144,8 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               flood_zone_score: pf(p.flood_zone_score),
               lmp_score: pf(p.lmp_score), nearest_lmp_avg: pf(p.nearest_lmp_avg),
               nearest_lmp_node: p.nearest_lmp_node || "",
+              atc_score: pf(p.atc_score), nearest_atc_mw: pf(p.nearest_atc_mw),
+              nearest_atc_interface: p.nearest_atc_interface || "",
               nearest_sub_name: p.nearest_sub_name,
               nearest_sub_distance_miles: pf(p.nearest_sub_distance_miles),
               nearest_sub_voltage_kv: pf(p.nearest_sub_voltage_kv),
@@ -1254,6 +1323,10 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-white/40"></span><span>LMP Low (Headroom)</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#f59e0b] border border-white/40"></span><span>LMP Moderate</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444] border border-white/40"></span><span>LMP High (Congestion)</span></div>
+              <div className="border-t border-white/10 my-1.5"></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-white/40"></span><span>ATC High (&gt;200 MW)</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#eab308] border border-white/40"></span><span>ATC Moderate</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444] border border-white/40"></span><span>ATC Low (&lt;50 MW)</span></div>
               <div className="border-t border-white/10 my-1.5"></div>
               <div className="flex items-center gap-2"><span className="inline-block w-4 h-[1px] bg-[#22d3ee] rounded"></span><span>138-229 kV Line</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-4 h-[2px] bg-[#38bdf8] rounded"></span><span>230-344 kV Line</span></div>

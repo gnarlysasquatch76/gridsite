@@ -25,6 +25,7 @@ SUBSTATIONS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "substations
 QUEUE_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "queue-withdrawals.geojson")
 BROWNFIELDS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "epa-brownfields.geojson")
 LMP_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "lmp-nodes.geojson")
+ATC_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "oasis-atc.geojson")
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "scored-sites.geojson")
 
 TOP_N = 100
@@ -271,14 +272,45 @@ def find_nearest_lmp(lat, lon, lmp_nodes):
     return best_node["name"], best_node["avg_lmp"], compute_lmp_score(best_node["avg_lmp"])
 
 
+def compute_atc_score(avg_atc_mw):
+    """ATC scoring. High ATC = more transfer capability = high score."""
+    if avg_atc_mw >= 500:
+        return 95
+    elif avg_atc_mw >= 300:
+        return 85
+    elif avg_atc_mw >= 200:
+        return 75
+    elif avg_atc_mw >= 100:
+        return 60
+    elif avg_atc_mw >= 50:
+        return 45
+    elif avg_atc_mw >= 25:
+        return 30
+    return 20
+
+
+def find_nearest_atc(lat, lon, atc_nodes):
+    """Find nearest ATC interface and return (name, avg_atc_mw, atc_score)."""
+    best_dist = float("inf")
+    best_node = None
+    for node in atc_nodes:
+        d = haversine_miles(lat, lon, node["lat"], node["lon"])
+        if d < best_dist:
+            best_dist = d
+            best_node = node
+    if best_node is None:
+        return "", 0, 50
+    return best_node["name"], best_node["avg_atc_mw"], compute_atc_score(best_node["avg_atc_mw"])
+
+
 # ── Dimension scorers ─────────────────────────────────────────────────────
 
 
-def score_time_to_power(site, nearest, nearby_withdrawals, lmp_score):
+def score_time_to_power(site, nearest, nearby_withdrawals, lmp_score, atc_score=50):
     """
-    50% weight. Combines old Power Access + Grid Capacity + LMP pricing.
-    Power plants: distance + gen capacity + voltage + tx lines + queue withdrawals + lmp
-    Brownfields: distance + voltage + tx lines + queue withdrawals + lmp (no gen capacity)
+    50% weight. Combines old Power Access + Grid Capacity + LMP pricing + ATC.
+    Power plants: distance + gen capacity + voltage + tx lines + queue withdrawals + lmp + atc
+    Brownfields: distance + voltage + tx lines + queue withdrawals + lmp + atc (no gen capacity)
     """
     dist_score = compute_sub_distance(nearest["distance_miles"])
     volt_score = compute_sub_voltage(nearest["max_volt"])
@@ -290,12 +322,12 @@ def score_time_to_power(site, nearest, nearby_withdrawals, lmp_score):
     if site["site_type"] == "power_plant":
         capacity = site.get("total_capacity_mw", 0)
         gen_cap_score = compute_gen_capacity(capacity)
-        dim = (dist_score * 0.21 + gen_cap_score * 0.17 + volt_score * 0.13 +
-               lines_score * 0.13 + qw_score * 0.21 + lmp_score * 0.15)
+        dim = (dist_score * 0.18 + gen_cap_score * 0.15 + volt_score * 0.11 +
+               lines_score * 0.11 + qw_score * 0.18 + lmp_score * 0.14 + atc_score * 0.13)
     else:
         gen_cap_score = 0
-        dim = (dist_score * 0.30 + volt_score * 0.17 + lines_score * 0.17 +
-               qw_score * 0.21 + lmp_score * 0.15)
+        dim = (dist_score * 0.25 + volt_score * 0.15 + lines_score * 0.15 +
+               qw_score * 0.18 + lmp_score * 0.14 + atc_score * 0.13)
 
     return dim, dist_score, volt_score, gen_cap_score, lines_score, qw_score
 
@@ -386,6 +418,24 @@ def main():
         print("  LMP nodes loaded: " + str(len(lmp_nodes)))
     else:
         print("  LMP nodes file not found, skipping")
+
+    # Load ATC interfaces
+    atc_nodes = []
+    if os.path.exists(ATC_FILE):
+        with open(ATC_FILE) as f:
+            atc_geojson = json.load(f)
+        for feat in atc_geojson["features"]:
+            coords = feat["geometry"]["coordinates"]
+            p = feat["properties"]
+            atc_nodes.append({
+                "lat": coords[1],
+                "lon": coords[0],
+                "name": p.get("name", ""),
+                "avg_atc_mw": float(p.get("avg_atc_mw", 0)),
+            })
+        print("  ATC interfaces loaded: " + str(len(atc_nodes)))
+    else:
+        print("  ATC file not found, skipping")
 
     # Load brownfields if available
     brownfield_sites = []
@@ -502,8 +552,11 @@ def main():
         # Find nearest LMP node
         lmp_name, lmp_avg, lmp_s = find_nearest_lmp(lat, lon, lmp_nodes) if lmp_nodes else ("", 0, 50)
 
+        # Find nearest ATC interface
+        atc_name, atc_mw, atc_s = find_nearest_atc(lat, lon, atc_nodes) if atc_nodes else ("", 0, 50)
+
         # Score each dimension
-        ttp, dist_s, volt_s, gen_s, lines_s, qw_s = score_time_to_power(site, nearest, nearby_qw, lmp_s)
+        ttp, dist_s, volt_s, gen_s, lines_s, qw_s = score_time_to_power(site, nearest, nearby_qw, lmp_s, atc_s)
         sr, fuel_s, scale_s = score_site_readiness(site)
         co, lon_s, lat_s, bb_s = score_connectivity(site)
         rf, contam_s, status_s, flood_s = score_risk_factors(site)
@@ -541,6 +594,9 @@ def main():
             "lmp_score": round(lmp_s, 1),
             "nearest_lmp_avg": round(lmp_avg, 1),
             "nearest_lmp_node": lmp_name,
+            "atc_score": round(atc_s, 1),
+            "nearest_atc_mw": round(atc_mw, 1),
+            "nearest_atc_interface": atc_name,
             "nearest_sub_name": nearest["name"],
             "nearest_sub_distance_miles": round(best_dist, 1),
             "nearest_sub_voltage_kv": nearest["max_volt"],

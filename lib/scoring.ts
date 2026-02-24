@@ -78,6 +78,41 @@ export function computeLmpScore(avgLmp: number): number {
   return 20;
 }
 
+export function computeAtcScore(avgAtcMw: number): number {
+  // High ATC = more transfer capability = better for data centers = high score
+  if (avgAtcMw >= 500) return 95;
+  if (avgAtcMw >= 300) return 85;
+  if (avgAtcMw >= 200) return 75;
+  if (avgAtcMw >= 100) return 60;
+  if (avgAtcMw >= 50) return 45;
+  if (avgAtcMw >= 25) return 30;
+  return 20;
+}
+
+export function findNearestAtcInterface(
+  lat: number,
+  lng: number,
+  atcData: GeoJSON.FeatureCollection,
+): { name: string; avgAtcMw: number; atcScore: number } | null {
+  var bestDist = Infinity;
+  var bestNode: { name: string; avgAtcMw: number } | null = null;
+  for (var i = 0; i < atcData.features.length; i++) {
+    var f = atcData.features[i];
+    if (f.geometry.type !== "Point") continue;
+    var coords = (f.geometry as GeoJSON.Point).coordinates;
+    var d = haversineDistanceMiles(lat, lng, coords[1], coords[0]);
+    if (d < bestDist) {
+      bestDist = d;
+      bestNode = {
+        name: f.properties?.name || "",
+        avgAtcMw: f.properties?.avg_atc_mw != null ? Number(f.properties.avg_atc_mw) : 0,
+      };
+    }
+  }
+  if (!bestNode) return null;
+  return { name: bestNode.name, avgAtcMw: bestNode.avgAtcMw, atcScore: computeAtcScore(bestNode.avgAtcMw) };
+}
+
 export function findNearestLmpNode(
   lat: number,
   lng: number,
@@ -108,6 +143,7 @@ export function computeLocationScore(
   substationsData: GeoJSON.FeatureCollection,
   queueWithdrawalsData: GeoJSON.FeatureCollection,
   lmpNodesData?: GeoJSON.FeatureCollection | null,
+  atcData?: GeoJSON.FeatureCollection | null,
 ): ScoredSite | null {
   // Find nearest 345kV+ substation
   var bestDist = Infinity;
@@ -176,8 +212,14 @@ export function computeLocationScore(
   var nearestLmpAvg = lmpResult ? lmpResult.avgLmp : 0;
   var nearestLmpNode = lmpResult ? lmpResult.name : "";
 
-  // Custom/brownfield: no gen capacity, distribute among distance/voltage/lines/queue/lmp
-  var timeToPower = distScore * 0.30 + voltScore * 0.17 + linesScore * 0.17 + qwScore * 0.21 + lmpScoreVal * 0.15;
+  // ATC scoring
+  var atcResult = atcData ? findNearestAtcInterface(lat, lng, atcData) : null;
+  var atcScoreVal = atcResult ? atcResult.atcScore : 50;
+  var nearestAtcMw = atcResult ? atcResult.avgAtcMw : 0;
+  var nearestAtcInterface = atcResult ? atcResult.name : "";
+
+  // Custom/brownfield: no gen capacity, distribute among distance/voltage/lines/queue/lmp/atc
+  var timeToPower = distScore * 0.25 + voltScore * 0.15 + linesScore * 0.15 + qwScore * 0.18 + lmpScoreVal * 0.14 + atcScoreVal * 0.13;
 
   // --- Site Readiness (20%) — unknown site, base 65 ---
   var fuelTypeScore = 0;
@@ -244,6 +286,9 @@ export function computeLocationScore(
     lmp_score: r(lmpScoreVal),
     nearest_lmp_avg: r(nearestLmpAvg),
     nearest_lmp_node: nearestLmpNode,
+    atc_score: r(atcScoreVal),
+    nearest_atc_mw: r(nearestAtcMw),
+    nearest_atc_interface: nearestAtcInterface,
     nearest_sub_name: bestSub.name,
     nearest_sub_distance_miles: r(bestDist),
     nearest_sub_voltage_kv: bestSub.maxVolt,

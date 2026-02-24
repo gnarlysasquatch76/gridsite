@@ -36,6 +36,8 @@ export var LMP_NODES_SOURCE = "lmp-nodes";
 export var LMP_NODES_LAYER = "lmp-nodes-circles";
 export var OPPORTUNITIES_SOURCE = "opportunities";
 export var OPPORTUNITIES_LAYER = "opportunities-icons";
+export var OASIS_ATC_SOURCE = "oasis-atc";
+export var OASIS_ATC_LAYER = "oasis-atc-circles";
 export var DIAMOND_ICON = "diamond-icon";
 export var STAR_ICON = "star-icon";
 export var TRIANGLE_ICON = "triangle-icon";
@@ -81,6 +83,10 @@ export interface ScoredSite {
   lmp_score: number;
   nearest_lmp_avg: number;
   nearest_lmp_node: string;
+  // ATC sub-score
+  atc_score: number;
+  nearest_atc_mw: number;
+  nearest_atc_interface: string;
   // Context
   nearest_sub_name: string;
   nearest_sub_distance_miles: number;
@@ -124,6 +130,7 @@ export type LayerState = {
   dataCenters: boolean;
   utilityTerritories: boolean;
   lmpNodes: boolean;
+  oasisAtc: boolean;
   opportunities: boolean;
 };
 
@@ -136,7 +143,7 @@ export type LayerGroupState = {
 
 export var LAYER_GROUPS = {
   infrastructure: ["powerPlants", "substations", "transmissionLines", "dataCenters"] as const,
-  capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes", "opportunities"] as const,
+  capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes", "oasisAtc", "opportunities"] as const,
   risk: ["floodZones", "brownfields"] as const,
   connectivity: ["broadband"] as const,
 };

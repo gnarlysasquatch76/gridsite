@@ -20,6 +20,7 @@ export default function Home() {
     dataCenters: false,
     utilityTerritories: false,
     lmpNodes: false,
+    oasisAtc: false,
     opportunities: false,
   });
   var [layerGroupOpen, setLayerGroupOpen] = useState<LayerGroupState>({
