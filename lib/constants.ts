@@ -34,8 +34,6 @@ export var UTILITY_TERRITORIES_LAYER = "utility-territories-fill";
 export var UTILITY_TERRITORIES_OUTLINE_LAYER = "utility-territories-outline";
 export var LMP_NODES_SOURCE = "lmp-nodes";
 export var LMP_NODES_LAYER = "lmp-nodes-circles";
-export var OPPORTUNITIES_SOURCE = "opportunities";
-export var OPPORTUNITIES_LAYER = "opportunities-icons";
 export var OASIS_ATC_SOURCE = "oasis-atc";
 export var OASIS_ATC_LAYER = "oasis-atc-circles";
 export var DIAMOND_ICON = "diamond-icon";
@@ -131,7 +129,6 @@ export type LayerState = {
   utilityTerritories: boolean;
   lmpNodes: boolean;
   oasisAtc: boolean;
-  opportunities: boolean;
 };
 
 export type LayerGroupState = {
@@ -143,7 +140,7 @@ export type LayerGroupState = {
 
 export var LAYER_GROUPS = {
   infrastructure: ["powerPlants", "substations", "transmissionLines", "dataCenters"] as const,
-  capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes", "oasisAtc", "opportunities"] as const,
+  capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes", "oasisAtc"] as const,
   risk: ["floodZones", "brownfields"] as const,
   connectivity: ["broadband"] as const,
 };

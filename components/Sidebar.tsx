@@ -133,8 +133,6 @@ export default function Sidebar(props: SidebarProps) {
                   className="w-full bg-[#0f1b33] border border-white/10 rounded px-3 py-2 text-sm text-white"
                 >
                   <option value="all">All Sites</option>
-                  <option value="scored">Scored Sites Only</option>
-                  <option value="opportunity">Opportunities Only</option>
                   <option value="retired_plant">Retired Plant</option>
                   <option value="adaptive_reuse">Adaptive Reuse</option>
                   <option value="greenfield">Greenfield</option>

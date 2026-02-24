@@ -21,7 +21,6 @@ export default function Home() {
     utilityTerritories: false,
     lmpNodes: false,
     oasisAtc: false,
-    opportunities: false,
   });
   var [layerGroupOpen, setLayerGroupOpen] = useState<LayerGroupState>({
     infrastructure: true,
@@ -34,30 +33,21 @@ export default function Home() {
   var [selectedState, setSelectedState] = useState("");
   var [siteTypeFilter, setSiteTypeFilter] = useState("all");
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
-  var [opportunitySites, setOpportunitySites] = useState<ScoredSite[]>([]);
   var [activeTab, setActiveTab] = useState<"sites" | "detail" | "export">("sites");
   var [selectedSite, setSelectedSite] = useState<ScoredSite | null>(null);
 
-  var allSites = useMemo(function () {
-    return [...scoredSites, ...opportunitySites].sort(function (a, b) {
-      return b.composite_score - a.composite_score;
-    });
-  }, [scoredSites, opportunitySites]);
-
   var filteredSites = useMemo(function () {
-    return allSites.filter(function (site) {
-      if (site.total_capacity_mw < minMW && !site.opportunity_type) return false;
+    return scoredSites.filter(function (site) {
+      if (site.total_capacity_mw > 0 && site.total_capacity_mw < minMW) return false;
       if (selectedState && site.state !== selectedState) return false;
       if (siteTypeFilter !== "all") {
-        if (siteTypeFilter === "scored" && site.opportunity_type) return false;
-        if (siteTypeFilter === "opportunity" && !site.opportunity_type) return false;
         if (siteTypeFilter === "retired_plant" && site.opportunity_type !== "retired_plant") return false;
         if (siteTypeFilter === "adaptive_reuse" && site.opportunity_type !== "adaptive_reuse") return false;
         if (siteTypeFilter === "greenfield" && site.opportunity_type !== "greenfield") return false;
       }
       return true;
     });
-  }, [allSites, minMW, selectedState, siteTypeFilter]);
+  }, [scoredSites, minMW, selectedState, siteTypeFilter]);
 
   function toggleLayer(key: keyof LayerState) {
     setLayers(function (prev) { return { ...prev, [key]: !prev[key] }; });
@@ -85,10 +75,6 @@ export default function Home() {
     setScoredSites(sites);
   }, []);
 
-  var handleOpportunitySitesLoaded = useCallback(function (sites: ScoredSite[]) {
-    setOpportunitySites(sites);
-  }, []);
-
   return (
     <div className="flex h-screen w-screen overflow-hidden">
       <Sidebar
@@ -102,7 +88,7 @@ export default function Home() {
         activeTab={activeTab}
         onTabChange={setActiveTab}
         selectedSite={selectedSite}
-        scoredSites={allSites}
+        scoredSites={scoredSites}
         filteredSites={filteredSites}
         minMW={minMW}
         selectedState={selectedState}
@@ -117,8 +103,8 @@ export default function Home() {
         layers={layers}
         minMW={minMW}
         selectedState={selectedState}
+        siteTypeFilter={siteTypeFilter}
         onScoredSitesLoaded={handleScoredSitesLoaded}
-        onOpportunitySitesLoaded={handleOpportunitySitesLoaded}
       />
     </div>
   );
