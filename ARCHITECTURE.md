@@ -9,9 +9,9 @@ Single-page Next.js app (`app/page.tsx`, 1,892 lines) with all logic in one clie
 ### What works today
 
 - 7 toggleable map layers (power plants, substations, transmission lines, queue withdrawals, flood zones, broadband, brownfields)
-- 5-dimension scoring engine scores 41,473 sites (793 power plants + 40,680 brownfields), outputs top 100
+- 4-dimension scoring engine scores 41,473 sites (793 power plants + 40,680 brownfields), outputs top 100
 - Proximity analysis: click any scored site to see substations, transmission lines, and queue withdrawals within adjustable radius (5-20 mi)
-- Score Any Location: right-click anywhere on the map for instant 5-dimension score with full breakdown
+- Score Any Location: right-click anywhere on the map for instant 4-dimension score with full breakdown
 - Sidebar with collapsible sections: data layers, filters (MW capacity, state), ranked results list
 - Map legend, click popups for all layer types
 
@@ -31,9 +31,9 @@ Single-page Next.js app (`app/page.tsx`, 1,892 lines) with all logic in one clie
 | Map | Mapbox GL JS 3.18 | 7 source/layer pairs, custom SDF icons, raster overlays |
 | Geospatial | @turf/circle, @turf/boolean-intersects, @turf/helpers | Proximity analysis circle + line intersection |
 | ETL | Python 3 (stdlib only) | 6 scripts, no pip dependencies |
-| Scoring | Python (offline) + JS (real-time) | Same 5-dimension model in both languages |
+| Scoring | Python (offline) + JS (real-time) | Same 4-dimension model in both languages |
 | Deployment | Vercel | Static GeoJSON served from `public/data/` |
-| Types | TypeScript 5 | Strict mode, single `ScoredSite` interface |
+| Types | TypeScript 5 | Strict mode, `ScoredSite` interface with 4 dimensions + sub-scores |
 
 ## File Structure
 
@@ -62,36 +62,32 @@ gridsite/
 
 ## Scoring Model
 
-All sites scored 0-100 across 5 weighted dimensions. Two site types use the same model with different sub-weights.
+All sites scored 0-100 across 4 weighted dimensions. Two site types use the same model with different sub-weights.
 
 ### Composite Formula
 
 ```
-Composite = (Power Access x 0.30) + (Grid Capacity x 0.20) + (Site Characteristics x 0.20)
+Composite = (Time to Power x 0.50) + (Site Readiness x 0.20)
           + (Connectivity x 0.15) + (Risk Factors x 0.15)
 ```
 
 ### Dimension Details
 
-#### Power Access (30%)
+#### Time to Power (50%)
+
+Combines substation proximity, voltage, generation capacity, transmission lines, and queue withdrawal activity.
 
 | Factor | Power Plants | Brownfields / Custom |
 |--------|-------------|---------------------|
-| Distance to nearest 345kV+ sub | 50% weight — 100 at 0 mi, 0 at 50+ mi | 65% weight |
-| Existing generation capacity | 30% weight — linear 50-2000 MW | N/A |
-| Substation voltage tier | 20% weight — 60/70/85/100 for <345/345/500/765 kV | 35% weight |
-
-#### Grid Capacity (20%)
-
-| Factor | Power Plants | Brownfields / Custom |
-|--------|-------------|---------------------|
-| Generation capacity | 40% weight — linear 50-3000 MW | N/A |
-| Connected transmission lines | 30% weight — linear 0-8 lines | 45% weight |
-| Queue withdrawals within 20 mi | 30% weight — count + MW bonus | 55% weight |
+| Distance to nearest 345kV+ sub | 25% weight — 100 at 0 mi, 0 at 50+ mi | 35% weight |
+| Existing generation capacity | 20% weight — linear 50-1950 MW | N/A |
+| Substation voltage tier | 15% weight — 60/70/85/100 for <345/345/500/765 kV | 20% weight |
+| Connected transmission lines | 15% weight — linear 0-8 lines | 20% weight |
+| Queue withdrawals within 20 mi | 25% weight — count + MW bonus | 25% weight |
 
 Queue withdrawal scoring: base 30 if none, else `min(100, 30 + count*5) + min(20, totalMW/5000*20)`.
 
-#### Site Characteristics (20%)
+#### Site Readiness (20%)
 
 | Factor | Power Plants | Brownfields / Custom |
 |--------|-------------|---------------------|
@@ -124,12 +120,12 @@ Flood scoring: 35 (coastal FEMA high-risk), 65 (moderate coastal states), 90 (in
 | # | Site | State | Score | Type |
 |---|------|-------|-------|------|
 | 1 | Mystic Generating Station | MA | 92.6 | Power Plant |
-| 2 | Paradise | KY | 87.8 | Power Plant |
-| 3 | Rockport | IN | 87.7 | Power Plant |
-| 4 | J M Stuart | OH | 87.7 | Power Plant |
-| 5 | W H Sammis | OH | 87.4 | Power Plant |
+| 2 | Homer City Generating Station | PA | 89.1 | Power Plant |
+| 3 | Paradise | KY | 88.8 | Power Plant |
+| 4 | J M Stuart | OH | 88.8 | Power Plant |
+| 5 | Widows Creek | AL | 88.7 | Power Plant |
 
-Top 100 breakdown: 16 power plants, 84 brownfield sites.
+Top 100 breakdown: 26 power plants, 74 brownfield sites.
 
 ## Data Source Matrix
 
@@ -239,7 +235,7 @@ app/
     useScoreLocation.ts       # Right-click scoring logic + constants
     useDataCache.ts           # GeoJSON fetch + cache (substations, lines, withdrawals)
   lib/
-    scoring.ts                # 5-dimension scoring functions (JS port of score-sites.py)
+    scoring.ts                # 4-dimension scoring functions (JS port of score-sites.py)
     haversine.ts              # haversineDistanceMiles
     constants.ts              # Layer IDs, source IDs, flood states, broadband coverage
     types.ts                  # ScoredSite, ProximityResult interfaces
@@ -264,7 +260,7 @@ app/
 - [x] FEMA flood zones raster overlay
 - [x] FCC broadband raster overlay
 - [x] EPA brownfield sites layer
-- [x] 5-dimension scoring model (Python + JS)
+- [x] 4-dimension scoring model (Python + JS)
 - [x] Sidebar filters (MW capacity, state)
 - [x] Proximity analysis panel with adjustable radius
 - [x] Score Any Location (right-click)

@@ -80,15 +80,13 @@ export function computeLocationScore(
 
   var state = bestSub.state;
 
-  // Power Access (30%) — distance + voltage
+  // --- Time to Power (50%) — distance + voltage + lines + queue withdrawals ---
   var distScore = Math.max(0, Math.min(100, 100 - bestDist * 2));
   var voltScore = 60;
   if (bestSub.maxVolt >= 765) voltScore = 100;
   else if (bestSub.maxVolt >= 500) voltScore = 85;
   else if (bestSub.maxVolt >= 345) voltScore = 70;
-  var powerAccess = distScore * 0.65 + voltScore * 0.35;
-
-  // Grid Capacity (20%) — lines + queue withdrawals
+  var genCapScore = 0; // custom locations have no existing capacity
   var linesScore = Math.max(0, Math.min(100, bestSub.lines / 8 * 100));
   var qwScore: number;
   if (qwCount === 0) {
@@ -98,12 +96,15 @@ export function computeLocationScore(
     var mwBonus = Math.max(0, Math.min(20, qwTotalMW / 5000 * 20));
     qwScore = Math.max(0, Math.min(100, countScore + mwBonus));
   }
-  var gridCapacity = linesScore * 0.45 + qwScore * 0.55;
+  // Custom/brownfield: no gen capacity, distribute among distance/voltage/lines/queue
+  var timeToPower = distScore * 0.35 + voltScore * 0.20 + linesScore * 0.20 + qwScore * 0.25;
 
-  // Site Characteristics (20%) — unknown site, base 65
-  var siteCharacteristics = 65;
+  // --- Site Readiness (20%) — unknown site, base 65 ---
+  var fuelTypeScore = 0;
+  var capacityScaleScore = 0;
+  var siteReadiness = 65;
 
-  // Connectivity (15%) — longitude proxy + latitude band + broadband
+  // --- Connectivity (15%) — longitude proxy + latitude band + broadband ---
   var lonScore = lng < -70 ? Math.max(0, Math.min(100, 100 - (lng + 70) * -1.2)) : 100;
   lonScore = Math.max(0, Math.min(100, lonScore));
   var latScore: number;
@@ -120,18 +121,20 @@ export function computeLocationScore(
   else bbScore = 35;
   var connectivity = lonScore * 0.40 + latScore * 0.30 + bbScore * 0.30;
 
-  // Risk Factors (15%) — unknown contamination + flood risk
+  // --- Risk Factors (15%) — unknown contamination + flood risk ---
   var floodScore: number;
   if (isCoastalLocation(lat, lng, state)) floodScore = 35;
   else if (MODERATE_FLOOD_STATES.has(state)) floodScore = 65;
   else floodScore = 90;
   var contamScore = 70;
+  var statusScore = 0; // custom locations have no operational status
   var riskFactors = contamScore * 0.65 + floodScore * 0.35;
 
   // Composite
-  var composite = powerAccess * 0.30 + gridCapacity * 0.20 + siteCharacteristics * 0.20 + connectivity * 0.15 + riskFactors * 0.15;
+  var composite = timeToPower * 0.50 + siteReadiness * 0.20 + connectivity * 0.15 + riskFactors * 0.15;
   composite = Math.round(Math.max(0, Math.min(100, composite)) * 10) / 10;
 
+  var r = function (v: number) { return Math.round(v * 10) / 10; };
   return {
     plant_name: "Custom Location",
     state: state,
@@ -141,13 +144,28 @@ export function computeLocationScore(
     fuel_type: "Custom",
     status: "custom",
     composite_score: composite,
-    power_access: Math.round(powerAccess * 10) / 10,
-    grid_capacity: Math.round(gridCapacity * 10) / 10,
-    site_characteristics: siteCharacteristics,
-    connectivity: Math.round(connectivity * 10) / 10,
-    risk_factors: Math.round(riskFactors * 10) / 10,
+    time_to_power: r(timeToPower),
+    site_readiness: r(siteReadiness),
+    connectivity: r(connectivity),
+    risk_factors: r(riskFactors),
+    sub_distance_score: r(distScore),
+    sub_voltage_score: r(voltScore),
+    gen_capacity_score: r(genCapScore),
+    tx_lines_score: r(linesScore),
+    queue_withdrawal_score: r(qwScore),
+    fuel_type_score: r(fuelTypeScore),
+    capacity_scale_score: r(capacityScaleScore),
+    longitude_score: r(lonScore),
+    latitude_score: r(latScore),
+    broadband_score: r(bbScore),
+    contamination_score: r(contamScore),
+    operational_status_score: r(statusScore),
+    flood_zone_score: r(floodScore),
     nearest_sub_name: bestSub.name,
-    nearest_sub_distance_miles: Math.round(bestDist * 10) / 10,
+    nearest_sub_distance_miles: r(bestDist),
     nearest_sub_voltage_kv: bestSub.maxVolt,
+    nearest_sub_lines: bestSub.lines,
+    queue_count_20mi: qwCount,
+    queue_mw_20mi: r(qwTotalMW),
   };
 }

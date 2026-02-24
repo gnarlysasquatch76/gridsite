@@ -1,19 +1,18 @@
 """
 Score sites for data center adaptive reuse potential.
 
-Scores two site types using the same 5-dimension model:
+Scores two site types using the same 4-dimension model:
   1. Retired/retiring power plants (>= 50 MW) from power-plants.geojson
   2. EPA brownfield sites from epa-brownfields.geojson
 
 All sites are scored on a 0-100 composite scale and ranked together.
 The top 100 are output to scored-sites.geojson.
 
-Scoring model (5 dimensions, weighted):
-  Power Access        (30%) - substation proximity, capacity/site potential, voltage
-  Grid Capacity       (20%) - capacity/grid infrastructure, substation lines, queue withdrawals
-  Site Characteristics (20%) - reuse suitability, scale
-  Connectivity        (15%) - proximity to population centers, broadband coverage
-  Risk Factors        (15%) - contamination/environmental risk, flood zone exposure
+Scoring model (4 dimensions, weighted):
+  Time to Power    (50%) - substation proximity, voltage, gen capacity, tx lines, queue withdrawals
+  Site Readiness   (20%) - fuel type suitability, capacity scale (plants) or base reuse score (brownfields)
+  Connectivity     (15%) - proximity to population centers, broadband coverage
+  Risk Factors     (15%) - contamination/environmental risk, operational status, flood zone exposure
 """
 
 import json
@@ -54,6 +53,48 @@ BROADBAND_COVERAGE = {
     "AK": 70, "HI": 80,
 }
 
+FUEL_TYPE_SCORES = {
+    "Conventional Steam Coal": 90,
+    "Natural Gas Fired Combined Cycle": 95,
+    "Natural Gas Fired Combustion Turbine": 80,
+    "Natural Gas Steam Turbine": 85,
+    "Nuclear": 50,
+    "Petroleum Liquids": 70,
+    "Petroleum Coke": 70,
+    "Coal Integrated Gasification Combined Cycle": 80,
+    "Other Gases": 65,
+    "Other Waste Biomass": 55,
+    "Wood/Wood Waste Biomass": 55,
+    "Municipal Solid Waste": 45,
+    "Landfill Gas": 40,
+    "Conventional Hydroelectric": 30,
+    "Onshore Wind Turbine": 20,
+    "Solar Photovoltaic": 25,
+    "Geothermal": 35,
+    "All Other": 50,
+}
+
+CONTAMINATION_SCORES = {
+    "Conventional Steam Coal": 45,
+    "Coal Integrated Gasification Combined Cycle": 50,
+    "Nuclear": 20,
+    "Petroleum Liquids": 55,
+    "Petroleum Coke": 50,
+    "Municipal Solid Waste": 40,
+    "Other Waste Biomass": 50,
+    "Landfill Gas": 45,
+    "Natural Gas Fired Combined Cycle": 85,
+    "Natural Gas Fired Combustion Turbine": 85,
+    "Natural Gas Steam Turbine": 80,
+    "Wood/Wood Waste Biomass": 70,
+    "Other Gases": 65,
+    "Conventional Hydroelectric": 90,
+    "Onshore Wind Turbine": 95,
+    "Solar Photovoltaic": 95,
+    "Geothermal": 60,
+    "All Other": 60,
+}
+
 
 def haversine_miles(lat1, lon1, lat2, lon2):
     """Great-circle distance between two points in miles."""
@@ -91,195 +132,182 @@ def is_coastal_location(lat, lon, state):
     return False
 
 
-# ── Dimension scorers ──────────────────────────────────────────────────────
+# ── Sub-score functions ───────────────────────────────────────────────────
 
 
-def score_power_access(site, nearest_sub):
-    """
-    30% weight.
-    Power plants: distance + capacity + voltage
-    Brownfields: distance + voltage (no existing capacity)
-    """
-    dist = nearest_sub["distance_miles"]
-    max_volt = nearest_sub["max_volt"]
-    capacity = site.get("total_capacity_mw", 0)
+def compute_sub_distance(dist):
+    """Distance to nearest 345kV+ sub: 100 at 0 mi, 0 at 50+ mi."""
+    return clamp(100 - dist * 2)
 
-    # Distance score: 100 at 0 mi, 0 at 50+ mi
-    dist_score = clamp(100 - (dist * 2))
 
-    # Voltage bonus
-    volt_score = 60
+def compute_sub_voltage(max_volt):
+    """Voltage tier score."""
     if max_volt >= 765:
-        volt_score = 100
+        return 100
     elif max_volt >= 500:
-        volt_score = 85
+        return 85
     elif max_volt >= 345:
-        volt_score = 70
-
-    if site["site_type"] == "power_plant":
-        cap_score = clamp((capacity - 50) / 1950 * 100)
-        return dist_score * 0.50 + cap_score * 0.30 + volt_score * 0.20
-    else:
-        # Brownfields: no existing capacity, weight distance + voltage more
-        return dist_score * 0.65 + volt_score * 0.35
+        return 70
+    return 60
 
 
-def score_grid_capacity(site, nearest_sub, nearby_withdrawals):
-    """
-    20% weight.
-    Power plants: capacity + lines + queue withdrawals
-    Brownfields: lines + queue withdrawals (no existing capacity)
-    """
-    lines = nearest_sub.get("lines") or 0
-    lines_score = clamp(lines / 8 * 100)
+def compute_gen_capacity(capacity):
+    """Existing generation capacity score (power plants only)."""
+    return clamp((capacity - 50) / 1950 * 100)
 
-    qw_count = nearby_withdrawals["count"]
-    qw_mw = nearby_withdrawals["total_mw"]
+
+def compute_tx_lines(lines):
+    """Connected transmission lines score."""
+    return clamp(lines / 8 * 100)
+
+
+def compute_queue_withdrawal(qw_count, qw_mw):
+    """Queue withdrawal activity score."""
     if qw_count == 0:
-        qw_score = 30
-    else:
-        count_score = clamp(30 + qw_count * 5, 30, 100)
-        mw_bonus = clamp(qw_mw / 5000 * 20, 0, 20)
-        qw_score = clamp(count_score + mw_bonus)
-
-    if site["site_type"] == "power_plant":
-        capacity = site.get("total_capacity_mw", 0)
-        cap_score = clamp((capacity - 50) / 2950 * 100)
-        return cap_score * 0.40 + lines_score * 0.30 + qw_score * 0.30
-    else:
-        # Brownfields: no capacity, weight lines + withdrawals
-        return lines_score * 0.45 + qw_score * 0.55
+        return 30
+    count_score = clamp(30 + qw_count * 5, 30, 100)
+    mw_bonus = clamp(qw_mw / 5000 * 20, 0, 20)
+    return clamp(count_score + mw_bonus)
 
 
-def score_site_characteristics(site):
-    """
-    20% weight.
-    Power plants: fuel type suitability + capacity scale
-    Brownfields: base reuse score (already cleared/assessed for redevelopment)
-    """
-    if site["site_type"] == "power_plant":
-        fuel = site["fuel_type"]
-        capacity = site.get("total_capacity_mw", 0)
+def compute_fuel_type(fuel):
+    """Fuel type suitability score (power plants only)."""
+    return FUEL_TYPE_SCORES.get(fuel, 50)
 
-        fuel_scores = {
-            "Conventional Steam Coal": 90,
-            "Natural Gas Fired Combined Cycle": 95,
-            "Natural Gas Fired Combustion Turbine": 80,
-            "Natural Gas Steam Turbine": 85,
-            "Nuclear": 50,
-            "Petroleum Liquids": 70,
-            "Petroleum Coke": 70,
-            "Coal Integrated Gasification Combined Cycle": 80,
-            "Other Gases": 65,
-            "Other Waste Biomass": 55,
-            "Wood/Wood Waste Biomass": 55,
-            "Municipal Solid Waste": 45,
-            "Landfill Gas": 40,
-            "Conventional Hydroelectric": 30,
-            "Onshore Wind Turbine": 20,
-            "Solar Photovoltaic": 25,
-            "Geothermal": 35,
-            "All Other": 50,
-        }
-        fuel_score = fuel_scores.get(fuel, 50)
-        scale_score = clamp((capacity - 50) / 1450 * 100)
-        return fuel_score * 0.60 + scale_score * 0.40
-    else:
-        # Brownfields are assessed/cleared for redevelopment — good reuse potential
-        # but unknown structural footprint, so moderate-high base score
+
+def compute_capacity_scale(capacity):
+    """Capacity scale score (power plants only)."""
+    return clamp((capacity - 50) / 1450 * 100)
+
+
+def compute_longitude(lon):
+    """Longitude proximity proxy."""
+    if lon < -70:
+        return clamp(100 - (lon + 70) * -1.2)
+    return 100
+
+
+def compute_latitude(lat):
+    """Latitude band score."""
+    if 33 <= lat <= 43:
+        return 90
+    elif 28 <= lat <= 48:
+        return 70
+    return 40
+
+
+def compute_broadband(state):
+    """Broadband coverage score from state-level FCC data."""
+    bb_pct = BROADBAND_COVERAGE.get(state, 80)
+    if bb_pct >= 95:
+        return 95
+    elif bb_pct >= 90:
+        return 85
+    elif bb_pct >= 85:
+        return 75
+    elif bb_pct >= 80:
         return 65
+    elif bb_pct >= 75:
+        return 50
+    return 35
+
+
+def compute_contamination(site):
+    """Contamination risk score."""
+    if site["site_type"] == "power_plant":
+        return CONTAMINATION_SCORES.get(site["fuel_type"], 60)
+    return 55  # brownfield
+
+
+def compute_operational_status(site):
+    """Operational status score (power plants only)."""
+    if site["site_type"] == "power_plant":
+        return 80 if site.get("status") == "retiring" else 65
+    return 0  # N/A for brownfields
+
+
+def compute_flood_zone(lat, lon, state):
+    """Flood zone exposure score."""
+    if is_coastal_location(lat, lon, state):
+        return 35
+    elif state in MODERATE_FLOOD_STATES:
+        return 65
+    return 90
+
+
+# ── Dimension scorers ─────────────────────────────────────────────────────
+
+
+def score_time_to_power(site, nearest, nearby_withdrawals):
+    """
+    50% weight. Combines old Power Access + Grid Capacity.
+    Power plants: distance + gen capacity + voltage + tx lines + queue withdrawals
+    Brownfields: distance + voltage + tx lines + queue withdrawals (no gen capacity)
+    """
+    dist_score = compute_sub_distance(nearest["distance_miles"])
+    volt_score = compute_sub_voltage(nearest["max_volt"])
+    lines_score = compute_tx_lines(nearest.get("lines") or 0)
+    qw_score = compute_queue_withdrawal(
+        nearby_withdrawals["count"], nearby_withdrawals["total_mw"]
+    )
+
+    if site["site_type"] == "power_plant":
+        capacity = site.get("total_capacity_mw", 0)
+        gen_cap_score = compute_gen_capacity(capacity)
+        dim = (dist_score * 0.25 + gen_cap_score * 0.20 + volt_score * 0.15 +
+               lines_score * 0.15 + qw_score * 0.25)
+    else:
+        gen_cap_score = 0
+        dim = dist_score * 0.35 + volt_score * 0.20 + lines_score * 0.20 + qw_score * 0.25
+
+    return dim, dist_score, volt_score, gen_cap_score, lines_score, qw_score
+
+
+def score_site_readiness(site):
+    """
+    20% weight. Renamed from Site Characteristics.
+    Power plants: fuel type suitability + capacity scale
+    Brownfields: base reuse score (flat 65)
+    """
+    if site["site_type"] == "power_plant":
+        fuel_score = compute_fuel_type(site["fuel_type"])
+        capacity = site.get("total_capacity_mw", 0)
+        scale_score = compute_capacity_scale(capacity)
+        dim = fuel_score * 0.60 + scale_score * 0.40
+        return dim, fuel_score, scale_score
+    return 65, 0, 0
 
 
 def score_connectivity(site):
     """
-    15% weight. Same for both site types:
-    longitude proxy + latitude band + broadband coverage
+    15% weight. Same for both site types.
     """
-    lat = site["latitude"]
-    lon = site["longitude"]
-    state = site["state"]
-
-    lon_score = clamp(100 - (lon + 70) * -1.2) if lon < -70 else 100
-    lon_score = clamp(lon_score)
-
-    if 33 <= lat <= 43:
-        lat_score = 90
-    elif 28 <= lat <= 48:
-        lat_score = 70
-    else:
-        lat_score = 40
-
-    bb_pct = BROADBAND_COVERAGE.get(state, 80)
-    if bb_pct >= 95:
-        bb_score = 95
-    elif bb_pct >= 90:
-        bb_score = 85
-    elif bb_pct >= 85:
-        bb_score = 75
-    elif bb_pct >= 80:
-        bb_score = 65
-    elif bb_pct >= 75:
-        bb_score = 50
-    else:
-        bb_score = 35
-
-    return lon_score * 0.40 + lat_score * 0.30 + bb_score * 0.30
+    lon_score = compute_longitude(site["longitude"])
+    lat_score = compute_latitude(site["latitude"])
+    bb_score = compute_broadband(site["state"])
+    dim = lon_score * 0.40 + lat_score * 0.30 + bb_score * 0.30
+    return dim, lon_score, lat_score, bb_score
 
 
 def score_risk_factors(site):
     """
     15% weight.
     Power plants: contamination + status + flood
-    Brownfields: brownfield contamination risk + flood
+    Brownfields: contamination + flood (no status)
     """
-    state = site["state"]
-    lat = site["latitude"]
-    lon = site["longitude"]
-
-    # Flood zone risk
-    if is_coastal_location(lat, lon, state):
-        flood_score = 35
-    elif state in MODERATE_FLOOD_STATES:
-        flood_score = 65
-    else:
-        flood_score = 90
+    contam_score = compute_contamination(site)
+    status_score = compute_operational_status(site)
+    flood_score = compute_flood_zone(site["latitude"], site["longitude"], site["state"])
 
     if site["site_type"] == "power_plant":
-        fuel = site["fuel_type"]
-        status = site.get("status", "retired")
-
-        contamination_scores = {
-            "Conventional Steam Coal": 45,
-            "Coal Integrated Gasification Combined Cycle": 50,
-            "Nuclear": 20,
-            "Petroleum Liquids": 55,
-            "Petroleum Coke": 50,
-            "Municipal Solid Waste": 40,
-            "Other Waste Biomass": 50,
-            "Landfill Gas": 45,
-            "Natural Gas Fired Combined Cycle": 85,
-            "Natural Gas Fired Combustion Turbine": 85,
-            "Natural Gas Steam Turbine": 80,
-            "Wood/Wood Waste Biomass": 70,
-            "Other Gases": 65,
-            "Conventional Hydroelectric": 90,
-            "Onshore Wind Turbine": 95,
-            "Solar Photovoltaic": 95,
-            "Geothermal": 60,
-            "All Other": 60,
-        }
-        contam_score = contamination_scores.get(fuel, 60)
-        status_score = 80 if status == "retiring" else 65
-        return contam_score * 0.50 + status_score * 0.20 + flood_score * 0.30
+        dim = contam_score * 0.50 + status_score * 0.20 + flood_score * 0.30
     else:
-        # Brownfields have known contamination (they're on the EPA list),
-        # but they've been assessed and are in the remediation pipeline.
-        # Moderate risk — better than coal/nuclear, worse than clean gas.
-        contam_score = 55
-        return contam_score * 0.65 + flood_score * 0.35
+        dim = contam_score * 0.65 + flood_score * 0.35
+
+    return dim, contam_score, status_score, flood_score
 
 
-# ── Main ───────────────────────────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────────
 
 
 def main():
@@ -417,13 +445,12 @@ def main():
         nearby_qw = {"count": qw_count, "total_mw": qw_total_mw}
 
         # Score each dimension
-        pa = score_power_access(site, nearest)
-        gc = score_grid_capacity(site, nearest, nearby_qw)
-        sc_val = score_site_characteristics(site)
-        co = score_connectivity(site)
-        rf = score_risk_factors(site)
+        ttp, dist_s, volt_s, gen_s, lines_s, qw_s = score_time_to_power(site, nearest, nearby_qw)
+        sr, fuel_s, scale_s = score_site_readiness(site)
+        co, lon_s, lat_s, bb_s = score_connectivity(site)
+        rf, contam_s, status_s, flood_s = score_risk_factors(site)
 
-        composite = (pa * 0.30) + (gc * 0.20) + (sc_val * 0.20) + (co * 0.15) + (rf * 0.15)
+        composite = (ttp * 0.50) + (sr * 0.20) + (co * 0.15) + (rf * 0.15)
         composite = round(clamp(composite), 1)
 
         scored.append({
@@ -436,14 +463,29 @@ def main():
             "status": site.get("status", "brownfield"),
             "planned_retirement_date": site.get("planned_retirement_date"),
             "composite_score": composite,
-            "power_access": round(pa, 1),
-            "grid_capacity": round(gc, 1),
-            "site_characteristics": round(sc_val, 1),
+            "time_to_power": round(ttp, 1),
+            "site_readiness": round(sr, 1),
             "connectivity": round(co, 1),
             "risk_factors": round(rf, 1),
+            "sub_distance_score": round(dist_s, 1),
+            "sub_voltage_score": round(volt_s, 1),
+            "gen_capacity_score": round(gen_s, 1),
+            "tx_lines_score": round(lines_s, 1),
+            "queue_withdrawal_score": round(qw_s, 1),
+            "fuel_type_score": round(fuel_s, 1),
+            "capacity_scale_score": round(scale_s, 1),
+            "longitude_score": round(lon_s, 1),
+            "latitude_score": round(lat_s, 1),
+            "broadband_score": round(bb_s, 1),
+            "contamination_score": round(contam_s, 1),
+            "operational_status_score": round(status_s, 1),
+            "flood_zone_score": round(flood_s, 1),
             "nearest_sub_name": nearest["name"],
             "nearest_sub_distance_miles": round(best_dist, 1),
             "nearest_sub_voltage_kv": nearest["max_volt"],
+            "nearest_sub_lines": nearest["lines"],
+            "queue_count_20mi": qw_count,
+            "queue_mw_20mi": round(qw_total_mw, 1),
             "site_type": site["site_type"],
         })
 
@@ -511,8 +553,8 @@ def main():
     print("=" * 140)
     print("TOP 20 ADAPTIVE REUSE SITES (ALL SITE TYPES)")
     print("=" * 140)
-    header = "{:>3}  {:<30} {:>2}  {:>7}  {:>12}  {:>10}  {:>5}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6}".format(
-        "#", "Site Name", "ST", "Score", "Capacity MW", "Type", "PwrAc", "Grid", "Site", "Conn", "Risk", "SubMi", "SubkV"
+    header = "{:>3}  {:<30} {:>2}  {:>7}  {:>12}  {:>10}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6}".format(
+        "#", "Site Name", "ST", "Score", "Capacity MW", "Type", "TTP", "SiteR", "Conn", "Risk", "SubMi", "SubkV"
     )
     print(header)
     print("-" * 140)
@@ -520,16 +562,15 @@ def main():
         name = s["plant_name"][:30]
         site_type = "Plant" if s["site_type"] == "power_plant" else "Brown"
         cap_str = "{:>10,.0f}".format(s["total_capacity_mw"]) if s["total_capacity_mw"] > 0 else "       N/A"
-        print("{:>3}  {:<30} {:>2}  {:>7}  {}  {:>10}  {:>5}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6,.0f}".format(
+        print("{:>3}  {:<30} {:>2}  {:>7}  {}  {:>10}  {:>5}  {:>5}  {:>5}  {:>5}  {:>6}  {:>6,.0f}".format(
             i + 1,
             name,
             s["state"],
             s["composite_score"],
             cap_str,
             site_type,
-            s["power_access"],
-            s["grid_capacity"],
-            s["site_characteristics"],
+            s["time_to_power"],
+            s["site_readiness"],
             s["connectivity"],
             s["risk_factors"],
             s["nearest_sub_distance_miles"],

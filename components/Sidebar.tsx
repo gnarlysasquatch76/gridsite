@@ -182,7 +182,7 @@ export default function Sidebar(props: SidebarProps) {
                     {selectedSite.state}
                     {selectedSite.total_capacity_mw > 0 && <> &middot; {selectedSite.total_capacity_mw.toLocaleString()} MW</>}
                     {selectedSite.fuel_type !== "Custom" && <> &middot; {selectedSite.fuel_type}</>}
-                    {selectedSite.status !== "custom" && <> &middot; {selectedSite.status.charAt(0).toUpperCase() + selectedSite.status.slice(1)}</>}
+                    {selectedSite.status !== "custom" && selectedSite.status !== "brownfield" && <> &middot; {selectedSite.status.charAt(0).toUpperCase() + selectedSite.status.slice(1)}</>}
                   </div>
                 </div>
 
@@ -194,29 +194,154 @@ export default function Sidebar(props: SidebarProps) {
                   <div className="text-xs text-slate-400">Composite Score</div>
                 </div>
 
-                {/* Score Components */}
-                <div className="space-y-3">
-                  {[
-                    { label: "Power Access", weight: "30%", value: selectedSite.power_access },
-                    { label: "Grid Capacity", weight: "20%", value: selectedSite.grid_capacity },
-                    { label: "Site Characteristics", weight: "20%", value: selectedSite.site_characteristics },
-                    { label: "Connectivity", weight: "15%", value: selectedSite.connectivity },
-                    { label: "Risk Factors", weight: "15%", value: selectedSite.risk_factors },
-                  ].map(function (comp) {
-                    var barColor = comp.value >= 80 ? "#eab308" : comp.value >= 60 ? "#a3a3a3" : "#78716c";
-                    return (
-                      <div key={comp.label}>
-                        <div className="flex justify-between text-xs mb-1">
-                          <span className="text-slate-300">{comp.label} <span className="text-slate-500">({comp.weight})</span></span>
-                          <span className="font-medium" style={{ color: barColor }}>{comp.value}</span>
+                {/* --- Time to Power (50%) --- */}
+                {(function () {
+                  var s = selectedSite;
+                  var val = s.time_to_power;
+                  var barColor = val >= 80 ? "#eab308" : val >= 60 ? "#a3a3a3" : "#78716c";
+                  var subColor = function (v: number) { return v >= 80 ? "#eab308" : v >= 60 ? "#a3a3a3" : "#78716c"; };
+                  var isPowerPlant = s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
+                  return (
+                    <div>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-300 font-semibold">Time to Power <span className="text-slate-500 font-normal">(50%)</span></span>
+                        <span className="font-medium" style={{ color: barColor }}>{val}</span>
+                      </div>
+                      <div className="w-full bg-[#0f1b33] rounded-full h-1.5 mb-2">
+                        <div className="h-1.5 rounded-full" style={{ width: val + "%", backgroundColor: barColor }}></div>
+                      </div>
+                      <div className="pl-3 space-y-1 border-l border-white/5">
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Substation Distance</span>
+                          <span style={{ color: subColor(s.sub_distance_score) }} className="font-medium">{s.sub_distance_score} <span className="text-slate-500">({s.nearest_sub_distance_miles} mi)</span></span>
                         </div>
-                        <div className="w-full bg-[#0f1b33] rounded-full h-1.5">
-                          <div className="h-1.5 rounded-full" style={{ width: comp.value + "%", backgroundColor: barColor }}></div>
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Substation Voltage</span>
+                          <span style={{ color: subColor(s.sub_voltage_score) }} className="font-medium">{s.sub_voltage_score} <span className="text-slate-500">({s.nearest_sub_voltage_kv} kV)</span></span>
+                        </div>
+                        {isPowerPlant && (
+                          <div className="text-[11px] text-slate-400 flex justify-between">
+                            <span>Generation Capacity</span>
+                            <span style={{ color: subColor(s.gen_capacity_score) }} className="font-medium">{s.gen_capacity_score} <span className="text-slate-500">({s.total_capacity_mw.toLocaleString()} MW)</span></span>
+                          </div>
+                        )}
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Transmission Lines</span>
+                          <span style={{ color: subColor(s.tx_lines_score) }} className="font-medium">{s.tx_lines_score} <span className="text-slate-500">({s.nearest_sub_lines} lines)</span></span>
+                        </div>
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Queue Withdrawals</span>
+                          <span style={{ color: subColor(s.queue_withdrawal_score) }} className="font-medium">{s.queue_withdrawal_score} <span className="text-slate-500">({s.queue_count_20mi} / {Math.round(s.queue_mw_20mi).toLocaleString()} MW)</span></span>
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })()}
+
+                {/* --- Site Readiness (20%) --- */}
+                {(function () {
+                  var s = selectedSite;
+                  var val = s.site_readiness;
+                  var barColor = val >= 80 ? "#eab308" : val >= 60 ? "#a3a3a3" : "#78716c";
+                  var subColor = function (v: number) { return v >= 80 ? "#eab308" : v >= 60 ? "#a3a3a3" : "#78716c"; };
+                  var isPowerPlant = s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
+                  return (
+                    <div>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-300 font-semibold">Site Readiness <span className="text-slate-500 font-normal">(20%)</span></span>
+                        <span className="font-medium" style={{ color: barColor }}>{val}</span>
+                      </div>
+                      <div className="w-full bg-[#0f1b33] rounded-full h-1.5 mb-2">
+                        <div className="h-1.5 rounded-full" style={{ width: val + "%", backgroundColor: barColor }}></div>
+                      </div>
+                      {isPowerPlant ? (
+                        <div className="pl-3 space-y-1 border-l border-white/5">
+                          <div className="text-[11px] text-slate-400 flex justify-between">
+                            <span>Fuel Type Suitability</span>
+                            <span style={{ color: subColor(s.fuel_type_score) }} className="font-medium">{s.fuel_type_score}</span>
+                          </div>
+                          <div className="text-[11px] text-slate-400 flex justify-between">
+                            <span>Capacity Scale</span>
+                            <span style={{ color: subColor(s.capacity_scale_score) }} className="font-medium">{s.capacity_scale_score}</span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="pl-3 border-l border-white/5">
+                          <div className="text-[11px] text-slate-500">Base reuse score (assessed/cleared site)</div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
+                {/* --- Connectivity (15%) --- */}
+                {(function () {
+                  var s = selectedSite;
+                  var val = s.connectivity;
+                  var barColor = val >= 80 ? "#eab308" : val >= 60 ? "#a3a3a3" : "#78716c";
+                  var subColor = function (v: number) { return v >= 80 ? "#eab308" : v >= 60 ? "#a3a3a3" : "#78716c"; };
+                  return (
+                    <div>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-300 font-semibold">Connectivity <span className="text-slate-500 font-normal">(15%)</span></span>
+                        <span className="font-medium" style={{ color: barColor }}>{val}</span>
+                      </div>
+                      <div className="w-full bg-[#0f1b33] rounded-full h-1.5 mb-2">
+                        <div className="h-1.5 rounded-full" style={{ width: val + "%", backgroundColor: barColor }}></div>
+                      </div>
+                      <div className="pl-3 space-y-1 border-l border-white/5">
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Longitude Proximity</span>
+                          <span style={{ color: subColor(s.longitude_score) }} className="font-medium">{s.longitude_score}</span>
+                        </div>
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Latitude Band</span>
+                          <span style={{ color: subColor(s.latitude_score) }} className="font-medium">{s.latitude_score}</span>
+                        </div>
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Broadband Coverage</span>
+                          <span style={{ color: subColor(s.broadband_score) }} className="font-medium">{s.broadband_score}</span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {/* --- Risk Factors (15%) --- */}
+                {(function () {
+                  var s = selectedSite;
+                  var val = s.risk_factors;
+                  var barColor = val >= 80 ? "#eab308" : val >= 60 ? "#a3a3a3" : "#78716c";
+                  var subColor = function (v: number) { return v >= 80 ? "#eab308" : v >= 60 ? "#a3a3a3" : "#78716c"; };
+                  var isPowerPlant = s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
+                  return (
+                    <div>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-300 font-semibold">Risk Factors <span className="text-slate-500 font-normal">(15%)</span></span>
+                        <span className="font-medium" style={{ color: barColor }}>{val}</span>
+                      </div>
+                      <div className="w-full bg-[#0f1b33] rounded-full h-1.5 mb-2">
+                        <div className="h-1.5 rounded-full" style={{ width: val + "%", backgroundColor: barColor }}></div>
+                      </div>
+                      <div className="pl-3 space-y-1 border-l border-white/5">
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Contamination Risk</span>
+                          <span style={{ color: subColor(s.contamination_score) }} className="font-medium">{s.contamination_score}</span>
+                        </div>
+                        {isPowerPlant && (
+                          <div className="text-[11px] text-slate-400 flex justify-between">
+                            <span>Operational Status</span>
+                            <span style={{ color: subColor(s.operational_status_score) }} className="font-medium">{s.operational_status_score}</span>
+                          </div>
+                        )}
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Flood Zone Exposure</span>
+                          <span style={{ color: subColor(s.flood_zone_score) }} className="font-medium">{s.flood_zone_score}</span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
 
                 {/* Divider */}
                 <div className="border-t border-white/10"></div>
@@ -235,6 +360,10 @@ export default function Sidebar(props: SidebarProps) {
                   <div className="text-xs text-slate-400 flex justify-between">
                     <span>Voltage</span>
                     <span className="text-slate-200 font-medium">{selectedSite.nearest_sub_voltage_kv} kV</span>
+                  </div>
+                  <div className="text-xs text-slate-400 flex justify-between">
+                    <span>Connected Lines</span>
+                    <span className="text-slate-200 font-medium">{selectedSite.nearest_sub_lines}</span>
                   </div>
                 </div>
 

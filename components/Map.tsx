@@ -339,9 +339,8 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       "</div>" +
       (s.fuel_type === "Custom" ? "<div style=\"font-size:11px;color:#10b981;margin-bottom:6px;\">Right-click scored location</div>" : "<div style=\"font-size:11px;color:#64748b;margin-bottom:6px;\">" + s.fuel_type + " &middot; " + s.status + "</div>") +
       "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;\">" +
-        bar("Power Access", s.power_access, "30%") +
-        bar("Grid Capacity", s.grid_capacity, "20%") +
-        bar("Site Characteristics", s.site_characteristics, "20%") +
+        bar("Time to Power", s.time_to_power, "50%") +
+        bar("Site Readiness", s.site_readiness, "20%") +
         bar("Connectivity", s.connectivity, "15%") +
         bar("Risk Factors", s.risk_factors, "15%") +
       "</div>" +
@@ -873,19 +872,30 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
           map.on("click", SCORED_SITES_LAYER, function (e) {
             if (!e.features || e.features.length === 0) return;
             var p = e.features[0].properties as Record<string, any>;
+            var pf = function (v: any) { return parseFloat(v) || 0; };
             var site: ScoredSite = {
               plant_name: p.plant_name, state: p.state,
-              latitude: parseFloat(p.latitude), longitude: parseFloat(p.longitude),
-              total_capacity_mw: parseFloat(p.total_capacity_mw),
+              latitude: pf(p.latitude), longitude: pf(p.longitude),
+              total_capacity_mw: pf(p.total_capacity_mw),
               fuel_type: p.fuel_type, status: p.status,
               planned_retirement_date: p.planned_retirement_date || undefined,
-              composite_score: parseFloat(p.composite_score),
-              power_access: parseFloat(p.power_access), grid_capacity: parseFloat(p.grid_capacity),
-              site_characteristics: parseFloat(p.site_characteristics),
-              connectivity: parseFloat(p.connectivity), risk_factors: parseFloat(p.risk_factors),
+              composite_score: pf(p.composite_score),
+              time_to_power: pf(p.time_to_power), site_readiness: pf(p.site_readiness),
+              connectivity: pf(p.connectivity), risk_factors: pf(p.risk_factors),
+              sub_distance_score: pf(p.sub_distance_score), sub_voltage_score: pf(p.sub_voltage_score),
+              gen_capacity_score: pf(p.gen_capacity_score), tx_lines_score: pf(p.tx_lines_score),
+              queue_withdrawal_score: pf(p.queue_withdrawal_score),
+              fuel_type_score: pf(p.fuel_type_score), capacity_scale_score: pf(p.capacity_scale_score),
+              longitude_score: pf(p.longitude_score), latitude_score: pf(p.latitude_score),
+              broadband_score: pf(p.broadband_score),
+              contamination_score: pf(p.contamination_score), operational_status_score: pf(p.operational_status_score),
+              flood_zone_score: pf(p.flood_zone_score),
               nearest_sub_name: p.nearest_sub_name,
-              nearest_sub_distance_miles: parseFloat(p.nearest_sub_distance_miles),
-              nearest_sub_voltage_kv: parseFloat(p.nearest_sub_voltage_kv),
+              nearest_sub_distance_miles: pf(p.nearest_sub_distance_miles),
+              nearest_sub_voltage_kv: pf(p.nearest_sub_voltage_kv),
+              nearest_sub_lines: pf(p.nearest_sub_lines),
+              queue_count_20mi: pf(p.queue_count_20mi),
+              queue_mw_20mi: pf(p.queue_mw_20mi),
             };
             if (popupRef.current) popupRef.current.remove();
             var coords = (e.features[0].geometry as GeoJSON.Point).coordinates.slice() as [number, number];

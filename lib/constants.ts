@@ -47,14 +47,35 @@ export interface ScoredSite {
   status: string;
   planned_retirement_date?: string;
   composite_score: number;
-  power_access: number;
-  grid_capacity: number;
-  site_characteristics: number;
+  // 4 dimensions
+  time_to_power: number;
+  site_readiness: number;
   connectivity: number;
   risk_factors: number;
+  // Time to Power sub-scores
+  sub_distance_score: number;
+  sub_voltage_score: number;
+  gen_capacity_score: number;
+  tx_lines_score: number;
+  queue_withdrawal_score: number;
+  // Site Readiness sub-scores
+  fuel_type_score: number;
+  capacity_scale_score: number;
+  // Connectivity sub-scores
+  longitude_score: number;
+  latitude_score: number;
+  broadband_score: number;
+  // Risk Factors sub-scores
+  contamination_score: number;
+  operational_status_score: number;
+  flood_zone_score: number;
+  // Context
   nearest_sub_name: string;
   nearest_sub_distance_miles: number;
   nearest_sub_voltage_kv: number;
+  nearest_sub_lines: number;
+  queue_count_20mi: number;
+  queue_mw_20mi: number;
 }
 
 export interface ProximityResult {
