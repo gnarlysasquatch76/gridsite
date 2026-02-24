@@ -1,6 +1,6 @@
 "use client";
 
-import { US_STATES, type ScoredSite, type LayerState, type LayerGroupState } from "../lib/constants";
+import { US_STATES, OPPORTUNITY_LABELS, OPPORTUNITY_COLORS, type ScoredSite, type LayerState, type LayerGroupState } from "../lib/constants";
 import { estimateTimeToPower } from "../lib/scoring";
 import LayerControls from "./LayerControls";
 
@@ -19,8 +19,10 @@ interface SidebarProps {
   filteredSites: ScoredSite[];
   minMW: number;
   selectedState: string;
+  siteTypeFilter: string;
   onMinMWChange: (value: number) => void;
   onSelectedStateChange: (value: string) => void;
+  onSiteTypeFilterChange: (value: string) => void;
   onFlyToSite: (site: ScoredSite) => void;
 }
 
@@ -30,7 +32,8 @@ export default function Sidebar(props: SidebarProps) {
     onToggleLayersOpen, onToggleLayer, onToggleLayerGroup, onSetGroupLayers,
     activeTab, onTabChange, selectedSite,
     scoredSites, filteredSites,
-    minMW, selectedState, onMinMWChange, onSelectedStateChange,
+    minMW, selectedState, siteTypeFilter,
+    onMinMWChange, onSelectedStateChange, onSiteTypeFilterChange,
     onFlyToSite,
   } = props;
 
@@ -120,6 +123,23 @@ export default function Sidebar(props: SidebarProps) {
                   })}
                 </select>
               </div>
+              <div>
+                <label className="block text-xs text-slate-400 mb-1.5">
+                  Site Type
+                </label>
+                <select
+                  value={siteTypeFilter}
+                  onChange={(e) => onSiteTypeFilterChange(e.target.value)}
+                  className="w-full bg-[#0f1b33] border border-white/10 rounded px-3 py-2 text-sm text-white"
+                >
+                  <option value="all">All Sites</option>
+                  <option value="scored">Scored Sites Only</option>
+                  <option value="opportunity">Opportunities Only</option>
+                  <option value="retired_plant">Retired Plant</option>
+                  <option value="adaptive_reuse">Adaptive Reuse</option>
+                  <option value="greenfield">Greenfield</option>
+                </select>
+              </div>
             </div>
 
             {/* Results List */}
@@ -145,9 +165,12 @@ export default function Sidebar(props: SidebarProps) {
                 var ttpColor = ttp.tier === "green" ? "text-emerald-400 bg-emerald-400/10 border-emerald-400/20"
                   : ttp.tier === "yellow" ? "text-amber-400 bg-amber-400/10 border-amber-400/20"
                   : "text-red-400 bg-red-400/10 border-red-400/20";
+                var oppType = site.opportunity_type;
+                var oppLabel = oppType ? (OPPORTUNITY_LABELS[oppType] || oppType) : "";
+                var oppColor = oppType ? (OPPORTUNITY_COLORS[oppType] || "#94a3b8") : "";
                 return (
                   <button
-                    key={site.plant_name + "-" + site.state}
+                    key={site.plant_name + "-" + site.state + "-" + idx}
                     onClick={() => onFlyToSite(site)}
                     className="w-full text-left bg-[#0f1b33] rounded-lg p-3 border border-white/5 hover:border-yellow-500/30 hover:bg-[#132040] transition-colors"
                   >
@@ -158,9 +181,15 @@ export default function Sidebar(props: SidebarProps) {
                           {site.plant_name}
                         </div>
                         <div className="text-xs text-slate-400 mt-0.5">
-                          {site.state} &middot; {site.total_capacity_mw.toLocaleString()} MW
+                          {site.state}
+                          {site.total_capacity_mw > 0 && <> &middot; {site.total_capacity_mw.toLocaleString()} MW</>}
                         </div>
-                        <div className="flex items-center gap-2 mt-1">
+                        <div className="flex items-center gap-2 mt-1 flex-wrap">
+                          {oppType && (
+                            <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: oppColor + "22", color: oppColor, border: "1px solid " + oppColor + "44" }}>
+                              {oppLabel}
+                            </span>
+                          )}
                           <span className="text-[11px] text-slate-500">
                             {site.nearest_sub_distance_miles} mi to {site.nearest_sub_voltage_kv} kV sub
                           </span>
@@ -195,6 +224,24 @@ export default function Sidebar(props: SidebarProps) {
                     {selectedSite.status !== "custom" && selectedSite.status !== "brownfield" && <> &middot; {selectedSite.status.charAt(0).toUpperCase() + selectedSite.status.slice(1)}</>}
                   </div>
                 </div>
+
+                {/* Opportunity Type Badge */}
+                {selectedSite.opportunity_type && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold px-2.5 py-1 rounded" style={{
+                      backgroundColor: (OPPORTUNITY_COLORS[selectedSite.opportunity_type] || "#94a3b8") + "22",
+                      color: OPPORTUNITY_COLORS[selectedSite.opportunity_type] || "#94a3b8",
+                      border: "1px solid " + (OPPORTUNITY_COLORS[selectedSite.opportunity_type] || "#94a3b8") + "44",
+                    }}>
+                      {OPPORTUNITY_LABELS[selectedSite.opportunity_type] || selectedSite.opportunity_type}
+                    </span>
+                    {selectedSite.qualifying_substation && (
+                      <span className="text-[11px] text-slate-500">
+                        near {selectedSite.qualifying_substation} ({selectedSite.qualifying_sub_kv} kV)
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {/* Composite Score + TTP Badge */}
                 {(function () {

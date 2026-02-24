@@ -34,6 +34,8 @@ export var UTILITY_TERRITORIES_LAYER = "utility-territories-fill";
 export var UTILITY_TERRITORIES_OUTLINE_LAYER = "utility-territories-outline";
 export var LMP_NODES_SOURCE = "lmp-nodes";
 export var LMP_NODES_LAYER = "lmp-nodes-circles";
+export var OPPORTUNITIES_SOURCE = "opportunities";
+export var OPPORTUNITIES_LAYER = "opportunities-icons";
 export var DIAMOND_ICON = "diamond-icon";
 export var STAR_ICON = "star-icon";
 export var TRIANGLE_ICON = "triangle-icon";
@@ -48,6 +50,10 @@ export interface ScoredSite {
   fuel_type: string;
   status: string;
   planned_retirement_date?: string;
+  opportunity_type?: string;  // "retired_plant" | "adaptive_reuse" | "greenfield"
+  qualifying_substation?: string;
+  qualifying_sub_kv?: number;
+  area_acres?: number;
   composite_score: number;
   // 4 dimensions
   time_to_power: number;
@@ -118,6 +124,7 @@ export type LayerState = {
   dataCenters: boolean;
   utilityTerritories: boolean;
   lmpNodes: boolean;
+  opportunities: boolean;
 };
 
 export type LayerGroupState = {
@@ -129,9 +136,24 @@ export type LayerGroupState = {
 
 export var LAYER_GROUPS = {
   infrastructure: ["powerPlants", "substations", "transmissionLines", "dataCenters"] as const,
-  capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes"] as const,
+  capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes", "opportunities"] as const,
   risk: ["floodZones", "brownfields"] as const,
   connectivity: ["broadband"] as const,
+};
+
+export var OPPORTUNITY_TYPES = ["retired_plant", "adaptive_reuse", "greenfield"] as const;
+export type OpportunityType = typeof OPPORTUNITY_TYPES[number];
+
+export var OPPORTUNITY_LABELS: Record<string, string> = {
+  retired_plant: "Retired Plant",
+  adaptive_reuse: "Adaptive Reuse",
+  greenfield: "Greenfield",
+};
+
+export var OPPORTUNITY_COLORS: Record<string, string> = {
+  retired_plant: "#ef4444",
+  adaptive_reuse: "#f59e0b",
+  greenfield: "#22c55e",
 };
 
 export var FLOOD_RISK_STATES = new Set(["LA", "FL", "TX", "MS", "AL", "SC", "NC"]);

@@ -76,6 +76,7 @@ export default function LayerControls(props: LayerControlsProps) {
             { key: "utilityTerritories", label: "Utility Territories (EIA)" },
             { key: "queueWithdrawals", label: "Queue Withdrawals (ISO)" },
             { key: "lmpNodes", label: "LMP Pricing Nodes (ISO)" },
+            { key: "opportunities", label: "Opportunity Sites" },
           ])}
           {renderGroup("risk", "Site Risk", LAYER_GROUPS.risk, [
             { key: "floodZones", label: "Flood Zones (FEMA)" },

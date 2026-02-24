@@ -21,6 +21,8 @@ import {
   DATA_CENTERS_SOURCE, DATA_CENTERS_LAYER,
   UTILITY_TERRITORIES_SOURCE, UTILITY_TERRITORIES_LAYER, UTILITY_TERRITORIES_OUTLINE_LAYER,
   LMP_NODES_SOURCE, LMP_NODES_LAYER,
+  OPPORTUNITIES_SOURCE, OPPORTUNITIES_LAYER,
+  OPPORTUNITY_LABELS, OPPORTUNITY_COLORS,
   DIAMOND_ICON, STAR_ICON, TRIANGLE_ICON, SQUARE_ICON,
   type ScoredSite, type ProximityResult, type LayerState,
 } from "../lib/constants";
@@ -34,10 +36,11 @@ interface MapProps {
   minMW: number;
   selectedState: string;
   onScoredSitesLoaded: (sites: ScoredSite[]) => void;
+  onOpportunitySitesLoaded: (sites: ScoredSite[]) => void;
 }
 
 var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, ref) {
-  var { layers, minMW, selectedState, onScoredSitesLoaded } = props;
+  var { layers, minMW, selectedState, onScoredSitesLoaded, onOpportunitySitesLoaded } = props;
 
   var mapContainer = useRef<HTMLDivElement>(null);
   var mapRef = useRef<mapboxgl.Map | null>(null);
@@ -374,6 +377,47 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">" +
         "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Avg LMP</span><strong>$" + avgLmp.toFixed(1) + "/MWh</strong></div>" +
         "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Avg LMP</span><strong>" + (avgLmp * 0.1).toFixed(1) + " &cent;/kWh</strong></div>" +
+      "</div></div>";
+  }, []);
+
+  var buildOpportunityPopupHTML = useCallback(function (s: ScoredSite): string {
+    var oppType = s.opportunity_type || "";
+    var oppLabel = OPPORTUNITY_LABELS[oppType] || oppType;
+    var oppColor = OPPORTUNITY_COLORS[oppType] || "#94a3b8";
+
+    function bar(label: string, value: number, weight: string): string {
+      var barColor = value >= 80 ? "#eab308" : value >= 60 ? "#a3a3a3" : "#78716c";
+      return "<div style=\"margin:3px 0;\">" +
+        "<div style=\"display:flex;justify-content:space-between;font-size:11px;\">" +
+          "<span>" + label + " <span style=\"color:#94a3b8;\">(" + weight + ")</span></span>" +
+          "<strong style=\"color:" + barColor + ";\">" + value + "</strong>" +
+        "</div>" +
+        "<div style=\"background:#1e293b;border-radius:3px;height:5px;margin-top:2px;\">" +
+          "<div style=\"background:" + barColor + ";border-radius:3px;height:5px;width:" + value + "%;\"></div>" +
+        "</div></div>";
+    }
+
+    var ttp = estimateTimeToPower(s);
+    var ttpColor = ttp.tier === "green" ? "#10b981" : ttp.tier === "yellow" ? "#f59e0b" : "#ef4444";
+
+    return "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:260px;\">" +
+      "<div style=\"display:flex;justify-content:space-between;align-items:start;margin-bottom:4px;\">" +
+        "<div>" +
+          "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;\">" + s.plant_name + "</div>" +
+          "<div style=\"font-size:12px;color:#64748b;\">" + s.state + (s.total_capacity_mw > 0 ? " &middot; " + s.total_capacity_mw.toLocaleString() + " MW" : "") + "</div>" +
+        "</div>" +
+        "<div style=\"background:#eab308;color:#0f172a;border-radius:6px;padding:4px 10px;font-size:18px;font-weight:bold;min-width:44px;text-align:center;\">" + s.composite_score + "</div>" +
+      "</div>" +
+      "<div style=\"display:flex;gap:6px;margin-bottom:6px;\">" +
+        "<span style=\"background:" + oppColor + ";color:" + (oppType === "retired_plant" ? "#fff" : "#000") + ";border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + oppLabel + "</span>" +
+        "<span style=\"background:" + ttpColor + ";color:" + (ttp.tier === "red" ? "#fff" : "#000") + ";border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;\">" + ttp.label + "</span>" +
+      "</div>" +
+      (s.qualifying_substation ? "<div style=\"font-size:11px;color:#64748b;margin-bottom:6px;\">Near " + s.qualifying_substation + " (" + (s.qualifying_sub_kv || "") + " kV)</div>" : "") +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;\">" +
+        bar("Time to Power", s.time_to_power, "50%") +
+        bar("Site Readiness", s.site_readiness, "20%") +
+        bar("Connectivity", s.connectivity, "15%") +
+        bar("Risk Factors", s.risk_factors, "15%") +
       "</div></div>";
   }, []);
 
@@ -904,6 +948,83 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
     if (mapLoaded.current) setup(); else map.on("load", setup);
   }, [layers.lmpNodes, buildLmpPopupHTML]);
 
+  // --- Load opportunity sites ---
+
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+    function setup() {
+      if (!map) return;
+      if (map.getLayer(OPPORTUNITIES_LAYER)) {
+        map.setLayoutProperty(OPPORTUNITIES_LAYER, "visibility", layers.opportunities ? "visible" : "none");
+        return;
+      }
+      if (!layers.opportunities) return;
+      fetch("/data/opportunities.geojson")
+        .then(function (res) { return res.json(); })
+        .then(function (geojson) {
+          if (!map || map.getSource(OPPORTUNITIES_SOURCE)) return;
+          var sites: ScoredSite[] = geojson.features
+            .map(function (f: any) { return f.properties as ScoredSite; })
+            .sort(function (a: ScoredSite, b: ScoredSite) { return b.composite_score - a.composite_score; });
+          onOpportunitySitesLoaded(sites);
+          map.addSource(OPPORTUNITIES_SOURCE, { type: "geojson", data: geojson });
+          map.addLayer({
+            id: OPPORTUNITIES_LAYER, type: "circle", source: OPPORTUNITIES_SOURCE,
+            paint: {
+              "circle-color": ["match", ["get", "opportunity_type"],
+                "retired_plant", "#ef4444", "adaptive_reuse", "#f59e0b", "greenfield", "#22c55e", "#94a3b8"],
+              "circle-radius": ["interpolate", ["linear"], ["get", "composite_score"], 50, 4, 70, 6, 85, 9, 95, 12],
+              "circle-opacity": 0.9,
+              "circle-stroke-color": "#ffffff",
+              "circle-stroke-width": 1.5,
+            },
+          });
+          map.on("click", OPPORTUNITIES_LAYER, function (e) {
+            if (!e.features || e.features.length === 0) return;
+            var p = e.features[0].properties as Record<string, any>;
+            var pf = function (v: any) { return parseFloat(v) || 0; };
+            var site: ScoredSite = {
+              plant_name: p.plant_name, state: p.state,
+              latitude: pf(p.latitude), longitude: pf(p.longitude),
+              total_capacity_mw: pf(p.total_capacity_mw),
+              fuel_type: p.fuel_type, status: p.status,
+              planned_retirement_date: p.planned_retirement_date || undefined,
+              opportunity_type: p.opportunity_type || undefined,
+              qualifying_substation: p.qualifying_substation || undefined,
+              qualifying_sub_kv: pf(p.qualifying_sub_kv) || undefined,
+              composite_score: pf(p.composite_score),
+              time_to_power: pf(p.time_to_power), site_readiness: pf(p.site_readiness),
+              connectivity: pf(p.connectivity), risk_factors: pf(p.risk_factors),
+              sub_distance_score: pf(p.sub_distance_score), sub_voltage_score: pf(p.sub_voltage_score),
+              gen_capacity_score: pf(p.gen_capacity_score), tx_lines_score: pf(p.tx_lines_score),
+              queue_withdrawal_score: pf(p.queue_withdrawal_score),
+              fuel_type_score: pf(p.fuel_type_score), capacity_scale_score: pf(p.capacity_scale_score),
+              longitude_score: pf(p.longitude_score), latitude_score: pf(p.latitude_score),
+              broadband_score: pf(p.broadband_score),
+              contamination_score: pf(p.contamination_score), operational_status_score: pf(p.operational_status_score),
+              flood_zone_score: pf(p.flood_zone_score),
+              lmp_score: pf(p.lmp_score), nearest_lmp_avg: pf(p.nearest_lmp_avg),
+              nearest_lmp_node: p.nearest_lmp_node || "",
+              nearest_sub_name: p.nearest_sub_name,
+              nearest_sub_distance_miles: pf(p.nearest_sub_distance_miles),
+              nearest_sub_voltage_kv: pf(p.nearest_sub_voltage_kv),
+              nearest_sub_lines: pf(p.nearest_sub_lines),
+              queue_count_20mi: pf(p.queue_count_20mi),
+              queue_mw_20mi: pf(p.queue_mw_20mi),
+            };
+            if (popupRef.current) popupRef.current.remove();
+            var coords = (e.features[0].geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+            popupRef.current = new mapboxgl.Popup({ offset: 14, maxWidth: "340px" }).setLngLat(coords).setHTML(buildOpportunityPopupHTML(site)).addTo(map!);
+          });
+          map.on("mouseenter", OPPORTUNITIES_LAYER, function () { map!.getCanvas().style.cursor = "pointer"; });
+          map.on("mouseleave", OPPORTUNITIES_LAYER, function () { map!.getCanvas().style.cursor = ""; });
+        })
+        .catch(function () { /* opportunities.geojson may not exist yet */ });
+    }
+    if (mapLoaded.current) setup(); else map.on("load", setup);
+  }, [layers.opportunities, buildOpportunityPopupHTML, onOpportunitySitesLoaded]);
+
   // --- Load scored sites ---
 
   useEffect(function () {
@@ -1125,6 +1246,10 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#22d3ee]"></span><span>138-229 kV Sub</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#38bdf8]"></span><span>230-344 kV Sub</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#818cf8]"></span><span>345 kV+ Sub</span></div>
+              <div className="border-t border-white/10 my-1.5"></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444] border border-white/60"></span><span>Retired Plant Opp.</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#f59e0b] border border-white/60"></span><span>Adaptive Reuse Opp.</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-white/60"></span><span>Greenfield Opp.</span></div>
               <div className="border-t border-white/10 my-1.5"></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-white/40"></span><span>LMP Low (Headroom)</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#f59e0b] border border-white/40"></span><span>LMP Moderate</span></div>
