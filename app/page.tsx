@@ -943,7 +943,7 @@ export default function Home() {
       map.addSource(FLOOD_ZONES_SOURCE, {
         type: "raster",
         tiles: [
-          "https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=png32&transparent=true&f=image",
+          "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=png32&transparent=true&f=image",
         ],
         tileSize: 256,
       });
