@@ -402,7 +402,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
     var avgAtc = props.avg_atc_mw != null ? Number(props.avg_atc_mw) : 0;
     var atcClass = props.atc_class || "moderate";
     var classColor = atcClass === "high" ? "#22c55e" : atcClass === "moderate" ? "#eab308" : "#ef4444";
-    var classLabel = atcClass === "high" ? "High (>200 MW)" : atcClass === "moderate" ? "Moderate (50-200)" : "Low (<50 MW)";
+    var classLabel = atcClass === "high" ? "High (\u22652500 MW)" : atcClass === "moderate" ? "Moderate (1-2.5 GW)" : "Low (<1 GW)";
     var sourceSub = props.source_sub || "";
     var sinkSub = props.sink_sub || "";
 
@@ -1296,9 +1296,9 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#f59e0b] border border-white/40"></span><span>LMP Moderate</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444] border border-white/40"></span><span>LMP High (Congestion)</span></div>
               <div className="border-t border-white/10 my-1.5"></div>
-              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-white/40"></span><span>ATC High (&gt;200 MW)</span></div>
-              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#eab308] border border-white/40"></span><span>ATC Moderate</span></div>
-              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444] border border-white/40"></span><span>ATC Low (&lt;50 MW)</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-white/40"></span><span>ATC High (&ge;2.5 GW)</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#eab308] border border-white/40"></span><span>ATC Moderate (1-2.5 GW)</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444] border border-white/40"></span><span>ATC Low (&lt;1 GW)</span></div>
               <div className="border-t border-white/10 my-1.5"></div>
               <div className="flex items-center gap-2"><span className="inline-block w-4 h-[1px] bg-[#22d3ee] rounded"></span><span>138-229 kV Line</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-4 h-[2px] bg-[#38bdf8] rounded"></span><span>230-344 kV Line</span></div>

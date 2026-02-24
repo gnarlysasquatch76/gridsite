@@ -24,8 +24,8 @@ SUBSTATIONS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "substations
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "oasis-atc.geojson")
 
 # ATC thresholds for classification (MW)
-ATC_HIGH = 200     # >= 200 MW = high (green)
-ATC_LOW = 50       # < 50 MW = low (red)
+ATC_HIGH = 2500    # >= 2500 MW = high (green)
+ATC_LOW = 1000     # < 1000 MW = low (red)
 
 # ── Interface definitions with source/sink substations and fallback ATC ──
 # source_sub/sink_sub are HIFLD substation NAME values (uppercase) for geocoding.

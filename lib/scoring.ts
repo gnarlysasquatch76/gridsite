@@ -80,12 +80,12 @@ export function computeLmpScore(avgLmp: number): number {
 
 export function computeAtcScore(avgAtcMw: number): number {
   // High ATC = more transfer capability = better for data centers = high score
-  if (avgAtcMw >= 500) return 95;
-  if (avgAtcMw >= 300) return 85;
-  if (avgAtcMw >= 200) return 75;
-  if (avgAtcMw >= 100) return 60;
-  if (avgAtcMw >= 50) return 45;
-  if (avgAtcMw >= 25) return 30;
+  if (avgAtcMw >= 3000) return 95;
+  if (avgAtcMw >= 2000) return 85;
+  if (avgAtcMw >= 1500) return 75;
+  if (avgAtcMw >= 1000) return 60;
+  if (avgAtcMw >= 500) return 45;
+  if (avgAtcMw >= 200) return 30;
   return 20;
 }
 

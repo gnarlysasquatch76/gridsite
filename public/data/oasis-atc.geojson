@@ -14,7 +14,7 @@
         "name": "AP South",
         "iso": "PJM",
         "avg_atc_mw": 1850,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "BEDINGTON",
         "sink_sub": "BLACK OAK",
         "source": "curated_fallback"
@@ -33,7 +33,7 @@
         "name": "Bedington-Black Oak",
         "iso": "PJM",
         "avg_atc_mw": 1200,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "BEDINGTON",
         "sink_sub": "BLACK OAK",
         "source": "curated_fallback"
@@ -71,7 +71,7 @@
         "name": "Central East Interface",
         "iso": "PJM",
         "avg_atc_mw": 2200,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "BRANCHBURG",
         "sink_sub": "ELROY",
         "source": "curated_fallback"
@@ -90,7 +90,7 @@
         "name": "CETO East",
         "iso": "PJM",
         "avg_atc_mw": 1600,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "DEANS",
         "sink_sub": "SAYREVILLE",
         "source": "curated_fallback"
@@ -128,7 +128,7 @@
         "name": "PJM-NYISO Interface",
         "iso": "PJM",
         "avg_atc_mw": 1900,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "BRANCHBURG",
         "sink_sub": "RAMAPO",
         "source": "curated_fallback"
@@ -166,7 +166,7 @@
         "name": "PEPCO Import",
         "iso": "PJM",
         "avg_atc_mw": 1400,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "CHALK POINT",
         "sink_sub": "BRIGHTSEAT",
         "source": "curated_fallback"
@@ -242,7 +242,7 @@
         "name": "Moses-South",
         "iso": "NYISO",
         "avg_atc_mw": 1100,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "MOSES",
         "sink_sub": "WILLIS",
         "source": "curated_fallback"
@@ -261,7 +261,7 @@
         "name": "West Central",
         "iso": "NYISO",
         "avg_atc_mw": 1950,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "ROCHESTER",
         "sink_sub": "CLAY",
         "source": "curated_fallback"
@@ -299,7 +299,7 @@
         "name": "NY-NE Interface",
         "iso": "NYISO",
         "avg_atc_mw": 1400,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "MARCY",
         "sink_sub": "NEW SCOTLAND",
         "source": "curated_fallback"
@@ -318,7 +318,7 @@
         "name": "NE-NY AC Ties",
         "iso": "ISO-NE",
         "avg_atc_mw": 1200,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "SANDY POND",
         "sink_sub": "ALPS",
         "source": "curated_fallback"
@@ -337,7 +337,7 @@
         "name": "Orrington South",
         "iso": "ISO-NE",
         "avg_atc_mw": 1150,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "ORRINGTON",
         "sink_sub": "SUROWIEC",
         "source": "curated_fallback"
@@ -394,7 +394,7 @@
         "name": "Maine Import",
         "iso": "ISO-NE",
         "avg_atc_mw": 1050,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "ORRINGTON",
         "sink_sub": "CHESTER",
         "source": "curated_fallback"
@@ -432,7 +432,7 @@
         "name": "NE-NB Interface",
         "iso": "ISO-NE",
         "avg_atc_mw": 1000,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "ORRINGTON",
         "sink_sub": "KEENE ROAD",
         "source": "curated_fallback"
@@ -451,7 +451,7 @@
         "name": "Cross Sound Cable (NE)",
         "iso": "ISO-NE",
         "avg_atc_mw": 330,
-        "atc_class": "high",
+        "atc_class": "low",
         "source_sub": "EAST HAVEN",
         "sink_sub": "SHORE ROAD",
         "source": "curated_fallback"
@@ -489,7 +489,7 @@
         "name": "Michigan-Ontario",
         "iso": "MISO",
         "avg_atc_mw": 1500,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "LAMBTON",
         "sink_sub": "ST CLAIR",
         "source": "curated_fallback"
@@ -508,7 +508,7 @@
         "name": "MISO North-South",
         "iso": "MISO",
         "avg_atc_mw": 2000,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "PRAIRIE ISLAND",
         "sink_sub": "LANSING",
         "source": "curated_fallback"
@@ -546,7 +546,7 @@
         "name": "MISO-SPP North",
         "iso": "MISO",
         "avg_atc_mw": 1600,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "SIBLEY",
         "sink_sub": "OVERTON",
         "source": "curated_fallback"
@@ -565,7 +565,7 @@
         "name": "MISO-SPP South",
         "iso": "MISO",
         "avg_atc_mw": 800,
-        "atc_class": "high",
+        "atc_class": "low",
         "source_sub": "ACADIANA",
         "sink_sub": "HARTBURG",
         "source": "curated_fallback"
@@ -584,7 +584,7 @@
         "name": "MISO-TVA Interface",
         "iso": "MISO",
         "avg_atc_mw": 1200,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "WILSON",
         "sink_sub": "DRESDEN",
         "source": "curated_fallback"
@@ -603,7 +603,7 @@
         "name": "MISO Central Corridor",
         "iso": "MISO",
         "avg_atc_mw": 2100,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "QUAD CITIES",
         "sink_sub": "NELSON DEWEY",
         "source": "curated_fallback"
@@ -622,7 +622,7 @@
         "name": "SPP-MISO North",
         "iso": "SPP",
         "avg_atc_mw": 1600,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "OVERTON",
         "sink_sub": "SIBLEY",
         "source": "curated_fallback"
@@ -641,7 +641,7 @@
         "name": "SPP-MISO South",
         "iso": "SPP",
         "avg_atc_mw": 800,
-        "atc_class": "high",
+        "atc_class": "low",
         "source_sub": "HARTBURG",
         "sink_sub": "ACADIANA",
         "source": "curated_fallback"
@@ -660,7 +660,7 @@
         "name": "SPP-AECI Interface",
         "iso": "SPP",
         "avg_atc_mw": 650,
-        "atc_class": "high",
+        "atc_class": "low",
         "source_sub": "NEOSHO",
         "sink_sub": "RIVERTON",
         "source": "curated_fallback"
@@ -679,7 +679,7 @@
         "name": "SPP North-South",
         "iso": "SPP",
         "avg_atc_mw": 2300,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "WOODWARD",
         "sink_sub": "COMANCHE",
         "source": "curated_fallback"
@@ -698,7 +698,7 @@
         "name": "SPP-ERCOT DC Tie",
         "iso": "SPP",
         "avg_atc_mw": 220,
-        "atc_class": "high",
+        "atc_class": "low",
         "source_sub": "OKLAUNION",
         "sink_sub": "VERNON",
         "source": "curated_fallback"
@@ -717,7 +717,7 @@
         "name": "SPP West Corridor",
         "iso": "SPP",
         "avg_atc_mw": 1400,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "TUCO",
         "sink_sub": "HITCHLAND",
         "source": "curated_fallback"
@@ -736,7 +736,7 @@
         "name": "SPP-WAPA Interface",
         "iso": "SPP",
         "avg_atc_mw": 400,
-        "atc_class": "high",
+        "atc_class": "low",
         "source_sub": "FORT THOMPSON",
         "sink_sub": "BIG BEND",
         "source": "curated_fallback"
@@ -755,7 +755,7 @@
         "name": "SPP Kansas Corridor",
         "iso": "SPP",
         "avg_atc_mw": 1800,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "WICHITA",
         "sink_sub": "WOLF CREEK",
         "source": "curated_fallback"
@@ -888,7 +888,7 @@
         "name": "Eldorado-Ivanpah",
         "iso": "CAISO",
         "avg_atc_mw": 2200,
-        "atc_class": "high",
+        "atc_class": "moderate",
         "source_sub": "ELDORADO",
         "sink_sub": "IVANPAH",
         "source": "curated_fallback"

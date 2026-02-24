@@ -300,17 +300,17 @@ def find_nearest_lmp(lat, lon, lmp_nodes):
 
 def compute_atc_score(avg_atc_mw):
     """ATC scoring. High ATC = more transfer capability = high score."""
-    if avg_atc_mw >= 500:
+    if avg_atc_mw >= 3000:
         return 95
-    elif avg_atc_mw >= 300:
+    elif avg_atc_mw >= 2000:
         return 85
-    elif avg_atc_mw >= 200:
+    elif avg_atc_mw >= 1500:
         return 75
-    elif avg_atc_mw >= 100:
+    elif avg_atc_mw >= 1000:
         return 60
-    elif avg_atc_mw >= 50:
+    elif avg_atc_mw >= 500:
         return 45
-    elif avg_atc_mw >= 25:
+    elif avg_atc_mw >= 200:
         return 30
     return 20
 
