@@ -24,6 +24,7 @@ PLANTS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "power-plants.geo
 SUBSTATIONS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "substations.geojson")
 QUEUE_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "queue-withdrawals.geojson")
 BROWNFIELDS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "epa-brownfields.geojson")
+LMP_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "lmp-nodes.geojson")
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "scored-sites.geojson")
 
 TOP_N = 100
@@ -235,14 +236,49 @@ def compute_flood_zone(lat, lon, state):
     return 90
 
 
+def compute_lmp_score(avg_lmp):
+    """LMP pricing score. Low LMP = grid headroom = high score."""
+    if avg_lmp <= 20:
+        return 95
+    elif avg_lmp <= 25:
+        return 90
+    elif avg_lmp <= 30:
+        return 80
+    elif avg_lmp <= 35:
+        return 70
+    elif avg_lmp <= 40:
+        return 60
+    elif avg_lmp <= 45:
+        return 50
+    elif avg_lmp <= 50:
+        return 40
+    elif avg_lmp <= 55:
+        return 30
+    return 20
+
+
+def find_nearest_lmp(lat, lon, lmp_nodes):
+    """Find nearest LMP pricing node and return (name, avg_lmp, lmp_score)."""
+    best_dist = float("inf")
+    best_node = None
+    for node in lmp_nodes:
+        d = haversine_miles(lat, lon, node["lat"], node["lon"])
+        if d < best_dist:
+            best_dist = d
+            best_node = node
+    if best_node is None:
+        return "", 0, 50
+    return best_node["name"], best_node["avg_lmp"], compute_lmp_score(best_node["avg_lmp"])
+
+
 # ── Dimension scorers ─────────────────────────────────────────────────────
 
 
-def score_time_to_power(site, nearest, nearby_withdrawals):
+def score_time_to_power(site, nearest, nearby_withdrawals, lmp_score):
     """
-    50% weight. Combines old Power Access + Grid Capacity.
-    Power plants: distance + gen capacity + voltage + tx lines + queue withdrawals
-    Brownfields: distance + voltage + tx lines + queue withdrawals (no gen capacity)
+    50% weight. Combines old Power Access + Grid Capacity + LMP pricing.
+    Power plants: distance + gen capacity + voltage + tx lines + queue withdrawals + lmp
+    Brownfields: distance + voltage + tx lines + queue withdrawals + lmp (no gen capacity)
     """
     dist_score = compute_sub_distance(nearest["distance_miles"])
     volt_score = compute_sub_voltage(nearest["max_volt"])
@@ -254,11 +290,12 @@ def score_time_to_power(site, nearest, nearby_withdrawals):
     if site["site_type"] == "power_plant":
         capacity = site.get("total_capacity_mw", 0)
         gen_cap_score = compute_gen_capacity(capacity)
-        dim = (dist_score * 0.25 + gen_cap_score * 0.20 + volt_score * 0.15 +
-               lines_score * 0.15 + qw_score * 0.25)
+        dim = (dist_score * 0.21 + gen_cap_score * 0.17 + volt_score * 0.13 +
+               lines_score * 0.13 + qw_score * 0.21 + lmp_score * 0.15)
     else:
         gen_cap_score = 0
-        dim = dist_score * 0.35 + volt_score * 0.20 + lines_score * 0.20 + qw_score * 0.25
+        dim = (dist_score * 0.30 + volt_score * 0.17 + lines_score * 0.17 +
+               qw_score * 0.21 + lmp_score * 0.15)
 
     return dim, dist_score, volt_score, gen_cap_score, lines_score, qw_score
 
@@ -331,6 +368,24 @@ def main():
         subs_geojson = json.load(f)
     with open(QUEUE_FILE) as f:
         queue_geojson = json.load(f)
+
+    # Load LMP nodes
+    lmp_nodes = []
+    if os.path.exists(LMP_FILE):
+        with open(LMP_FILE) as f:
+            lmp_geojson = json.load(f)
+        for feat in lmp_geojson["features"]:
+            coords = feat["geometry"]["coordinates"]
+            p = feat["properties"]
+            lmp_nodes.append({
+                "lat": coords[1],
+                "lon": coords[0],
+                "name": p.get("name", ""),
+                "avg_lmp": float(p.get("avg_lmp", 40)),
+            })
+        print("  LMP nodes loaded: " + str(len(lmp_nodes)))
+    else:
+        print("  LMP nodes file not found, skipping")
 
     # Load brownfields if available
     brownfield_sites = []
@@ -444,8 +499,11 @@ def main():
 
         nearby_qw = {"count": qw_count, "total_mw": qw_total_mw}
 
+        # Find nearest LMP node
+        lmp_name, lmp_avg, lmp_s = find_nearest_lmp(lat, lon, lmp_nodes) if lmp_nodes else ("", 0, 50)
+
         # Score each dimension
-        ttp, dist_s, volt_s, gen_s, lines_s, qw_s = score_time_to_power(site, nearest, nearby_qw)
+        ttp, dist_s, volt_s, gen_s, lines_s, qw_s = score_time_to_power(site, nearest, nearby_qw, lmp_s)
         sr, fuel_s, scale_s = score_site_readiness(site)
         co, lon_s, lat_s, bb_s = score_connectivity(site)
         rf, contam_s, status_s, flood_s = score_risk_factors(site)
@@ -480,6 +538,9 @@ def main():
             "contamination_score": round(contam_s, 1),
             "operational_status_score": round(status_s, 1),
             "flood_zone_score": round(flood_s, 1),
+            "lmp_score": round(lmp_s, 1),
+            "nearest_lmp_avg": round(lmp_avg, 1),
+            "nearest_lmp_node": lmp_name,
             "nearest_sub_name": nearest["name"],
             "nearest_sub_distance_miles": round(best_dist, 1),
             "nearest_sub_voltage_kv": nearest["max_volt"],

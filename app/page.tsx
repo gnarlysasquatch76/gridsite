@@ -19,6 +19,7 @@ export default function Home() {
     brownfields: false,
     dataCenters: false,
     utilityTerritories: false,
+    lmpNodes: false,
   });
   var [layerGroupOpen, setLayerGroupOpen] = useState<LayerGroupState>({
     infrastructure: true,

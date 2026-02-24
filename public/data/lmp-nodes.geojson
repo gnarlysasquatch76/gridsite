@@ -1,0 +1,1059 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.1,
+          40.1
+        ]
+      },
+      "properties": {
+        "name": "PJM Western Hub",
+        "iso": "PJM",
+        "avg_lmp": 38.5,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9,
+          39.9
+        ]
+      },
+      "properties": {
+        "name": "AEP Gen Hub",
+        "iso": "PJM",
+        "avg_lmp": 35.2,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9,
+          40.5
+        ]
+      },
+      "properties": {
+        "name": "APS Zone",
+        "iso": "PJM",
+        "avg_lmp": 37.8,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5,
+          41.1
+        ]
+      },
+      "properties": {
+        "name": "ATSI Zone",
+        "iso": "PJM",
+        "avg_lmp": 36.4,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6,
+          39.3
+        ]
+      },
+      "properties": {
+        "name": "BGE Zone",
+        "iso": "PJM",
+        "avg_lmp": 42.1,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7,
+          41.8
+        ]
+      },
+      "properties": {
+        "name": "ComEd Zone",
+        "iso": "PJM",
+        "avg_lmp": 31.5,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.2,
+          39.8
+        ]
+      },
+      "properties": {
+        "name": "Dayton Hub",
+        "iso": "PJM",
+        "avg_lmp": 34.6,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5,
+          39.1
+        ]
+      },
+      "properties": {
+        "name": "DEOK Zone",
+        "iso": "PJM",
+        "avg_lmp": 35.8,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.5,
+          37.5
+        ]
+      },
+      "properties": {
+        "name": "Dominion Zone",
+        "iso": "PJM",
+        "avg_lmp": 39.7,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5,
+          39.2
+        ]
+      },
+      "properties": {
+        "name": "DPL Zone",
+        "iso": "PJM",
+        "avg_lmp": 43.2,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0,
+          40.4
+        ]
+      },
+      "properties": {
+        "name": "Duquesne Zone",
+        "iso": "PJM",
+        "avg_lmp": 37.1,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5,
+          38.0
+        ]
+      },
+      "properties": {
+        "name": "EKPC Zone",
+        "iso": "PJM",
+        "avg_lmp": 34.9,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.4,
+          40.2
+        ]
+      },
+      "properties": {
+        "name": "JCPL Zone",
+        "iso": "PJM",
+        "avg_lmp": 44.8,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.0,
+          40.3
+        ]
+      },
+      "properties": {
+        "name": "Met-Ed Zone",
+        "iso": "PJM",
+        "avg_lmp": 40.3,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2,
+          40.0
+        ]
+      },
+      "properties": {
+        "name": "PECO Zone",
+        "iso": "PJM",
+        "avg_lmp": 43.5,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5,
+          41.0
+        ]
+      },
+      "properties": {
+        "name": "PENELEC Zone",
+        "iso": "PJM",
+        "avg_lmp": 36.9,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0,
+          38.9
+        ]
+      },
+      "properties": {
+        "name": "PEPCO Zone",
+        "iso": "PJM",
+        "avg_lmp": 41.7,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5,
+          40.6
+        ]
+      },
+      "properties": {
+        "name": "PPL Zone",
+        "iso": "PJM",
+        "avg_lmp": 39.8,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.2,
+          40.7
+        ]
+      },
+      "properties": {
+        "name": "PSEG Zone",
+        "iso": "PJM",
+        "avg_lmp": 45.3,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1,
+          41.1
+        ]
+      },
+      "properties": {
+        "name": "RECO Zone",
+        "iso": "PJM",
+        "avg_lmp": 44.1,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8,
+          42.9
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone A (West)",
+        "iso": "NYISO",
+        "avg_lmp": 28.4,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.6,
+          43.1
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone B (Genesee)",
+        "iso": "NYISO",
+        "avg_lmp": 29.1,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.1,
+          43.0
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone C (Central)",
+        "iso": "NYISO",
+        "avg_lmp": 30.5,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0,
+          44.0
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone D (North)",
+        "iso": "NYISO",
+        "avg_lmp": 27.8,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2,
+          43.0
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone E (Mohawk Valley)",
+        "iso": "NYISO",
+        "avg_lmp": 31.2,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7,
+          42.7
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone F (Capital)",
+        "iso": "NYISO",
+        "avg_lmp": 33.6,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0,
+          41.5
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone G (Hudson Valley)",
+        "iso": "NYISO",
+        "avg_lmp": 38.9,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.8,
+          41.2
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone H (Millwood)",
+        "iso": "NYISO",
+        "avg_lmp": 42.3,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.8,
+          40.95
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone I (Dunwoodie)",
+        "iso": "NYISO",
+        "avg_lmp": 45.7,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0,
+          40.7
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone J (NYC)",
+        "iso": "NYISO",
+        "avg_lmp": 52.8,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.2,
+          40.8
+        ]
+      },
+      "properties": {
+        "name": "NYISO Zone K (Long Island)",
+        "iso": "NYISO",
+        "avg_lmp": 58.4,
+        "lmp_class": "high",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.7,
+          41.6
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE Connecticut",
+        "iso": "ISO-NE",
+        "avg_lmp": 44.2,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8,
+          44.3
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE Maine",
+        "iso": "ISO-NE",
+        "avg_lmp": 38.5,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1,
+          42.4
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE NE Mass/Boston",
+        "iso": "ISO-NE",
+        "avg_lmp": 46.8,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5,
+          43.2
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE New Hampshire",
+        "iso": "ISO-NE",
+        "avg_lmp": 40.1,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4,
+          41.8
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE Rhode Island",
+        "iso": "ISO-NE",
+        "avg_lmp": 45.3,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.9,
+          41.7
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE SE Mass",
+        "iso": "ISO-NE",
+        "avg_lmp": 44.7,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6,
+          44.3
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE Vermont",
+        "iso": "ISO-NE",
+        "avg_lmp": 37.9,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6,
+          42.3
+        ]
+      },
+      "properties": {
+        "name": "ISO-NE W/Central Mass",
+        "iso": "ISO-NE",
+        "avg_lmp": 41.5,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2,
+          39.8
+        ]
+      },
+      "properties": {
+        "name": "MISO Indiana Hub",
+        "iso": "MISO",
+        "avg_lmp": 29.4,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7,
+          42.7
+        ]
+      },
+      "properties": {
+        "name": "MISO Michigan Hub",
+        "iso": "MISO",
+        "avg_lmp": 31.8,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3,
+          45.0
+        ]
+      },
+      "properties": {
+        "name": "MISO Minnesota Hub",
+        "iso": "MISO",
+        "avg_lmp": 26.5,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.5,
+          40.0
+        ]
+      },
+      "properties": {
+        "name": "MISO Illinois Hub",
+        "iso": "MISO",
+        "avg_lmp": 28.7,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.2,
+          30.5
+        ]
+      },
+      "properties": {
+        "name": "MISO Louisiana Hub",
+        "iso": "MISO",
+        "avg_lmp": 33.1,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0,
+          32.0
+        ]
+      },
+      "properties": {
+        "name": "MISO Texas Hub",
+        "iso": "MISO",
+        "avg_lmp": 30.2,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.2,
+          32.3
+        ]
+      },
+      "properties": {
+        "name": "MISO Mississippi Hub",
+        "iso": "MISO",
+        "avg_lmp": 31.5,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.3,
+          34.7
+        ]
+      },
+      "properties": {
+        "name": "MISO Arkansas Hub",
+        "iso": "MISO",
+        "avg_lmp": 29.8,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.5,
+          38.5
+        ]
+      },
+      "properties": {
+        "name": "SPP North Hub",
+        "iso": "SPP",
+        "avg_lmp": 24.3,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.5,
+          35.5
+        ]
+      },
+      "properties": {
+        "name": "SPP South Hub",
+        "iso": "SPP",
+        "avg_lmp": 26.8,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.5,
+          33.5
+        ]
+      },
+      "properties": {
+        "name": "SPP SPS",
+        "iso": "SPP",
+        "avg_lmp": 22.1,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.0,
+          46.0
+        ]
+      },
+      "properties": {
+        "name": "SPP Upper Great Plains",
+        "iso": "SPP",
+        "avg_lmp": 21.5,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.6,
+          39.1
+        ]
+      },
+      "properties": {
+        "name": "SPP Kansas City",
+        "iso": "SPP",
+        "avg_lmp": 27.4,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.5,
+          38.5
+        ]
+      },
+      "properties": {
+        "name": "CAISO NP15 (Northern CA)",
+        "iso": "CAISO",
+        "avg_lmp": 48.2,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2,
+          34.0
+        ]
+      },
+      "properties": {
+        "name": "CAISO SP15 (Southern CA)",
+        "iso": "CAISO",
+        "avg_lmp": 52.7,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.0,
+          35.4
+        ]
+      },
+      "properties": {
+        "name": "CAISO ZP26 (Central CA)",
+        "iso": "CAISO",
+        "avg_lmp": 45.9,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.4,
+          29.8
+        ]
+      },
+      "properties": {
+        "name": "ERCOT Houston Hub",
+        "iso": "ERCOT",
+        "avg_lmp": 33.5,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.3,
+          32.8
+        ]
+      },
+      "properties": {
+        "name": "ERCOT North Hub",
+        "iso": "ERCOT",
+        "avg_lmp": 30.8,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.5,
+          29.4
+        ]
+      },
+      "properties": {
+        "name": "ERCOT South Hub",
+        "iso": "ERCOT",
+        "avg_lmp": 31.2,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.5,
+          31.5
+        ]
+      },
+      "properties": {
+        "name": "ERCOT West Hub",
+        "iso": "ERCOT",
+        "avg_lmp": 25.4,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.8,
+          34.2
+        ]
+      },
+      "properties": {
+        "name": "ERCOT Pan Handle",
+        "iso": "ERCOT",
+        "avg_lmp": 19.8,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.7,
+          30.3
+        ]
+      },
+      "properties": {
+        "name": "ERCOT Austin",
+        "iso": "ERCOT",
+        "avg_lmp": 29.6,
+        "lmp_class": "low",
+        "source": "eia_report"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.2,
+          26.2
+        ]
+      },
+      "properties": {
+        "name": "ERCOT Valley",
+        "iso": "ERCOT",
+        "avg_lmp": 35.8,
+        "lmp_class": "moderate",
+        "source": "eia_report"
+      }
+    }
+  ]
+}

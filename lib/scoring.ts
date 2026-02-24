@@ -64,11 +64,50 @@ export function isCoastalLocation(lat: number, lon: number, state: string): bool
   return false;
 }
 
+export function computeLmpScore(avgLmp: number): number {
+  // Low LMP = grid headroom = good for data centers = high score
+  // High LMP = congestion = bad = low score
+  if (avgLmp <= 20) return 95;
+  if (avgLmp <= 25) return 90;
+  if (avgLmp <= 30) return 80;
+  if (avgLmp <= 35) return 70;
+  if (avgLmp <= 40) return 60;
+  if (avgLmp <= 45) return 50;
+  if (avgLmp <= 50) return 40;
+  if (avgLmp <= 55) return 30;
+  return 20;
+}
+
+export function findNearestLmpNode(
+  lat: number,
+  lng: number,
+  lmpData: GeoJSON.FeatureCollection,
+): { name: string; avgLmp: number; lmpScore: number } | null {
+  var bestDist = Infinity;
+  var bestNode: { name: string; avgLmp: number } | null = null;
+  for (var i = 0; i < lmpData.features.length; i++) {
+    var f = lmpData.features[i];
+    if (f.geometry.type !== "Point") continue;
+    var coords = (f.geometry as GeoJSON.Point).coordinates;
+    var d = haversineDistanceMiles(lat, lng, coords[1], coords[0]);
+    if (d < bestDist) {
+      bestDist = d;
+      bestNode = {
+        name: f.properties?.name || "",
+        avgLmp: f.properties?.avg_lmp != null ? Number(f.properties.avg_lmp) : 40,
+      };
+    }
+  }
+  if (!bestNode) return null;
+  return { name: bestNode.name, avgLmp: bestNode.avgLmp, lmpScore: computeLmpScore(bestNode.avgLmp) };
+}
+
 export function computeLocationScore(
   lng: number,
   lat: number,
   substationsData: GeoJSON.FeatureCollection,
   queueWithdrawalsData: GeoJSON.FeatureCollection,
+  lmpNodesData?: GeoJSON.FeatureCollection | null,
 ): ScoredSite | null {
   // Find nearest 345kV+ substation
   var bestDist = Infinity;
@@ -131,8 +170,14 @@ export function computeLocationScore(
     var mwBonus = Math.max(0, Math.min(20, qwTotalMW / 5000 * 20));
     qwScore = Math.max(0, Math.min(100, countScore + mwBonus));
   }
-  // Custom/brownfield: no gen capacity, distribute among distance/voltage/lines/queue
-  var timeToPower = distScore * 0.35 + voltScore * 0.20 + linesScore * 0.20 + qwScore * 0.25;
+  // LMP scoring
+  var lmpResult = lmpNodesData ? findNearestLmpNode(lat, lng, lmpNodesData) : null;
+  var lmpScoreVal = lmpResult ? lmpResult.lmpScore : 50;
+  var nearestLmpAvg = lmpResult ? lmpResult.avgLmp : 0;
+  var nearestLmpNode = lmpResult ? lmpResult.name : "";
+
+  // Custom/brownfield: no gen capacity, distribute among distance/voltage/lines/queue/lmp
+  var timeToPower = distScore * 0.30 + voltScore * 0.17 + linesScore * 0.17 + qwScore * 0.21 + lmpScoreVal * 0.15;
 
   // --- Site Readiness (20%) — unknown site, base 65 ---
   var fuelTypeScore = 0;
@@ -196,6 +241,9 @@ export function computeLocationScore(
     contamination_score: r(contamScore),
     operational_status_score: r(statusScore),
     flood_zone_score: r(floodScore),
+    lmp_score: r(lmpScoreVal),
+    nearest_lmp_avg: r(nearestLmpAvg),
+    nearest_lmp_node: nearestLmpNode,
     nearest_sub_name: bestSub.name,
     nearest_sub_distance_miles: r(bestDist),
     nearest_sub_voltage_kv: bestSub.maxVolt,

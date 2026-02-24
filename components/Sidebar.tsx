@@ -256,6 +256,10 @@ export default function Sidebar(props: SidebarProps) {
                           <span>Queue Withdrawals</span>
                           <span style={{ color: subColor(s.queue_withdrawal_score) }} className="font-medium">{s.queue_withdrawal_score} <span className="text-slate-500">({s.queue_count_20mi} / {Math.round(s.queue_mw_20mi).toLocaleString()} MW)</span></span>
                         </div>
+                        <div className="text-[11px] text-slate-400 flex justify-between">
+                          <span>Grid Pricing (LMP)</span>
+                          <span style={{ color: subColor(s.lmp_score) }} className="font-medium">{s.lmp_score} <span className="text-slate-500">(${s.nearest_lmp_avg}/MWh)</span></span>
+                        </div>
                       </div>
                     </div>
                   );
@@ -389,6 +393,21 @@ export default function Sidebar(props: SidebarProps) {
                     <span className="text-slate-200 font-medium">{selectedSite.nearest_sub_lines}</span>
                   </div>
                 </div>
+
+                {/* Nearest LMP Node */}
+                {selectedSite.nearest_lmp_node && (
+                  <div className="space-y-1.5">
+                    <div className="text-xs font-semibold text-slate-300">Nearest LMP Pricing Node</div>
+                    <div className="text-xs text-slate-400 flex justify-between">
+                      <span>Node</span>
+                      <span className="text-slate-200 font-medium">{selectedSite.nearest_lmp_node}</span>
+                    </div>
+                    <div className="text-xs text-slate-400 flex justify-between">
+                      <span>Avg LMP</span>
+                      <span className="text-slate-200 font-medium">${selectedSite.nearest_lmp_avg}/MWh</span>
+                    </div>
+                  </div>
+                )}
 
                 {/* Planned Retirement */}
                 {selectedSite.planned_retirement_date && (

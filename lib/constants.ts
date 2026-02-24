@@ -32,6 +32,8 @@ export var DATA_CENTERS_LAYER = "data-centers-squares";
 export var UTILITY_TERRITORIES_SOURCE = "utility-territories";
 export var UTILITY_TERRITORIES_LAYER = "utility-territories-fill";
 export var UTILITY_TERRITORIES_OUTLINE_LAYER = "utility-territories-outline";
+export var LMP_NODES_SOURCE = "lmp-nodes";
+export var LMP_NODES_LAYER = "lmp-nodes-circles";
 export var DIAMOND_ICON = "diamond-icon";
 export var STAR_ICON = "star-icon";
 export var TRIANGLE_ICON = "triangle-icon";
@@ -69,6 +71,10 @@ export interface ScoredSite {
   contamination_score: number;
   operational_status_score: number;
   flood_zone_score: number;
+  // LMP sub-score
+  lmp_score: number;
+  nearest_lmp_avg: number;
+  nearest_lmp_node: string;
   // Context
   nearest_sub_name: string;
   nearest_sub_distance_miles: number;
@@ -111,6 +117,7 @@ export type LayerState = {
   brownfields: boolean;
   dataCenters: boolean;
   utilityTerritories: boolean;
+  lmpNodes: boolean;
 };
 
 export type LayerGroupState = {
@@ -122,7 +129,7 @@ export type LayerGroupState = {
 
 export var LAYER_GROUPS = {
   infrastructure: ["powerPlants", "substations", "transmissionLines", "dataCenters"] as const,
-  capacity: ["utilityTerritories", "queueWithdrawals"] as const,
+  capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes"] as const,
   risk: ["floodZones", "brownfields"] as const,
   connectivity: ["broadband"] as const,
 };

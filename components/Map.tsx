@@ -20,6 +20,7 @@ import {
   BROWNFIELDS_SOURCE, BROWNFIELDS_LAYER,
   DATA_CENTERS_SOURCE, DATA_CENTERS_LAYER,
   UTILITY_TERRITORIES_SOURCE, UTILITY_TERRITORIES_LAYER, UTILITY_TERRITORIES_OUTLINE_LAYER,
+  LMP_NODES_SOURCE, LMP_NODES_LAYER,
   DIAMOND_ICON, STAR_ICON, TRIANGLE_ICON, SQUARE_ICON,
   type ScoredSite, type ProximityResult, type LayerState,
 } from "../lib/constants";
@@ -51,6 +52,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
   var substationsCache = useRef<GeoJSON.FeatureCollection | null>(null);
   var transmissionLinesCache = useRef<GeoJSON.FeatureCollection | null>(null);
   var queueWithdrawalsCache = useRef<GeoJSON.FeatureCollection | null>(null);
+  var lmpNodesCache = useRef<GeoJSON.FeatureCollection | null>(null);
 
   // --- Proximity Analysis ---
 
@@ -355,6 +357,26 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       "</div></div>";
   }, []);
 
+  var buildLmpPopupHTML = useCallback(function (props: Record<string, any>): string {
+    var name = props.name || "Unknown";
+    var iso = props.iso || "";
+    var avgLmp = props.avg_lmp != null ? Number(props.avg_lmp) : 0;
+    var lmpClass = props.lmp_class || "moderate";
+    var classColor = lmpClass === "low" ? "#22c55e" : lmpClass === "moderate" ? "#f59e0b" : "#ef4444";
+    var classLabel = lmpClass === "low" ? "Low (Headroom)" : lmpClass === "moderate" ? "Moderate" : "High (Congestion)";
+
+    return "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+      "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + name + "</div>" +
+      "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + iso + "</div>" +
+      "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+        "<span style=\"background:" + classColor + ";color:" + (lmpClass === "high" ? "#fff" : "#000") + ";border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + classLabel + "</span>" +
+      "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Avg LMP</span><strong>$" + avgLmp.toFixed(1) + "/MWh</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Avg LMP</span><strong>" + (avgLmp * 0.1).toFixed(1) + " &cent;/kWh</strong></div>" +
+      "</div></div>";
+  }, []);
+
   // --- Score any location on right-click ---
 
   var scoreLocation = useCallback(async function (lng: number, lat: number) {
@@ -369,8 +391,12 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       var qwRes = await fetch("/data/queue-withdrawals.geojson");
       queueWithdrawalsCache.current = await qwRes.json();
     }
+    if (!lmpNodesCache.current) {
+      var lmpRes = await fetch("/data/lmp-nodes.geojson");
+      lmpNodesCache.current = await lmpRes.json();
+    }
 
-    var site = computeLocationScore(lng, lat, substationsCache.current!, queueWithdrawalsCache.current!);
+    var site = computeLocationScore(lng, lat, substationsCache.current!, queueWithdrawalsCache.current!, lmpNodesCache.current);
     if (!site) return;
 
     if (popupRef.current) popupRef.current.remove();
@@ -844,6 +870,40 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
     if (mapLoaded.current) setup(); else map.on("load", setup);
   }, [layers.utilityTerritories]);
 
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+    function setup() {
+      if (!map) return;
+      if (map.getLayer(LMP_NODES_LAYER)) {
+        map.setLayoutProperty(LMP_NODES_LAYER, "visibility", layers.lmpNodes ? "visible" : "none");
+        return;
+      }
+      if (!layers.lmpNodes) return;
+      map.addSource(LMP_NODES_SOURCE, { type: "geojson", data: "/data/lmp-nodes.geojson" });
+      map.addLayer({
+        id: LMP_NODES_LAYER, type: "circle", source: LMP_NODES_SOURCE,
+        paint: {
+          "circle-color": ["match", ["get", "lmp_class"], "low", "#22c55e", "moderate", "#f59e0b", "high", "#ef4444", "#94a3b8"],
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 4, 8, 7, 12, 10],
+          "circle-opacity": 0.85, "circle-stroke-color": "#ffffff", "circle-stroke-width": 1,
+        },
+      });
+      map.on("click", LMP_NODES_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var p = feature.properties as Record<string, any>;
+        if (typeof p.avg_lmp === "string") p.avg_lmp = parseFloat(p.avg_lmp);
+        if (popupRef.current) popupRef.current.remove();
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "300px" }).setLngLat(coords).setHTML(buildLmpPopupHTML(p)).addTo(map!);
+      });
+      map.on("mouseenter", LMP_NODES_LAYER, function () { map!.getCanvas().style.cursor = "pointer"; });
+      map.on("mouseleave", LMP_NODES_LAYER, function () { map!.getCanvas().style.cursor = ""; });
+    }
+    if (mapLoaded.current) setup(); else map.on("load", setup);
+  }, [layers.lmpNodes, buildLmpPopupHTML]);
+
   // --- Load scored sites ---
 
   useEffect(function () {
@@ -894,6 +954,8 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               broadband_score: pf(p.broadband_score),
               contamination_score: pf(p.contamination_score), operational_status_score: pf(p.operational_status_score),
               flood_zone_score: pf(p.flood_zone_score),
+              lmp_score: pf(p.lmp_score), nearest_lmp_avg: pf(p.nearest_lmp_avg),
+              nearest_lmp_node: p.nearest_lmp_node || "",
               nearest_sub_name: p.nearest_sub_name,
               nearest_sub_distance_miles: pf(p.nearest_sub_distance_miles),
               nearest_sub_voltage_kv: pf(p.nearest_sub_voltage_kv),
@@ -1063,6 +1125,10 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#22d3ee]"></span><span>138-229 kV Sub</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#38bdf8]"></span><span>230-344 kV Sub</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rotate-45 bg-[#818cf8]"></span><span>345 kV+ Sub</span></div>
+              <div className="border-t border-white/10 my-1.5"></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-white/40"></span><span>LMP Low (Headroom)</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#f59e0b] border border-white/40"></span><span>LMP Moderate</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444] border border-white/40"></span><span>LMP High (Congestion)</span></div>
               <div className="border-t border-white/10 my-1.5"></div>
               <div className="flex items-center gap-2"><span className="inline-block w-4 h-[1px] bg-[#22d3ee] rounded"></span><span>138-229 kV Line</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-4 h-[2px] bg-[#38bdf8] rounded"></span><span>230-344 kV Line</span></div>
