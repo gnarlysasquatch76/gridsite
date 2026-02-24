@@ -36,9 +36,12 @@ var BROADBAND_SOURCE = "broadband";
 var BROADBAND_LAYER = "broadband-raster";
 var BROWNFIELDS_SOURCE = "brownfields";
 var BROWNFIELDS_LAYER = "brownfields-circles";
+var DATA_CENTERS_SOURCE = "data-centers";
+var DATA_CENTERS_LAYER = "data-centers-squares";
 var DIAMOND_ICON = "diamond-icon";
 var STAR_ICON = "star-icon";
 var TRIANGLE_ICON = "triangle-icon";
+var SQUARE_ICON = "square-icon";
 
 interface ProximityResult {
   site: ScoredSite;
@@ -140,6 +143,7 @@ export default function Home() {
     floodZones: false,
     broadband: false,
     brownfields: false,
+    dataCenters: false,
   });
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
   var [legendOpen, setLegendOpen] = useState(true);
@@ -757,6 +761,19 @@ export default function Home() {
         map.addImage(TRIANGLE_ICON, triImageData, { sdf: true });
       }
 
+      // Create square icon for data centers layer
+      var sqSize = 16;
+      var sqCanvas = document.createElement("canvas");
+      sqCanvas.width = sqSize;
+      sqCanvas.height = sqSize;
+      var sqCtx = sqCanvas.getContext("2d");
+      if (sqCtx) {
+        sqCtx.fillStyle = "#ffffff";
+        sqCtx.fillRect(2, 2, sqSize - 4, sqSize - 4);
+        var sqImageData = sqCtx.getImageData(0, 0, sqSize, sqSize);
+        map.addImage(SQUARE_ICON, sqImageData, { sdf: true });
+      }
+
       // Right-click to score any location
       map.on("contextmenu", function (e) {
         e.preventDefault();
@@ -1301,6 +1318,112 @@ export default function Home() {
     }
   }, [layers.brownfields]);
 
+  // Toggle data centers layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      if (map.getLayer(DATA_CENTERS_LAYER)) {
+        map.setLayoutProperty(
+          DATA_CENTERS_LAYER,
+          "visibility",
+          layers.dataCenters ? "visible" : "none"
+        );
+        return;
+      }
+
+      if (!layers.dataCenters) return;
+
+      map.addSource(DATA_CENTERS_SOURCE, {
+        type: "geojson",
+        data: "/data/data-centers.geojson",
+      });
+
+      map.addLayer({
+        id: DATA_CENTERS_LAYER,
+        type: "symbol",
+        source: DATA_CENTERS_SOURCE,
+        layout: {
+          "icon-image": SQUARE_ICON,
+          "icon-size": [
+            "interpolate", ["linear"], ["zoom"],
+            4, 0.35,
+            8, 0.5,
+            12, 0.7,
+          ],
+          "icon-allow-overlap": true,
+        },
+        paint: {
+          "icon-color": "#06b6d4",
+          "icon-opacity": 0.9,
+        },
+      });
+
+      map.on("click", DATA_CENTERS_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var p = feature.properties as Record<string, any>;
+
+        var name = p.name || "Data Center";
+        var operator = p.operator || "";
+        var city = p.city || "";
+        var state = p.state || "";
+        var location = [city, state].filter(Boolean).join(", ");
+        var address = p.address || "";
+        var capacity = p.capacity || "";
+        var levels = p.building_levels || "";
+        var website = p.website || "";
+
+        var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:220px;\">" +
+          "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + name + "</div>" +
+          (location ? "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + location + "</div>" : "") +
+          "<div style=\"display:flex;gap:8px;margin-bottom:6px;\">" +
+            "<span style=\"background:#06b6d4;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">Data Center</span>" +
+            (operator ? "<span style=\"background:#334155;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + operator + "</span>" : "") +
+          "</div>" +
+          "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">";
+
+        if (address) {
+          html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Address</span><strong>" + address + "</strong></div>";
+        }
+        if (capacity) {
+          html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Capacity</span><strong>" + capacity + "</strong></div>";
+        }
+        if (levels) {
+          html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Floors</span><strong>" + levels + "</strong></div>";
+        }
+        if (website) {
+          html += "<div style=\"margin:3px 0;\"><a href=\"" + website + "\" target=\"_blank\" rel=\"noopener\" style=\"color:#06b6d4;text-decoration:underline;\">Website</a></div>";
+        }
+
+        html += "</div></div>";
+
+        if (popupRef.current) popupRef.current.remove();
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "320px" })
+          .setLngLat(coords)
+          .setHTML(html)
+          .addTo(map!);
+      });
+
+      map.on("mouseenter", DATA_CENTERS_LAYER, function () {
+        map!.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", DATA_CENTERS_LAYER, function () {
+        map!.getCanvas().style.cursor = "";
+      });
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.dataCenters]);
+
   // Load scored sites on mount — always-visible star layer
   useEffect(function () {
     var map = mapRef.current;
@@ -1528,6 +1651,15 @@ export default function Home() {
                   className="accent-blue-500"
                 />
                 Brownfield Sites (EPA)
+              </label>
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.dataCenters}
+                  onChange={() => toggleLayer("dataCenters")}
+                  className="accent-blue-500"
+                />
+                Data Centers (OSM)
               </label>
             </div>
           )}
@@ -1843,6 +1975,10 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#a0845c]"></span>
                   <span>Brownfield Site</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#06b6d4]"></span>
+                  <span>Data Center</span>
                 </div>
                 <div className="border-t border-white/10 my-1.5"></div>
                 <div className="flex items-center gap-2">
