@@ -6,7 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import circle from "@turf/circle";
 import booleanIntersects from "@turf/boolean-intersects";
 import { point } from "@turf/helpers";
-import { haversineDistanceMiles, computeLocationScore } from "../lib/scoring";
+import { haversineDistanceMiles, computeLocationScore, estimateTimeToPower } from "../lib/scoring";
 import {
   MAPBOX_TOKEN,
   POWER_PLANTS_SOURCE, POWER_PLANTS_LAYER,
@@ -329,6 +329,10 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
         "</div></div>";
     }
 
+    var ttp = estimateTimeToPower(s);
+    var ttpColor = ttp.tier === "green" ? "#10b981" : ttp.tier === "yellow" ? "#f59e0b" : "#ef4444";
+    var ttpBadge = "<span style=\"background:" + ttpColor + ";color:" + (ttp.tier === "red" ? "#fff" : "#000") + ";border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;margin-left:6px;\">" + ttp.label + "</span>";
+
     return "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:260px;\">" +
       "<div style=\"display:flex;justify-content:space-between;align-items:start;margin-bottom:4px;\">" +
         "<div>" +
@@ -337,7 +341,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
         "</div>" +
         "<div style=\"background:#eab308;color:#0f172a;border-radius:6px;padding:4px 10px;font-size:18px;font-weight:bold;min-width:44px;text-align:center;\">" + s.composite_score + "</div>" +
       "</div>" +
-      (s.fuel_type === "Custom" ? "<div style=\"font-size:11px;color:#10b981;margin-bottom:6px;\">Right-click scored location</div>" : "<div style=\"font-size:11px;color:#64748b;margin-bottom:6px;\">" + s.fuel_type + " &middot; " + s.status + "</div>") +
+      (s.fuel_type === "Custom" ? "<div style=\"font-size:11px;color:#10b981;margin-bottom:6px;\">Right-click scored location" + ttpBadge + "</div>" : "<div style=\"font-size:11px;color:#64748b;margin-bottom:6px;\">" + s.fuel_type + " &middot; " + s.status + ttpBadge + "</div>") +
       "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;\">" +
         bar("Time to Power", s.time_to_power, "50%") +
         bar("Site Readiness", s.site_readiness, "20%") +

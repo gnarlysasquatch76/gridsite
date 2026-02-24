@@ -1,6 +1,7 @@
 "use client";
 
 import { US_STATES, type ScoredSite, type LayerState, type LayerGroupState } from "../lib/constants";
+import { estimateTimeToPower } from "../lib/scoring";
 import LayerControls from "./LayerControls";
 
 interface SidebarProps {
@@ -140,6 +141,10 @@ export default function Sidebar(props: SidebarProps) {
                 var scoreColor = site.composite_score >= 85 ? "bg-yellow-500 text-black"
                   : site.composite_score >= 75 ? "bg-yellow-600 text-black"
                   : "bg-yellow-700 text-white";
+                var ttp = estimateTimeToPower(site);
+                var ttpColor = ttp.tier === "green" ? "text-emerald-400 bg-emerald-400/10 border-emerald-400/20"
+                  : ttp.tier === "yellow" ? "text-amber-400 bg-amber-400/10 border-amber-400/20"
+                  : "text-red-400 bg-red-400/10 border-red-400/20";
                 return (
                   <button
                     key={site.plant_name + "-" + site.state}
@@ -155,8 +160,13 @@ export default function Sidebar(props: SidebarProps) {
                         <div className="text-xs text-slate-400 mt-0.5">
                           {site.state} &middot; {site.total_capacity_mw.toLocaleString()} MW
                         </div>
-                        <div className="text-[11px] text-slate-500 mt-0.5">
-                          {site.nearest_sub_distance_miles} mi to {site.nearest_sub_voltage_kv} kV sub
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-[11px] text-slate-500">
+                            {site.nearest_sub_distance_miles} mi to {site.nearest_sub_voltage_kv} kV sub
+                          </span>
+                          <span className={"text-[10px] font-semibold px-1.5 py-0.5 rounded border " + ttpColor}>
+                            {ttp.label}
+                          </span>
                         </div>
                       </div>
                       <div className={"text-xs font-bold rounded px-2 py-1 shrink-0 " + scoreColor}>
@@ -186,13 +196,26 @@ export default function Sidebar(props: SidebarProps) {
                   </div>
                 </div>
 
-                {/* Composite Score Badge */}
-                <div className="flex items-center gap-3">
-                  <div className={"text-2xl font-bold rounded-lg px-4 py-2 " + (selectedSite.composite_score >= 85 ? "bg-yellow-500 text-black" : selectedSite.composite_score >= 75 ? "bg-yellow-600 text-black" : "bg-yellow-700 text-white")}>
-                    {selectedSite.composite_score}
-                  </div>
-                  <div className="text-xs text-slate-400">Composite Score</div>
-                </div>
+                {/* Composite Score + TTP Badge */}
+                {(function () {
+                  var ttp = estimateTimeToPower(selectedSite);
+                  var ttpBg = ttp.tier === "green" ? "bg-emerald-500" : ttp.tier === "yellow" ? "bg-amber-500" : "bg-red-500";
+                  var ttpText = ttp.tier === "red" ? "text-white" : "text-black";
+                  return (
+                    <div className="flex items-center gap-3">
+                      <div className={"text-2xl font-bold rounded-lg px-4 py-2 " + (selectedSite.composite_score >= 85 ? "bg-yellow-500 text-black" : selectedSite.composite_score >= 75 ? "bg-yellow-600 text-black" : "bg-yellow-700 text-white")}>
+                        {selectedSite.composite_score}
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-400">Composite Score</div>
+                        <div className={"inline-block text-[11px] font-bold rounded px-2 py-0.5 mt-1 " + ttpBg + " " + ttpText}>
+                          {ttp.label}
+                        </div>
+                        <span className="text-[11px] text-slate-500 ml-1.5">{ttp.months}</span>
+                      </div>
+                    </div>
+                  );
+                })()}
 
                 {/* --- Time to Power (50%) --- */}
                 {(function () {

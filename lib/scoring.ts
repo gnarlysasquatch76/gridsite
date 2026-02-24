@@ -5,6 +5,41 @@ import {
   BROADBAND_COVERAGE,
 } from "./constants";
 
+export interface TtpEstimate {
+  tier: "green" | "yellow" | "red";
+  label: string;
+  months: string;
+}
+
+/**
+ * Estimate time-to-power based on scoring inputs.
+ *
+ * Green  (<12 mo): Retired plant with existing interconnection + capacity signals
+ * Yellow (12-18 mo): Nearby infrastructure with capacity signals
+ * Red    (>18 mo): New interconnection required or constrained area
+ */
+export function estimateTimeToPower(site: ScoredSite): TtpEstimate {
+  var isPowerPlant = site.status === "retired" || site.status === "retiring";
+  var closeSub = site.sub_distance_score >= 80;        // within ~10 mi
+  var hasLines = site.tx_lines_score >= 25;             // at least 2 connected lines
+  var hasCapacity = site.queue_withdrawal_score > 30;   // capacity signals present
+  var farFromSub = site.sub_distance_score < 50;        // >25 mi from 345kV+ sub
+  var noInfra = site.tx_lines_score < 25 && site.queue_withdrawal_score <= 30;
+
+  // Green: retired plant with existing interconnection in surplus territory
+  if (isPowerPlant && closeSub && hasLines && hasCapacity) {
+    return { tier: "green", label: "< 12 mo", months: "Under 12 months" };
+  }
+
+  // Red: new interconnection required or constrained
+  if (farFromSub || noInfra) {
+    return { tier: "red", label: "> 18 mo", months: "Over 18 months" };
+  }
+
+  // Yellow: nearby infrastructure with capacity signals
+  return { tier: "yellow", label: "12-18 mo", months: "12 to 18 months" };
+}
+
 export function haversineDistanceMiles(lat1: number, lon1: number, lat2: number, lon2: number): number {
   var R = 3958.8; // Earth radius in miles
   var dLat = (lat2 - lat1) * Math.PI / 180;
