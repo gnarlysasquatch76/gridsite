@@ -16,6 +16,8 @@ OUTPUT_FILE = os.path.join(os.path.dirname(__file__), "..", "public", "data", "p
 # Column indices (0-based) per sheet — these differ between sheets
 COLUMNS = {
     "Operating": {
+        "entity_id": 0,
+        "entity_name": 1,
         "plant_id": 2,
         "plant_name": 3,
         "state": 6,
@@ -29,6 +31,8 @@ COLUMNS = {
         "longitude": 36,
     },
     "Retired": {
+        "entity_id": 0,
+        "entity_name": 1,
         "plant_id": 2,
         "plant_name": 3,
         "state": 6,
@@ -106,6 +110,8 @@ def read_sheet(wb, sheet_name, sheet_type):
         state = str(row[cols["state"]] or "").strip()
         technology = str(row[cols["technology"]] or "").strip()
         energy_source = str(row[cols["energy_source"]] or "").strip()
+        entity_id = safe_int(row[cols["entity_id"]])
+        entity_name = str(row[cols["entity_name"]] or "").strip()
 
         # Determine status and planned retirement
         planned_retirement = None
@@ -135,6 +141,7 @@ def read_sheet(wb, sheet_name, sheet_type):
                 "status": status,
                 "planned_retirement_date": planned_retirement,
                 "generators": [],
+                "entities": {},  # entity_id -> {name, mw}
             }
 
         plant = plants[key]
@@ -144,6 +151,12 @@ def read_sheet(wb, sheet_name, sheet_type):
             "technology": technology,
             "energy_source": energy_source,
         })
+
+        # Track entity MW to find dominant owner/operator
+        if entity_id is not None:
+            if entity_id not in plant["entities"]:
+                plant["entities"][entity_id] = {"name": entity_name, "mw": 0.0}
+            plant["entities"][entity_id]["mw"] += mw
 
         # If any generator on an operating plant has a retirement date,
         # flag the whole plant as retiring
@@ -164,6 +177,14 @@ def dominant_fuel(generators):
     if not fuel_mw:
         return "Unknown"
     return max(fuel_mw, key=fuel_mw.get)
+
+
+def dominant_entity(entities):
+    """Return (entity_id, entity_name) of the entity contributing the most MW."""
+    if not entities:
+        return None, ""
+    best_id = max(entities, key=lambda eid: entities[eid]["mw"])
+    return best_id, entities[best_id]["name"]
 
 
 def main():
@@ -195,6 +216,8 @@ def main():
             skipped += 1
             continue
 
+        eid, ename = dominant_entity(plant["entities"])
+
         props = {
             "plant_name": plant["plant_name"],
             "state": plant["state"],
@@ -203,6 +226,8 @@ def main():
             "total_capacity_mw": total,
             "fuel_type": dominant_fuel(plant["generators"]),
             "status": plant["status"],
+            "owner_name": ename,
+            "utility_id": eid,
         }
         if plant["planned_retirement_date"]:
             props["planned_retirement_date"] = plant["planned_retirement_date"]

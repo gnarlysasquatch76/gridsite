@@ -604,6 +604,8 @@ def main():
             "queue_count_20mi": qw_count,
             "queue_mw_20mi": round(qw_total_mw, 1),
             "site_type": site["site_type"],
+            "owner_name": site.get("owner_name", ""),
+            "utility_id": site.get("utility_id"),
         })
 
     # Sort by composite score descending, take top N

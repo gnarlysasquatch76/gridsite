@@ -206,6 +206,12 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">" +
         "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Capacity</span><strong>" + props.total_capacity_mw.toLocaleString() + " MW</strong></div>" +
         "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Fuel Type</span><strong>" + props.fuel_type + "</strong></div>";
+    if (props.owner_name) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Owner/Operator</span><strong>" + props.owner_name + "</strong></div>";
+    }
+    if (props.utility_id) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Utility ID</span><strong>" + props.utility_id + "</strong></div>";
+    }
     if (props.planned_retirement_date) {
       html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Planned Retirement</span><strong>" + props.planned_retirement_date + "</strong></div>";
     }
@@ -1048,6 +1054,8 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               qualifying_substation: p.qualifying_substation || undefined,
               qualifying_sub_kv: pf(p.qualifying_sub_kv) || undefined,
               area_acres: pf(p.area_acres) || undefined,
+              owner_name: p.owner_name || undefined,
+              utility_id: pf(p.utility_id) || undefined,
               composite_score: pf(p.composite_score),
               time_to_power: pf(p.time_to_power), site_readiness: pf(p.site_readiness),
               connectivity: pf(p.connectivity), risk_factors: pf(p.risk_factors),
@@ -1101,6 +1109,8 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
             opportunity_type: p.opportunity_type || undefined,
             qualifying_substation: p.qualifying_substation || undefined,
             qualifying_sub_kv: pf2(p.qualifying_sub_kv) || undefined,
+            owner_name: p.owner_name || undefined,
+            utility_id: pf2(p.utility_id) || undefined,
             composite_score: pf2(p.composite_score),
             time_to_power: pf2(p.time_to_power), site_readiness: pf2(p.site_readiness),
             connectivity: pf2(p.connectivity), risk_factors: pf2(p.risk_factors),

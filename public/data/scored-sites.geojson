@@ -49,7 +49,9 @@
         "nearest_sub_lines": 6.0,
         "queue_count_20mi": 10,
         "queue_mw_20mi": 3251.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Indiana Michigan Power Co",
+        "utility_id": 9324
       }
     },
     {
@@ -100,7 +102,9 @@
         "nearest_sub_lines": 9.0,
         "queue_count_20mi": 31,
         "queue_mw_20mi": 7682.8,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Constellation Mystic Power LLC",
+        "utility_id": 49965
       }
     },
     {
@@ -151,7 +155,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 4382.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Dayton Power & Light Co",
+        "utility_id": 4922
       }
     },
     {
@@ -202,7 +208,9 @@
         "nearest_sub_lines": 9.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 6460.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Homer City Generation, L.P.",
+        "utility_id": 58615
       }
     },
     {
@@ -253,7 +261,9 @@
         "nearest_sub_lines": 11.0,
         "queue_count_20mi": 26,
         "queue_mw_20mi": 10979.5,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Arizona Public Service Co",
+        "utility_id": 803
       }
     },
     {
@@ -304,7 +314,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 19,
         "queue_mw_20mi": 8976.2,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Tennessee Valley Authority",
+        "utility_id": 18642
       }
     },
     {
@@ -355,7 +367,9 @@
         "nearest_sub_lines": 6.0,
         "queue_count_20mi": 10,
         "queue_mw_20mi": 1325.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "DTE Electric Company",
+        "utility_id": 5109
       }
     },
     {
@@ -406,7 +420,9 @@
         "nearest_sub_lines": 9.0,
         "queue_count_20mi": 28,
         "queue_mw_20mi": 11552.8,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Midwest Generations EME LLC",
+        "utility_id": 12384
       }
     },
     {
@@ -457,7 +473,9 @@
         "nearest_sub_lines": 11.0,
         "queue_count_20mi": 8,
         "queue_mw_20mi": 5130.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Energy Harbor Generation LLC",
+        "utility_id": 64226
       }
     },
     {
@@ -508,7 +526,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 23,
         "queue_mw_20mi": 24659.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Tennessee Valley Authority",
+        "utility_id": 18642
       }
     },
     {
@@ -559,7 +579,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 26,
         "queue_mw_20mi": 10979.5,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Public Service Co of NM",
+        "utility_id": 15473
       }
     },
     {
@@ -610,7 +632,9 @@
         "nearest_sub_lines": 17.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 3354.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Tennessee Valley Authority",
+        "utility_id": 18642
       }
     },
     {
@@ -661,7 +685,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 9,
         "queue_mw_20mi": 12002.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Tennessee Valley Authority",
+        "utility_id": 18642
       }
     },
     {
@@ -712,7 +738,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 21,
         "queue_mw_20mi": 2895.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -763,7 +791,9 @@
         "nearest_sub_lines": 5.0,
         "queue_count_20mi": 25,
         "queue_mw_20mi": 10899.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Elwood Energy LLC",
+        "utility_id": 5259
       }
     },
     {
@@ -814,7 +844,9 @@
         "nearest_sub_lines": 3.0,
         "queue_count_20mi": 7,
         "queue_mw_20mi": 6364.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Midwest Generations EME LLC",
+        "utility_id": 12384
       }
     },
     {
@@ -865,7 +897,9 @@
         "nearest_sub_lines": 6.0,
         "queue_count_20mi": 7,
         "queue_mw_20mi": 4780.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Cardinal Operating Company",
+        "utility_id": 61412
       }
     },
     {
@@ -916,7 +950,9 @@
         "nearest_sub_lines": 11.0,
         "queue_count_20mi": 90,
         "queue_mw_20mi": 16844.1,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Public Service Co of Colorado",
+        "utility_id": 15466
       }
     },
     {
@@ -967,7 +1003,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 28,
         "queue_mw_20mi": 2123.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Tampa Electric Co",
+        "utility_id": 18454
       }
     },
     {
@@ -1018,7 +1056,9 @@
         "nearest_sub_lines": 4.0,
         "queue_count_20mi": 17,
         "queue_mw_20mi": 8026.4,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Allegheny Energy Supply Co LLC",
+        "utility_id": 23279
       }
     },
     {
@@ -1069,7 +1109,9 @@
         "nearest_sub_lines": 5.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 2042.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Entergy Louisiana LLC",
+        "utility_id": 11241
       }
     },
     {
@@ -1120,7 +1162,9 @@
         "nearest_sub_lines": 5.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 3437.6,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Dynegy Kincaid Generation",
+        "utility_id": 59918
       }
     },
     {
@@ -1171,7 +1215,9 @@
         "nearest_sub_lines": 5.0,
         "queue_count_20mi": 7,
         "queue_mw_20mi": 4134.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Tennessee Valley Authority",
+        "utility_id": 18642
       }
     },
     {
@@ -1222,7 +1268,9 @@
         "nearest_sub_lines": 7.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 1967.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -1273,7 +1321,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 24,
         "queue_mw_20mi": 2896.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -1324,7 +1374,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 6,
         "queue_mw_20mi": 1067.8,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "AEP Generation Resources Inc",
+        "utility_id": 58620
       }
     },
     {
@@ -1375,7 +1427,9 @@
         "nearest_sub_lines": 9.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 2791.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -1426,7 +1480,9 @@
         "nearest_sub_lines": 9.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 2791.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -1477,7 +1533,9 @@
         "nearest_sub_lines": 11.0,
         "queue_count_20mi": 174,
         "queue_mw_20mi": 95653.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "PSEG Fossil LLC",
+        "utility_id": 15147
       }
     },
     {
@@ -1528,7 +1586,9 @@
         "nearest_sub_lines": 22.0,
         "queue_count_20mi": 1,
         "queue_mw_20mi": 920.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Duke Energy Carolinas, LLC",
+        "utility_id": 5416
       }
     },
     {
@@ -1579,7 +1639,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 6,
         "queue_mw_20mi": 4385.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Georgia Power Co",
+        "utility_id": 7140
       }
     },
     {
@@ -1630,7 +1692,9 @@
         "nearest_sub_lines": 12.0,
         "queue_count_20mi": 21,
         "queue_mw_20mi": 5188.8,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Midwest Generations EME LLC",
+        "utility_id": 12384
       }
     },
     {
@@ -1681,7 +1745,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 7,
         "queue_mw_20mi": 2064.3,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Duke Energy Florida, LLC",
+        "utility_id": 6455
       }
     },
     {
@@ -1732,7 +1798,9 @@
         "nearest_sub_lines": 5.0,
         "queue_count_20mi": 38,
         "queue_mw_20mi": 9321.4,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Brayton Point Energy LLC",
+        "utility_id": 58534
       }
     },
     {
@@ -1783,7 +1851,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 8,
         "queue_mw_20mi": 2391.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "AEP Generation Resources Inc",
+        "utility_id": 58620
       }
     },
     {
@@ -1834,7 +1904,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 3,
         "queue_mw_20mi": 3065.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "FirstEnergy Generation Corp",
+        "utility_id": 6526
       }
     },
     {
@@ -1885,7 +1957,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -1936,7 +2010,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 3864.4,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -1987,7 +2063,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 6,
         "queue_mw_20mi": 849.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Consumers Energy Co - (MI)",
+        "utility_id": 4254
       }
     },
     {
@@ -2038,7 +2116,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2089,7 +2169,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2140,7 +2222,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2191,7 +2275,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2242,7 +2328,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2293,7 +2381,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2344,7 +2434,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2395,7 +2487,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2446,7 +2540,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2497,7 +2593,9 @@
         "nearest_sub_lines": 14.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 2255.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2548,7 +2646,9 @@
         "nearest_sub_lines": 9.0,
         "queue_count_20mi": 7,
         "queue_mw_20mi": 2489.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Louisville Gas & Electric Co",
+        "utility_id": 11249
       }
     },
     {
@@ -2599,7 +2699,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 29,
         "queue_mw_20mi": 8084.9,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Virginia Electric & Power Co",
+        "utility_id": 19876
       }
     },
     {
@@ -2650,7 +2752,9 @@
         "nearest_sub_lines": 7.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 2174.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2701,7 +2805,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 5638.8,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2752,7 +2858,9 @@
         "nearest_sub_lines": 5.0,
         "queue_count_20mi": 7,
         "queue_mw_20mi": 4134.0,
-        "site_type": "power_plant"
+        "site_type": "power_plant",
+        "owner_name": "Tennessee Valley Authority",
+        "utility_id": 18642
       }
     },
     {
@@ -2803,7 +2911,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 26,
         "queue_mw_20mi": 4157.2,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2854,7 +2964,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 30,
         "queue_mw_20mi": 4207.2,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2905,7 +3017,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 18,
         "queue_mw_20mi": 4724.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -2956,7 +3070,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3007,7 +3123,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3058,7 +3176,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3109,7 +3229,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3160,7 +3282,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3211,7 +3335,9 @@
         "nearest_sub_lines": 7.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 7273.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3262,7 +3388,9 @@
         "nearest_sub_lines": 8.0,
         "queue_count_20mi": 16,
         "queue_mw_20mi": 2300.5,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3313,7 +3441,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3364,7 +3494,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3415,7 +3547,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3466,7 +3600,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3517,7 +3653,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3568,7 +3706,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 22,
         "queue_mw_20mi": 5855.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3619,7 +3759,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3670,7 +3812,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3721,7 +3865,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3772,7 +3918,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3823,7 +3971,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3874,7 +4024,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3925,7 +4077,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -3976,7 +4130,9 @@
         "nearest_sub_lines": 7.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 7273.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4027,7 +4183,9 @@
         "nearest_sub_lines": 7.0,
         "queue_count_20mi": 15,
         "queue_mw_20mi": 7273.7,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4078,7 +4236,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 5638.8,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4129,7 +4289,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 5638.8,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4180,7 +4342,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 5638.8,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4231,7 +4395,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 5638.8,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4282,7 +4448,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 5638.8,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4333,7 +4501,9 @@
         "nearest_sub_lines": 13.0,
         "queue_count_20mi": 13,
         "queue_mw_20mi": 5638.8,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4384,7 +4554,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 21,
         "queue_mw_20mi": 3209.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4435,7 +4607,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 36,
         "queue_mw_20mi": 5427.2,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4486,7 +4660,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 21,
         "queue_mw_20mi": 3209.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4537,7 +4713,9 @@
         "nearest_sub_lines": 10.0,
         "queue_count_20mi": 36,
         "queue_mw_20mi": 5427.2,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4588,7 +4766,9 @@
         "nearest_sub_lines": 15.0,
         "queue_count_20mi": 17,
         "queue_mw_20mi": 4615.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4639,7 +4819,9 @@
         "nearest_sub_lines": 11.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 1683.2,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4690,7 +4872,9 @@
         "nearest_sub_lines": 9.0,
         "queue_count_20mi": 12,
         "queue_mw_20mi": 1772.0,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4741,7 +4925,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 22,
         "queue_mw_20mi": 5855.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4792,7 +4978,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 22,
         "queue_mw_20mi": 5855.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4843,7 +5031,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4894,7 +5084,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 22,
         "queue_mw_20mi": 5855.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4945,7 +5137,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -4996,7 +5190,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -5047,7 +5243,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     },
     {
@@ -5098,7 +5296,9 @@
         "nearest_sub_lines": 21.0,
         "queue_count_20mi": 14,
         "queue_mw_20mi": 4405.9,
-        "site_type": "brownfield"
+        "site_type": "brownfield",
+        "owner_name": "",
+        "utility_id": null
       }
     }
   ]

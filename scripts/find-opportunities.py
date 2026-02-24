@@ -472,6 +472,8 @@ def score_site(site, sub_coords, qw_points, lmp_nodes, atc_nodes=None):
         "nearest_sub_lines": best_sub.get("lines", 0),
         "queue_count_20mi": qw_count,
         "queue_mw_20mi": r(qw_total_mw),
+        "owner_name": site.get("owner_name", ""),
+        "utility_id": site.get("utility_id"),
     }
 
 
@@ -679,6 +681,8 @@ def main():
                 "fuel_type": p.get("fuel_type", ""),
                 "status": p["status"],
                 "planned_retirement_date": p.get("planned_retirement_date"),
+                "owner_name": p.get("owner_name", ""),
+                "utility_id": p.get("utility_id"),
             })
     print("  Retired/retiring plants: {:,}".format(len(retired_plants)))
 
@@ -776,6 +780,8 @@ def main():
                     "opportunity_type": "retired_plant",
                     "qualifying_substation": sub["name"],
                     "qualifying_sub_kv": sub["max_volt"],
+                    "owner_name": plant.get("owner_name", ""),
+                    "utility_id": plant.get("utility_id"),
                 })
     print("    Retired plants found: {}".format(
         sum(1 for s in raw_sites if s["opportunity_type"] == "retired_plant")))

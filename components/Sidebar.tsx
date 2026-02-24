@@ -241,6 +241,22 @@ export default function Sidebar(props: SidebarProps) {
                   </div>
                 )}
 
+                {/* Owner/Operator */}
+                {selectedSite.owner_name && (
+                  <div className="space-y-1">
+                    <div className="text-xs text-slate-400 flex justify-between">
+                      <span>Owner/Operator</span>
+                      <span className="text-slate-200 font-medium text-right max-w-[60%] truncate" title={selectedSite.owner_name}>{selectedSite.owner_name}</span>
+                    </div>
+                    {selectedSite.utility_id && (
+                      <div className="text-xs text-slate-400 flex justify-between">
+                        <span>Utility ID</span>
+                        <span className="text-slate-200 font-medium">{selectedSite.utility_id}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {/* Composite Score + TTP Badge */}
                 {(function () {
                   var ttp = estimateTimeToPower(selectedSite);

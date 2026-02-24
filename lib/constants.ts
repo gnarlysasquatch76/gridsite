@@ -54,6 +54,8 @@ export interface ScoredSite {
   qualifying_substation?: string;
   qualifying_sub_kv?: number;
   area_acres?: number;
+  owner_name?: string;
+  utility_id?: number;
   composite_score: number;
   // 4 dimensions
   time_to_power: number;
