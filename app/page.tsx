@@ -74,6 +74,33 @@ function haversineDistanceMiles(lat1: number, lon1: number, lat2: number, lon2: 
   return R * c;
 }
 
+var FLOOD_RISK_STATES = new Set(["LA", "FL", "TX", "MS", "AL", "SC", "NC"]);
+var MODERATE_FLOOD_STATES = new Set(["NJ", "DE", "MD", "VA", "GA", "CT", "RI", "MA", "HI"]);
+var BROADBAND_COVERAGE: Record<string, number> = {
+  "NJ": 97, "CT": 96, "MA": 96, "RI": 95, "MD": 95, "DE": 94,
+  "NY": 93, "VA": 93, "NH": 92, "PA": 91, "FL": 91, "IL": 90,
+  "OH": 90, "CA": 90, "WA": 90, "CO": 89, "GA": 89, "TX": 89,
+  "MI": 88, "NC": 88, "MN": 88, "OR": 87, "WI": 87, "IN": 86,
+  "AZ": 86, "SC": 86, "TN": 85, "UT": 85, "NV": 85, "MO": 84,
+  "KY": 83, "IA": 83, "AL": 82, "KS": 82, "NE": 81, "LA": 81,
+  "OK": 80, "ID": 79, "SD": 78, "ND": 77, "WV": 76, "AR": 76,
+  "NM": 75, "ME": 75, "VT": 74, "MT": 73, "WY": 72, "MS": 72,
+  "AK": 70, "HI": 80,
+};
+
+function isCoastalLocation(lat: number, lon: number, state: string): boolean {
+  if (FLOOD_RISK_STATES.has(state)) {
+    if (state === "FL") return true;
+    if (state === "LA") return lat < 31.0 || lon < -91.0;
+    if (state === "TX") return lon > -97.0 && lat < 30.5;
+    if (state === "MS") return lat < 31.5;
+    if (state === "AL") return lat < 31.5;
+    if (state === "NC" || state === "SC") return lon > -80.0;
+    return true;
+  }
+  return false;
+}
+
 interface ScoredSite {
   plant_name: string;
   state: string;
@@ -461,11 +488,11 @@ export default function Home() {
       "<div style=\"display:flex;justify-content:space-between;align-items:start;margin-bottom:4px;\">" +
         "<div>" +
           "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;\">" + s.plant_name + "</div>" +
-          "<div style=\"font-size:12px;color:#64748b;\">" + s.state + " &middot; " + s.total_capacity_mw.toLocaleString() + " MW</div>" +
+          "<div style=\"font-size:12px;color:#64748b;\">" + (s.total_capacity_mw > 0 ? s.state + " &middot; " + s.total_capacity_mw.toLocaleString() + " MW" : s.state + " &middot; " + s.latitude.toFixed(4) + "&deg;, " + s.longitude.toFixed(4) + "&deg;") + "</div>" +
         "</div>" +
         "<div style=\"background:#eab308;color:#0f172a;border-radius:6px;padding:4px 10px;font-size:18px;font-weight:bold;min-width:44px;text-align:center;\">" + s.composite_score + "</div>" +
       "</div>" +
-      "<div style=\"font-size:11px;color:#64748b;margin-bottom:6px;\">" + s.fuel_type + " &middot; " + s.status + "</div>" +
+      (s.fuel_type === "Custom" ? "<div style=\"font-size:11px;color:#10b981;margin-bottom:6px;\">Right-click scored location</div>" : "<div style=\"font-size:11px;color:#64748b;margin-bottom:6px;\">" + s.fuel_type + " &middot; " + s.status + "</div>") +
       "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;\">" +
         bar("Power Access", s.power_access, "30%") +
         bar("Grid Capacity", s.grid_capacity, "20%") +
@@ -479,6 +506,152 @@ export default function Home() {
         "<div style=\"display:flex;justify-content:space-between;margin:2px 0;\"><span>Sub Voltage</span><strong style=\"color:#334155;\">" + s.nearest_sub_voltage_kv + " kV</strong></div>" +
       "</div></div>";
   }, []);
+
+  // Score any location on right-click
+  var scoreLocation = useCallback(async function (lng: number, lat: number) {
+    var map = mapRef.current;
+    if (!map) return;
+
+    // Fetch and cache data
+    if (!substationsCache.current) {
+      var subRes = await fetch("/data/substations.geojson");
+      substationsCache.current = await subRes.json();
+    }
+    if (!queueWithdrawalsCache.current) {
+      var qwRes = await fetch("/data/queue-withdrawals.geojson");
+      queueWithdrawalsCache.current = await qwRes.json();
+    }
+
+    // Find nearest 345kV+ substation
+    var bestDist = Infinity;
+    var bestSub: { name: string; maxVolt: number; lines: number; state: string } | null = null;
+    var subFeatures = substationsCache.current!.features;
+    for (var i = 0; i < subFeatures.length; i++) {
+      var sf = subFeatures[i];
+      var maxVolt = sf.properties?.MAX_VOLT != null ? Number(sf.properties.MAX_VOLT) : 0;
+      if (maxVolt < 345) continue;
+      if (sf.geometry.type !== "Point") continue;
+      var sCoords = (sf.geometry as GeoJSON.Point).coordinates;
+      var dist = haversineDistanceMiles(lat, lng, sCoords[1], sCoords[0]);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestSub = {
+          name: sf.properties?.NAME || "",
+          maxVolt: maxVolt,
+          lines: sf.properties?.LINES != null ? Number(sf.properties.LINES) : 0,
+          state: sf.properties?.STATE || "",
+        };
+      }
+    }
+
+    if (!bestSub) return;
+
+    // Count queue withdrawals within 20 miles
+    var degDelta = 20 / 69.0;
+    var lonDelta = degDelta / Math.max(Math.cos(lat * Math.PI / 180), 0.01);
+    var qwCount = 0;
+    var qwTotalMW = 0;
+    var qwFeatures = queueWithdrawalsCache.current!.features;
+    for (var qi = 0; qi < qwFeatures.length; qi++) {
+      var qf = qwFeatures[qi];
+      if (qf.geometry.type !== "Point") continue;
+      var qCoords = (qf.geometry as GeoJSON.Point).coordinates;
+      if (Math.abs(qCoords[1] - lat) > degDelta) continue;
+      if (Math.abs(qCoords[0] - lng) > lonDelta) continue;
+      var qDist = haversineDistanceMiles(lat, lng, qCoords[1], qCoords[0]);
+      if (qDist <= 20) {
+        qwCount++;
+        qwTotalMW += qf.properties?.total_mw != null ? Number(qf.properties.total_mw) : 0;
+      }
+    }
+
+    var state = bestSub.state;
+
+    // Power Access (30%) — distance + voltage, brownfield-style weights
+    var distScore = Math.max(0, Math.min(100, 100 - bestDist * 2));
+    var voltScore = 60;
+    if (bestSub.maxVolt >= 765) voltScore = 100;
+    else if (bestSub.maxVolt >= 500) voltScore = 85;
+    else if (bestSub.maxVolt >= 345) voltScore = 70;
+    var powerAccess = distScore * 0.65 + voltScore * 0.35;
+
+    // Grid Capacity (20%) — lines + queue withdrawals
+    var linesScore = Math.max(0, Math.min(100, bestSub.lines / 8 * 100));
+    var qwScore: number;
+    if (qwCount === 0) {
+      qwScore = 30;
+    } else {
+      var countScore = Math.max(30, Math.min(100, 30 + qwCount * 5));
+      var mwBonus = Math.max(0, Math.min(20, qwTotalMW / 5000 * 20));
+      qwScore = Math.max(0, Math.min(100, countScore + mwBonus));
+    }
+    var gridCapacity = linesScore * 0.45 + qwScore * 0.55;
+
+    // Site Characteristics (20%) — unknown site, base 65
+    var siteCharacteristics = 65;
+
+    // Connectivity (15%) — longitude proxy + latitude band + broadband
+    var lonScore = lng < -70 ? Math.max(0, Math.min(100, 100 - (lng + 70) * -1.2)) : 100;
+    lonScore = Math.max(0, Math.min(100, lonScore));
+    var latScore: number;
+    if (lat >= 33 && lat <= 43) latScore = 90;
+    else if (lat >= 28 && lat <= 48) latScore = 70;
+    else latScore = 40;
+    var bbPct = BROADBAND_COVERAGE[state] || 80;
+    var bbScore: number;
+    if (bbPct >= 95) bbScore = 95;
+    else if (bbPct >= 90) bbScore = 85;
+    else if (bbPct >= 85) bbScore = 75;
+    else if (bbPct >= 80) bbScore = 65;
+    else if (bbPct >= 75) bbScore = 50;
+    else bbScore = 35;
+    var connectivity = lonScore * 0.40 + latScore * 0.30 + bbScore * 0.30;
+
+    // Risk Factors (15%) — unknown contamination + flood risk
+    var floodScore: number;
+    if (isCoastalLocation(lat, lng, state)) floodScore = 35;
+    else if (MODERATE_FLOOD_STATES.has(state)) floodScore = 65;
+    else floodScore = 90;
+    var contamScore = 70; // Unknown site — moderate risk
+    var riskFactors = contamScore * 0.65 + floodScore * 0.35;
+
+    // Composite
+    var composite = powerAccess * 0.30 + gridCapacity * 0.20 + siteCharacteristics * 0.20 + connectivity * 0.15 + riskFactors * 0.15;
+    composite = Math.round(Math.max(0, Math.min(100, composite)) * 10) / 10;
+
+    var site: ScoredSite = {
+      plant_name: "Custom Location",
+      state: state,
+      latitude: lat,
+      longitude: lng,
+      total_capacity_mw: 0,
+      fuel_type: "Custom",
+      status: "custom",
+      composite_score: composite,
+      power_access: Math.round(powerAccess * 10) / 10,
+      grid_capacity: Math.round(gridCapacity * 10) / 10,
+      site_characteristics: siteCharacteristics,
+      connectivity: Math.round(connectivity * 10) / 10,
+      risk_factors: Math.round(riskFactors * 10) / 10,
+      nearest_sub_name: bestSub.name,
+      nearest_sub_distance_miles: Math.round(bestDist * 10) / 10,
+      nearest_sub_voltage_kv: bestSub.maxVolt,
+    };
+
+    // Show popup
+    if (popupRef.current) popupRef.current.remove();
+    popupRef.current = new mapboxgl.Popup({ offset: 14, maxWidth: "340px" })
+      .setLngLat([lng, lat])
+      .setHTML(buildScoredSitePopupHTML(site))
+      .addTo(map);
+
+    // Trigger proximity analysis
+    runProximityAnalysis(site, proximityRadius);
+  }, [buildScoredSitePopupHTML, runProximityAnalysis, proximityRadius]);
+
+  // Keep a ref so the one-time contextmenu handler always calls the latest version
+  var scoreLocationRef = useRef<(lng: number, lat: number) => void>(function () {});
+  scoreLocationRef.current = scoreLocation;
 
   // Fly to a scored site and show its popup
   var flyToSite = useCallback(function (site: ScoredSite) {
@@ -583,6 +756,12 @@ export default function Home() {
         var triImageData = triCtx.getImageData(0, 0, triSize, triSize);
         map.addImage(TRIANGLE_ICON, triImageData, { sdf: true });
       }
+
+      // Right-click to score any location
+      map.on("contextmenu", function (e) {
+        e.preventDefault();
+        scoreLocationRef.current(e.lngLat.lng, e.lngLat.lat);
+      });
 
       mapLoaded.current = true;
     });
@@ -1458,6 +1637,13 @@ export default function Home() {
               })}
             </div>
           )}
+        </div>
+
+        {/* Instruction */}
+        <div className="px-5 py-3 border-t border-white/10 shrink-0">
+          <p className="text-xs text-slate-500 text-center">
+            Right-click map to score any location
+          </p>
         </div>
       </div>
 
