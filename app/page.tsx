@@ -30,6 +30,8 @@ var SCORED_SITES_LAYER = "scored-sites-stars";
 var RADIUS_CIRCLE_SOURCE = "radius-circle";
 var RADIUS_CIRCLE_FILL_LAYER = "radius-circle-fill";
 var RADIUS_CIRCLE_OUTLINE_LAYER = "radius-circle-outline";
+var FLOOD_ZONES_SOURCE = "flood-zones";
+var FLOOD_ZONES_LAYER = "flood-zones-raster";
 var DIAMOND_ICON = "diamond-icon";
 var STAR_ICON = "star-icon";
 var TRIANGLE_ICON = "triangle-icon";
@@ -104,6 +106,7 @@ export default function Home() {
     substations: false,
     transmissionLines: false,
     queueWithdrawals: false,
+    floodZones: false,
   });
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
   var [legendOpen, setLegendOpen] = useState(true);
@@ -918,6 +921,58 @@ export default function Home() {
     }
   }, [layers.queueWithdrawals, buildQueuePopupHTML]);
 
+  // Toggle FEMA flood zones layer based on checkbox
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+
+    function setupLayer() {
+      if (!map) return;
+
+      if (map.getLayer(FLOOD_ZONES_LAYER)) {
+        map.setLayoutProperty(
+          FLOOD_ZONES_LAYER,
+          "visibility",
+          layers.floodZones ? "visible" : "none"
+        );
+        return;
+      }
+
+      if (!layers.floodZones) return;
+
+      map.addSource(FLOOD_ZONES_SOURCE, {
+        type: "raster",
+        tiles: [
+          "https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&format=png32&transparent=true&f=image",
+        ],
+        tileSize: 256,
+      });
+
+      // Insert below all point/line layers so flood zones sit underneath
+      var beforeLayer: string | undefined;
+      if (map.getLayer(POWER_PLANTS_LAYER)) beforeLayer = POWER_PLANTS_LAYER;
+      else if (map.getLayer(TRANSMISSION_LINES_LAYER)) beforeLayer = TRANSMISSION_LINES_LAYER;
+      else if (map.getLayer(SUBSTATIONS_LAYER)) beforeLayer = SUBSTATIONS_LAYER;
+      else if (map.getLayer(QUEUE_WITHDRAWALS_LAYER)) beforeLayer = QUEUE_WITHDRAWALS_LAYER;
+      else if (map.getLayer(SCORED_SITES_LAYER)) beforeLayer = SCORED_SITES_LAYER;
+
+      map.addLayer({
+        id: FLOOD_ZONES_LAYER,
+        type: "raster",
+        source: FLOOD_ZONES_SOURCE,
+        paint: {
+          "raster-opacity": 0.5,
+        },
+      }, beforeLayer);
+    }
+
+    if (mapLoaded.current) {
+      setupLayer();
+    } else {
+      map.on("load", setupLayer);
+    }
+  }, [layers.floodZones]);
+
   // Load scored sites on mount — always-visible star layer
   useEffect(function () {
     var map = mapRef.current;
@@ -1118,6 +1173,15 @@ export default function Home() {
                   className="accent-blue-500"
                 />
                 Queue Withdrawals (ISO)
+              </label>
+              <label className="flex items-center gap-2.5 text-sm text-slate-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={layers.floodZones}
+                  onChange={() => toggleLayer("floodZones")}
+                  className="accent-blue-500"
+                />
+                Flood Zones (FEMA)
               </label>
             </div>
           )}
@@ -1414,6 +1478,10 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <span className="text-orange-500 text-[10px] leading-none">&#9650;</span>
                   <span>Queue Withdrawal</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#6baed6] opacity-60"></span>
+                  <span>FEMA Flood Zone</span>
                 </div>
                 <div className="border-t border-white/10 my-1.5"></div>
                 <div className="flex items-center gap-2">
