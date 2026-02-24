@@ -80425,7 +80425,7 @@
         "longitude": -112.5802,
         "total_capacity_mw": 1640.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Los Angeles Department of Water & Power",
         "utility_id": 11208,
         "planned_retirement_date": "2025-11"
@@ -80491,7 +80491,7 @@
         "longitude": -106.5472,
         "total_capacity_mw": 50.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "El Paso Electric Co",
         "utility_id": 5701,
         "planned_retirement_date": "2025-09"
@@ -80535,7 +80535,7 @@
         "longitude": -88.1236,
         "total_capacity_mw": 384.0,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Elwood Energy LLC",
         "utility_id": 5259,
         "planned_retirement_date": "2025-06"
@@ -80557,7 +80557,7 @@
         "longitude": -76.5268,
         "total_capacity_mw": 284.8,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "H.A. Wagner LLC",
         "utility_id": 60422,
         "planned_retirement_date": "2025-05"
@@ -80579,7 +80579,7 @@
         "longitude": -90.14868,
         "total_capacity_mw": 1491.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2025-05"
@@ -80601,7 +80601,7 @@
         "longitude": -91.51583,
         "total_capacity_mw": 300.2,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern States Power Co - Minnesota",
         "utility_id": 13781,
         "planned_retirement_date": "2025-05"
@@ -80623,7 +80623,7 @@
         "longitude": -93.4315,
         "total_capacity_mw": 226.8,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern States Power Co - Minnesota",
         "utility_id": 13781,
         "planned_retirement_date": "2025-05"
@@ -80667,7 +80667,7 @@
         "longitude": -87.9861,
         "total_capacity_mw": 1893.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2025-03"
@@ -80689,7 +80689,7 @@
         "longitude": -81.9897,
         "total_capacity_mw": 133.4,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tampa Electric Co",
         "utility_id": 18454,
         "planned_retirement_date": "2025-03"
@@ -80711,7 +80711,7 @@
         "longitude": -75.2341,
         "total_capacity_mw": 785.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Indian River Operations Inc",
         "utility_id": 9332,
         "planned_retirement_date": "2025-02"
@@ -80733,7 +80733,7 @@
         "longitude": -85.9103,
         "total_capacity_mw": 355.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Louisville Gas & Electric Co",
         "utility_id": 11249,
         "planned_retirement_date": "2024-12"
@@ -80777,7 +80777,7 @@
         "longitude": -98.23,
         "total_capacity_mw": 84.6,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Western Farmers Elec Coop, Inc",
         "utility_id": 20447,
         "planned_retirement_date": "2024-12"
@@ -80997,7 +80997,7 @@
         "longitude": -91.5425,
         "total_capacity_mw": 425.9,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Cleco Power LLC",
         "utility_id": 3265,
         "planned_retirement_date": "2024-06"
@@ -81041,7 +81041,7 @@
         "longitude": -82.4719,
         "total_capacity_mw": 1552.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "DTE Electric Company",
         "utility_id": 5109,
         "planned_retirement_date": "2024-06"
@@ -81129,7 +81129,7 @@
         "longitude": -87.8294,
         "total_capacity_mw": 618.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Wisconsin Electric Power Co",
         "utility_id": 20847,
         "planned_retirement_date": "2024-05"
@@ -81239,7 +81239,7 @@
         "longitude": -89.60239,
         "total_capacity_mw": 387.7,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Springfield - (IL)",
         "utility_id": 17828,
         "planned_retirement_date": "2024-03"
@@ -81261,7 +81261,7 @@
         "longitude": -90.47684,
         "total_capacity_mw": 445.5,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Entergy Louisiana LLC",
         "utility_id": 11241,
         "planned_retirement_date": "2024-03"
@@ -81305,7 +81305,7 @@
         "longitude": -81.63278,
         "total_capacity_mw": 714.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Seminole Electric Cooperative Inc",
         "utility_id": 21554,
         "planned_retirement_date": "2024-01"
@@ -81327,7 +81327,7 @@
         "longitude": -70.9672,
         "total_capacity_mw": 106.4,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Town of Braintree - (MA)",
         "utility_id": 2144,
         "planned_retirement_date": "2024-01"
@@ -81371,7 +81371,7 @@
         "longitude": -103.3533,
         "total_capacity_mw": 75.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southwestern Public Service Co",
         "utility_id": 17718,
         "planned_retirement_date": "2024-01"
@@ -81393,7 +81393,7 @@
         "longitude": -97.17969,
         "total_capacity_mw": 190.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Oklahoma Gas & Electric Co",
         "utility_id": 14063,
         "planned_retirement_date": "2024-01"
@@ -81459,7 +81459,7 @@
         "longitude": -102.4114,
         "total_capacity_mw": 244.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southwestern Public Service Co",
         "utility_id": 17718,
         "planned_retirement_date": "2023-12"
@@ -81481,7 +81481,7 @@
         "longitude": -93.8931,
         "total_capacity_mw": 765.3,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern States Power Co - Minnesota",
         "utility_id": 13781,
         "planned_retirement_date": "2023-12"
@@ -81569,7 +81569,7 @@
         "longitude": -87.715,
         "total_capacity_mw": 530.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southern Indiana Gas & Elec Co",
         "utility_id": 17633,
         "planned_retirement_date": "2023-10"
@@ -81679,7 +81679,7 @@
         "longitude": -115.518,
         "total_capacity_mw": 59.0,
         "fuel_type": "Geothermal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "ORCAL Geothermal, Inc",
         "utility_id": 49748,
         "planned_retirement_date": "2023-08"
@@ -81767,7 +81767,7 @@
         "longitude": -87.2525,
         "total_capacity_mw": 804.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "AES Indiana",
         "utility_id": 9273,
         "planned_retirement_date": "2023-06"
@@ -81833,7 +81833,7 @@
         "longitude": -75.10542,
         "total_capacity_mw": 410.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "TalenEnergy Martins Creek LLC",
         "utility_id": 15276,
         "planned_retirement_date": "2023-06"
@@ -81855,7 +81855,7 @@
         "longitude": -89.6553,
         "total_capacity_mw": 217.9,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Wisconsin Public Service Corp",
         "utility_id": 20860,
         "planned_retirement_date": "2023-06"
@@ -81899,7 +81899,7 @@
         "longitude": -95.40748,
         "total_capacity_mw": 675.5,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Olin Blue Cube Operations",
         "utility_id": 59875,
         "planned_retirement_date": "2023-06"
@@ -81921,7 +81921,7 @@
         "longitude": -118.2782,
         "total_capacity_mw": 296.5,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Glendale - (CA)",
         "utility_id": 7294,
         "planned_retirement_date": "2023-05"
@@ -81943,7 +81943,7 @@
         "longitude": -83.84007,
         "total_capacity_mw": 544.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Consumers Energy Co - (MI)",
         "utility_id": 4254,
         "planned_retirement_date": "2023-05"
@@ -81965,7 +81965,7 @@
         "longitude": -73.94611,
         "total_capacity_mw": 545.4,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Ravenswood Operations LLC",
         "utility_id": 61130,
         "planned_retirement_date": "2023-05"
@@ -81987,7 +81987,7 @@
         "longitude": -77.3833,
         "total_capacity_mw": 1352.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Virginia Electric & Power Co",
         "utility_id": 19876,
         "planned_retirement_date": "2023-05"
@@ -82053,7 +82053,7 @@
         "longitude": -82.4036,
         "total_capacity_mw": 1066.4,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tampa Electric Co",
         "utility_id": 18454,
         "planned_retirement_date": "2023-04"
@@ -82119,7 +82119,7 @@
         "longitude": -81.3308,
         "total_capacity_mw": 83.8,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Dominion Energy South Carolina, Inc",
         "utility_id": 17539,
         "planned_retirement_date": "2023-03"
@@ -82273,7 +82273,7 @@
         "longitude": -84.08,
         "total_capacity_mw": 121.0,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Baconton Power LLC",
         "utility_id": 2671,
         "planned_retirement_date": "2023-01"
@@ -82295,7 +82295,7 @@
         "longitude": -104.5747,
         "total_capacity_mw": 382.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Public Service Co of Colorado",
         "utility_id": 15466,
         "planned_retirement_date": "2022-12"
@@ -82471,7 +82471,7 @@
         "longitude": -76.9767,
         "total_capacity_mw": 1288.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Lanyard Power Holdings, LLC",
         "utility_id": 12653,
         "planned_retirement_date": "2022-09"
@@ -82515,7 +82515,7 @@
         "longitude": -79.9297,
         "total_capacity_mw": 53.8,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "South Carolina Genertg Co, Inc",
         "utility_id": 17554,
         "planned_retirement_date": "2022-09"
@@ -82603,7 +82603,7 @@
         "longitude": -104.8333,
         "total_capacity_mw": 257.3,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Colorado Springs - (CO)",
         "utility_id": 3989,
         "planned_retirement_date": "2022-08"
@@ -82713,7 +82713,7 @@
         "longitude": -87.8133,
         "total_capacity_mw": 802.7,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Midwest Generations EME LLC",
         "utility_id": 12384,
         "planned_retirement_date": "2022-06"
@@ -83043,7 +83043,7 @@
         "longitude": -82.435,
         "total_capacity_mw": 448.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Carolinas, LLC",
         "utility_id": 5416,
         "planned_retirement_date": "2022-03"
@@ -83065,7 +83065,7 @@
         "longitude": -97.6128,
         "total_capacity_mw": 726.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Austin Energy",
         "utility_id": 1015,
         "planned_retirement_date": "2022-03"
@@ -83109,7 +83109,7 @@
         "longitude": -100.8836,
         "total_capacity_mw": 115.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Montana-Dakota Utilities Co",
         "utility_id": 12199,
         "planned_retirement_date": "2022-02"
@@ -83131,7 +83131,7 @@
         "longitude": -83.8075,
         "total_capacity_mw": 891.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Georgia Power Co",
         "utility_id": 7140,
         "planned_retirement_date": "2022-01"
@@ -83197,7 +83197,7 @@
         "longitude": -116.5642,
         "total_capacity_mw": 64.8,
         "fuel_type": "Onshore Wind Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "AES Distributed Energy",
         "utility_id": 61012,
         "planned_retirement_date": "2021-12"
@@ -83241,7 +83241,7 @@
         "longitude": -73.1844,
         "total_capacity_mw": 581.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Generation Bridge II Connecticut, LLC",
         "utility_id": 65448,
         "planned_retirement_date": "2021-10"
@@ -83263,7 +83263,7 @@
         "longitude": -87.0261,
         "total_capacity_mw": 1096.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern Indiana Pub Serv Co",
         "utility_id": 13756,
         "planned_retirement_date": "2021-10"
@@ -83285,7 +83285,7 @@
         "longitude": -117.3563,
         "total_capacity_mw": 92.0,
         "fuel_type": "Solar Thermal without Energy Storage",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Terra-Gen Operating Co-Solar",
         "utility_id": 61950,
         "planned_retirement_date": "2021-10"
@@ -83329,7 +83329,7 @@
         "longitude": -84.5543,
         "total_capacity_mw": 121.8,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Hamilton - (OH)",
         "utility_id": 7977,
         "planned_retirement_date": "2021-09"
@@ -83351,7 +83351,7 @@
         "longitude": -88.0303,
         "total_capacity_mw": 116.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Georgia-Pacific Consumer Oper. Green Bay LLC",
         "utility_id": 55919,
         "planned_retirement_date": "2021-09"
@@ -83395,7 +83395,7 @@
         "longitude": -82.3208,
         "total_capacity_mw": 123.9,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Gainesville Regional Utilities",
         "utility_id": 6909,
         "planned_retirement_date": "2021-06"
@@ -83439,7 +83439,7 @@
         "longitude": -96.04325,
         "total_capacity_mw": 137.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Otter Tail Power Co",
         "utility_id": 14232,
         "planned_retirement_date": "2021-06"
@@ -83549,7 +83549,7 @@
         "longitude": -81.9229,
         "total_capacity_mw": 593.3,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Lakeland - (FL)",
         "utility_id": 10623,
         "planned_retirement_date": "2021-04"
@@ -83593,7 +83593,7 @@
         "longitude": -104.1567,
         "total_capacity_mw": 50.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Montana-Dakota Utilities Co",
         "utility_id": 12199,
         "planned_retirement_date": "2021-03"
@@ -83769,7 +83769,7 @@
         "longitude": -122.2819,
         "total_capacity_mw": 74.5,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Dynegy Oakland, LLC",
         "utility_id": 54803,
         "planned_retirement_date": "2021-01"
@@ -83791,7 +83791,7 @@
         "longitude": -77.4308,
         "total_capacity_mw": 114.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Veolia Energy Operating Service",
         "utility_id": 61854,
         "planned_retirement_date": "2021-01"
@@ -83835,7 +83835,7 @@
         "longitude": -95.2894,
         "total_capacity_mw": 540.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Grand River Dam Authority",
         "utility_id": 7490,
         "planned_retirement_date": "2020-12"
@@ -83857,7 +83857,7 @@
         "longitude": -93.26194,
         "total_capacity_mw": 253.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City Utilities of Springfield - (MO)",
         "utility_id": 17833,
         "planned_retirement_date": "2020-12"
@@ -83879,7 +83879,7 @@
         "longitude": -77.2806,
         "total_capacity_mw": 1372.9,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Virginia Electric & Power Co",
         "utility_id": 19876,
         "planned_retirement_date": "2020-12"
@@ -83901,7 +83901,7 @@
         "longitude": -122.8598,
         "total_capacity_mw": 1051.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "TransAlta Centralia Gen LLC",
         "utility_id": 19099,
         "planned_retirement_date": "2020-12"
@@ -83923,7 +83923,7 @@
         "longitude": -118.2469,
         "total_capacity_mw": 76.9,
         "fuel_type": "Onshore Wind Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Sky River Wind LLC",
         "utility_id": 64156,
         "planned_retirement_date": "2020-12"
@@ -84011,7 +84011,7 @@
         "longitude": -88.95311,
         "total_capacity_mw": 173.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southern Illinois Power Coop",
         "utility_id": 17632,
         "planned_retirement_date": "2020-11"
@@ -84055,7 +84055,7 @@
         "longitude": -87.91075,
         "total_capacity_mw": 538.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "PowerSouth Energy Cooperative",
         "utility_id": 189,
         "planned_retirement_date": "2020-10"
@@ -84209,7 +84209,7 @@
         "longitude": -87.5019,
         "total_capacity_mw": 96.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Big Rivers Electric Corp",
         "utility_id": 1692,
         "planned_retirement_date": "2020-09"
@@ -84231,7 +84231,7 @@
         "longitude": -89.8544,
         "total_capacity_mw": 634.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Dynegy Midwest Generation Inc",
         "utility_id": 5517,
         "planned_retirement_date": "2020-08"
@@ -84473,7 +84473,7 @@
         "longitude": -77.6319,
         "total_capacity_mw": 82.7,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "RED-Rochester, LLC",
         "utility_id": 5624,
         "planned_retirement_date": "2020-06"
@@ -84495,7 +84495,7 @@
         "longitude": -93.9597,
         "total_capacity_mw": 50.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southwestern Electric Power Co",
         "utility_id": 17698,
         "planned_retirement_date": "2020-05"
@@ -84517,7 +84517,7 @@
         "longitude": -94.6415,
         "total_capacity_mw": 150.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southwestern Electric Power Co",
         "utility_id": 17698,
         "planned_retirement_date": "2020-05"
@@ -84583,7 +84583,7 @@
         "longitude": -80.1657,
         "total_capacity_mw": 729.8,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Progress - (NC)",
         "utility_id": 3046,
         "planned_retirement_date": "2020-03"
@@ -84627,7 +84627,7 @@
         "longitude": -70.9739,
         "total_capacity_mw": 53.6,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "General Electric Aircraft Engines",
         "utility_id": 7049,
         "planned_retirement_date": "2020-03"
@@ -84693,7 +84693,7 @@
         "longitude": -86.9783,
         "total_capacity_mw": 2558.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2020-01"
@@ -84715,7 +84715,7 @@
         "longitude": -82.5417,
         "total_capacity_mw": 413.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Progress - (NC)",
         "utility_id": 3046,
         "planned_retirement_date": "2020-01"
@@ -84737,7 +84737,7 @@
         "longitude": -106.614,
         "total_capacity_mw": 716.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Talen Montana LLC",
         "utility_id": 15298,
         "planned_retirement_date": "2020-01"
@@ -84781,7 +84781,7 @@
         "longitude": -118.1009,
         "total_capacity_mw": 940.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "AES Alamitos LLC",
         "utility_id": 22148,
         "planned_retirement_date": "2019-12"
@@ -84803,7 +84803,7 @@
         "longitude": -117.9792,
         "total_capacity_mw": 803.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "AES Huntington Beach LLC",
         "utility_id": 23693,
         "planned_retirement_date": "2019-12"
@@ -84869,7 +84869,7 @@
         "longitude": -85.8892,
         "total_capacity_mw": 660.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Louisville Gas & Electric Co",
         "utility_id": 11249,
         "planned_retirement_date": "2019-12"
@@ -84957,7 +84957,7 @@
         "longitude": -112.1225,
         "total_capacity_mw": 182.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Kennecott Utah Copper",
         "utility_id": 49805,
         "planned_retirement_date": "2019-12"
@@ -84979,7 +84979,7 @@
         "longitude": -110.9047,
         "total_capacity_mw": 217.6,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tucson Electric Power Co",
         "utility_id": 24211,
         "planned_retirement_date": "2019-11"
@@ -85155,7 +85155,7 @@
         "longitude": -91.975,
         "total_capacity_mw": 66.6,
         "fuel_type": "Wood/Wood Waste Biomass",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Georgia-Pacific Crossett LLC",
         "utility_id": 4580,
         "planned_retirement_date": "2019-10"
@@ -85243,7 +85243,7 @@
         "longitude": -75.3588,
         "total_capacity_mw": 67.0,
         "fuel_type": "Petroleum Coke",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Kimberly-Clark Corp",
         "utility_id": 10273,
         "planned_retirement_date": "2019-09"
@@ -85287,7 +85287,7 @@
         "longitude": -119.9703,
         "total_capacity_mw": 1038.0,
         "fuel_type": "Conventional Hydroelectric",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "PUD No 2 of Grant County",
         "utility_id": 14624,
         "planned_retirement_date": "2019-08"
@@ -85331,7 +85331,7 @@
         "longitude": -81.16835,
         "total_capacity_mw": 177.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Georgia Power Co",
         "utility_id": 7140,
         "planned_retirement_date": "2019-07"
@@ -85419,7 +85419,7 @@
         "longitude": -76.3019,
         "total_capacity_mw": 761.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Virginia Electric & Power Co",
         "utility_id": 19876,
         "planned_retirement_date": "2019-06"
@@ -85661,7 +85661,7 @@
         "longitude": -96.1352,
         "total_capacity_mw": 53.0,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Public Service Co of Oklahoma",
         "utility_id": 15474,
         "planned_retirement_date": "2019-03"
@@ -85727,7 +85727,7 @@
         "longitude": -121.6961,
         "total_capacity_mw": 66.0,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Calpine Greenleaf Holding, Inc.",
         "utility_id": 64430,
         "planned_retirement_date": "2019-03"
@@ -85815,7 +85815,7 @@
         "longitude": -84.71257,
         "total_capacity_mw": 293.1,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Kentucky Utilities Co",
         "utility_id": 10171,
         "planned_retirement_date": "2019-02"
@@ -85859,7 +85859,7 @@
         "longitude": -111.9122,
         "total_capacity_mw": 227.8,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Arizona Public Service Co",
         "utility_id": 803,
         "planned_retirement_date": "2019-01"
@@ -85881,7 +85881,7 @@
         "longitude": -92.0792,
         "total_capacity_mw": 414.7,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Entergy Louisiana LLC",
         "utility_id": 11241,
         "planned_retirement_date": "2019-01"
@@ -85947,7 +85947,7 @@
         "longitude": -80.1984,
         "total_capacity_mw": 1794.8,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2018-12"
@@ -85969,7 +85969,7 @@
         "longitude": -82.6977,
         "total_capacity_mw": 1854.7,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Florida, LLC",
         "utility_id": 6455,
         "planned_retirement_date": "2018-12"
@@ -85991,7 +85991,7 @@
         "longitude": -71.0792,
         "total_capacity_mw": 60.2,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Kendall Green Energy, LLC",
         "utility_id": 59528,
         "planned_retirement_date": "2018-12"
@@ -86013,7 +86013,7 @@
         "longitude": -93.6528,
         "total_capacity_mw": 150.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "ALLETE, Inc.",
         "utility_id": 12647,
         "planned_retirement_date": "2018-12"
@@ -86079,7 +86079,7 @@
         "longitude": -80.5628,
         "total_capacity_mw": 1869.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2018-12"
@@ -86123,7 +86123,7 @@
         "longitude": -84.4,
         "total_capacity_mw": 118.3,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Tallahassee - (FL)",
         "utility_id": 18445,
         "planned_retirement_date": "2018-11"
@@ -86211,7 +86211,7 @@
         "longitude": -89.394,
         "total_capacity_mw": 400.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Cooperative Energy",
         "utility_id": 17568,
         "planned_retirement_date": "2018-11"
@@ -86255,7 +86255,7 @@
         "longitude": -68.8046,
         "total_capacity_mw": 111.6,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Bucksport Generation LLC",
         "utility_id": 9303,
         "planned_retirement_date": "2018-11"
@@ -86299,7 +86299,7 @@
         "longitude": -84.20067,
         "total_capacity_mw": 80.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Tallahassee - (FL)",
         "utility_id": 18445,
         "planned_retirement_date": "2018-10"
@@ -86321,7 +86321,7 @@
         "longitude": -97.52167,
         "total_capacity_mw": 526.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Evergy Kansas South, Inc",
         "utility_id": 10005,
         "planned_retirement_date": "2018-10"
@@ -86365,7 +86365,7 @@
         "longitude": -88.0086,
         "total_capacity_mw": 410.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Wisconsin Public Service Corp",
         "utility_id": 20860,
         "planned_retirement_date": "2018-10"
@@ -86431,7 +86431,7 @@
         "longitude": -87.70586,
         "total_capacity_mw": 420.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Wisconsin Power & Light Co",
         "utility_id": 20856,
         "planned_retirement_date": "2018-09"
@@ -86673,7 +86673,7 @@
         "longitude": -76.9128,
         "total_capacity_mw": 110.0,
         "fuel_type": "Wood/Wood Waste Biomass",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "International Paper",
         "utility_id": 9348,
         "planned_retirement_date": "2018-06"
@@ -86695,7 +86695,7 @@
         "longitude": -122.9184,
         "total_capacity_mw": 90.0,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Longview Fibre Co",
         "utility_id": 11169,
         "planned_retirement_date": "2018-06"
@@ -86739,7 +86739,7 @@
         "longitude": -74.2469,
         "total_capacity_mw": 567.4,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Sewaren Generating Station",
         "utility_id": 65391,
         "planned_retirement_date": "2018-05"
@@ -86827,7 +86827,7 @@
         "longitude": -89.0286,
         "total_capacity_mw": 296.4,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Mississippi Power Co",
         "utility_id": 12686,
         "planned_retirement_date": "2018-03"
@@ -87003,7 +87003,7 @@
         "longitude": -97.67498,
         "total_capacity_mw": 531.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Oklahoma Gas & Electric Co",
         "utility_id": 14063,
         "planned_retirement_date": "2017-12"
@@ -87025,7 +87025,7 @@
         "longitude": -95.21943,
         "total_capacity_mw": 446.4,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "NRG Texas Power LLC",
         "utility_id": 54888,
         "planned_retirement_date": "2017-12"
@@ -87135,7 +87135,7 @@
         "longitude": -105.202,
         "total_capacity_mw": 191.7,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Public Service Co of Colorado",
         "utility_id": 15466,
         "planned_retirement_date": "2017-09"
@@ -87157,7 +87157,7 @@
         "longitude": -98.3269,
         "total_capacity_mw": 98.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Grand Island - (NE)",
         "utility_id": 40606,
         "planned_retirement_date": "2017-09"
@@ -87179,7 +87179,7 @@
         "longitude": -99.0919,
         "total_capacity_mw": 66.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "South Texas Electric Coop, Inc",
         "utility_id": 17583,
         "planned_retirement_date": "2017-08"
@@ -87377,7 +87377,7 @@
         "longitude": -114.6333,
         "total_capacity_mw": 636.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Nevada Power Co",
         "utility_id": 13407,
         "planned_retirement_date": "2017-03"
@@ -87531,7 +87531,7 @@
         "longitude": -93.2911,
         "total_capacity_mw": 163.2,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Entergy Louisiana LLC",
         "utility_id": 11241,
         "planned_retirement_date": "2017-01"
@@ -87553,7 +87553,7 @@
         "longitude": -121.7822,
         "total_capacity_mw": 1404.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Dynegy -Moss Landing LLC",
         "utility_id": 54802,
         "planned_retirement_date": "2016-12"
@@ -87597,7 +87597,7 @@
         "longitude": -81.7831,
         "total_capacity_mw": 620.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2016-12"
@@ -87619,7 +87619,7 @@
         "longitude": -80.1253,
         "total_capacity_mw": 1710.4,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2016-12"
@@ -87641,7 +87641,7 @@
         "longitude": -83.18056,
         "total_capacity_mw": 147.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Florida, LLC",
         "utility_id": 6455,
         "planned_retirement_date": "2016-12"
@@ -87685,7 +87685,7 @@
         "longitude": -81.33233,
         "total_capacity_mw": 66.8,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Florida, LLC",
         "utility_id": 6455,
         "planned_retirement_date": "2016-12"
@@ -87707,7 +87707,7 @@
         "longitude": -149.7167,
         "total_capacity_mw": 71.1,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Chugach Electric Assn Inc",
         "utility_id": 3522,
         "planned_retirement_date": "2016-12"
@@ -87795,7 +87795,7 @@
         "longitude": -90.1458,
         "total_capacity_mw": 351.3,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Entergy Louisiana LLC",
         "utility_id": 11241,
         "planned_retirement_date": "2016-11"
@@ -87817,7 +87817,7 @@
         "longitude": -80.3308,
         "total_capacity_mw": 817.5,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2016-10"
@@ -87861,7 +87861,7 @@
         "longitude": -93.878,
         "total_capacity_mw": 239.4,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Entergy Texas Inc.",
         "utility_id": 55937,
         "planned_retirement_date": "2016-10"
@@ -87883,7 +87883,7 @@
         "longitude": -88.2781,
         "total_capacity_mw": 617.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Illinois Power Generating Co",
         "utility_id": 520,
         "planned_retirement_date": "2016-09"
@@ -87949,7 +87949,7 @@
         "longitude": -88.7461,
         "total_capacity_mw": 95.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Mississippi Power Co",
         "utility_id": 12686,
         "planned_retirement_date": "2016-07"
@@ -88081,7 +88081,7 @@
         "longitude": -87.4247,
         "total_capacity_mw": 112.5,
         "fuel_type": "Petroleum Coke",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Wabash Valley Power Assn, Inc",
         "utility_id": 40211,
         "planned_retirement_date": "2016-05"
@@ -88103,7 +88103,7 @@
         "longitude": -87.8486,
         "total_capacity_mw": 1350.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2016-04"
@@ -88125,7 +88125,7 @@
         "longitude": -86.4183,
         "total_capacity_mw": 396.3,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "AES Indiana",
         "utility_id": 9273,
         "planned_retirement_date": "2016-04"
@@ -88147,7 +88147,7 @@
         "longitude": -96.37971,
         "total_capacity_mw": 496.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "MidAmerican Energy Co",
         "utility_id": 12341,
         "planned_retirement_date": "2016-04"
@@ -88257,7 +88257,7 @@
         "longitude": -95.7008,
         "total_capacity_mw": 473.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Public Service Co of Oklahoma",
         "utility_id": 15474,
         "planned_retirement_date": "2016-04"
@@ -88279,7 +88279,7 @@
         "longitude": -94.83999,
         "total_capacity_mw": 558.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southwestern Electric Power Co",
         "utility_id": 17698,
         "planned_retirement_date": "2016-04"
@@ -88323,7 +88323,7 @@
         "longitude": -85.7003,
         "total_capacity_mw": 340.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2016-03"
@@ -88367,7 +88367,7 @@
         "longitude": -92.4613,
         "total_capacity_mw": 175.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Alexandria - (LA)",
         "utility_id": 298,
         "planned_retirement_date": "2016-03"
@@ -88411,7 +88411,7 @@
         "longitude": -76.22176,
         "total_capacity_mw": 53.1,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Constellation Power Source Generation, LLC",
         "utility_id": 4161,
         "planned_retirement_date": "2016-02"
@@ -88433,7 +88433,7 @@
         "longitude": -102.9633,
         "total_capacity_mw": 650.4,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Luminant Generation Company LLC",
         "utility_id": 55983,
         "planned_retirement_date": "2016-02"
@@ -88521,7 +88521,7 @@
         "longitude": -118.4276,
         "total_capacity_mw": 496.8,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Los Angeles Department of Water & Power",
         "utility_id": 11208,
         "planned_retirement_date": "2015-12"
@@ -88609,7 +88609,7 @@
         "longitude": -82.1997,
         "total_capacity_mw": 237.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Appalachian Power Co",
         "utility_id": 733,
         "planned_retirement_date": "2015-12"
@@ -88697,7 +88697,7 @@
         "longitude": -97.87472,
         "total_capacity_mw": 253.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Evergy Kansas Central, Inc",
         "utility_id": 22500,
         "planned_retirement_date": "2015-11"
@@ -88829,7 +88829,7 @@
         "longitude": -79.99091,
         "total_capacity_mw": 445.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "South Carolina Public Service Authority",
         "utility_id": 17543,
         "planned_retirement_date": "2015-10"
@@ -88917,7 +88917,7 @@
         "longitude": -95.0458,
         "total_capacity_mw": 304.6,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Air Liquide Large Industries U S LP",
         "utility_id": 327,
         "planned_retirement_date": "2015-09"
@@ -88939,7 +88939,7 @@
         "longitude": -88.0103,
         "total_capacity_mw": 272.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Alabama Power Co",
         "utility_id": 195,
         "planned_retirement_date": "2015-08"
@@ -88961,7 +88961,7 @@
         "longitude": -104.9645,
         "total_capacity_mw": 420.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Public Service Co of Colorado",
         "utility_id": 15466,
         "planned_retirement_date": "2015-08"
@@ -89027,7 +89027,7 @@
         "longitude": -94.6987,
         "total_capacity_mw": 100.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Empire District Electric Co",
         "utility_id": 5860,
         "planned_retirement_date": "2015-06"
@@ -89049,7 +89049,7 @@
         "longitude": -90.46169,
         "total_capacity_mw": 247.7,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Entergy Louisiana LLC",
         "utility_id": 11241,
         "planned_retirement_date": "2015-06"
@@ -89093,7 +89093,7 @@
         "longitude": -74.87917,
         "total_capacity_mw": 577.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Burlington Generating Station",
         "utility_id": 65386,
         "planned_retirement_date": "2015-06"
@@ -89137,7 +89137,7 @@
         "longitude": -84.8036,
         "total_capacity_mw": 263.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Luminant Miami Fort",
         "utility_id": 59919,
         "planned_retirement_date": "2015-06"
@@ -89159,7 +89159,7 @@
         "longitude": -84.2921,
         "total_capacity_mw": 414.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Kimura Power LLC",
         "utility_id": 61919,
         "planned_retirement_date": "2015-06"
@@ -89203,7 +89203,7 @@
         "longitude": -82.6176,
         "total_capacity_mw": 816.3,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Kentucky Power Co",
         "utility_id": 22053,
         "planned_retirement_date": "2015-05"
@@ -89313,7 +89313,7 @@
         "longitude": -75.16389,
         "total_capacity_mw": 96.0,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Gilbert Power, LLC",
         "utility_id": 63033,
         "planned_retirement_date": "2015-05"
@@ -89445,7 +89445,7 @@
         "longitude": -151.0356,
         "total_capacity_mw": 62.0,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Chugach Electric Assn Inc",
         "utility_id": 3522,
         "planned_retirement_date": "2015-04"
@@ -89511,7 +89511,7 @@
         "longitude": -81.54617,
         "total_capacity_mw": 143.7,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Georgia Power Co",
         "utility_id": 7140,
         "planned_retirement_date": "2015-04"
@@ -89533,7 +89533,7 @@
         "longitude": -84.8986,
         "total_capacity_mw": 679.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Georgia Power Co",
         "utility_id": 7140,
         "planned_retirement_date": "2015-04"
@@ -89555,7 +89555,7 @@
         "longitude": -93.2501,
         "total_capacity_mw": 357.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern States Power Co - Minnesota",
         "utility_id": 13781,
         "planned_retirement_date": "2015-04"
@@ -89709,7 +89709,7 @@
         "longitude": -95.8408,
         "total_capacity_mw": 130.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "MidAmerican Energy Co",
         "utility_id": 12341,
         "planned_retirement_date": "2015-03"
@@ -89819,7 +89819,7 @@
         "longitude": -119.525,
         "total_capacity_mw": 150.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Sierra Pacific Power Co",
         "utility_id": 17166,
         "planned_retirement_date": "2014-12"
@@ -89841,7 +89841,7 @@
         "longitude": -84.2981,
         "total_capacity_mw": 1432.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Ohio Inc",
         "utility_id": 3542,
         "planned_retirement_date": "2014-12"
@@ -90017,7 +90017,7 @@
         "longitude": -74.09646,
         "total_capacity_mw": 604.9,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Kearny Generating Station",
         "utility_id": 65388,
         "planned_retirement_date": "2014-08"
@@ -90039,7 +90039,7 @@
         "longitude": -76.825,
         "total_capacity_mw": 437.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Sunbury Generation LP",
         "utility_id": 22001,
         "planned_retirement_date": "2014-07"
@@ -90061,7 +90061,7 @@
         "longitude": -96.37232,
         "total_capacity_mw": 116.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Bryan - (TX)",
         "utility_id": 2442,
         "planned_retirement_date": "2014-07"
@@ -90083,7 +90083,7 @@
         "longitude": -88.775,
         "total_capacity_mw": 175.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2014-06"
@@ -90171,7 +90171,7 @@
         "longitude": -75.0794,
         "total_capacity_mw": 427.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Portland Power, LLC",
         "utility_id": 63039,
         "planned_retirement_date": "2014-06"
@@ -90193,7 +90193,7 @@
         "longitude": -82.9639,
         "total_capacity_mw": 800.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2014-06"
@@ -90215,7 +90215,7 @@
         "longitude": -80.04376,
         "total_capacity_mw": 51.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Brunot Island Power, LLC",
         "utility_id": 63032,
         "planned_retirement_date": "2014-05"
@@ -90435,7 +90435,7 @@
         "longitude": -92.9049,
         "total_capacity_mw": 199.5,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Entergy Arkansas LLC",
         "utility_id": 814,
         "planned_retirement_date": "2013-12"
@@ -90479,7 +90479,7 @@
         "longitude": -108.4814,
         "total_capacity_mw": 633.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Arizona Public Service Co",
         "utility_id": 803,
         "planned_retirement_date": "2013-12"
@@ -90501,7 +90501,7 @@
         "longitude": -97.70056,
         "total_capacity_mw": 799.2,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Luminant Generation Company LLC",
         "utility_id": 55983,
         "planned_retirement_date": "2013-12"
@@ -90699,7 +90699,7 @@
         "longitude": -75.9081,
         "total_capacity_mw": 225.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Titus Power, LLC",
         "utility_id": 63041,
         "planned_retirement_date": "2013-09"
@@ -90721,7 +90721,7 @@
         "longitude": -98.3721,
         "total_capacity_mw": 446.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Lower Colorado River Authority",
         "utility_id": 11269,
         "planned_retirement_date": "2013-09"
@@ -90809,7 +90809,7 @@
         "longitude": -111.3,
         "total_capacity_mw": 251.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Arizona Public Service Co",
         "utility_id": 803,
         "planned_retirement_date": "2013-07"
@@ -90853,7 +90853,7 @@
         "longitude": -118.0991,
         "total_capacity_mw": 1146.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Los Angeles Department of Water & Power",
         "utility_id": 11208,
         "planned_retirement_date": "2013-06"
@@ -90897,7 +90897,7 @@
         "longitude": -86.19687,
         "total_capacity_mw": 113.6,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "AES Indiana",
         "utility_id": 9273,
         "planned_retirement_date": "2013-06"
@@ -90941,7 +90941,7 @@
         "longitude": -98.5761,
         "total_capacity_mw": 188.7,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of San Antonio - (TX)",
         "utility_id": 16604,
         "planned_retirement_date": "2013-06"
@@ -90985,7 +90985,7 @@
         "longitude": -80.3767,
         "total_capacity_mw": 474.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Carolinas, LLC",
         "utility_id": 5416,
         "planned_retirement_date": "2013-05"
@@ -91095,7 +91095,7 @@
         "longitude": -80.1589,
         "total_capacity_mw": 222.9,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Progress - (NC)",
         "utility_id": 3046,
         "planned_retirement_date": "2013-03"
@@ -91293,7 +91293,7 @@
         "longitude": -75.1883,
         "total_capacity_mw": 193.1,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Constellation Power, Inc",
         "utility_id": 6035,
         "planned_retirement_date": "2012-12"
@@ -91403,7 +91403,7 @@
         "longitude": -81.3256,
         "total_capacity_mw": 156.2,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2012-11"
@@ -91469,7 +91469,7 @@
         "longitude": -79.7208,
         "total_capacity_mw": 387.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Carolinas, LLC",
         "utility_id": 5416,
         "planned_retirement_date": "2012-10"
@@ -91491,7 +91491,7 @@
         "longitude": -80.74769,
         "total_capacity_mw": 265.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Niles Power, LLC",
         "utility_id": 63030,
         "planned_retirement_date": "2012-10"
@@ -91535,7 +91535,7 @@
         "longitude": -83.9383,
         "total_capacity_mw": 80.0,
         "fuel_type": "Conventional Hydroelectric",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Brookfield Smoky Mountain Hydropower LP",
         "utility_id": 306,
         "planned_retirement_date": "2012-10"
@@ -91601,7 +91601,7 @@
         "longitude": -75.0347,
         "total_capacity_mw": 70.5,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Vineland - (NJ)",
         "utility_id": 19856,
         "planned_retirement_date": "2012-09"
@@ -91623,7 +91623,7 @@
         "longitude": -83.4378,
         "total_capacity_mw": 498.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Walleye Power, LLC",
         "utility_id": 62031,
         "planned_retirement_date": "2012-09"
@@ -91799,7 +91799,7 @@
         "longitude": -87.6533,
         "total_capacity_mw": 374.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Midwest Generations EME LLC",
         "utility_id": 12384,
         "planned_retirement_date": "2012-08"
@@ -91887,7 +91887,7 @@
         "longitude": -73.64747,
         "total_capacity_mw": 228.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "National Grid Generation LLC",
         "utility_id": 56505,
         "planned_retirement_date": "2012-07"
@@ -91997,7 +91997,7 @@
         "longitude": -75.323,
         "total_capacity_mw": 707.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Constellation Power, Inc",
         "utility_id": 6035,
         "planned_retirement_date": "2012-05"
@@ -92107,7 +92107,7 @@
         "longitude": -84.4758,
         "total_capacity_mw": 598.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Georgia Power Co",
         "utility_id": 7140,
         "planned_retirement_date": "2012-02"
@@ -92129,7 +92129,7 @@
         "longitude": -95.99097,
         "total_capacity_mw": 95.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Public Service Co of Oklahoma",
         "utility_id": 15474,
         "planned_retirement_date": "2012-02"
@@ -92151,7 +92151,7 @@
         "longitude": -100.9156,
         "total_capacity_mw": 827.3,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Luminant Generation Company LLC",
         "utility_id": 55983,
         "planned_retirement_date": "2012-02"
@@ -92305,7 +92305,7 @@
         "longitude": -89.3744,
         "total_capacity_mw": 87.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Madison Gas & Electric Co",
         "utility_id": 11479,
         "planned_retirement_date": "2011-12"
@@ -92371,7 +92371,7 @@
         "longitude": -81.7594,
         "total_capacity_mw": 210.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Carolinas, LLC",
         "utility_id": 5416,
         "planned_retirement_date": "2011-10"
@@ -92393,7 +92393,7 @@
         "longitude": -90.1764,
         "total_capacity_mw": 431.5,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Union Electric Co - (MO)",
         "utility_id": 19436,
         "planned_retirement_date": "2011-09"
@@ -92415,7 +92415,7 @@
         "longitude": -78.97552,
         "total_capacity_mw": 165.5,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Progress - (NC)",
         "utility_id": 3046,
         "planned_retirement_date": "2011-09"
@@ -92481,7 +92481,7 @@
         "longitude": -87.2472,
         "total_capacity_mw": 144.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Indiana, LLC",
         "utility_id": 15470,
         "planned_retirement_date": "2011-03"
@@ -92569,7 +92569,7 @@
         "longitude": -80.0525,
         "total_capacity_mw": 620.8,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2011-02"
@@ -92657,7 +92657,7 @@
         "longitude": -95.28732,
         "total_capacity_mw": 173.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Oklahoma Gas & Electric Co",
         "utility_id": 14063,
         "planned_retirement_date": "2010-12"
@@ -92877,7 +92877,7 @@
         "longitude": -124.2103,
         "total_capacity_mw": 102.4,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Pacific Gas & Electric Co.",
         "utility_id": 14328,
         "planned_retirement_date": "2010-09"
@@ -92899,7 +92899,7 @@
         "longitude": -115.54,
         "total_capacity_mw": 50.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Imperial Irrigation District",
         "utility_id": 9216,
         "planned_retirement_date": "2010-09"
@@ -92921,7 +92921,7 @@
         "longitude": -86.9086,
         "total_capacity_mw": 140.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern Indiana Pub Serv Co",
         "utility_id": 13756,
         "planned_retirement_date": "2010-09"
@@ -92987,7 +92987,7 @@
         "longitude": -80.7644,
         "total_capacity_mw": 804.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2010-06"
@@ -93119,7 +93119,7 @@
         "longitude": -76.9483,
         "total_capacity_mw": 50.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Greenidge Generation Holdings LLC",
         "utility_id": 25,
         "planned_retirement_date": "2009-12"
@@ -93141,7 +93141,7 @@
         "longitude": -97.2192,
         "total_capacity_mw": 118.5,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Constellation Power, Inc",
         "utility_id": 6035,
         "planned_retirement_date": "2009-12"
@@ -93229,7 +93229,7 @@
         "longitude": -89.60051,
         "total_capacity_mw": 75.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Springfield - (IL)",
         "utility_id": 17828,
         "planned_retirement_date": "2009-10"
@@ -93273,7 +93273,7 @@
         "longitude": -97.01,
         "total_capacity_mw": 336.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Victoria WLE, LP",
         "utility_id": 60638,
         "planned_retirement_date": "2009-09"
@@ -93295,7 +93295,7 @@
         "longitude": -82.60176,
         "total_capacity_mw": 494.3,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Duke Energy Florida, LLC",
         "utility_id": 6455,
         "planned_retirement_date": "2009-06"
@@ -93339,7 +93339,7 @@
         "longitude": -81.62597,
         "total_capacity_mw": 168.6,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "JEA",
         "utility_id": 9617,
         "planned_retirement_date": "2009-04"
@@ -93361,7 +93361,7 @@
         "longitude": -93.2753,
         "total_capacity_mw": 238.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern States Power Co - Minnesota",
         "utility_id": 13781,
         "planned_retirement_date": "2009-04"
@@ -93405,7 +93405,7 @@
         "longitude": -96.9358,
         "total_capacity_mw": 106.1,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Mountain Creek Power, LLC",
         "utility_id": 62026,
         "planned_retirement_date": "2009-03"
@@ -93493,7 +93493,7 @@
         "longitude": -99.5089,
         "total_capacity_mw": 187.2,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of San Antonio - (TX)",
         "utility_id": 16604,
         "planned_retirement_date": "2008-09"
@@ -93559,7 +93559,7 @@
         "longitude": -97.4192,
         "total_capacity_mw": 212.5,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of San Antonio - (TX)",
         "utility_id": 16604,
         "planned_retirement_date": "2008-05"
@@ -93669,7 +93669,7 @@
         "longitude": -118.4999,
         "total_capacity_mw": 60.0,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "CES Placerita Inc",
         "utility_id": 178,
         "planned_retirement_date": "2008-01"
@@ -93691,7 +93691,7 @@
         "longitude": -93.1117,
         "total_capacity_mw": 276.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Northern States Power Co - Minnesota",
         "utility_id": 13781,
         "planned_retirement_date": "2007-12"
@@ -93757,7 +93757,7 @@
         "longitude": -73.10898,
         "total_capacity_mw": 207.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Devon Power LLC",
         "utility_id": 22350,
         "planned_retirement_date": "2007-11"
@@ -93867,7 +93867,7 @@
         "longitude": -94.9256,
         "total_capacity_mw": 765.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "NRG Texas Power LLC",
         "utility_id": 54888,
         "planned_retirement_date": "2007-07"
@@ -93889,7 +93889,7 @@
         "longitude": -75.4417,
         "total_capacity_mw": 72.4,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "AG Energy LP",
         "utility_id": 40052,
         "planned_retirement_date": "2007-06"
@@ -93977,7 +93977,7 @@
         "longitude": -75.1252,
         "total_capacity_mw": 315.1,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Constellation Power, Inc",
         "utility_id": 6035,
         "planned_retirement_date": "2006-11"
@@ -94043,7 +94043,7 @@
         "longitude": -122.745,
         "total_capacity_mw": 110.0,
         "fuel_type": "Geothermal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Geysers Power Co LLC",
         "utility_id": 7160,
         "planned_retirement_date": "2006-05"
@@ -94065,7 +94065,7 @@
         "longitude": -87.2244,
         "total_capacity_mw": 93.7,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Florida Power & Light Co",
         "utility_id": 6452,
         "planned_retirement_date": "2006-05"
@@ -94087,7 +94087,7 @@
         "longitude": -74.2072,
         "total_capacity_mw": 381.3,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Linden Combined Cycle",
         "utility_id": 65389,
         "planned_retirement_date": "2006-05"
@@ -94153,7 +94153,7 @@
         "longitude": -73.5564,
         "total_capacity_mw": 69.6,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Waterside Power, LLC",
         "utility_id": 49840,
         "planned_retirement_date": "2006-02"
@@ -94197,7 +94197,7 @@
         "longitude": -73.76375,
         "total_capacity_mw": 400.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "GB II New York LLC",
         "utility_id": 65417,
         "planned_retirement_date": "2005-12"
@@ -94219,7 +94219,7 @@
         "longitude": -95.5306,
         "total_capacity_mw": 247.8,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "NRG Texas Power LLC",
         "utility_id": 54888,
         "planned_retirement_date": "2005-12"
@@ -94329,7 +94329,7 @@
         "longitude": -101.36,
         "total_capacity_mw": 126.9,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Borger Energy Associates LP",
         "utility_id": 23913,
         "planned_retirement_date": "2005-11"
@@ -94351,7 +94351,7 @@
         "longitude": -115.0507,
         "total_capacity_mw": 190.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Nevada Power Co",
         "utility_id": 13407,
         "planned_retirement_date": "2005-09"
@@ -94505,7 +94505,7 @@
         "longitude": -94.99728,
         "total_capacity_mw": 54.4,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Exxon Mobil Refining and Supply Co.",
         "utility_id": 6091,
         "planned_retirement_date": "2005-05"
@@ -94571,7 +94571,7 @@
         "longitude": -84.07737,
         "total_capacity_mw": 86.0,
         "fuel_type": "Conventional Hydroelectric",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "USCE-Mobile District",
         "utility_id": 27813,
         "planned_retirement_date": "2005-02"
@@ -94615,7 +94615,7 @@
         "longitude": -118.2248,
         "total_capacity_mw": 335.4,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Long Beach Generation LLC",
         "utility_id": 11181,
         "planned_retirement_date": "2004-12"
@@ -94813,7 +94813,7 @@
         "longitude": -87.8689,
         "total_capacity_mw": 339.6,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Wisconsin Electric Power Co",
         "utility_id": 20847,
         "planned_retirement_date": "2004-09"
@@ -94923,7 +94923,7 @@
         "longitude": -74.35234,
         "total_capacity_mw": 250.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Sayreville Power, LLC",
         "utility_id": 63034,
         "planned_retirement_date": "2004-02"
@@ -95077,7 +95077,7 @@
         "longitude": -118.3913,
         "total_capacity_mw": 345.6,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Los Angeles Department of Water & Power",
         "utility_id": 11208,
         "planned_retirement_date": "2003-12"
@@ -95121,7 +95121,7 @@
         "longitude": -92.15171,
         "total_capacity_mw": 50.0,
         "fuel_type": "Petroleum Liquids",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "ALLETE, Inc.",
         "utility_id": 12647,
         "planned_retirement_date": "2003-12"
@@ -95165,7 +95165,7 @@
         "longitude": -76.5319,
         "total_capacity_mw": 92.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Oswego Harbor Power",
         "utility_id": 64701,
         "planned_retirement_date": "2003-12"
@@ -95209,7 +95209,7 @@
         "longitude": -118.3147,
         "total_capacity_mw": 62.2,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "City of Burbank Water and Power",
         "utility_id": 2507,
         "planned_retirement_date": "2003-12"
@@ -95231,7 +95231,7 @@
         "longitude": -79.03366,
         "total_capacity_mw": 218.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Seward Generating LLC",
         "utility_id": 61781,
         "planned_retirement_date": "2003-11"
@@ -95363,7 +95363,7 @@
         "longitude": -112.1583,
         "total_capacity_mw": 119.5,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Arizona Public Service Co",
         "utility_id": 803,
         "planned_retirement_date": "2002-12"
@@ -95385,7 +95385,7 @@
         "longitude": -117.2418,
         "total_capacity_mw": 130.6,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Southern California Edison Co",
         "utility_id": 17609,
         "planned_retirement_date": "2002-12"
@@ -95517,7 +95517,7 @@
         "longitude": -79.18867,
         "total_capacity_mw": 84.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retired",
+        "status": "retooled",
         "owner_name": "Warren Generation, LLC",
         "utility_id": 63045,
         "planned_retirement_date": "2002-09"

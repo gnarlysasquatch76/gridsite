@@ -668,10 +668,14 @@ def main():
     else:
         print("  ATC file not found, skipping")
 
-    # Power plants (retired/retiring)
+    # Power plants (retired/retiring) — exclude retooled (still have active generators)
     retired_plants = []
+    retooled_skipped = 0
     for feat in plants_geojson["features"]:
         p = feat["properties"]
+        if p.get("status") == "retooled":
+            retooled_skipped += 1
+            continue
         if p.get("status") in ("retired", "retiring"):
             retired_plants.append({
                 "lat": p["latitude"], "lon": p["longitude"],
@@ -685,6 +689,8 @@ def main():
                 "utility_id": p.get("utility_id"),
             })
     print("  Retired/retiring plants: {:,}".format(len(retired_plants)))
+    if retooled_skipped > 0:
+        print("  Retooled plants excluded: {:,}".format(retooled_skipped))
 
     # ── 2. Find qualifying substations ────────────────────────────────────
 

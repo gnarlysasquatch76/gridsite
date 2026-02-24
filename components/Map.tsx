@@ -193,7 +193,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
   // --- Popup Builders ---
 
   var buildPopupHTML = useCallback(function (props: Record<string, any>): string {
-    var statusColors: Record<string, string> = { operating: "#22c55e", retiring: "#f97316", retired: "#ef4444" };
+    var statusColors: Record<string, string> = { operating: "#22c55e", retiring: "#f97316", retired: "#ef4444", retooled: "#3b82f6" };
     var color = statusColors[props.status] || "#94a3b8";
     var statusLabel = props.status.charAt(0).toUpperCase() + props.status.slice(1);
 
@@ -587,7 +587,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       map.addLayer({
         id: POWER_PLANTS_LAYER, type: "circle", source: POWER_PLANTS_SOURCE,
         paint: {
-          "circle-color": ["match", ["get", "status"], "operating", "#22c55e", "retiring", "#f97316", "retired", "#ef4444", "#94a3b8"],
+          "circle-color": ["match", ["get", "status"], "operating", "#22c55e", "retiring", "#f97316", "retired", "#ef4444", "retooled", "#3b82f6", "#94a3b8"],
           "circle-radius": ["interpolate", ["linear"], ["get", "total_capacity_mw"], 50, 3, 500, 7, 2000, 12, 5000, 18],
           "circle-opacity": 0.85, "circle-stroke-color": "#ffffff", "circle-stroke-width": 0.5,
         },
@@ -1288,6 +1288,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e]"></span><span>Operating Plant</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#f97316]"></span><span>Retiring Plant</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ef4444]"></span><span>Retired Plant</span></div>
+              <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#3b82f6]"></span><span>Retooled Plant</span></div>
               <div className="flex items-center gap-2"><span className="text-orange-500 text-[10px] leading-none">&#9650;</span><span>Queue Withdrawal</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#6baed6] opacity-60"></span><span>FEMA Flood Zone</span></div>
               <div className="flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#2ca02c] opacity-60"></span><span>Broadband Coverage</span></div>

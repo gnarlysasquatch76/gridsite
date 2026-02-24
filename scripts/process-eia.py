@@ -207,6 +207,24 @@ def main():
 
     wb.close()
 
+    # Detect false retirements: plants with generators in BOTH sheets.
+    # If a plant_id appears in Operating AND Retired, the retired generators
+    # were replaced (retooled) — the plant is still active, not a true retirement.
+    operating_plant_ids = set()
+    for key, plant in all_plants.items():
+        pid, sheet = key
+        if sheet == "Operating":
+            operating_plant_ids.add(pid)
+
+    retooled_count = 0
+    for key, plant in all_plants.items():
+        pid, sheet = key
+        if sheet == "Retired" and pid in operating_plant_ids:
+            plant["status"] = "retooled"
+            retooled_count += 1
+
+    print("  Retooled (retired generators at active plants): " + str(retooled_count))
+
     # Filter to >= 50 MW and build GeoJSON features
     features = []
     skipped = 0

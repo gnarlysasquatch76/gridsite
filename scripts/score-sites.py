@@ -461,14 +461,20 @@ def main():
     else:
         print("  Brownfields file not found, skipping")
 
-    # Filter to retired/retiring plants
+    # Filter to retired/retiring plants (exclude retooled — still have active generators)
     plant_candidates = []
+    retooled_skipped = 0
     for feat in plants_geojson["features"]:
         p = feat["properties"]
+        if p["status"] == "retooled":
+            retooled_skipped += 1
+            continue
         if p["status"] in ("retired", "retiring"):
             p["site_type"] = "power_plant"
             plant_candidates.append(p)
     print("  Retired/retiring plants (>= 50 MW): " + str(len(plant_candidates)))
+    if retooled_skipped > 0:
+        print("  Retooled plants excluded: " + str(retooled_skipped))
 
     # Combine all candidates
     candidates = plant_candidates + brownfield_sites
