@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import circle from "@turf/circle";
+import booleanIntersects from "@turf/boolean-intersects";
+import { point } from "@turf/helpers";
 
 var MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
@@ -24,9 +27,46 @@ var QUEUE_WITHDRAWALS_SOURCE = "queue-withdrawals";
 var QUEUE_WITHDRAWALS_LAYER = "queue-withdrawals-triangles";
 var SCORED_SITES_SOURCE = "scored-sites";
 var SCORED_SITES_LAYER = "scored-sites-stars";
+var RADIUS_CIRCLE_SOURCE = "radius-circle";
+var RADIUS_CIRCLE_FILL_LAYER = "radius-circle-fill";
+var RADIUS_CIRCLE_OUTLINE_LAYER = "radius-circle-outline";
 var DIAMOND_ICON = "diamond-icon";
 var STAR_ICON = "star-icon";
 var TRIANGLE_ICON = "triangle-icon";
+
+interface ProximityResult {
+  site: ScoredSite;
+  radiusMiles: number;
+  substations: {
+    total: number;
+    by500Plus: number;
+    by345to499: number;
+    by230to344: number;
+    byUnder230: number;
+  };
+  transmissionLines: {
+    total: number;
+    by500Plus: number;
+    by345to499: number;
+    by230to344: number;
+    byUnder230: number;
+  };
+  queueWithdrawals: {
+    total: number;
+    totalWithdrawnMW: number;
+  };
+}
+
+function haversineDistanceMiles(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  var R = 3958.8; // Earth radius in miles
+  var dLat = (lat2 - lat1) * Math.PI / 180;
+  var dLon = (lon2 - lon1) * Math.PI / 180;
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
 
 interface ScoredSite {
   plant_name: string;
@@ -67,6 +107,13 @@ export default function Home() {
   });
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
   var [legendOpen, setLegendOpen] = useState(true);
+  var [proximityResult, setProximityResult] = useState<ProximityResult | null>(null);
+  var [proximityRadius, setProximityRadius] = useState(10);
+  var [proximityLoading, setProximityLoading] = useState(false);
+
+  var substationsCache = useRef<GeoJSON.FeatureCollection | null>(null);
+  var transmissionLinesCache = useRef<GeoJSON.FeatureCollection | null>(null);
+  var queueWithdrawalsCache = useRef<GeoJSON.FeatureCollection | null>(null);
 
   var filteredSites = useMemo(function () {
     return scoredSites.filter(function (site) {
@@ -81,6 +128,165 @@ export default function Home() {
       return { ...prev, [key]: !prev[key] };
     });
   }
+
+  var clearProximityAnalysis = useCallback(function () {
+    var map = mapRef.current;
+    if (map) {
+      if (map.getLayer(RADIUS_CIRCLE_FILL_LAYER)) map.removeLayer(RADIUS_CIRCLE_FILL_LAYER);
+      if (map.getLayer(RADIUS_CIRCLE_OUTLINE_LAYER)) map.removeLayer(RADIUS_CIRCLE_OUTLINE_LAYER);
+      if (map.getSource(RADIUS_CIRCLE_SOURCE)) map.removeSource(RADIUS_CIRCLE_SOURCE);
+    }
+    setProximityResult(null);
+  }, []);
+
+  var runProximityAnalysis = useCallback(async function (site: ScoredSite, radiusMiles: number) {
+    var map = mapRef.current;
+    if (!map) return;
+
+    setProximityLoading(true);
+
+    // Generate circle polygon
+    var center = point([site.longitude, site.latitude]);
+    var circlePolygon = circle(center, radiusMiles, { steps: 64, units: "miles" });
+
+    // Add/update radius circle on map
+    if (map.getSource(RADIUS_CIRCLE_SOURCE)) {
+      (map.getSource(RADIUS_CIRCLE_SOURCE) as mapboxgl.GeoJSONSource).setData(circlePolygon);
+    } else {
+      map.addSource(RADIUS_CIRCLE_SOURCE, {
+        type: "geojson",
+        data: circlePolygon,
+      });
+
+      var beforeLayer = map.getLayer(SCORED_SITES_LAYER) ? SCORED_SITES_LAYER : undefined;
+
+      map.addLayer({
+        id: RADIUS_CIRCLE_FILL_LAYER,
+        type: "fill",
+        source: RADIUS_CIRCLE_SOURCE,
+        paint: {
+          "fill-color": "#eab308",
+          "fill-opacity": 0.08,
+        },
+      }, beforeLayer);
+
+      map.addLayer({
+        id: RADIUS_CIRCLE_OUTLINE_LAYER,
+        type: "line",
+        source: RADIUS_CIRCLE_SOURCE,
+        paint: {
+          "line-color": "#eab308",
+          "line-width": 2,
+          "line-dasharray": [4, 3],
+          "line-opacity": 0.7,
+        },
+      }, beforeLayer);
+    }
+
+    // Fetch and cache GeoJSON data
+    if (!substationsCache.current) {
+      var subRes = await fetch("/data/substations.geojson");
+      substationsCache.current = await subRes.json();
+    }
+    if (!transmissionLinesCache.current) {
+      var tlRes = await fetch("/data/transmission-lines.geojson");
+      transmissionLinesCache.current = await tlRes.json();
+    }
+    if (!queueWithdrawalsCache.current) {
+      var qwRes = await fetch("/data/queue-withdrawals.geojson");
+      queueWithdrawalsCache.current = await qwRes.json();
+    }
+
+    // Analyze substations
+    var subResult = { total: 0, by500Plus: 0, by345to499: 0, by230to344: 0, byUnder230: 0 };
+    var subFeatures = substationsCache.current!.features;
+    for (var i = 0; i < subFeatures.length; i++) {
+      var sf = subFeatures[i];
+      if (sf.geometry.type !== "Point") continue;
+      var sCoords = (sf.geometry as GeoJSON.Point).coordinates;
+      var dist = haversineDistanceMiles(site.latitude, site.longitude, sCoords[1], sCoords[0]);
+      if (dist <= radiusMiles) {
+        subResult.total++;
+        var maxVolt = sf.properties?.MAX_VOLT != null ? Number(sf.properties.MAX_VOLT) : 0;
+        if (maxVolt >= 500) subResult.by500Plus++;
+        else if (maxVolt >= 345) subResult.by345to499++;
+        else if (maxVolt >= 230) subResult.by230to344++;
+        else subResult.byUnder230++;
+      }
+    }
+
+    // Analyze queue withdrawals
+    var qwResult = { total: 0, totalWithdrawnMW: 0 };
+    var qwFeatures = queueWithdrawalsCache.current!.features;
+    for (var qi = 0; qi < qwFeatures.length; qi++) {
+      var qf = qwFeatures[qi];
+      if (qf.geometry.type !== "Point") continue;
+      var qCoords = (qf.geometry as GeoJSON.Point).coordinates;
+      var qDist = haversineDistanceMiles(site.latitude, site.longitude, qCoords[1], qCoords[0]);
+      if (qDist <= radiusMiles) {
+        qwResult.total++;
+        var mw = qf.properties?.total_mw != null ? Number(qf.properties.total_mw) : 0;
+        qwResult.totalWithdrawnMW += mw;
+      }
+    }
+
+    // Analyze transmission lines (bbox pre-filter + intersection)
+    var tlResult = { total: 0, by500Plus: 0, by345to499: 0, by230to344: 0, byUnder230: 0 };
+    var degPerMile = 1 / 69.0;
+    var latDelta = radiusMiles * degPerMile;
+    var lonDelta = radiusMiles * degPerMile / Math.cos(site.latitude * Math.PI / 180);
+    var bboxMinLat = site.latitude - latDelta;
+    var bboxMaxLat = site.latitude + latDelta;
+    var bboxMinLon = site.longitude - lonDelta;
+    var bboxMaxLon = site.longitude + lonDelta;
+
+    var tlFeatures = transmissionLinesCache.current!.features;
+    for (var ti = 0; ti < tlFeatures.length; ti++) {
+      var tf = tlFeatures[ti];
+      var tGeom = tf.geometry;
+      if (tGeom.type !== "LineString" && tGeom.type !== "MultiLineString") continue;
+
+      // Bbox pre-filter: check if any coordinate is within the bounding box
+      var coords: number[][] = [];
+      if (tGeom.type === "LineString") {
+        coords = (tGeom as GeoJSON.LineString).coordinates;
+      } else {
+        var multiCoords = (tGeom as GeoJSON.MultiLineString).coordinates;
+        for (var mi = 0; mi < multiCoords.length; mi++) {
+          coords = coords.concat(multiCoords[mi]);
+        }
+      }
+
+      var inBbox = false;
+      for (var ci = 0; ci < coords.length; ci++) {
+        if (coords[ci][0] >= bboxMinLon && coords[ci][0] <= bboxMaxLon &&
+            coords[ci][1] >= bboxMinLat && coords[ci][1] <= bboxMaxLat) {
+          inBbox = true;
+          break;
+        }
+      }
+      if (!inBbox) continue;
+
+      // Accurate intersection test
+      if (booleanIntersects(tf as any, circlePolygon)) {
+        tlResult.total++;
+        var voltage = tf.properties?.VOLTAGE != null ? Number(tf.properties.VOLTAGE) : 0;
+        if (voltage >= 500) tlResult.by500Plus++;
+        else if (voltage >= 345) tlResult.by345to499++;
+        else if (voltage >= 230) tlResult.by230to344++;
+        else tlResult.byUnder230++;
+      }
+    }
+
+    setProximityResult({
+      site: site,
+      radiusMiles: radiusMiles,
+      substations: subResult,
+      transmissionLines: tlResult,
+      queueWithdrawals: qwResult,
+    });
+    setProximityLoading(false);
+  }, []);
 
   // Build popup HTML for a power plant feature
   var buildPopupHTML = useCallback(function (props: Record<string, any>): string {
@@ -286,7 +492,9 @@ export default function Home() {
         .setHTML(buildScoredSitePopupHTML(site))
         .addTo(mapRef.current);
     });
-  }, [buildScoredSitePopupHTML]);
+
+    runProximityAnalysis(site, proximityRadius);
+  }, [buildScoredSitePopupHTML, runProximityAnalysis, proximityRadius]);
 
   // Initialize map
   useEffect(function () {
@@ -796,6 +1004,8 @@ export default function Home() {
               .setLngLat(coords)
               .setHTML(buildScoredSitePopupHTML(site))
               .addTo(map!);
+
+            runProximityAnalysis(site, proximityRadius);
           });
 
           map.on("mouseenter", SCORED_SITES_LAYER, function () {
@@ -812,7 +1022,7 @@ export default function Home() {
     } else {
       map.on("load", setupScoredLayer);
     }
-  }, [buildScoredSitePopupHTML]);
+  }, [buildScoredSitePopupHTML, runProximityAnalysis, proximityRadius]);
 
   // Apply filters to scored sites map layer
   useEffect(function () {
@@ -839,6 +1049,16 @@ export default function Home() {
     }
     map.setFilter(POWER_PLANTS_LAYER, conditions);
   }, [minMW, selectedState]);
+
+  // Re-run proximity analysis when radius changes
+  useEffect(function () {
+    if (!proximityResult) return;
+    var site = proximityResult.site;
+    var timeout = setTimeout(function () {
+      runProximityAnalysis(site, proximityRadius);
+    }, 300);
+    return function () { clearTimeout(timeout); };
+  }, [proximityRadius]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex h-screen w-screen overflow-hidden">
@@ -1013,6 +1233,155 @@ export default function Home() {
       {/* Map */}
       <div className="flex-1 h-full relative">
         <div ref={mapContainer} className="w-full h-full" />
+
+        {/* Proximity Analysis Panel */}
+        {proximityResult && (
+          <div className="absolute top-4 left-4 z-20 w-80 bg-[#1B2A4A]/95 backdrop-blur-sm border border-white/10 rounded-lg text-white shadow-xl">
+            {/* Header */}
+            <div className="px-4 pt-3 pb-2 border-b border-white/10">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-sm font-semibold truncate pr-2">{proximityResult.site.plant_name}</div>
+                  <div className="text-[11px] text-slate-400">Proximity Analysis</div>
+                </div>
+                <button
+                  onClick={clearProximityAnalysis}
+                  className="text-slate-400 hover:text-white text-lg leading-none shrink-0 mt-0.5"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+
+            {/* Radius Slider */}
+            <div className="px-4 py-2.5 border-b border-white/10">
+              <label className="block text-xs text-slate-400 mb-1.5">
+                Radius: <span className="text-white font-medium">{proximityRadius} miles</span>
+              </label>
+              <input
+                type="range"
+                min={5}
+                max={20}
+                step={5}
+                value={proximityRadius}
+                onChange={function (e) { setProximityRadius(Number(e.target.value)); }}
+                className="w-full accent-yellow-500"
+              />
+              <div className="flex justify-between text-[10px] text-slate-500 mt-0.5">
+                <span>5 mi</span>
+                <span>10</span>
+                <span>15</span>
+                <span>20 mi</span>
+              </div>
+            </div>
+
+            {/* Results */}
+            <div className="px-4 py-3 space-y-3 max-h-[60vh] overflow-y-auto">
+              {proximityLoading ? (
+                <div className="text-xs text-slate-400 text-center py-2">Analyzing...</div>
+              ) : (
+                <>
+                  {/* Substations */}
+                  <div>
+                    <div className="text-xs font-semibold text-slate-300 mb-1.5">
+                      Substations ({proximityResult.substations.total})
+                    </div>
+                    <div className="space-y-1 text-xs">
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-2 h-2 rotate-45 bg-[#a78bfa]"></span>
+                          500+ kV
+                        </span>
+                        <span className="font-medium">{proximityResult.substations.by500Plus}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-2 h-2 rotate-45 bg-[#818cf8]"></span>
+                          345-499 kV
+                        </span>
+                        <span className="font-medium">{proximityResult.substations.by345to499}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-2 h-2 rotate-45 bg-[#38bdf8]"></span>
+                          230-344 kV
+                        </span>
+                        <span className="font-medium">{proximityResult.substations.by230to344}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-2 h-2 rotate-45 bg-[#22d3ee]"></span>
+                          Under 230 kV
+                        </span>
+                        <span className="font-medium">{proximityResult.substations.byUnder230}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Transmission Lines */}
+                  <div>
+                    <div className="text-xs font-semibold text-slate-300 mb-1.5">
+                      Transmission Crossings ({proximityResult.transmissionLines.total})
+                    </div>
+                    <div className="space-y-1 text-xs">
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-3 h-[3px] bg-[#a78bfa] rounded"></span>
+                          500+ kV
+                        </span>
+                        <span className="font-medium">{proximityResult.transmissionLines.by500Plus}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-3 h-[2px] bg-[#818cf8] rounded"></span>
+                          345-499 kV
+                        </span>
+                        <span className="font-medium">{proximityResult.transmissionLines.by345to499}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-3 h-[2px] bg-[#38bdf8] rounded"></span>
+                          230-344 kV
+                        </span>
+                        <span className="font-medium">{proximityResult.transmissionLines.by230to344}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="inline-block w-3 h-[1px] bg-[#22d3ee] rounded"></span>
+                          Under 230 kV
+                        </span>
+                        <span className="font-medium">{proximityResult.transmissionLines.byUnder230}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Queue Withdrawals */}
+                  <div>
+                    <div className="text-xs font-semibold text-slate-300 mb-1.5">
+                      Queue Withdrawals ({proximityResult.queueWithdrawals.total})
+                    </div>
+                    <div className="space-y-1 text-xs">
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="flex items-center gap-1.5">
+                          <span className="text-orange-500 text-[10px] leading-none">&#9650;</span>
+                          Total Projects
+                        </span>
+                        <span className="font-medium">{proximityResult.queueWithdrawals.total}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-orange-400">
+                        <span className="flex items-center gap-1.5">
+                          <span className="text-[10px] leading-none">&#9889;</span>
+                          Withdrawn MW
+                        </span>
+                        <span className="font-medium">{Math.round(proximityResult.queueWithdrawals.totalWithdrawnMW).toLocaleString()} MW</span>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Legend */}
         <div className="absolute bottom-6 right-2 z-10">

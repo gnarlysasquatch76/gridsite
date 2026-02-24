@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@turf/boolean-intersects": "^7.3.4",
+    "@turf/circle": "^7.3.4",
+    "@turf/helpers": "^7.3.4",
     "mapbox-gl": "^3.18.1",
     "next": "16.1.6",
     "react": "19.2.3",
