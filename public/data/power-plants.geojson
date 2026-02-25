@@ -1047,7 +1047,7 @@
         "longitude": -95.2894,
         "total_capacity_mw": 1194.3,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Grand River Dam Authority",
         "utility_id": 7490,
         "planned_retirement_date": "2026-06"
@@ -1090,7 +1090,7 @@
         "longitude": -92.9049,
         "total_capacity_mw": 552.5,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Entergy Arkansas LLC",
         "utility_id": 814,
         "planned_retirement_date": "2027-06"
@@ -2882,7 +2882,7 @@
         "longitude": -104.5747,
         "total_capacity_mw": 1252.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Public Service Co of Colorado",
         "utility_id": 15466,
         "planned_retirement_date": "2026-12"
@@ -3663,7 +3663,7 @@
         "longitude": -82.4036,
         "total_capacity_mw": 1797.0,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Tampa Electric Co",
         "utility_id": 18454,
         "planned_retirement_date": "2040-01"
@@ -5561,7 +5561,7 @@
         "longitude": -85.9103,
         "total_capacity_mw": 1361.7,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Louisville Gas & Electric Co",
         "utility_id": 11249,
         "planned_retirement_date": "2027-06"
@@ -5688,7 +5688,7 @@
         "longitude": -88.775,
         "total_capacity_mw": 1575.0,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2033-12"
@@ -6408,7 +6408,7 @@
         "longitude": -86.20074,
         "total_capacity_mw": 1560.8,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Consumers Energy Co - (MI)",
         "utility_id": 4254,
         "planned_retirement_date": "2026-02"
@@ -6535,7 +6535,7 @@
         "longitude": -83.3464,
         "total_capacity_mw": 3293.1,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "DTE Electric Company",
         "utility_id": 5109,
         "planned_retirement_date": "2032-12"
@@ -8161,7 +8161,7 @@
         "longitude": -108.4814,
         "total_capacity_mw": 1636.2,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Arizona Public Service Co",
         "utility_id": 803,
         "planned_retirement_date": "2031-12"
@@ -8984,7 +8984,7 @@
         "longitude": -80.9658,
         "total_capacity_mw": 2119.0,
         "fuel_type": "Natural Gas Steam Turbine",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Duke Energy Carolinas, LLC",
         "utility_id": 5416,
         "planned_retirement_date": "2034-12"
@@ -9195,7 +9195,7 @@
         "longitude": -80.6486,
         "total_capacity_mw": 1880.4,
         "fuel_type": "Conventional Steam Coal",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Cardinal Operating Company",
         "utility_id": 61412,
         "planned_retirement_date": "2028-12"
@@ -11304,7 +11304,7 @@
         "longitude": -87.9861,
         "total_capacity_mw": 1676.0,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Tennessee Valley Authority",
         "utility_id": 18642,
         "planned_retirement_date": "2028-12"
@@ -14471,7 +14471,7 @@
         "longitude": -88.5553,
         "total_capacity_mw": 2229.0,
         "fuel_type": "Natural Gas Fired Combined Cycle",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Mississippi Power Co",
         "utility_id": 12686,
         "planned_retirement_date": "2027-12"
@@ -28861,7 +28861,7 @@
         "longitude": -88.1236,
         "total_capacity_mw": 1344.0,
         "fuel_type": "Natural Gas Fired Combustion Turbine",
-        "status": "retiring",
+        "status": "retooled",
         "owner_name": "Elwood Energy LLC",
         "utility_id": 5259,
         "planned_retirement_date": "2026-07"
