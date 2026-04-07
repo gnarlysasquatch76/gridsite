@@ -2034,12 +2034,31 @@ def generate_pdf(markdown_text):
         print("  ERROR: fpdf2 not installed (pip install fpdf2)")
         return False
 
+    def sanitize(text):
+        """Replace unicode characters that Helvetica can't render."""
+        replacements = {
+            "\u2014": "--",   # em-dash
+            "\u2013": "-",    # en-dash
+            "\u2018": "'",    # left single quote
+            "\u2019": "'",    # right single quote
+            "\u201c": '"',    # left double quote
+            "\u201d": '"',    # right double quote
+            "\u2022": "*",    # bullet
+            "\u2026": "...",  # ellipsis
+            "\u00a0": " ",    # non-breaking space
+            "\u00b0": " deg", # degree
+        }
+        for old, new in replacements.items():
+            text = text.replace(old, new)
+        # Strip any remaining non-latin1 chars
+        return text.encode("latin-1", errors="replace").decode("latin-1")
+
     class DealBookPDF(FPDF):
         def header(self):
             if self.page_no() > 1:
                 self.set_font("Helvetica", "I", 8)
                 self.set_text_color(128, 128, 128)
-                self.cell(0, 5, "NJ Data Center Site Opportunities — Confidential", align="C")
+                self.cell(0, 5, "NJ Data Center Site Opportunities -- Confidential", align="C")
                 self.ln(8)
 
         def footer(self):
@@ -2057,18 +2076,18 @@ def generate_pdf(markdown_text):
     pdf.ln(60)
     pdf.set_font("Helvetica", "B", 28)
     pdf.set_text_color(0, 51, 102)
-    pdf.multi_cell(0, 12, "NJ Data Center\nSite Opportunities", align="C")
+    pdf.multi_cell(0, 12, sanitize("NJ Data Center\nSite Opportunities"), align="C")
     pdf.ln(10)
     pdf.set_font("Helvetica", "", 16)
     pdf.set_text_color(100, 100, 100)
-    pdf.cell(0, 10, "Confidential", align="C")
+    pdf.cell(0, 10, sanitize("Confidential"), align="C")
     pdf.ln(20)
     pdf.set_font("Helvetica", "", 12)
     pdf.set_text_color(0, 0, 0)
-    pdf.cell(0, 8, "Prepared by: SPS — Strategic Property Solutions", align="C")
+    pdf.cell(0, 8, sanitize("Prepared by: SPS -- Strategic Property Solutions"), align="C")
     pdf.ln(8)
     now = datetime.now().strftime("%B %d, %Y")
-    pdf.cell(0, 8, "Date: {}".format(now), align="C")
+    pdf.cell(0, 8, sanitize("Date: {}".format(now)), align="C")
 
     # Parse markdown sections
     lines = markdown_text.split("\n")
@@ -2095,11 +2114,11 @@ def generate_pdf(markdown_text):
             pdf.ln(5)
             pdf.set_font("Helvetica", "B", 18)
             pdf.set_text_color(0, 51, 102)
-            text = line[3:].strip()
+            text = sanitize(line[3:].strip())
             pdf.multi_cell(0, 9, text)
             pdf.ln(3)
         elif line.startswith("### "):
-            text = line[4:].strip()
+            text = sanitize(line[4:].strip())
             # Site headers get new pages
             if text and text[0].isdigit() and "." in text[:3]:
                 pdf.add_page()
@@ -2115,14 +2134,14 @@ def generate_pdf(markdown_text):
             # Bold line
             pdf.set_font("Helvetica", "B", 11)
             pdf.set_text_color(0, 0, 0)
-            text = line.strip("*").strip()
+            text = sanitize(line.strip("*").strip())
             pdf.multi_cell(0, 6, text)
             pdf.ln(1)
         elif line.startswith("**") and ":**" in line:
             # Bold label with content on same line or next
             pdf.set_font("Helvetica", "B", 11)
             pdf.set_text_color(0, 0, 0)
-            text = line.replace("**", "").strip()
+            text = sanitize(line.replace("**", "").strip())
             pdf.multi_cell(0, 6, text)
             pdf.ln(1)
         elif line.startswith("- "):
@@ -2133,11 +2152,11 @@ def generate_pdf(markdown_text):
             # Clean markdown bold/italic
             text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
             text = re.sub(r'\*(.+?)\*', r'\1', text)
+            text = sanitize(text)
             x = pdf.get_x()
             pdf.cell(5, 5, "")
             pdf.set_font("Helvetica", "", 10)
-            # Use bullet character
-            pdf.cell(5, 5, chr(8226))
+            pdf.cell(5, 5, "-")
             pdf.multi_cell(0, 5, " " + text)
             pdf.ln(1)
         elif line.startswith("| "):
@@ -2152,13 +2171,13 @@ def generate_pdf(markdown_text):
             for ci, cell in enumerate(cells):
                 w = col_widths[ci] if ci < len(col_widths) else 40
                 is_header = i > 0 and lines[i - 1].startswith("| ")
-                pdf.cell(w, 6, cell[:int(w / 2)], border=0)
+                pdf.cell(w, 6, sanitize(cell[:int(w / 2)]), border=0)
             pdf.ln(6)
         elif line.startswith("*") and line.endswith("*") and not line.startswith("**"):
             # Italic
             pdf.set_font("Helvetica", "I", 10)
             pdf.set_text_color(80, 80, 80)
-            text = line.strip("*").strip()
+            text = sanitize(line.strip("*").strip())
             pdf.multi_cell(0, 5, text)
             pdf.ln(2)
         elif line.strip():
@@ -2168,6 +2187,7 @@ def generate_pdf(markdown_text):
             text = line.strip()
             text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
             text = re.sub(r'\*(.+?)\*', r'\1', text)
+            text = sanitize(text)
             pdf.multi_cell(0, 5, text)
             pdf.ln(2)
 
