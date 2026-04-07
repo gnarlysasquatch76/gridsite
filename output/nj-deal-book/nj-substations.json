@@ -1,0 +1,1106 @@
+{
+  "metadata": {
+    "generated_at": "2026-04-07T19:42:54.302401+00:00",
+    "part": 3,
+    "description": "NJ substations 138kV+ in target counties",
+    "total_substations": 137
+  },
+  "substations": [
+    {
+      "name": "UNKNOWN132316",
+      "city": "CHESTERFIELD",
+      "county": "BURLINGTON",
+      "lat": 40.14157017,
+      "lon": -74.67507266,
+      "max_volt": 138.0
+    },
+    {
+      "name": "UNKNOWN132318",
+      "city": "CHESTERFIELD TWP",
+      "county": "BURLINGTON",
+      "lat": 40.15304684,
+      "lon": -74.65844972,
+      "max_volt": 138.0
+    },
+    {
+      "name": "UNKNOWN132320",
+      "city": "PLAINSBORO TWP",
+      "county": "MIDDLESEX",
+      "lat": 40.34784054,
+      "lon": -74.6027464,
+      "max_volt": 138.0
+    },
+    {
+      "name": "UNKNOWN132321",
+      "city": "PLAINSBORO",
+      "county": "MIDDLESEX",
+      "lat": 40.33600332,
+      "lon": -74.56866634,
+      "max_volt": 138.0
+    },
+    {
+      "name": "UNKNOWN132323",
+      "city": "MONMOUTH JUNCTION",
+      "county": "MIDDLESEX",
+      "lat": 40.3679659,
+      "lon": -74.53189853,
+      "max_volt": 138.0
+    },
+    {
+      "name": "BENNETTS LANE SUBSTATION",
+      "city": "FRANKLIN TWP",
+      "county": "SOMERSET",
+      "lat": 40.48557283,
+      "lon": -74.53022275,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132357",
+      "city": "NORTH BERGEN TWP",
+      "county": "HUDSON",
+      "lat": 40.76339735,
+      "lon": -74.05517503,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132362",
+      "city": "NORTH BERGEN TWP",
+      "county": "HUDSON",
+      "lat": 40.78877955,
+      "lon": -74.03591189,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132377",
+      "city": "BRIDGEWATER",
+      "county": "SOMERSET",
+      "lat": 40.56022356,
+      "lon": -74.56449348,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132389",
+      "city": "WAYNE TWP",
+      "county": "PASSAIC",
+      "lat": 40.95555697,
+      "lon": -74.22273139,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132218",
+      "city": "BRIGANTINE",
+      "county": "SALEM",
+      "lat": 39.46341175,
+      "lon": -75.53262054,
+      "max_volt": 500.0
+    },
+    {
+      "name": "UNKNOWN132248",
+      "city": "NORTH HANOVER TWP",
+      "county": "BURLINGTON",
+      "lat": 40.06237003,
+      "lon": -74.54905375,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132267",
+      "city": "BRIDGEWATER",
+      "county": "SOMERSET",
+      "lat": 40.5929294,
+      "lon": -74.67337524,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132271",
+      "city": "SOMERVILLE",
+      "county": "SOMERSET",
+      "lat": 40.55898051,
+      "lon": -74.61530399,
+      "max_volt": 230.0
+    },
+    {
+      "name": "METUCHEN",
+      "city": "EDISON",
+      "county": "MIDDLESEX",
+      "lat": 40.53139267,
+      "lon": -74.34614638,
+      "max_volt": 230.0
+    },
+    {
+      "name": "SEWAREN",
+      "city": "ELMER",
+      "county": "MIDDLESEX",
+      "lat": 40.55687263,
+      "lon": -74.24800582,
+      "max_volt": 230.0
+    },
+    {
+      "name": "BRIDGEPORT",
+      "city": "LOGAN TWP",
+      "county": "GLOUCESTER",
+      "lat": 39.793149,
+      "lon": -75.40522127,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132691",
+      "city": "BURLINGTON",
+      "county": "BURLINGTON",
+      "lat": 40.07612979,
+      "lon": -74.87655687,
+      "max_volt": 230.0
+    },
+    {
+      "name": "ESSEX",
+      "city": "NEWARK",
+      "county": "ESSEX",
+      "lat": 40.7371961,
+      "lon": -74.12238833,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LAWRENCE SW",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.28099195,
+      "lon": -74.75498179,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LINDEN",
+      "city": "LINDEN",
+      "county": "UNION",
+      "lat": 40.62404604,
+      "lon": -74.21129434,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132611",
+      "city": "LINDEN",
+      "county": "UNION",
+      "lat": 40.62147871,
+      "lon": -74.21054552,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132612",
+      "city": "LINDEN",
+      "county": "UNION",
+      "lat": 40.62106944,
+      "lon": -74.20801378,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MERCER",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.18014227,
+      "lon": -74.73273882,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132614",
+      "city": "MILLVILLE",
+      "county": "CUMBERLAND",
+      "lat": 39.37610594,
+      "lon": -74.96639013,
+      "max_volt": 230.0
+    },
+    {
+      "name": "ALDENE",
+      "city": "CRANFORD TWP",
+      "county": "UNION",
+      "lat": 40.65636889,
+      "lon": -74.28548424,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132617",
+      "city": "CLARK",
+      "county": "UNION",
+      "lat": 40.62674658,
+      "lon": -74.32437505,
+      "max_volt": 230.0
+    },
+    {
+      "name": "ORCHARD STATION",
+      "city": "HANLEY FALLS",
+      "county": "SALEM",
+      "lat": 39.58601091,
+      "lon": -75.24727959,
+      "max_volt": 500.0
+    },
+    {
+      "name": "CHAMBERS",
+      "city": "PENNS GROVE",
+      "county": "SALEM",
+      "lat": 39.69421154,
+      "lon": -75.48471164,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132626",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.18036744,
+      "lon": -74.73154601,
+      "max_volt": 230.0
+    },
+    {
+      "name": "KUSER ROAD",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.20899024,
+      "lon": -74.70179972,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN133139",
+      "city": "LINDEN",
+      "county": "UNION",
+      "lat": 40.6303899,
+      "lon": -74.21448145,
+      "max_volt": 230.0
+    },
+    {
+      "name": "BAYWAY",
+      "city": "ELIZABETH",
+      "county": "UNION",
+      "lat": 40.64459529,
+      "lon": -74.2059487,
+      "max_volt": 345.0
+    },
+    {
+      "name": "UNKNOWN133141",
+      "city": "LINDEN",
+      "county": "UNION",
+      "lat": 40.64165995,
+      "lon": -74.23396869,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN133199",
+      "city": "OLD BRIDGE",
+      "county": "MIDDLESEX",
+      "lat": 40.44098433,
+      "lon": -74.31651341,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LINCOLN STATION",
+      "city": "VINELAND",
+      "county": "CUMBERLAND",
+      "lat": 39.42594916,
+      "lon": -75.01827476,
+      "max_volt": 138.0
+    },
+    {
+      "name": "UNKNOWN132942",
+      "city": "ROSELAND",
+      "county": "ESSEX",
+      "lat": 40.82236576,
+      "lon": -74.32875705,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MARION",
+      "city": "JERSEY CITY",
+      "county": "HUDSON",
+      "lat": 40.7464427,
+      "lon": -74.0699152,
+      "max_volt": 345.0
+    },
+    {
+      "name": "UNKNOWN132954",
+      "city": "SOUTH AMBOY",
+      "county": "MIDDLESEX",
+      "lat": 40.49003442,
+      "lon": -74.28146959,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132955",
+      "city": "PARLIN",
+      "county": "MIDDLESEX",
+      "lat": 40.46068909,
+      "lon": -74.32606843,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132956",
+      "city": "SAYREVILLE",
+      "county": "MIDDLESEX",
+      "lat": 40.43912324,
+      "lon": -74.34371213,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN132975",
+      "city": "BURLINGTON",
+      "county": "BURLINGTON",
+      "lat": 40.07776657,
+      "lon": -74.87697593,
+      "max_volt": 230.0
+    },
+    {
+      "name": "ATHENIA SWITCHING STATION",
+      "city": "CLIFTON",
+      "county": "PASSAIC",
+      "lat": 40.86128931,
+      "lon": -74.15828804,
+      "max_volt": 230.0
+    },
+    {
+      "name": "HAWTHORNE",
+      "city": "HAWTHORNE",
+      "county": "PASSAIC",
+      "lat": 40.96633295,
+      "lon": -74.15068114,
+      "max_volt": 230.0
+    },
+    {
+      "name": "SAYREVILLE",
+      "city": "SAYREVILLE",
+      "county": "MIDDLESEX",
+      "lat": 40.47922184,
+      "lon": -74.35357566,
+      "max_volt": 230.0
+    },
+    {
+      "name": "READ OAK STATION",
+      "city": "SAYREVILLE",
+      "county": "MIDDLESEX",
+      "lat": 40.44924698,
+      "lon": -74.34708118,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN141124",
+      "city": "WEST DEPTFORD TWP",
+      "county": "GLOUCESTER",
+      "lat": 39.83991616,
+      "lon": -75.22103901,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP141136",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.18923522,
+      "lon": -74.73424848,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP141137",
+      "city": "CHESTERFIELD TWP",
+      "county": "BURLINGTON",
+      "lat": 40.15164218,
+      "lon": -74.66144082,
+      "max_volt": 138.0
+    },
+    {
+      "name": "TURNPIKE",
+      "city": "KEARNY",
+      "county": "HUDSON",
+      "lat": 40.76070797,
+      "lon": -74.11706678,
+      "max_volt": 230.0
+    },
+    {
+      "name": "NEWARK SWITCHING STATION",
+      "city": "NEWARK",
+      "county": "ESSEX",
+      "lat": 40.73306495,
+      "lon": -74.17774994,
+      "max_volt": 138.0
+    },
+    {
+      "name": "DOREMUS PLACE",
+      "city": "HILLSIDE",
+      "county": "UNION",
+      "lat": 40.69680505,
+      "lon": -74.22286357,
+      "max_volt": 138.0
+    },
+    {
+      "name": "FEDERAL SQUARE",
+      "city": "NEWARK",
+      "county": "ESSEX",
+      "lat": 40.72657715,
+      "lon": -74.17461386,
+      "max_volt": 138.0
+    },
+    {
+      "name": "BAYONNE SWITCHING STATION",
+      "city": "BAYONNE",
+      "county": "HUDSON",
+      "lat": 40.69421756,
+      "lon": -74.10552328,
+      "max_volt": 345.0
+    },
+    {
+      "name": "KEARNY",
+      "city": "KEARNY",
+      "county": "HUDSON",
+      "lat": 40.73798009,
+      "lon": -74.09857467,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MARION DRIVE",
+      "city": "WEST ORANGE",
+      "county": "ESSEX",
+      "lat": 40.79196184,
+      "lon": -74.25828308,
+      "max_volt": 230.0
+    },
+    {
+      "name": "WEST ORANGE",
+      "city": "WEST ORANGE",
+      "county": "ESSEX",
+      "lat": 40.78994344,
+      "lon": -74.25714855,
+      "max_volt": 230.0
+    },
+    {
+      "name": "ESSEX",
+      "city": "KEARNY",
+      "county": "ESSEX",
+      "lat": 40.7384284,
+      "lon": -74.12058439,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP140866",
+      "city": "EDISON",
+      "county": "UNION",
+      "lat": 40.60802489,
+      "lon": -74.35621192,
+      "max_volt": 230.0
+    },
+    {
+      "name": "PENHORN",
+      "city": "NEW PROVIDENCE",
+      "county": "HUDSON",
+      "lat": 40.74929736,
+      "lon": -74.07331117,
+      "max_volt": 230.0
+    },
+    {
+      "name": "HOMESTEAD",
+      "city": "SECAUCUS",
+      "county": "HUDSON",
+      "lat": 40.7788896,
+      "lon": -74.04219029,
+      "max_volt": 345.0
+    },
+    {
+      "name": "ROSELAND",
+      "city": "ROSELAND",
+      "county": "ESSEX",
+      "lat": 40.82004627,
+      "lon": -74.3307717,
+      "max_volt": 500.0
+    },
+    {
+      "name": "LAUREL AVE",
+      "city": "LIVINGSTON",
+      "county": "ESSEX",
+      "lat": 40.80325245,
+      "lon": -74.29107981,
+      "max_volt": 230.0
+    },
+    {
+      "name": "WEST CALDWELL",
+      "city": "CALDWELL",
+      "county": "ESSEX",
+      "lat": 40.85418152,
+      "lon": -74.29055106,
+      "max_volt": 230.0
+    },
+    {
+      "name": "NEW DOVER",
+      "city": "EDISON",
+      "county": "MIDDLESEX",
+      "lat": 40.58682179,
+      "lon": -74.34926321,
+      "max_volt": 230.0
+    },
+    {
+      "name": "CEDAR GROVE",
+      "city": "CEDAR GROVE TWP",
+      "county": "ESSEX",
+      "lat": 40.86837117,
+      "lon": -74.22146602,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LAFAYETTE ROAD STATION",
+      "city": "WOODBRIDGE TWP",
+      "county": "MIDDLESEX",
+      "lat": 40.54856999,
+      "lon": -74.3236093,
+      "max_volt": 230.0
+    },
+    {
+      "name": "CEDAR GROVE",
+      "city": "LITTLE FALLS",
+      "county": "ESSEX",
+      "lat": 40.86723823,
+      "lon": -74.21758593,
+      "max_volt": 230.0
+    },
+    {
+      "name": "WOODBRIDGE",
+      "city": "ISELIN",
+      "county": "MIDDLESEX",
+      "lat": 40.56397793,
+      "lon": -74.29481514,
+      "max_volt": 230.0
+    },
+    {
+      "name": "COOK ROAD",
+      "city": "NUTLEY TWP",
+      "county": "ESSEX",
+      "lat": 40.81178304,
+      "lon": -74.17834097,
+      "max_volt": 230.0
+    },
+    {
+      "name": "CLIFTON",
+      "city": "CLIFTON",
+      "county": "PASSAIC",
+      "lat": 40.85576608,
+      "lon": -74.16475763,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MINUE STREET",
+      "city": "CARTERET",
+      "county": "MIDDLESEX",
+      "lat": 40.59098005,
+      "lon": -74.23794251,
+      "max_volt": 230.0
+    },
+    {
+      "name": "BELLEVILLE",
+      "city": "BELLEVILLE",
+      "county": "ESSEX",
+      "lat": 40.80278945,
+      "lon": -74.14209358,
+      "max_volt": 230.0
+    },
+    {
+      "name": "NORTH BERGEN",
+      "city": "NORTH BERGEN TWP",
+      "county": "HUDSON",
+      "lat": 40.8042004,
+      "lon": -74.02561339,
+      "max_volt": 345.0
+    },
+    {
+      "name": "SAYREVILLE",
+      "city": "SAYREVILLE",
+      "county": "MIDDLESEX",
+      "lat": 40.47418399,
+      "lon": -74.35333331,
+      "max_volt": 500.0
+    },
+    {
+      "name": "TAP140896",
+      "city": "PLAINSBORO",
+      "county": "MIDDLESEX",
+      "lat": 40.33478474,
+      "lon": -74.57021865,
+      "max_volt": 138.0
+    },
+    {
+      "name": "TAP140897",
+      "city": "WESTWOOD",
+      "county": "MIDDLESEX",
+      "lat": 40.44898202,
+      "lon": -74.34587055,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP140898",
+      "city": "FITZWILLIAM",
+      "county": "MIDDLESEX",
+      "lat": 40.4487845,
+      "lon": -74.34584896,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP141098",
+      "city": "WILLINGBORO",
+      "county": "BURLINGTON",
+      "lat": 40.03722024,
+      "lon": -74.86776822,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP141099",
+      "city": "WILLINGBORO",
+      "county": "BURLINGTON",
+      "lat": 40.03701041,
+      "lon": -74.86740252,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP141100",
+      "city": "WILLINGBORO",
+      "county": "BURLINGTON",
+      "lat": 40.02919254,
+      "lon": -74.87842121,
+      "max_volt": 230.0
+    },
+    {
+      "name": "BRANCHBURG",
+      "city": "NESHANIC STATION",
+      "county": "SOMERSET",
+      "lat": 40.54434979,
+      "lon": -74.74218205,
+      "max_volt": 500.0
+    },
+    {
+      "name": "SUNNYMEADE",
+      "city": "HILLSBOROUGH",
+      "county": "SOMERSET",
+      "lat": 40.51224176,
+      "lon": -74.61637734,
+      "max_volt": 230.0
+    },
+    {
+      "name": "GREENBROOK",
+      "city": "GREEN BROOK TWP",
+      "county": "SOMERSET",
+      "lat": 40.59715658,
+      "lon": -74.48618083,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MIDDLESEX",
+      "city": "PISCATAWAY",
+      "county": "MIDDLESEX",
+      "lat": 40.56081105,
+      "lon": -74.46217089,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LAKE NELSON",
+      "city": "PISCATAWAY",
+      "county": "MIDDLESEX",
+      "lat": 40.55276292,
+      "lon": -74.45227802,
+      "max_volt": 230.0
+    },
+    {
+      "name": "KILNER",
+      "city": "PISCATAWAY",
+      "county": "MIDDLESEX",
+      "lat": 40.53355505,
+      "lon": -74.42529407,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MEADOW ROAD",
+      "city": "EDISON",
+      "county": "MIDDLESEX",
+      "lat": 40.49698033,
+      "lon": -74.39128623,
+      "max_volt": 138.0
+    },
+    {
+      "name": "FANWOOD",
+      "city": "FANWOOD",
+      "county": "UNION",
+      "lat": 40.63601686,
+      "lon": -74.39008342,
+      "max_volt": 230.0
+    },
+    {
+      "name": "EDISON",
+      "city": "EDISON",
+      "county": "MIDDLESEX",
+      "lat": 40.49145027,
+      "lon": -74.39566934,
+      "max_volt": 138.0
+    },
+    {
+      "name": "TRAYNOR",
+      "city": "SUMMIT",
+      "county": "UNION",
+      "lat": 40.73302081,
+      "lon": -74.3788327,
+      "max_volt": 230.0
+    },
+    {
+      "name": "SUMMIT",
+      "city": "SUMMIT",
+      "county": "UNION",
+      "lat": 40.72481202,
+      "lon": -74.38847365,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN143938",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.16867831,
+      "lon": -74.65678755,
+      "max_volt": 138.0
+    },
+    {
+      "name": "WINDSOR",
+      "city": "ROBBINSVILLE TWP",
+      "county": "MERCER",
+      "lat": 40.24887903,
+      "lon": -74.56502912,
+      "max_volt": 230.0
+    },
+    {
+      "name": "DEANS",
+      "city": "SOUTH BRUNSWICK TWP",
+      "county": "MIDDLESEX",
+      "lat": 40.40553315,
+      "lon": -74.48529155,
+      "max_volt": 500.0
+    },
+    {
+      "name": "ADAMS",
+      "city": "NORTH BRUNSWICK",
+      "county": "MIDDLESEX",
+      "lat": 40.45829287,
+      "lon": -74.48014251,
+      "max_volt": 230.0
+    },
+    {
+      "name": "EAST WINDSOR",
+      "city": "HIGHTSTOWN",
+      "county": "MERCER",
+      "lat": 40.24045248,
+      "lon": -74.51850583,
+      "max_volt": 500.0
+    },
+    {
+      "name": "BRUNSWICK",
+      "city": "NORTH BRUNSWICK",
+      "county": "MIDDLESEX",
+      "lat": 40.44615029,
+      "lon": -74.46143067,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MICKLETON",
+      "city": "EAST GREENWICH TWP",
+      "county": "GLOUCESTER",
+      "lat": 39.81185678,
+      "lon": -75.24921165,
+      "max_volt": 230.0
+    },
+    {
+      "name": "CHURCHTOWN",
+      "city": "PENNSVILLE",
+      "county": "SALEM",
+      "lat": 39.67469951,
+      "lon": -75.50152615,
+      "max_volt": 230.0
+    },
+    {
+      "name": "PEDRICKTOWN",
+      "city": "PEDRICKTOWN",
+      "county": "SALEM",
+      "lat": 39.76763299,
+      "lon": -75.42430144,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UPPER PITTSGROVE",
+      "city": "UPPER PITTSGROVE TWP",
+      "county": "SALEM",
+      "lat": 39.57195185,
+      "lon": -75.225572,
+      "max_volt": 138.0
+    },
+    {
+      "name": "THOROFARE",
+      "city": "WEST DEPTFORD TWP",
+      "county": "GLOUCESTER",
+      "lat": 39.83709669,
+      "lon": -75.18920521,
+      "max_volt": 230.0
+    },
+    {
+      "name": "SHERMAN STATION",
+      "city": "VINELAND",
+      "county": "CUMBERLAND",
+      "lat": 39.44978511,
+      "lon": -75.05804167,
+      "max_volt": 138.0
+    },
+    {
+      "name": "LANDIS STATION",
+      "city": "VINELAND",
+      "county": "CUMBERLAND",
+      "lat": 39.53390564,
+      "lon": -75.05111934,
+      "max_volt": 138.0
+    },
+    {
+      "name": "EAGLE POINT",
+      "city": "WEST DEPTFORD TWP",
+      "county": "GLOUCESTER",
+      "lat": 39.86969547,
+      "lon": -75.13719473,
+      "max_volt": 230.0
+    },
+    {
+      "name": "GLOUCESTER SWITCHING STATION",
+      "city": "GLOUCESTER CITY",
+      "county": "CAMDEN",
+      "lat": 39.88924447,
+      "lon": -75.09817942,
+      "max_volt": 230.0
+    },
+    {
+      "name": "DEPTFORD",
+      "city": "WESTVILLE",
+      "county": "GLOUCESTER",
+      "lat": 39.85901187,
+      "lon": -75.13693712,
+      "max_volt": 230.0
+    },
+    {
+      "name": "CAMDEN",
+      "city": "MERCHANTVILLE",
+      "county": "CAMDEN",
+      "lat": 39.96580841,
+      "lon": -75.0446635,
+      "max_volt": 230.0
+    },
+    {
+      "name": "BEAVER BROOK",
+      "city": "BELLMAWR",
+      "county": "CAMDEN",
+      "lat": 39.86125169,
+      "lon": -75.07985522,
+      "max_volt": 230.0
+    },
+    {
+      "name": "CINNAMINSON",
+      "city": "RIVERTON",
+      "county": "BURLINGTON",
+      "lat": 39.99755231,
+      "lon": -74.96902825,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LEVITTOWN",
+      "city": "WILLINGBORO",
+      "county": "BURLINGTON",
+      "lat": 40.02803465,
+      "lon": -74.88035204,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MOUNT LAUREL",
+      "city": "MT LAUREL TWP",
+      "county": "BURLINGTON",
+      "lat": 39.94752935,
+      "lon": -74.88037722,
+      "max_volt": 230.0
+    },
+    {
+      "name": "BURLINGTON",
+      "city": "BURLINGTON",
+      "county": "BURLINGTON",
+      "lat": 40.07523365,
+      "lon": -74.87408385,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LUMBERTON",
+      "city": "LUMBERTON TWP",
+      "county": "BURLINGTON",
+      "lat": 39.95054112,
+      "lon": -74.81038526,
+      "max_volt": 230.0
+    },
+    {
+      "name": "BUSTLETON",
+      "city": "FLORENCE TWP",
+      "county": "BURLINGTON",
+      "lat": 40.0792009,
+      "lon": -74.78313974,
+      "max_volt": 138.0
+    },
+    {
+      "name": "MARLTON",
+      "city": "MARLTON",
+      "county": "BURLINGTON",
+      "lat": 39.90110316,
+      "lon": -74.93197859,
+      "max_volt": 230.0
+    },
+    {
+      "name": "MONROE",
+      "city": "WILLIAMSTOWN",
+      "county": "GLOUCESTER",
+      "lat": 39.67652769,
+      "lon": -75.02477938,
+      "max_volt": 230.0
+    },
+    {
+      "name": "SICKLER",
+      "city": "SICKLERVILLE",
+      "county": "CAMDEN",
+      "lat": 39.73403911,
+      "lon": -74.97302038,
+      "max_volt": 230.0
+    },
+    {
+      "name": "NEW FREEDOM",
+      "city": "WAYNE",
+      "county": "CAMDEN",
+      "lat": 39.74100042,
+      "lon": -74.96275585,
+      "max_volt": 500.0
+    },
+    {
+      "name": "SILVER LAKE",
+      "city": "WEST BERLIN",
+      "county": "CAMDEN",
+      "lat": 39.81034094,
+      "lon": -74.95295027,
+      "max_volt": 230.0
+    },
+    {
+      "name": "PLEASANT VALLEY",
+      "city": "LAMBERTVILLE",
+      "county": "MERCER",
+      "lat": 40.33724016,
+      "lon": -74.92957595,
+      "max_volt": 230.0
+    },
+    {
+      "name": "LAWRENCE",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.28239821,
+      "lon": -74.75653796,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TRENTON",
+      "city": "TRENTON",
+      "county": "MERCER",
+      "lat": 40.22591254,
+      "lon": -74.70068769,
+      "max_volt": 230.0
+    },
+    {
+      "name": "CLARKSVILLE",
+      "city": "LAWRENCE TOWNSHIP",
+      "county": "MERCER",
+      "lat": 40.28202204,
+      "lon": -74.69227655,
+      "max_volt": 230.0
+    },
+    {
+      "name": "HOPE CREEK",
+      "city": "ATLANTIC CITY",
+      "county": "SALEM",
+      "lat": 39.46745248,
+      "lon": -75.53391561,
+      "max_volt": 500.0
+    },
+    {
+      "name": "DEEPWATER",
+      "city": "PENNSVILLE",
+      "county": "SALEM",
+      "lat": 39.68288983,
+      "lon": -75.50731296,
+      "max_volt": 138.0
+    },
+    {
+      "name": "NORTH AVENUE",
+      "city": "ELIZABETH",
+      "county": "UNION",
+      "lat": 40.66920176,
+      "lon": -74.17423444,
+      "max_volt": 345.0
+    },
+    {
+      "name": "JACKSON ROAD",
+      "city": "TOTOWA",
+      "county": "PASSAIC",
+      "lat": 40.90677715,
+      "lon": -74.24507554,
+      "max_volt": 230.0
+    },
+    {
+      "name": "STANLEY TERRACE",
+      "city": "UNION",
+      "county": "UNION",
+      "lat": 40.71243775,
+      "lon": -74.26629678,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNIOIN STATION",
+      "city": "MAURICE RIVER TWP",
+      "county": "CUMBERLAND",
+      "lat": 39.378059,
+      "lon": -74.948368,
+      "max_volt": 138.0
+    },
+    {
+      "name": "UNKNOWN162554",
+      "city": "NEWARK",
+      "county": "ESSEX",
+      "lat": 40.747978,
+      "lon": -74.174971,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP162555",
+      "city": "NEWARK",
+      "county": "ESSEX",
+      "lat": 40.74702875,
+      "lon": -74.17517936,
+      "max_volt": 230.0
+    },
+    {
+      "name": "TAP167289",
+      "city": "PORT READING",
+      "county": "MIDDLESEX",
+      "lat": 40.56865701,
+      "lon": -74.25556978,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN172517",
+      "city": "NEWARK",
+      "county": "ESSEX",
+      "lat": 40.737907,
+      "lon": -74.122585,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN172520",
+      "city": "KEARNY",
+      "county": "HUDSON",
+      "lat": 40.73764805,
+      "lon": -74.10317439,
+      "max_volt": 230.0
+    },
+    {
+      "name": "UNKNOWN172521",
+      "city": "NEW BRUNSWICK",
+      "county": "MIDDLESEX",
+      "lat": 40.479363,
+      "lon": -74.465683,
+      "max_volt": 230.0
+    }
+  ]
+}
