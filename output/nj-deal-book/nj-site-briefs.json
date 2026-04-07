@@ -1,629 +1,121 @@
 {
   "metadata": {
-    "generated_at": "2026-04-07T20:22:32.724678+00:00",
+    "generated_at": "2026-04-07T20:31:24.728315+00:00",
     "part": 6,
-    "description": "NJ deal book site briefs",
+    "description": "NJ deal book site briefs (re-weighted for acquirability)",
     "total_briefs": 10
   },
   "briefs": [
     {
-      "name": "Parlin Power Plant",
+      "name": "Novartis East Hanover Facility",
+      "source": "news_scan",
+      "source_type": "News/Research",
+      "sub_type": "Chemical Plant",
+      "city": "East Hanover",
+      "county": "Morris",
       "state": "NJ",
-      "lat": 40.460717,
-      "lon": -74.32716,
-      "capacity_mw": 135.0,
-      "fuel_type": "Natural Gas Fired Combined Cycle",
-      "status": "retired",
-      "retirement_date": "2023-10",
-      "owner": "Consolidated Edison Energy, Inc.",
-      "source": "eia_plants",
-      "source_type": "EIA Retired Plant",
-      "sub_type": "Retired Power Plant",
-      "address": "Sayreville, Middlesex County, NJ",
-      "city": "Sayreville",
-      "county": "Middlesex",
-      "nearest_sub_name": "UNKNOWN132955",
-      "nearest_sub_miles": 0.06,
+      "address": "East Hanover, NJ",
+      "lat": 40.8200998,
+      "lon": -74.3648731,
+      "estimated_mw": 38,
+      "employee_count": 427,
+      "closure_date": "2025-06 to 2025-10",
+      "closure_status": "closing",
+      "utility_territory": "PSEG",
+      "nearest_sub_name": "WHIPPANY",
+      "nearest_sub_miles": 0.7,
       "nearest_sub_kv": 230.0,
-      "estimated_mw": 135.0,
-      "employee_count": 0,
-      "closure_date": "2023-10",
-      "closure_status": "retired",
-      "utility_territory": "",
       "sources": [
-        "https://www.gem.wiki/Parlin_power_plant",
-        "https://mapcarta.com/W729085251",
-        "https://neptunerts.com/project/",
-        "https://en.wikipedia.org/wiki/Neptune_Cable",
-        "https://re-nj.com/massive-ex-manufacturing-site-in-sayreville-to-be-reborn-as-1-1-million-sq-ft-logistics-hub/"
+        "https://www.powderbulksolids.com/pharmaceuticals-medical-products/novartis-laying-off-hundreds-in-us"
       ],
-      "notes": "Status discrepancy: Global Energy Monitor shows as operating (last updated Jan 2026) while provided data indicates retired. Plant has excellent data center characteristics - 135MW capacity, natural gas infrastructure, direct 500kV transmission access via Neptune Cable system to Long Island, strategic location in Sayreville industrial corridor. Site near major transmission infrastructure including converter station for undersea cable to Long Island.",
-      "current_site_status": "idle",
-      "transmission_kv": 500,
-      "acquirability": "medium",
-      "acquirability_notes": "Major utility owner with established infrastructure, but recent Global Energy Monitor data shows as operating, creating uncertainty about actual retirement status",
-      "owner_type": "utility",
-      "current_owner": "Consolidated Edison Energy, Inc.",
-      "redevelopment_plans": null,
-      "environmental_status": "unknown",
-      "partnership_path": "Direct approach to Con Edison corporate development team or explore joint venture opportunities through their energy transition initiatives. Con Edison has divested other power plants and may be open to site partnerships for data center development given their grid modernization focus.",
-      "dc_suitability": "high",
+      "notes": "Major pharmaceutical layoffs, not full closure. Headquarters location with previous 235 layoffs in 2024. Part of company restructuring.",
       "priority": "HIGH",
       "transport": {
         "NJ Turnpike": {
-          "distance_miles": 1.7,
-          "nearest": "Exit 9 (New Brunswick)"
-        },
-        "Garden State Parkway": {
-          "distance_miles": 6.9,
-          "nearest": "Exit 127 (Elizabeth)"
-        },
-        "I-78": {
-          "distance_miles": 13.6,
-          "nearest": "Springfield"
-        },
-        "I-80": {
-          "distance_miles": 27.9,
-          "nearest": "Parsippany"
-        },
-        "I-95": {
-          "distance_miles": 24.2,
-          "nearest": "George Washington Bridge"
-        },
-        "I-287": {
-          "distance_miles": 16.9,
-          "nearest": "Morristown"
-        },
-        "I-195": {
-          "distance_miles": 18.7,
-          "nearest": "Freehold"
-        },
-        "nearest_highway": {
-          "name": "NJ Turnpike",
-          "distance_miles": 1.7,
-          "interchange": "Exit 9 (New Brunswick)"
-        },
-        "transportation_advantaged": false,
-        "nearest_airport": {
-          "name": "Linden Airport",
-          "distance_miles": 4.0
-        },
-        "estimated_fiber_distance_miles": 1.7
-      },
-      "scores": {
-        "composite_score": 92.2,
-        "power_availability": 100,
-        "transmission_proximity": 100,
-        "acquirability_score": 80,
-        "transportation_access": 85,
-        "site_readiness": 90
-      },
-      "brief": {
-        "opportunity_summary": "Parlin Power Plant is a 135MW retired natural gas plant in Sayreville, Middlesex County, NJ with transmission infrastructure (230kV substation 0.06 mi away). Former NRG gas-fired plant in Middlesex County industrial corridor. Adjacent to Raritan River. Sayreville has strong industrial zoning.",
-        "power_story": {
-          "estimated_capacity_mw": 135,
-          "source_of_capacity": "retired plant",
-          "utility_territory": "PSEG",
-          "transmission": "UNKNOWN132955 (230kV, 0.06 mi)",
-          "confidence_level": "High"
-        },
-        "site_details": {
-          "parcel_size_acres": 40,
-          "current_use": "idle",
-          "zoning": "industrial",
-          "owner_type": "utility",
-          "estimated_value": "$3,000,000 - $8,000,000",
-          "environmental_flags": "Minimal \u2014 natural gas site"
-        },
-        "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 NRG Energy retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$3,000,000 - $8,000,000",
-          "recommended_approach": "Direct outreach to NRG Energy asset disposition. NRG has been divesting older assets.",
-          "notes": "Major utility owner with established infrastructure, but recent Global Energy Monitor data shows as operating, creating uncertainty about actual retirement status"
-        },
-        "developer_value": {
-          "estimated_developer_price": "$25,000,000 - $50,000,000",
-          "spread_estimate": "$17,000,000 - $47,000,000",
-          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
-        },
-        "next_steps": [
-          "Verify current ownership via Middlesex County property records",
-          "Contact NRG Energy about site disposition/partnership",
-          "Confirm utility interconnection availability with PSEG commercial team",
-          "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
-        ],
-        "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
-      }
-    },
-    {
-      "name": "Werner",
-      "state": "NJ",
-      "lat": 40.491236,
-      "lon": -74.28099,
-      "capacity_mw": 212.0,
-      "fuel_type": "Petroleum Liquids",
-      "status": "retired",
-      "retirement_date": "2015-05",
-      "owner": "GenOn REMA, LLC",
-      "source": "eia_plants",
-      "source_type": "EIA Retired Plant",
-      "sub_type": "Retired Power Plant",
-      "address": "South Amboy, Middlesex County, NJ",
-      "city": "South Amboy",
-      "county": "Middlesex",
-      "nearest_sub_name": "UNKNOWN132954",
-      "nearest_sub_miles": 0.09,
-      "nearest_sub_kv": 230.0,
-      "estimated_mw": 212.0,
-      "employee_count": 0,
-      "closure_date": "2015-05",
-      "closure_status": "retired",
-      "utility_territory": "",
-      "sources": [],
-      "notes": "",
-      "priority": "HIGH",
-      "acquirability": "medium",
-      "acquirability_notes": "Requires further research on current ownership and status.",
-      "dc_suitability": "medium",
-      "environmental_status": "unknown",
-      "current_site_status": "idle",
-      "transport": {
-        "NJ Turnpike": {
-          "distance_miles": 1.5,
-          "nearest": "Exit 9 (New Brunswick)"
-        },
-        "Garden State Parkway": {
-          "distance_miles": 4.4,
-          "nearest": "Exit 127 (Elizabeth)"
-        },
-        "I-78": {
-          "distance_miles": 10.8,
-          "nearest": "Newark Airport"
-        },
-        "I-80": {
-          "distance_miles": 25.4,
-          "nearest": "Parsippany"
-        },
-        "I-95": {
-          "distance_miles": 21.0,
-          "nearest": "George Washington Bridge"
-        },
-        "I-287": {
-          "distance_miles": 15.6,
-          "nearest": "Morristown"
-        },
-        "I-195": {
-          "distance_miles": 20.6,
-          "nearest": "Freehold"
-        },
-        "nearest_highway": {
-          "name": "NJ Turnpike",
-          "distance_miles": 1.5,
-          "interchange": "Exit 9 (New Brunswick)"
-        },
-        "transportation_advantaged": false,
-        "nearest_airport": {
-          "name": "Linden Airport",
-          "distance_miles": 4.0
-        },
-        "estimated_fiber_distance_miles": 1.5
-      },
-      "scores": {
-        "composite_score": 92.2,
-        "power_availability": 100,
-        "transmission_proximity": 100,
-        "acquirability_score": 80,
-        "transportation_access": 85,
-        "site_readiness": 90
-      },
-      "brief": {
-        "opportunity_summary": "Werner is a 212MW retired natural gas plant in South Amboy, Middlesex County, NJ with transmission infrastructure (230kV substation 0.09 mi away). PSEG peaking plant in South Amboy along Raritan Bay. Older combustion turbines.",
-        "power_story": {
-          "estimated_capacity_mw": 212,
-          "source_of_capacity": "retired plant",
-          "utility_territory": "PSEG",
-          "transmission": "UNKNOWN132954 (230kV, 0.09 mi)",
-          "confidence_level": "High"
-        },
-        "site_details": {
-          "parcel_size_acres": 15,
-          "current_use": "idle",
-          "zoning": "industrial",
-          "owner_type": "private",
-          "estimated_value": "$2,000,000 - $5,000,000",
-          "environmental_flags": "Minimal \u2014 natural gas site"
-        },
-        "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 PSEG Power retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$2,000,000 - $5,000,000",
-          "recommended_approach": "Partnership path via Brian's BPU contacts. PSEG may be open to site lease for data center development.",
-          "notes": "Requires further research on current ownership and status."
-        },
-        "developer_value": {
-          "estimated_developer_price": "$20,000,000 - $40,000,000",
-          "spread_estimate": "$15,000,000 - $38,000,000",
-          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
-        },
-        "next_steps": [
-          "Verify current ownership via Middlesex County property records",
-          "Contact PSEG Power about site disposition/partnership",
-          "Confirm utility interconnection availability with PSEG commercial team",
-          "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
-        ],
-        "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
-      }
-    },
-    {
-      "name": "Newark Power Plant",
-      "state": "NJ",
-      "lat": 40.736389,
-      "lon": -74.12861,
-      "capacity_mw": 64.6,
-      "fuel_type": "Natural Gas Fired Combined Cycle",
-      "status": "retired",
-      "retirement_date": "2009-12",
-      "owner": "Calpine Newark LLC",
-      "source": "eia_plants",
-      "source_type": "EIA Retired Plant",
-      "sub_type": "Retired Power Plant",
-      "address": "Newark, Essex County, NJ",
-      "city": "Newark",
-      "county": "Essex",
-      "nearest_sub_name": "ESSEX",
-      "nearest_sub_miles": 0.33,
-      "nearest_sub_kv": 230.0,
-      "estimated_mw": 64.6,
-      "employee_count": 0,
-      "closure_date": "2009-12",
-      "closure_status": "retired",
-      "utility_territory": "",
-      "sources": [],
-      "notes": "",
-      "priority": "MEDIUM",
-      "acquirability": "medium",
-      "acquirability_notes": "Requires further research on current ownership and status.",
-      "dc_suitability": "medium",
-      "environmental_status": "clean",
-      "current_site_status": "idle",
-      "transport": {
-        "NJ Turnpike": {
-          "distance_miles": 2.9,
+          "distance_miles": 12.4,
           "nearest": "Exit 14 (Newark)"
         },
         "Garden State Parkway": {
-          "distance_miles": 3.3,
+          "distance_miles": 10.5,
           "nearest": "Exit 145 (Newark)"
         },
         "I-78": {
-          "distance_miles": 8.1,
-          "nearest": "Newark Airport"
+          "distance_miles": 11.3,
+          "nearest": "Springfield"
         },
         "I-80": {
-          "distance_miles": 9.8,
-          "nearest": "Parsippany"
+          "distance_miles": 5.9,
+          "nearest": "Rockaway"
         },
         "I-95": {
-          "distance_miles": 6.6,
+          "distance_miles": 20.2,
           "nearest": "George Washington Bridge"
         },
         "I-287": {
-          "distance_miles": 11.1,
+          "distance_miles": 4.2,
           "nearest": "Parsippany"
         },
         "I-195": {
-          "distance_miles": 38.1,
-          "nearest": "Freehold"
+          "distance_miles": 43.2,
+          "nearest": "Hamilton"
         },
         "nearest_highway": {
-          "name": "NJ Turnpike",
-          "distance_miles": 2.9,
-          "interchange": "Exit 14 (Newark)"
+          "name": "I-287",
+          "distance_miles": 4.2,
+          "interchange": "Parsippany"
         },
         "transportation_advantaged": false,
         "nearest_airport": {
-          "name": "Newark Liberty (EWR)",
-          "distance_miles": 4.0
+          "name": "Morristown Airport (MMU)",
+          "distance_miles": 11.1
         },
-        "estimated_fiber_distance_miles": 2.9
+        "estimated_fiber_distance_miles": 4.2
       },
       "scores": {
-        "composite_score": 90.0,
-        "power_availability": 100,
-        "transmission_proximity": 100,
-        "acquirability_score": 80,
-        "transportation_access": 70,
-        "site_readiness": 90
+        "composite_score": 82.5,
+        "acquirability_score": 85,
+        "power_availability": 80,
+        "transmission_proximity": 95,
+        "transportation_access": 65,
+        "site_readiness": 85
       },
       "brief": {
-        "opportunity_summary": "Newark Power Plant is a 64MW retired natural gas plant in Newark, Essex County, NJ with transmission infrastructure (230kV substation 0.33 mi away). Urban Newark location near port and transit. High fiber density area. Premium metro location for edge/colo.",
+        "opportunity_summary": "Novartis East Hanover Facility is closing its chemical plant facility in East Hanover, displacing ~427 employees and an estimated 38MW of power demand. The utility infrastructure serving this site remains in place. Major pharmaceutical layoffs, not full closure. Headquarters location with previous 235 layoffs in 2024. Part of company restructuring.",
         "power_story": {
-          "estimated_capacity_mw": 64,
-          "source_of_capacity": "retired plant",
+          "estimated_capacity_mw": 38,
+          "source_of_capacity": "industrial closure",
           "utility_territory": "PSEG",
-          "transmission": "ESSEX (230kV, 0.33 mi)",
-          "confidence_level": "High"
+          "transmission": "WHIPPANY (230kV, 0.7 mi)",
+          "confidence_level": "Medium"
         },
         "site_details": {
-          "parcel_size_acres": 8,
-          "current_use": "idle",
+          "parcel_size_acres": null,
+          "current_use": "Closure in progress or recently completed. Site likely transitioning.",
           "zoning": "industrial",
           "owner_type": "private",
-          "estimated_value": "$5,000,000 - $12,000,000",
-          "environmental_flags": "Minimal \u2014 natural gas site"
+          "estimated_value": "$1,900,000 - $5,700,000",
+          "environmental_flags": "Depends on prior industrial use. Phase I ESA recommended."
         },
         "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 PSEG Power retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$5,000,000 - $12,000,000",
-          "recommended_approach": "Partnership with PSEG. Premium metro location commands higher developer prices despite smaller footprint.",
-          "notes": "Requires further research on current ownership and status."
+          "owner_motivation": "Company is leaving \u2014 they need to dispose of the site. Direct outreach to corporate RE.",
+          "estimated_acquisition_cost": "$1,900,000 - $5,700,000",
+          "recommended_approach": "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
+          "notes": ""
         },
         "developer_value": {
-          "estimated_developer_price": "$30,000,000 - $60,000,000",
-          "spread_estimate": "$18,000,000 - $55,000,000",
+          "estimated_developer_price": "$11,400,000 - $26,600,000",
+          "spread_estimate": "$5,700,000 - $24,700,000",
           "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
         },
         "next_steps": [
-          "Verify current ownership via Essex County property records",
-          "Contact PSEG Power about site disposition/partnership",
+          "Verify current ownership via Morris County property records",
+          "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
           "Confirm utility interconnection availability with PSEG commercial team",
           "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
         ],
         "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
-      }
-    },
-    {
-      "name": "Mickleton Station",
-      "state": "NJ",
-      "lat": 39.8119,
-      "lon": -75.24903,
-      "capacity_mw": 71.2,
-      "fuel_type": "Natural Gas Fired Combustion Turbine",
-      "status": "retired",
-      "retirement_date": "2024-06",
-      "owner": "Calpine New Jersey Generation LLC",
-      "source": "eia_plants",
-      "source_type": "EIA Retired Plant",
-      "sub_type": "Retired Power Plant",
-      "address": "East Greenwich, Gloucester County, NJ",
-      "city": "East Greenwich",
-      "county": "Gloucester",
-      "nearest_sub_name": "MICKLETON",
-      "nearest_sub_miles": 0.01,
-      "nearest_sub_kv": 230.0,
-      "estimated_mw": 71.2,
-      "employee_count": 0,
-      "closure_date": "2024-06",
-      "closure_status": "retired",
-      "utility_territory": "",
-      "sources": [
-        "https://www.gem.wiki/Mickleton_Station",
-        "https://www.gridinfo.com/plant/mickleton-station/8008",
-        "https://www.industrialinfo.com/news/article/constellation-energy-completes-calpine-acquisition--351594"
-      ],
-      "notes": "71.2 MW retired natural gas combustion turbine. Constellation completed $16.4B Calpine acquisition Jan 2026, creating largest US power producer focused on AI/data center market. Site generated only 68.2 MWh in Q4 2023 before retirement, indicating minimal recent operation. Located in Gloucester County with existing transmission infrastructure.",
-      "current_site_status": "idle",
-      "transmission_kv": null,
-      "acquirability": "medium",
-      "acquirability_notes": "Constellation Energy (following Calpine acquisition in Jan 2026) is actively focusing on data center partnerships and divesting non-core assets. Small retired peaker plants may be available for redevelopment.",
-      "owner_type": "private_equity",
-      "current_owner": "Constellation Energy Corporation (acquired Calpine Jan 2026)",
-      "redevelopment_plans": null,
-      "environmental_status": "unknown",
-      "partnership_path": "Approach Constellation Energy directly regarding retired asset disposition. Company is actively monetizing power infrastructure for data center market and may consider site partnerships or sales for smaller non-core assets.",
-      "dc_suitability": "medium",
-      "priority": "MEDIUM",
-      "transport": {
-        "NJ Turnpike": {
-          "distance_miles": 9.2,
-          "nearest": "Exit 1 (Deepwater)"
-        },
-        "Garden State Parkway": {
-          "distance_miles": 53.1,
-          "nearest": "Exit 17 (Atlantic City)"
-        },
-        "I-78": {
-          "distance_miles": 62.1,
-          "nearest": "Clinton"
-        },
-        "I-80": {
-          "distance_miles": 82.0,
-          "nearest": "Columbia"
-        },
-        "I-95": {
-          "distance_miles": 38.7,
-          "nearest": "Trenton"
-        },
-        "I-287": {
-          "distance_miles": 63.3,
-          "nearest": "Bridgewater"
-        },
-        "I-195": {
-          "distance_miles": 38.5,
-          "nearest": "Trenton"
-        },
-        "nearest_highway": {
-          "name": "NJ Turnpike",
-          "distance_miles": 9.2,
-          "interchange": "Exit 1 (Deepwater)"
-        },
-        "transportation_advantaged": false,
-        "nearest_airport": {
-          "name": "Trenton-Mercer (TTN)",
-          "distance_miles": 39.3
-        },
-        "estimated_fiber_distance_miles": 9.2
-      },
-      "scores": {
-        "composite_score": 87.0,
-        "power_availability": 100,
-        "transmission_proximity": 100,
-        "acquirability_score": 80,
-        "transportation_access": 50,
-        "site_readiness": 90
-      },
-      "brief": {
-        "opportunity_summary": "Mickleton Station is a 71MW retired natural gas plant in East Greenwich, Gloucester County, NJ with transmission infrastructure (230kV substation 0.01 mi away). South Jersey location near NJ Turnpike. Good highway access. Lower land costs than North Jersey.",
-        "power_story": {
-          "estimated_capacity_mw": 71,
-          "source_of_capacity": "retired plant",
-          "utility_territory": "PSEG",
-          "transmission": "MICKLETON (230kV, 0.01 mi)",
-          "confidence_level": "High"
-        },
-        "site_details": {
-          "parcel_size_acres": 20,
-          "current_use": "idle",
-          "zoning": "industrial",
-          "owner_type": "private_equity",
-          "estimated_value": "$1,500,000 - $4,000,000",
-          "environmental_flags": "Minimal \u2014 natural gas site"
-        },
-        "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 PSEG Power retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$1,500,000 - $4,000,000",
-          "recommended_approach": "PSEG partnership. South Jersey sites offer cost advantage. Fiber build required.",
-          "notes": "Constellation Energy (following Calpine acquisition in Jan 2026) is actively focusing on data center partnerships and divesting non-core assets. Small retired peaker plants may be available for redevelopment."
-        },
-        "developer_value": {
-          "estimated_developer_price": "$15,000,000 - $30,000,000",
-          "spread_estimate": "$11,000,000 - $28,500,000",
-          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
-        },
-        "next_steps": [
-          "Verify current ownership via Gloucester County property records",
-          "Contact PSEG Power about site disposition/partnership",
-          "Confirm utility interconnection availability with PSEG commercial team",
-          "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
-        ],
-        "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
-      }
-    },
-    {
-      "name": "Glen Gardner",
-      "state": "NJ",
-      "lat": 40.6815,
-      "lon": -74.9207,
-      "capacity_mw": 159.6,
-      "fuel_type": "Natural Gas Fired Combustion Turbine",
-      "status": "retired",
-      "retirement_date": "2015-05",
-      "owner": "GenOn REMA, LLC",
-      "source": "eia_plants",
-      "source_type": "EIA Retired Plant",
-      "sub_type": "Retired Power Plant",
-      "address": "Glen Gardner, Hunterdon County, NJ",
-      "city": "Glen Gardner",
-      "county": "Hunterdon",
-      "nearest_sub_name": "GLEN GARDNER",
-      "nearest_sub_miles": 0.04,
-      "nearest_sub_kv": 230.0,
-      "estimated_mw": 159.6,
-      "employee_count": 0,
-      "closure_date": "2015-05",
-      "closure_status": "retired",
-      "utility_territory": "",
-      "sources": [],
-      "notes": "",
-      "priority": "HIGH",
-      "acquirability": "medium",
-      "acquirability_notes": "Requires further research on current ownership and status.",
-      "dc_suitability": "medium",
-      "environmental_status": "clean",
-      "current_site_status": "idle",
-      "transport": {
-        "NJ Turnpike": {
-          "distance_miles": 33.6,
-          "nearest": "Exit 7A (Trenton)"
-        },
-        "Garden State Parkway": {
-          "distance_miles": 34.5,
-          "nearest": "Exit 127 (Elizabeth)"
-        },
-        "I-78": {
-          "distance_miles": 8.9,
-          "nearest": "Clinton"
-        },
-        "I-80": {
-          "distance_miles": 20.2,
-          "nearest": "Columbia"
-        },
-        "I-95": {
-          "distance_miles": 33.4,
-          "nearest": "Trenton"
-        },
-        "I-287": {
-          "distance_miles": 17.4,
-          "nearest": "Bridgewater"
-        },
-        "I-195": {
-          "distance_miles": 33.0,
-          "nearest": "Trenton"
-        },
-        "nearest_highway": {
-          "name": "I-78",
-          "distance_miles": 8.9,
-          "interchange": "Clinton"
-        },
-        "transportation_advantaged": false,
-        "nearest_airport": {
-          "name": "Linden Airport",
-          "distance_miles": 32.0
-        },
-        "estimated_fiber_distance_miles": 8.9
-      },
-      "scores": {
-        "composite_score": 87.0,
-        "power_availability": 100,
-        "transmission_proximity": 100,
-        "acquirability_score": 80,
-        "transportation_access": 50,
-        "site_readiness": 90
-      },
-      "brief": {
-        "opportunity_summary": "Glen Gardner is a 159MW retired natural gas plant in Glen Gardner, Hunterdon County, NJ with transmission infrastructure (230kV substation 0.04 mi away). Hunterdon County \u2014 rural but near I-78 corridor. JCP&L territory. Lower cost of entry.",
-        "power_story": {
-          "estimated_capacity_mw": 159,
-          "source_of_capacity": "retired plant",
-          "utility_territory": "JCP&L",
-          "transmission": "GLEN GARDNER (230kV, 0.04 mi)",
-          "confidence_level": "High"
-        },
-        "site_details": {
-          "parcel_size_acres": 25,
-          "current_use": "idle",
-          "zoning": "industrial",
-          "owner_type": "private",
-          "estimated_value": "$1,000,000 - $3,000,000",
-          "environmental_flags": "Minimal \u2014 natural gas site"
-        },
-        "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 PSEG Power retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$1,000,000 - $3,000,000",
-          "recommended_approach": "PSEG asset disposition or partnership. Rural location may mean longer fiber build.",
-          "notes": "Requires further research on current ownership and status."
-        },
-        "developer_value": {
-          "estimated_developer_price": "$12,000,000 - $25,000,000",
-          "spread_estimate": "$9,000,000 - $24,000,000",
-          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
-        },
-        "next_steps": [
-          "Verify current ownership via Hunterdon County property records",
-          "Contact PSEG Power about site disposition/partnership",
-          "Confirm utility interconnection availability with JCP&L commercial team",
-          "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
-        ],
-        "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 JCP&L territory. Brian's BPU contacts can validate power availability and interconnection timeline."
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
       }
     },
     {
@@ -639,9 +131,9 @@
       "source": "eia_plants",
       "source_type": "EIA Retired Plant",
       "sub_type": "Retired Power Plant",
-      "address": "Elmwood Park, Bergen County, NJ",
-      "city": "Elmwood Park",
-      "county": "Bergen",
+      "address": "NJ",
+      "city": "",
+      "county": "",
       "nearest_sub_name": "SADDLE BROOK",
       "nearest_sub_miles": 1.9,
       "nearest_sub_kv": 230.0,
@@ -700,15 +192,15 @@
         "estimated_fiber_distance_miles": 2.3
       },
       "scores": {
-        "composite_score": 86.0,
+        "composite_score": 80.0,
+        "acquirability_score": 75,
         "power_availability": 100,
         "transmission_proximity": 80,
-        "acquirability_score": 80,
         "transportation_access": 70,
-        "site_readiness": 90
+        "site_readiness": 75
       },
       "brief": {
-        "opportunity_summary": "Elmwood Park Power LLC is a 89MW retired natural gas plant in Elmwood Park, Bergen County, NJ with transmission infrastructure (230kV substation 1.9 mi away). Bergen County location near I-80 and Passaic River. Dense metro fiber. Private LLC ownership more acquirable.",
+        "opportunity_summary": "Elmwood Park Power LLC is a 89MW retired natural gas combined cycle plant in NJ with existing transmission infrastructure (SADDLE BROOK 230kV substation 1.9 mi away). ",
         "power_story": {
           "estimated_capacity_mw": 89,
           "source_of_capacity": "retired plant",
@@ -717,33 +209,369 @@
           "confidence_level": "Medium"
         },
         "site_details": {
-          "parcel_size_acres": 10,
+          "parcel_size_acres": null,
           "current_use": "idle",
           "zoning": "industrial",
           "owner_type": "private",
-          "estimated_value": "$4,000,000 - $10,000,000",
+          "estimated_value": "$3,580,000 - $10,740,000",
           "environmental_flags": "Minimal \u2014 natural gas site"
         },
         "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 Elmwood Park Power LLC retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$4,000,000 - $10,000,000",
-          "recommended_approach": "Direct outreach to LLC. Private ownership means direct negotiation possible. Premium North Jersey location.",
+          "owner_motivation": "Private/LLC ownership suggests direct negotiation possible.",
+          "estimated_acquisition_cost": "$3,580,000 - $10,740,000",
+          "recommended_approach": "Direct outreach to Elmwood Park Power LLC about site disposition or ground lease.",
           "notes": "Requires further research on current ownership and status."
         },
         "developer_value": {
-          "estimated_developer_price": "$25,000,000 - $50,000,000",
-          "spread_estimate": "$15,000,000 - $46,000,000",
+          "estimated_developer_price": "$22,375,000 - $53,700,000",
+          "spread_estimate": "$11,635,000 - $50,120,000",
           "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
         },
         "next_steps": [
-          "Verify current ownership via Bergen County property records",
-          "Contact Elmwood Park Power LLC about site disposition/partnership",
+          "Verify current ownership via NJ County property records",
+          "Direct outreach to Elmwood Park Power LLC about site disposition or ground lease.",
           "Confirm utility interconnection availability with PSEG commercial team",
           "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
         ],
         "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
+      }
+    },
+    {
+      "name": "Ahold eCommerce Sales Company Fulfillment Center",
+      "source": "news_scan",
+      "source_type": "News/Research",
+      "sub_type": "Distribution Center",
+      "city": "Not specified",
+      "county": "Not specified",
+      "state": "NJ",
+      "address": "New Jersey",
+      "lat": 40.5961103,
+      "lon": -74.2374679,
+      "estimated_mw": 18,
+      "employee_count": 454,
+      "closure_date": "March 2024",
+      "closure_status": "closed",
+      "utility_territory": "Not specified",
+      "nearest_sub_name": "MINUE STREET",
+      "nearest_sub_miles": 0.36,
+      "nearest_sub_kv": 230.0,
+      "sources": [
+        "https://www.supplychaindive.com/news/warehouse-employment-decline-layoffs-2024/705635/"
+      ],
+      "notes": "Fulfillment and delivery services for Stop & Shop, shifting to store-based fulfillment",
+      "priority": "MEDIUM",
+      "transport": {
+        "NJ Turnpike": {
+          "distance_miles": 3.3,
+          "nearest": "Exit 11 (Woodbridge)"
+        },
+        "Garden State Parkway": {
+          "distance_miles": 3.8,
+          "nearest": "Exit 127 (Elizabeth)"
+        },
+        "I-78": {
+          "distance_miles": 3.2,
+          "nearest": "Newark Airport"
+        },
+        "I-80": {
+          "distance_miles": 18.0,
+          "nearest": "Parsippany"
+        },
+        "I-95": {
+          "distance_miles": 14.6,
+          "nearest": "George Washington Bridge"
+        },
+        "I-287": {
+          "distance_miles": 11.1,
+          "nearest": "Morristown"
+        },
+        "I-195": {
+          "distance_miles": 27.8,
+          "nearest": "Freehold"
+        },
+        "nearest_highway": {
+          "name": "I-78",
+          "distance_miles": 3.2,
+          "interchange": "Newark Airport"
+        },
+        "transportation_advantaged": false,
+        "nearest_airport": {
+          "name": "Newark Liberty (EWR)",
+          "distance_miles": 7.2
+        },
+        "estimated_fiber_distance_miles": 3.2
+      },
+      "scores": {
+        "composite_score": 78.0,
+        "acquirability_score": 85,
+        "power_availability": 60,
+        "transmission_proximity": 100,
+        "transportation_access": 70,
+        "site_readiness": 75
+      },
+      "brief": {
+        "opportunity_summary": "Ahold eCommerce Sales Company Fulfillment Center is closing its distribution center facility in Not specified, displacing ~454 employees and an estimated 18MW of power demand. The utility infrastructure serving this site remains in place. Fulfillment and delivery services for Stop & Shop, shifting to store-based fulfillment",
+        "power_story": {
+          "estimated_capacity_mw": 18,
+          "source_of_capacity": "industrial closure",
+          "utility_territory": "Not specified",
+          "transmission": "MINUE STREET (230kV, 0.36 mi)",
+          "confidence_level": "Medium"
+        },
+        "site_details": {
+          "parcel_size_acres": null,
+          "current_use": "Closure in progress or recently completed. Site likely transitioning.",
+          "zoning": "industrial",
+          "owner_type": "private",
+          "estimated_value": "$900,000 - $2,700,000",
+          "environmental_flags": "Depends on prior industrial use. Phase I ESA recommended."
+        },
+        "acquirability": {
+          "owner_motivation": "Company is leaving \u2014 they need to dispose of the site. Direct outreach to corporate RE.",
+          "estimated_acquisition_cost": "$900,000 - $2,700,000",
+          "recommended_approach": "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
+          "notes": ""
+        },
+        "developer_value": {
+          "estimated_developer_price": "$5,400,000 - $12,600,000",
+          "spread_estimate": "$2,700,000 - $11,700,000",
+          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
+        },
+        "next_steps": [
+          "Verify current ownership via Not specified County property records",
+          "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
+          "Confirm utility interconnection availability with Not specified commercial team",
+          "Request Phase I ESA or review existing environmental reports",
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
+        ],
+        "ralph_should_see": true,
+        "bpu_contact_relevant": "Yes -- Not specified territory. Brian's BPU contacts can validate power availability."
+      }
+    },
+    {
+      "name": "Henry Repeating Arms Manufacturing Plant",
+      "source": "news_scan",
+      "source_type": "News/Research",
+      "sub_type": "Manufacturing",
+      "city": "Bayonne",
+      "county": "Hudson",
+      "state": "NJ",
+      "address": "Bayonne, NJ",
+      "lat": 40.6687141,
+      "lon": -74.1143091,
+      "estimated_mw": 10,
+      "employee_count": 142,
+      "closure_date": "2025-03",
+      "closure_status": "closed",
+      "utility_territory": "PSEG",
+      "nearest_sub_name": "BAYONNE SWITCHING STATION",
+      "nearest_sub_miles": 1.82,
+      "nearest_sub_kv": 345.0,
+      "sources": [
+        "https://www.news-shield.com/news/top_stories/article_80c2bbb4-04c4-11f0-a060-7be6eec7a61f.html"
+      ],
+      "notes": "Firearms manufacturer consolidating all operations to Wisconsin facilities. Company cited heavy manufacturing regulations in NJ as factor.",
+      "priority": "MEDIUM",
+      "transport": {
+        "NJ Turnpike": {
+          "distance_miles": 4.4,
+          "nearest": "Exit 14 (Newark)"
+        },
+        "Garden State Parkway": {
+          "distance_miles": 6.7,
+          "nearest": "Exit 145 (Newark)"
+        },
+        "I-78": {
+          "distance_miles": 5.6,
+          "nearest": "Newark Airport"
+        },
+        "I-80": {
+          "distance_miles": 14.3,
+          "nearest": "Parsippany"
+        },
+        "I-95": {
+          "distance_miles": 6.4,
+          "nearest": "George Washington Bridge"
+        },
+        "I-287": {
+          "distance_miles": 15.1,
+          "nearest": "Parsippany"
+        },
+        "I-195": {
+          "distance_miles": 33.7,
+          "nearest": "Freehold"
+        },
+        "nearest_highway": {
+          "name": "NJ Turnpike",
+          "distance_miles": 4.4,
+          "interchange": "Exit 14 (Newark)"
+        },
+        "transportation_advantaged": false,
+        "nearest_airport": {
+          "name": "Newark Liberty (EWR)",
+          "distance_miles": 3.5
+        },
+        "estimated_fiber_distance_miles": 4.4
+      },
+      "scores": {
+        "composite_score": 77.8,
+        "acquirability_score": 85,
+        "power_availability": 60,
+        "transmission_proximity": 85,
+        "transportation_access": 70,
+        "site_readiness": 85
+      },
+      "brief": {
+        "opportunity_summary": "Henry Repeating Arms Manufacturing Plant is closing its manufacturing facility in Bayonne, displacing ~142 employees and an estimated 10MW of power demand. The utility infrastructure serving this site remains in place. Firearms manufacturer consolidating all operations to Wisconsin facilities. Company cited heavy manufacturing regulations in NJ as factor.",
+        "power_story": {
+          "estimated_capacity_mw": 10,
+          "source_of_capacity": "industrial closure",
+          "utility_territory": "PSEG",
+          "transmission": "BAYONNE SWITCHING STATION (345kV, 1.82 mi)",
+          "confidence_level": "Speculative"
+        },
+        "site_details": {
+          "parcel_size_acres": null,
+          "current_use": "Closure in progress or recently completed. Site likely transitioning.",
+          "zoning": "industrial",
+          "owner_type": "private",
+          "estimated_value": "$500,000 - $1,500,000",
+          "environmental_flags": "Depends on prior industrial use. Phase I ESA recommended."
+        },
+        "acquirability": {
+          "owner_motivation": "Company is leaving \u2014 they need to dispose of the site. Direct outreach to corporate RE.",
+          "estimated_acquisition_cost": "$500,000 - $1,500,000",
+          "recommended_approach": "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
+          "notes": ""
+        },
+        "developer_value": {
+          "estimated_developer_price": "$3,000,000 - $7,000,000",
+          "spread_estimate": "$1,500,000 - $6,500,000",
+          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
+        },
+        "next_steps": [
+          "Verify current ownership via Hudson County property records",
+          "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
+          "Confirm utility interconnection availability with PSEG commercial team",
+          "Request Phase I ESA or review existing environmental reports",
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
+        ],
+        "ralph_should_see": true,
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
+      }
+    },
+    {
+      "name": "Novartis Pharmaceuticals Corporation",
+      "source": "warn_act",
+      "source_type": "WARN Act Filing",
+      "sub_type": "Pharmaceutical",
+      "city": "East Hanover",
+      "county": "",
+      "state": "NJ",
+      "address": "East Hanover, NJ",
+      "lat": 40.8200998,
+      "lon": -74.3648731,
+      "estimated_mw": 50,
+      "employee_count": 561,
+      "closure_date": "2014-04-14 00:00:00",
+      "closure_status": "announced",
+      "utility_territory": "",
+      "nearest_sub_name": "WHIPPANY",
+      "nearest_sub_miles": 0.7,
+      "nearest_sub_kv": 230.0,
+      "sources": [
+        "https://www.nj.gov/labor/assets/PDFs/WARN/WARN_Notice_Archive.xlsx"
+      ],
+      "notes": "WARN Act filing. 561 employees affected.",
+      "priority": "HIGH",
+      "transport": {
+        "NJ Turnpike": {
+          "distance_miles": 12.4,
+          "nearest": "Exit 14 (Newark)"
+        },
+        "Garden State Parkway": {
+          "distance_miles": 10.5,
+          "nearest": "Exit 145 (Newark)"
+        },
+        "I-78": {
+          "distance_miles": 11.3,
+          "nearest": "Springfield"
+        },
+        "I-80": {
+          "distance_miles": 5.9,
+          "nearest": "Rockaway"
+        },
+        "I-95": {
+          "distance_miles": 20.2,
+          "nearest": "George Washington Bridge"
+        },
+        "I-287": {
+          "distance_miles": 4.2,
+          "nearest": "Parsippany"
+        },
+        "I-195": {
+          "distance_miles": 43.2,
+          "nearest": "Hamilton"
+        },
+        "nearest_highway": {
+          "name": "I-287",
+          "distance_miles": 4.2,
+          "interchange": "Parsippany"
+        },
+        "transportation_advantaged": false,
+        "nearest_airport": {
+          "name": "Morristown Airport (MMU)",
+          "distance_miles": 11.1
+        },
+        "estimated_fiber_distance_miles": 4.2
+      },
+      "scores": {
+        "composite_score": 77.5,
+        "acquirability_score": 85,
+        "power_availability": 95,
+        "transmission_proximity": 95,
+        "transportation_access": 65,
+        "site_readiness": 45
+      },
+      "brief": {
+        "opportunity_summary": "Novartis Pharmaceuticals Corporation is closing its pharmaceutical facility in East Hanover, displacing ~561 employees and an estimated 50MW of power demand. The utility infrastructure serving this site remains in place. WARN Act filing. 561 employees affected.",
+        "power_story": {
+          "estimated_capacity_mw": 50,
+          "source_of_capacity": "industrial closure",
+          "utility_territory": "PSEG",
+          "transmission": "WHIPPANY (230kV, 0.7 mi)",
+          "confidence_level": "Medium"
+        },
+        "site_details": {
+          "parcel_size_acres": null,
+          "current_use": "Closure in progress or recently completed. Site likely transitioning.",
+          "zoning": "industrial",
+          "owner_type": "private",
+          "estimated_value": "$2,500,000 - $7,500,000",
+          "environmental_flags": "Depends on prior industrial use. Phase I ESA recommended."
+        },
+        "acquirability": {
+          "owner_motivation": "Company is leaving \u2014 they need to dispose of the site. Direct outreach to corporate RE.",
+          "estimated_acquisition_cost": "$2,500,000 - $7,500,000",
+          "recommended_approach": "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
+          "notes": ""
+        },
+        "developer_value": {
+          "estimated_developer_price": "$15,000,000 - $35,000,000",
+          "spread_estimate": "$7,500,000 - $32,500,000",
+          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
+        },
+        "next_steps": [
+          "Verify current ownership via NJ County property records",
+          "Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.",
+          "Confirm utility interconnection availability with PSEG commercial team",
+          "Request Phase I ESA or review existing environmental reports",
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
+        ],
+        "ralph_should_see": true,
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
       }
     },
     {
@@ -759,9 +587,9 @@
       "source": "eia_plants",
       "source_type": "EIA Retired Plant",
       "sub_type": "Retired Power Plant",
-      "address": "Carneys Point, Salem County, NJ",
-      "city": "Carneys Point",
-      "county": "Salem",
+      "address": "NJ",
+      "city": "",
+      "county": "",
       "nearest_sub_name": "CHAMBERS",
       "nearest_sub_miles": 0.08,
       "nearest_sub_kv": 230.0,
@@ -830,15 +658,15 @@
         "estimated_fiber_distance_miles": 16.0
       },
       "scores": {
-        "composite_score": 84.0,
+        "composite_score": 77.5,
+        "acquirability_score": 70,
         "power_availability": 100,
         "transmission_proximity": 100,
-        "acquirability_score": 80,
         "transportation_access": 30,
-        "site_readiness": 90
+        "site_readiness": 85
       },
       "brief": {
-        "opportunity_summary": "Chambers Cogeneration LP is a 285MW retired coal/biomass plant in Carneys Point, Salem County, NJ with transmission infrastructure (230kV substation 0.08 mi away). Large cogeneration site in Salem County. 285MW coal/biomass. Environmental remediation likely needed.",
+        "opportunity_summary": "Chambers Cogeneration LP is a 285MW retired coal plant in NJ with existing transmission infrastructure (CHAMBERS 230kV substation 0.08 mi away). 285MW retired coal plant in Salem County NJ that closed May 2022. Unlike sister plant Logan which was demolished, Chambers structures remain intact. Strong transmission infrastructure, adjacent to Chemours chemical complex, confirmed battery storage redevelopment plans indicate viable grid connection and regulatory approval pathway.",
         "power_story": {
           "estimated_capacity_mw": 285,
           "source_of_capacity": "retired plant",
@@ -847,153 +675,33 @@
           "confidence_level": "High"
         },
         "site_details": {
-          "parcel_size_acres": 100,
+          "parcel_size_acres": null,
           "current_use": "idle",
           "zoning": "industrial",
           "owner_type": "private_equity",
-          "estimated_value": "$2,000,000 - $6,000,000",
-          "environmental_flags": "Coal ash remediation required"
+          "estimated_value": "$5,700,000 - $17,100,000",
+          "environmental_flags": "Coal ash remediation likely required"
         },
         "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 Atlantic Power Corporation retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$2,000,000 - $6,000,000",
-          "recommended_approach": "Atlantic Power has been divesting. Acquisition feasible but remediation costs factor in.",
+          "owner_motivation": "Private/LLC ownership suggests direct negotiation possible.",
+          "estimated_acquisition_cost": "$5,700,000 - $17,100,000",
+          "recommended_approach": "Direct outreach to Starwood Energy Group Global LLC (60%), Atlantic Power Corporation (40%) about site disposition or ground lease.",
           "notes": "Joint ownership between Starwood Energy (60%) and Atlantic Power (40%) with committed battery storage redevelopment plans but no active demolition yet"
         },
         "developer_value": {
-          "estimated_developer_price": "$30,000,000 - $60,000,000",
-          "spread_estimate": "$24,000,000 - $58,000,000",
+          "estimated_developer_price": "$71,250,000 - $171,000,000",
+          "spread_estimate": "$54,150,000 - $165,300,000",
           "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
         },
         "next_steps": [
-          "Verify current ownership via Salem County property records",
-          "Contact Atlantic Power Corporation about site disposition/partnership",
+          "Verify current ownership via NJ County property records",
+          "Direct outreach to Starwood Energy Group Global LLC (60%), Atlantic Power Corporation (40%) about site disposition or ground lease.",
           "Confirm utility interconnection availability with PSEG commercial team",
           "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
         ],
         "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
-      }
-    },
-    {
-      "name": "Logan Generating Plant",
-      "state": "NJ",
-      "lat": 39.7928,
-      "lon": -75.40667,
-      "capacity_mw": 242.3,
-      "fuel_type": "Conventional Steam Coal",
-      "status": "retired",
-      "retirement_date": "2022-05",
-      "owner": "Logan Generating Company LP",
-      "source": "eia_plants",
-      "source_type": "EIA Retired Plant",
-      "sub_type": "Retired Power Plant",
-      "address": "Swedesboro, Gloucester County, NJ",
-      "city": "Swedesboro",
-      "county": "Gloucester",
-      "nearest_sub_name": "BRIDGEPORT",
-      "nearest_sub_miles": 0.08,
-      "nearest_sub_kv": 230.0,
-      "estimated_mw": 242.3,
-      "employee_count": 0,
-      "closure_date": "2022-05",
-      "closure_status": "retired",
-      "utility_territory": "",
-      "sources": [],
-      "notes": "",
-      "priority": "HIGH",
-      "acquirability": "medium",
-      "acquirability_notes": "Requires further research on current ownership and status.",
-      "dc_suitability": "medium",
-      "environmental_status": "remediation_active",
-      "current_site_status": "idle",
-      "transport": {
-        "NJ Turnpike": {
-          "distance_miles": 13.9,
-          "nearest": "Exit 1 (Deepwater)"
-        },
-        "Garden State Parkway": {
-          "distance_miles": 59.4,
-          "nearest": "Exit 17 (Atlantic City)"
-        },
-        "I-78": {
-          "distance_miles": 67.1,
-          "nearest": "Clinton"
-        },
-        "I-80": {
-          "distance_miles": 85.3,
-          "nearest": "Columbia"
-        },
-        "I-95": {
-          "distance_miles": 45.8,
-          "nearest": "Trenton"
-        },
-        "I-287": {
-          "distance_miles": 69.1,
-          "nearest": "Bridgewater"
-        },
-        "I-195": {
-          "distance_miles": 45.4,
-          "nearest": "Trenton"
-        },
-        "nearest_highway": {
-          "name": "NJ Turnpike",
-          "distance_miles": 13.9,
-          "interchange": "Exit 1 (Deepwater)"
-        },
-        "transportation_advantaged": false,
-        "nearest_airport": {
-          "name": "Trenton-Mercer (TTN)",
-          "distance_miles": 47.4
-        },
-        "estimated_fiber_distance_miles": 13.9
-      },
-      "scores": {
-        "composite_score": 84.0,
-        "power_availability": 100,
-        "transmission_proximity": 100,
-        "acquirability_score": 80,
-        "transportation_access": 30,
-        "site_readiness": 90
-      },
-      "brief": {
-        "opportunity_summary": "Logan Generating Plant is a 242MW retired coal plant in Swedesboro, Gloucester County, NJ with transmission infrastructure (230kV substation 0.08 mi away). Large coal plant near NJ Turnpike Exit 1. 242MW. Environmental remediation from coal ash likely required.",
-        "power_story": {
-          "estimated_capacity_mw": 242,
-          "source_of_capacity": "retired plant",
-          "utility_territory": "PSEG",
-          "transmission": "BRIDGEPORT (230kV, 0.08 mi)",
-          "confidence_level": "High"
-        },
-        "site_details": {
-          "parcel_size_acres": 80,
-          "current_use": "idle",
-          "zoning": "industrial",
-          "owner_type": "private",
-          "estimated_value": "$1,500,000 - $5,000,000",
-          "environmental_flags": "Coal ash remediation required"
-        },
-        "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 PSEG/Constellation retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$1,500,000 - $5,000,000",
-          "recommended_approach": "Partnership approach needed. Coal remediation adds timeline risk but site has massive capacity potential.",
-          "notes": "Requires further research on current ownership and status."
-        },
-        "developer_value": {
-          "estimated_developer_price": "$25,000,000 - $50,000,000",
-          "spread_estimate": "$20,000,000 - $48,500,000",
-          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
-        },
-        "next_steps": [
-          "Verify current ownership via Gloucester County property records",
-          "Contact PSEG/Constellation about site disposition/partnership",
-          "Confirm utility interconnection availability with PSEG commercial team",
-          "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
-        ],
-        "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
       }
     },
     {
@@ -1009,9 +717,9 @@
       "source": "eia_plants",
       "source_type": "EIA Retired Plant",
       "sub_type": "Retired Power Plant",
-      "address": "Pedricktown, Salem County, NJ",
-      "city": "Pedricktown",
-      "county": "Salem",
+      "address": "NJ",
+      "city": "",
+      "county": "",
       "nearest_sub_name": "PEDRICKTOWN",
       "nearest_sub_miles": 0.06,
       "nearest_sub_kv": 230.0,
@@ -1071,15 +779,15 @@
         "estimated_fiber_distance_miles": 13.8
       },
       "scores": {
-        "composite_score": 84.0,
+        "composite_score": 77.5,
+        "acquirability_score": 70,
         "power_availability": 100,
         "transmission_proximity": 100,
-        "acquirability_score": 80,
         "transportation_access": 30,
-        "site_readiness": 90
+        "site_readiness": 85
       },
       "brief": {
-        "opportunity_summary": "Pedricktown Cogeneration Company LP is a 140MW retired natural gas plant in Pedricktown, Salem County, NJ with transmission infrastructure (230kV substation 0.06 mi away). Gas-fired cogen in Salem County near Delaware River. Clean fuel source means minimal remediation.",
+        "opportunity_summary": "Pedricktown Cogeneration Company LP is a 140MW retired natural gas combined cycle plant in NJ with existing transmission infrastructure (PEDRICKTOWN 230kV substation 0.06 mi away). ",
         "power_story": {
           "estimated_capacity_mw": 140,
           "source_of_capacity": "retired plant",
@@ -1088,33 +796,33 @@
           "confidence_level": "High"
         },
         "site_details": {
-          "parcel_size_acres": 30,
+          "parcel_size_acres": null,
           "current_use": "idle",
           "zoning": "industrial",
           "owner_type": "private_equity",
-          "estimated_value": "$1,500,000 - $4,000,000",
+          "estimated_value": "$5,608,000 - $16,824,000",
           "environmental_flags": "Minimal \u2014 natural gas site"
         },
         "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 Private retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$1,500,000 - $4,000,000",
-          "recommended_approach": "Direct outreach to cogen operator. Private ownership makes negotiation simpler.",
+          "owner_motivation": "Private/LLC ownership suggests direct negotiation possible.",
+          "estimated_acquisition_cost": "$5,608,000 - $16,824,000",
+          "recommended_approach": "Direct outreach to Pedricktown Cogeneration Company LP about site disposition or ground lease.",
           "notes": "Cogeneration facility \u2014 may have private equity or industrial owner. Research needed."
         },
         "developer_value": {
-          "estimated_developer_price": "$15,000,000 - $35,000,000",
-          "spread_estimate": "$11,000,000 - $33,500,000",
+          "estimated_developer_price": "$35,050,000 - $84,120,000",
+          "spread_estimate": "$18,226,000 - $78,512,000",
           "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
         },
         "next_steps": [
-          "Verify current ownership via Salem County property records",
-          "Contact Private about site disposition/partnership",
+          "Verify current ownership via NJ County property records",
+          "Direct outreach to Pedricktown Cogeneration Company LP about site disposition or ground lease.",
           "Confirm utility interconnection availability with PSEG commercial team",
           "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
         ],
         "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
       }
     },
     {
@@ -1130,9 +838,9 @@
       "source": "eia_plants",
       "source_type": "EIA Retired Plant",
       "sub_type": "Retired Power Plant",
-      "address": "Beesley's Point, Cape May County, NJ",
-      "city": "Beesley's Point",
-      "county": "Cape May",
+      "address": "NJ",
+      "city": "",
+      "county": "",
       "nearest_sub_name": "BL ENGLAND STATION",
       "nearest_sub_miles": 0.06,
       "nearest_sub_kv": 138.0,
@@ -1191,15 +899,15 @@
         "estimated_fiber_distance_miles": 11.7
       },
       "scores": {
-        "composite_score": 84.0,
+        "composite_score": 75.0,
+        "acquirability_score": 75,
         "power_availability": 100,
         "transmission_proximity": 100,
-        "acquirability_score": 80,
         "transportation_access": 30,
-        "site_readiness": 90
+        "site_readiness": 65
       },
       "brief": {
-        "opportunity_summary": "B L England is a 483MW retired coal/oil plant in Beesley's Point, Cape May County, NJ with transmission infrastructure (138kV substation 0.06 mi away). Large 484MW former coal plant. Developer RC Cape May acquired for redevelopment. Off-shore wind and mixed-use plans discussed. Coastal location.",
+        "opportunity_summary": "B L England is a 483MW retired coal plant in NJ with existing transmission infrastructure (BL ENGLAND STATION 138kV substation 0.06 mi away). ",
         "power_story": {
           "estimated_capacity_mw": 483,
           "source_of_capacity": "retired plant",
@@ -1208,33 +916,283 @@
           "confidence_level": "High"
         },
         "site_details": {
-          "parcel_size_acres": 80,
+          "parcel_size_acres": null,
           "current_use": "idle",
           "zoning": "industrial",
           "owner_type": "private",
-          "estimated_value": "$5,000,000 - $15,000,000",
-          "environmental_flags": "Coal ash remediation required"
+          "estimated_value": "$9,672,000 - $29,016,000",
+          "environmental_flags": "Coal ash remediation likely required"
         },
         "acquirability": {
-          "owner_motivation": "Asset disposition \u2014 RC Cape May Holdings retiring/divesting older generation assets",
-          "estimated_acquisition_cost": "$5,000,000 - $15,000,000",
-          "recommended_approach": "Contact RC Cape May Holdings about data center component. Developer may be open to anchor tenant. Environmental remediation underway.",
+          "owner_motivation": "Private/LLC ownership suggests direct negotiation possible.",
+          "estimated_acquisition_cost": "$9,672,000 - $29,016,000",
+          "recommended_approach": "Direct outreach to RC Cape May Holdings LLC about site disposition or ground lease.",
           "notes": "Requires further research on current ownership and status."
         },
         "developer_value": {
-          "estimated_developer_price": "$40,000,000 - $80,000,000",
-          "spread_estimate": "$25,000,000 - $75,000,000",
+          "estimated_developer_price": "$120,900,000 - $290,160,000",
+          "spread_estimate": "$91,884,000 - $280,488,000",
           "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
         },
         "next_steps": [
-          "Verify current ownership via Cape May County property records",
-          "Contact RC Cape May Holdings about site disposition/partnership",
+          "Verify current ownership via NJ County property records",
+          "Direct outreach to RC Cape May Holdings LLC about site disposition or ground lease.",
           "Confirm utility interconnection availability with PSEG commercial team",
           "Request Phase I ESA or review existing environmental reports",
-          "Drive the site with Ralph \u2014 assess physical condition, access, surrounding uses"
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
         ],
         "ralph_should_see": true,
-        "bpu_contact_relevant": "Yes \u2014 PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline."
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
+      }
+    },
+    {
+      "name": "PSEG Essex Generating Station",
+      "state": "NJ",
+      "lat": 40.7372,
+      "lon": -74.1206,
+      "capacity_mw": 595.2,
+      "fuel_type": "Natural Gas Fired Combustion Turbine",
+      "status": "retired",
+      "retirement_date": "2022-06",
+      "owner": "Essex Generating Station",
+      "source": "eia_plants",
+      "source_type": "EIA Retired Plant",
+      "sub_type": "Retired Power Plant",
+      "address": "NJ",
+      "city": "",
+      "county": "",
+      "nearest_sub_name": "ESSEX",
+      "nearest_sub_miles": 0.08,
+      "nearest_sub_kv": 230.0,
+      "estimated_mw": 595.2,
+      "employee_count": 0,
+      "closure_date": "2022-06",
+      "closure_status": "retired",
+      "utility_territory": "",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Essex_Generating_Station",
+        "https://www.gem.wiki/PSEG_Essex_generating_station",
+        "http://tfpnj.blogspot.com/2020/02/essex-generating-station.html",
+        "https://www.epa.gov/newsreleases/epa-proposes-plan-interim-action-clean-contaminated-sediment-lower-passaic-river-study"
+      ],
+      "notes": "Plant closed in 2022 after transitioning from coal to gas peaking facility. Major environmental contamination contributor to Diamond Alkali Superfund site on Passaic River. Located in environmental justice community with persistent air quality issues. Switch house remains but main turbine hall was demolished. Site has documented history of kerosene leaks, oil spills, and regulatory violations dating to 1970s.",
+      "current_site_status": "idle",
+      "transmission_kv": null,
+      "acquirability": "low",
+      "acquirability_notes": "Site remains owned by PSEG with extensive environmental contamination history and ongoing Superfund liabilities. Major environmental justice concerns in Ironbound neighborhood. Property appears abandoned but still under utility control with active environmental monitoring obligations.",
+      "owner_type": "utility",
+      "current_owner": "PSEG Fossil LLC",
+      "redevelopment_plans": null,
+      "environmental_status": "remediation_active",
+      "partnership_path": "Direct negotiation with PSEG would be required, but significant environmental remediation costs and Superfund site proximity make acquisition challenging. Would need extensive environmental due diligence given plant's contribution to Passaic River contamination and ongoing EPA oversight.",
+      "dc_suitability": "low",
+      "priority": "HIGH",
+      "transport": {
+        "NJ Turnpike": {
+          "distance_miles": 3.3,
+          "nearest": "Exit 14 (Newark)"
+        },
+        "Garden State Parkway": {
+          "distance_miles": 3.7,
+          "nearest": "Exit 145 (Newark)"
+        },
+        "I-78": {
+          "distance_miles": 8.4,
+          "nearest": "Newark Airport"
+        },
+        "I-80": {
+          "distance_miles": 9.9,
+          "nearest": "Parsippany"
+        },
+        "I-95": {
+          "distance_miles": 6.2,
+          "nearest": "George Washington Bridge"
+        },
+        "I-287": {
+          "distance_miles": 11.4,
+          "nearest": "Parsippany"
+        },
+        "I-195": {
+          "distance_miles": 38.3,
+          "nearest": "Freehold"
+        },
+        "nearest_highway": {
+          "name": "NJ Turnpike",
+          "distance_miles": 3.3,
+          "interchange": "Exit 14 (Newark)"
+        },
+        "transportation_advantaged": false,
+        "nearest_airport": {
+          "name": "Newark Liberty (EWR)",
+          "distance_miles": 4.3
+        },
+        "estimated_fiber_distance_miles": 3.3
+      },
+      "scores": {
+        "composite_score": 74.5,
+        "acquirability_score": 40,
+        "power_availability": 100,
+        "transmission_proximity": 100,
+        "transportation_access": 70,
+        "site_readiness": 85
+      },
+      "brief": {
+        "opportunity_summary": "PSEG Essex Generating Station is a 595MW retired natural gas combustion turbine plant in NJ with existing transmission infrastructure (ESSEX 230kV substation 0.08 mi away). Plant closed in 2022 after transitioning from coal to gas peaking facility. Major environmental contamination contributor to Diamond Alkali Superfund site on Passaic River. Located in environmental justice community with persistent air quality issues. Switch house remains but main turbine hall was demolished. Site has documented history of kerosene leaks, oil spills, and regulatory violations dating to 1970s.",
+        "power_story": {
+          "estimated_capacity_mw": 595,
+          "source_of_capacity": "retired plant",
+          "utility_territory": "PSEG",
+          "transmission": "ESSEX (230kV, 0.08 mi)",
+          "confidence_level": "High"
+        },
+        "site_details": {
+          "parcel_size_acres": null,
+          "current_use": "idle",
+          "zoning": "industrial",
+          "owner_type": "utility",
+          "estimated_value": "$23,808,000 - $71,424,000",
+          "environmental_flags": "Minimal \u2014 natural gas site"
+        },
+        "acquirability": {
+          "owner_motivation": "Private/LLC ownership suggests direct negotiation possible.",
+          "estimated_acquisition_cost": "$23,808,000 - $71,424,000",
+          "recommended_approach": "Direct outreach to PSEG Fossil LLC about site disposition or ground lease.",
+          "notes": "Site remains owned by PSEG with extensive environmental contamination history and ongoing Superfund liabilities. Major environmental justice concerns in Ironbound neighborhood. Property appears abandoned but still under utility control with active environmental monitoring obligations."
+        },
+        "developer_value": {
+          "estimated_developer_price": "$148,800,000 - $357,120,000",
+          "spread_estimate": "$77,376,000 - $333,312,000",
+          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
+        },
+        "next_steps": [
+          "Verify current ownership via NJ County property records",
+          "Direct outreach to PSEG Fossil LLC about site disposition or ground lease.",
+          "Confirm utility interconnection availability with PSEG commercial team",
+          "Request Phase I ESA or review existing environmental reports",
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
+        ],
+        "ralph_should_see": false,
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
+      }
+    },
+    {
+      "name": "Bayonne Plant Holding LLC",
+      "state": "NJ",
+      "lat": 40.655325,
+      "lon": -74.11244,
+      "capacity_mw": 191.6,
+      "fuel_type": "Natural Gas Fired Combined Cycle",
+      "status": "retired",
+      "retirement_date": "2018-06",
+      "owner": "Morris Energy Operations Company, LLC",
+      "source": "eia_plants",
+      "source_type": "EIA Retired Plant",
+      "sub_type": "Retired Power Plant",
+      "address": "NJ",
+      "city": "",
+      "county": "",
+      "nearest_sub_name": "BAYONNE SWITCHING STATION",
+      "nearest_sub_miles": 2.71,
+      "nearest_sub_kv": 345.0,
+      "estimated_mw": 191.6,
+      "employee_count": 0,
+      "closure_date": "2018-06",
+      "closure_status": "retired",
+      "utility_territory": "",
+      "sources": [],
+      "notes": "",
+      "priority": "HIGH",
+      "acquirability": "medium",
+      "acquirability_notes": "Requires further research on current ownership and status.",
+      "dc_suitability": "medium",
+      "environmental_status": "clean",
+      "current_site_status": "idle",
+      "transport": {
+        "NJ Turnpike": {
+          "distance_miles": 5.1,
+          "nearest": "Exit 14 (Newark)"
+        },
+        "Garden State Parkway": {
+          "distance_miles": 7.5,
+          "nearest": "Exit 145 (Newark)"
+        },
+        "I-78": {
+          "distance_miles": 5.5,
+          "nearest": "Newark Airport"
+        },
+        "I-80": {
+          "distance_miles": 15.1,
+          "nearest": "Parsippany"
+        },
+        "I-95": {
+          "distance_miles": 6.8,
+          "nearest": "George Washington Bridge"
+        },
+        "I-287": {
+          "distance_miles": 15.3,
+          "nearest": "Morristown"
+        },
+        "I-195": {
+          "distance_miles": 32.9,
+          "nearest": "Freehold"
+        },
+        "nearest_highway": {
+          "name": "NJ Turnpike",
+          "distance_miles": 5.1,
+          "interchange": "Exit 14 (Newark)"
+        },
+        "transportation_advantaged": false,
+        "nearest_airport": {
+          "name": "Newark Liberty (EWR)",
+          "distance_miles": 4.0
+        },
+        "estimated_fiber_distance_miles": 5.1
+      },
+      "scores": {
+        "composite_score": 74.2,
+        "acquirability_score": 75,
+        "power_availability": 100,
+        "transmission_proximity": 70,
+        "transportation_access": 55,
+        "site_readiness": 65
+      },
+      "brief": {
+        "opportunity_summary": "Bayonne Plant Holding LLC is a 191MW retired natural gas combined cycle plant in NJ with existing transmission infrastructure (BAYONNE SWITCHING STATION 345kV substation 2.71 mi away). ",
+        "power_story": {
+          "estimated_capacity_mw": 191,
+          "source_of_capacity": "retired plant",
+          "utility_territory": "PSEG",
+          "transmission": "BAYONNE SWITCHING STATION (345kV, 2.71 mi)",
+          "confidence_level": "Medium"
+        },
+        "site_details": {
+          "parcel_size_acres": null,
+          "current_use": "idle",
+          "zoning": "industrial",
+          "owner_type": "private",
+          "estimated_value": "$7,664,000 - $22,992,000",
+          "environmental_flags": "Minimal \u2014 natural gas site"
+        },
+        "acquirability": {
+          "owner_motivation": "Private/LLC ownership suggests direct negotiation possible.",
+          "estimated_acquisition_cost": "$7,664,000 - $22,992,000",
+          "recommended_approach": "Direct outreach to Morris Energy Operations Company, LLC about site disposition or ground lease.",
+          "notes": "Requires further research on current ownership and status."
+        },
+        "developer_value": {
+          "estimated_developer_price": "$47,900,000 - $114,960,000",
+          "spread_estimate": "$24,908,000 - $107,296,000",
+          "comparable_transactions": "NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets"
+        },
+        "next_steps": [
+          "Verify current ownership via NJ County property records",
+          "Direct outreach to Morris Energy Operations Company, LLC about site disposition or ground lease.",
+          "Confirm utility interconnection availability with PSEG commercial team",
+          "Request Phase I ESA or review existing environmental reports",
+          "Drive the site with Ralph -- assess physical condition, access, surrounding uses"
+        ],
+        "ralph_should_see": true,
+        "bpu_contact_relevant": "Yes -- PSEG territory. Brian's BPU contacts can validate power availability."
       }
     }
   ]

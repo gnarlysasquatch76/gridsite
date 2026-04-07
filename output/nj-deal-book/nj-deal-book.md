@@ -52,279 +52,65 @@ This deal book presents 10 high-potential data center development sites in New J
 
 ## Site Opportunities
 
-### 1. Parlin Power Plant 
-**Sayreville, Middlesex County, NJ**
-*Sayreville, Middlesex County, NJ*
+### 1. Novartis East Hanover Facility 
+**East Hanover, NJ**
+*East Hanover, Morris County, NJ*
 
-**Composite Score: 92.2/100**
-
-**The Opportunity:**
-Parlin Power Plant is a 135MW retired natural gas plant in Sayreville, Middlesex County, NJ with transmission infrastructure (230kV substation 0.06 mi away). Former NRG gas-fired plant in Middlesex County industrial corridor. Adjacent to Raritan River. Sayreville has strong industrial zoning.
-
-**Power Story:**
-- Estimated available capacity: 135 MW
-- Source of capacity: retired plant
-- Utility territory: PSEG
-- Transmission: UNKNOWN132955 (230kV, 0.06 mi)
-- Confidence level: High
-
-**Site Details:**
-- Parcel size: 40 acres
-- Current use / condition: idle
-- Zoning: industrial
-- Owner type: utility
-- Estimated current value: $3,000,000 - $8,000,000
-- Environmental flags: Minimal — natural gas site
-
-**Transportation:**
-- Nearest highway interchange: NJ Turnpike (1.7 mi)
-- Nearest fiber route (estimated): 1.7 mi
-- Nearest airport: Linden Airport (4.0 mi)
-
-**Acquirability:**
-- Owner / motivation: Asset disposition — NRG Energy retiring/divesting older generation assets
-- Estimated acquisition cost: $3,000,000 - $8,000,000
-- Recommended approach: Direct outreach to NRG Energy asset disposition. NRG has been divesting older assets.
-- Notes: Major utility owner with established infrastructure, but recent Global Energy Monitor data shows as operating, creating uncertainty about actual retirement status
-
-**Data Center Developer Value:**
-- Estimated developer price: $25,000,000 - $50,000,000
-- Estimated spread: $17,000,000 - $47,000,000
-- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
-
-**Next Steps:**
-- Verify current ownership via Middlesex County property records
-- Contact NRG Energy about site disposition/partnership
-- Confirm utility interconnection availability with PSEG commercial team
-- Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
-
-*Ralph should see this site.*
-
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
-
----
-
-### 2. Werner 
-**South Amboy, Middlesex County, NJ**
-*South Amboy, Middlesex County, NJ*
-
-**Composite Score: 92.2/100**
+**Composite Score: 82.5/100**
 
 **The Opportunity:**
-Werner is a 212MW retired natural gas plant in South Amboy, Middlesex County, NJ with transmission infrastructure (230kV substation 0.09 mi away). PSEG peaking plant in South Amboy along Raritan Bay. Older combustion turbines.
+Novartis East Hanover Facility is closing its chemical plant facility in East Hanover, displacing ~427 employees and an estimated 38MW of power demand. The utility infrastructure serving this site remains in place. Major pharmaceutical layoffs, not full closure. Headquarters location with previous 235 layoffs in 2024. Part of company restructuring.
 
 **Power Story:**
-- Estimated available capacity: 212 MW
-- Source of capacity: retired plant
+- Estimated available capacity: 38 MW
+- Source of capacity: industrial closure
 - Utility territory: PSEG
-- Transmission: UNKNOWN132954 (230kV, 0.09 mi)
-- Confidence level: High
+- Transmission: WHIPPANY (230kV, 0.7 mi)
+- Confidence level: Medium
 
 **Site Details:**
-- Parcel size: 15 acres
-- Current use / condition: idle
+- Current use / condition: Closure in progress or recently completed. Site likely transitioning.
 - Zoning: industrial
 - Owner type: private
-- Estimated current value: $2,000,000 - $5,000,000
-- Environmental flags: Minimal — natural gas site
+- Estimated current value: $1,900,000 - $5,700,000
+- Environmental flags: Depends on prior industrial use. Phase I ESA recommended.
 
 **Transportation:**
-- Nearest highway interchange: NJ Turnpike (1.5 mi)
-- Nearest fiber route (estimated): 1.5 mi
-- Nearest airport: Linden Airport (4.0 mi)
+- Nearest highway interchange: I-287 (4.2 mi)
+- Nearest fiber route (estimated): 4.2 mi
+- Nearest airport: Morristown Airport (MMU) (11.1 mi)
 
 **Acquirability:**
-- Owner / motivation: Asset disposition — PSEG Power retiring/divesting older generation assets
-- Estimated acquisition cost: $2,000,000 - $5,000,000
-- Recommended approach: Partnership path via Brian's BPU contacts. PSEG may be open to site lease for data center development.
-- Notes: Requires further research on current ownership and status.
+- Owner / motivation: Company is leaving — they need to dispose of the site. Direct outreach to corporate RE.
+- Estimated acquisition cost: $1,900,000 - $5,700,000
+- Recommended approach: Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
 
 **Data Center Developer Value:**
-- Estimated developer price: $20,000,000 - $40,000,000
-- Estimated spread: $15,000,000 - $38,000,000
+- Estimated developer price: $11,400,000 - $26,600,000
+- Estimated spread: $5,700,000 - $24,700,000
 - Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
 
 **Next Steps:**
-- Verify current ownership via Middlesex County property records
-- Contact PSEG Power about site disposition/partnership
+- Verify current ownership via Morris County property records
+- Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
 - Confirm utility interconnection availability with PSEG commercial team
 - Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
 
 *Ralph should see this site.*
 
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
 
 ---
 
-### 3. Newark Power Plant 
-**Newark, Essex County, NJ**
-*Newark, Essex County, NJ*
+### 2. Elmwood Park Power LLC 
+**NJ**
+*NJ*
 
-**Composite Score: 90.0/100**
-
-**The Opportunity:**
-Newark Power Plant is a 64MW retired natural gas plant in Newark, Essex County, NJ with transmission infrastructure (230kV substation 0.33 mi away). Urban Newark location near port and transit. High fiber density area. Premium metro location for edge/colo.
-
-**Power Story:**
-- Estimated available capacity: 64 MW
-- Source of capacity: retired plant
-- Utility territory: PSEG
-- Transmission: ESSEX (230kV, 0.33 mi)
-- Confidence level: High
-
-**Site Details:**
-- Parcel size: 8 acres
-- Current use / condition: idle
-- Zoning: industrial
-- Owner type: private
-- Estimated current value: $5,000,000 - $12,000,000
-- Environmental flags: Minimal — natural gas site
-
-**Transportation:**
-- Nearest highway interchange: NJ Turnpike (2.9 mi)
-- Nearest fiber route (estimated): 2.9 mi
-- Nearest airport: Newark Liberty (EWR) (4.0 mi)
-
-**Acquirability:**
-- Owner / motivation: Asset disposition — PSEG Power retiring/divesting older generation assets
-- Estimated acquisition cost: $5,000,000 - $12,000,000
-- Recommended approach: Partnership with PSEG. Premium metro location commands higher developer prices despite smaller footprint.
-- Notes: Requires further research on current ownership and status.
-
-**Data Center Developer Value:**
-- Estimated developer price: $30,000,000 - $60,000,000
-- Estimated spread: $18,000,000 - $55,000,000
-- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
-
-**Next Steps:**
-- Verify current ownership via Essex County property records
-- Contact PSEG Power about site disposition/partnership
-- Confirm utility interconnection availability with PSEG commercial team
-- Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
-
-*Ralph should see this site.*
-
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
-
----
-
-### 4. Mickleton Station 
-**East Greenwich, Gloucester County, NJ**
-*East Greenwich, Gloucester County, NJ*
-
-**Composite Score: 87.0/100**
+**Composite Score: 80.0/100**
 
 **The Opportunity:**
-Mickleton Station is a 71MW retired natural gas plant in East Greenwich, Gloucester County, NJ with transmission infrastructure (230kV substation 0.01 mi away). South Jersey location near NJ Turnpike. Good highway access. Lower land costs than North Jersey.
-
-**Power Story:**
-- Estimated available capacity: 71 MW
-- Source of capacity: retired plant
-- Utility territory: PSEG
-- Transmission: MICKLETON (230kV, 0.01 mi)
-- Confidence level: High
-
-**Site Details:**
-- Parcel size: 20 acres
-- Current use / condition: idle
-- Zoning: industrial
-- Owner type: private_equity
-- Estimated current value: $1,500,000 - $4,000,000
-- Environmental flags: Minimal — natural gas site
-
-**Transportation:**
-- Nearest highway interchange: NJ Turnpike (9.2 mi)
-- Nearest fiber route (estimated): 9.2 mi
-- Nearest airport: Trenton-Mercer (TTN) (39.3 mi)
-
-**Acquirability:**
-- Owner / motivation: Asset disposition — PSEG Power retiring/divesting older generation assets
-- Estimated acquisition cost: $1,500,000 - $4,000,000
-- Recommended approach: PSEG partnership. South Jersey sites offer cost advantage. Fiber build required.
-- Notes: Constellation Energy (following Calpine acquisition in Jan 2026) is actively focusing on data center partnerships and divesting non-core assets. Small retired peaker plants may be available for redevelopment.
-
-**Data Center Developer Value:**
-- Estimated developer price: $15,000,000 - $30,000,000
-- Estimated spread: $11,000,000 - $28,500,000
-- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
-
-**Next Steps:**
-- Verify current ownership via Gloucester County property records
-- Contact PSEG Power about site disposition/partnership
-- Confirm utility interconnection availability with PSEG commercial team
-- Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
-
-*Ralph should see this site.*
-
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
-
----
-
-### 5. Glen Gardner 
-**Glen Gardner, Hunterdon County, NJ**
-*Glen Gardner, Hunterdon County, NJ*
-
-**Composite Score: 87.0/100**
-
-**The Opportunity:**
-Glen Gardner is a 159MW retired natural gas plant in Glen Gardner, Hunterdon County, NJ with transmission infrastructure (230kV substation 0.04 mi away). Hunterdon County — rural but near I-78 corridor. JCP&L territory. Lower cost of entry.
-
-**Power Story:**
-- Estimated available capacity: 159 MW
-- Source of capacity: retired plant
-- Utility territory: JCP&L
-- Transmission: GLEN GARDNER (230kV, 0.04 mi)
-- Confidence level: High
-
-**Site Details:**
-- Parcel size: 25 acres
-- Current use / condition: idle
-- Zoning: industrial
-- Owner type: private
-- Estimated current value: $1,000,000 - $3,000,000
-- Environmental flags: Minimal — natural gas site
-
-**Transportation:**
-- Nearest highway interchange: I-78 (8.9 mi)
-- Nearest fiber route (estimated): 8.9 mi
-- Nearest airport: Linden Airport (32.0 mi)
-
-**Acquirability:**
-- Owner / motivation: Asset disposition — PSEG Power retiring/divesting older generation assets
-- Estimated acquisition cost: $1,000,000 - $3,000,000
-- Recommended approach: PSEG asset disposition or partnership. Rural location may mean longer fiber build.
-- Notes: Requires further research on current ownership and status.
-
-**Data Center Developer Value:**
-- Estimated developer price: $12,000,000 - $25,000,000
-- Estimated spread: $9,000,000 - $24,000,000
-- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
-
-**Next Steps:**
-- Verify current ownership via Hunterdon County property records
-- Contact PSEG Power about site disposition/partnership
-- Confirm utility interconnection availability with JCP&L commercial team
-- Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
-
-*Ralph should see this site.*
-
-*BPU contact: Yes — JCP&L territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
-
----
-
-### 6. Elmwood Park Power LLC 
-**Elmwood Park, Bergen County, NJ**
-*Elmwood Park, Bergen County, NJ*
-
-**Composite Score: 86.0/100**
-
-**The Opportunity:**
-Elmwood Park Power LLC is a 89MW retired natural gas plant in Elmwood Park, Bergen County, NJ with transmission infrastructure (230kV substation 1.9 mi away). Bergen County location near I-80 and Passaic River. Dense metro fiber. Private LLC ownership more acquirable.
+Elmwood Park Power LLC is a 89MW retired natural gas combined cycle plant in NJ with existing transmission infrastructure (SADDLE BROOK 230kV substation 1.9 mi away). 
 
 **Power Story:**
 - Estimated available capacity: 89 MW
@@ -334,11 +120,10 @@ Elmwood Park Power LLC is a 89MW retired natural gas plant in Elmwood Park, Berg
 - Confidence level: Medium
 
 **Site Details:**
-- Parcel size: 10 acres
 - Current use / condition: idle
 - Zoning: industrial
 - Owner type: private
-- Estimated current value: $4,000,000 - $10,000,000
+- Estimated current value: $3,580,000 - $10,740,000
 - Environmental flags: Minimal — natural gas site
 
 **Transportation:**
@@ -347,37 +132,190 @@ Elmwood Park Power LLC is a 89MW retired natural gas plant in Elmwood Park, Berg
 - Nearest airport: Morristown Airport (MMU) (9.6 mi)
 
 **Acquirability:**
-- Owner / motivation: Asset disposition — Elmwood Park Power LLC retiring/divesting older generation assets
-- Estimated acquisition cost: $4,000,000 - $10,000,000
-- Recommended approach: Direct outreach to LLC. Private ownership means direct negotiation possible. Premium North Jersey location.
+- Owner / motivation: Private/LLC ownership suggests direct negotiation possible.
+- Estimated acquisition cost: $3,580,000 - $10,740,000
+- Recommended approach: Direct outreach to Elmwood Park Power LLC about site disposition or ground lease.
 - Notes: Requires further research on current ownership and status.
 
 **Data Center Developer Value:**
-- Estimated developer price: $25,000,000 - $50,000,000
-- Estimated spread: $15,000,000 - $46,000,000
+- Estimated developer price: $22,375,000 - $53,700,000
+- Estimated spread: $11,635,000 - $50,120,000
 - Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
 
 **Next Steps:**
-- Verify current ownership via Bergen County property records
-- Contact Elmwood Park Power LLC about site disposition/partnership
+- Verify current ownership via NJ County property records
+- Direct outreach to Elmwood Park Power LLC about site disposition or ground lease.
 - Confirm utility interconnection availability with PSEG commercial team
 - Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
 
 *Ralph should see this site.*
 
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
 
 ---
 
-### 7. Chambers Cogeneration LP 
-**Carneys Point, Salem County, NJ**
-*Carneys Point, Salem County, NJ*
+### 3. Ahold eCommerce Sales Company Fulfillment Center 
+**New Jersey**
+*Not specified, Not specified County, NJ*
 
-**Composite Score: 84.0/100**
+**Composite Score: 78.0/100**
 
 **The Opportunity:**
-Chambers Cogeneration LP is a 285MW retired coal/biomass plant in Carneys Point, Salem County, NJ with transmission infrastructure (230kV substation 0.08 mi away). Large cogeneration site in Salem County. 285MW coal/biomass. Environmental remediation likely needed.
+Ahold eCommerce Sales Company Fulfillment Center is closing its distribution center facility in Not specified, displacing ~454 employees and an estimated 18MW of power demand. The utility infrastructure serving this site remains in place. Fulfillment and delivery services for Stop & Shop, shifting to store-based fulfillment
+
+**Power Story:**
+- Estimated available capacity: 18 MW
+- Source of capacity: industrial closure
+- Utility territory: Not specified
+- Transmission: MINUE STREET (230kV, 0.36 mi)
+- Confidence level: Medium
+
+**Site Details:**
+- Current use / condition: Closure in progress or recently completed. Site likely transitioning.
+- Zoning: industrial
+- Owner type: private
+- Estimated current value: $900,000 - $2,700,000
+- Environmental flags: Depends on prior industrial use. Phase I ESA recommended.
+
+**Transportation:**
+- Nearest highway interchange: I-78 (3.2 mi)
+- Nearest fiber route (estimated): 3.2 mi
+- Nearest airport: Newark Liberty (EWR) (7.2 mi)
+
+**Acquirability:**
+- Owner / motivation: Company is leaving — they need to dispose of the site. Direct outreach to corporate RE.
+- Estimated acquisition cost: $900,000 - $2,700,000
+- Recommended approach: Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+
+**Data Center Developer Value:**
+- Estimated developer price: $5,400,000 - $12,600,000
+- Estimated spread: $2,700,000 - $11,700,000
+- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
+
+**Next Steps:**
+- Verify current ownership via Not specified County property records
+- Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+- Confirm utility interconnection availability with Not specified commercial team
+- Request Phase I ESA or review existing environmental reports
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
+
+*Ralph should see this site.*
+
+*BPU contact: Yes -- Not specified territory. Brian's BPU contacts can validate power availability.*
+
+---
+
+### 4. Henry Repeating Arms Manufacturing Plant 
+**Bayonne, NJ**
+*Bayonne, Hudson County, NJ*
+
+**Composite Score: 77.8/100**
+
+**The Opportunity:**
+Henry Repeating Arms Manufacturing Plant is closing its manufacturing facility in Bayonne, displacing ~142 employees and an estimated 10MW of power demand. The utility infrastructure serving this site remains in place. Firearms manufacturer consolidating all operations to Wisconsin facilities. Company cited heavy manufacturing regulations in NJ as factor.
+
+**Power Story:**
+- Estimated available capacity: 10 MW
+- Source of capacity: industrial closure
+- Utility territory: PSEG
+- Transmission: BAYONNE SWITCHING STATION (345kV, 1.82 mi)
+- Confidence level: Speculative
+
+**Site Details:**
+- Current use / condition: Closure in progress or recently completed. Site likely transitioning.
+- Zoning: industrial
+- Owner type: private
+- Estimated current value: $500,000 - $1,500,000
+- Environmental flags: Depends on prior industrial use. Phase I ESA recommended.
+
+**Transportation:**
+- Nearest highway interchange: NJ Turnpike (4.4 mi)
+- Nearest fiber route (estimated): 4.4 mi
+- Nearest airport: Newark Liberty (EWR) (3.5 mi)
+
+**Acquirability:**
+- Owner / motivation: Company is leaving — they need to dispose of the site. Direct outreach to corporate RE.
+- Estimated acquisition cost: $500,000 - $1,500,000
+- Recommended approach: Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+
+**Data Center Developer Value:**
+- Estimated developer price: $3,000,000 - $7,000,000
+- Estimated spread: $1,500,000 - $6,500,000
+- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
+
+**Next Steps:**
+- Verify current ownership via Hudson County property records
+- Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+- Confirm utility interconnection availability with PSEG commercial team
+- Request Phase I ESA or review existing environmental reports
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
+
+*Ralph should see this site.*
+
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
+
+---
+
+### 5. Novartis Pharmaceuticals Corporation 
+**East Hanover, NJ**
+*East Hanover, NJ*
+
+**Composite Score: 77.5/100**
+
+**The Opportunity:**
+Novartis Pharmaceuticals Corporation is closing its pharmaceutical facility in East Hanover, displacing ~561 employees and an estimated 50MW of power demand. The utility infrastructure serving this site remains in place. WARN Act filing. 561 employees affected.
+
+**Power Story:**
+- Estimated available capacity: 50 MW
+- Source of capacity: industrial closure
+- Utility territory: PSEG
+- Transmission: WHIPPANY (230kV, 0.7 mi)
+- Confidence level: Medium
+
+**Site Details:**
+- Current use / condition: Closure in progress or recently completed. Site likely transitioning.
+- Zoning: industrial
+- Owner type: private
+- Estimated current value: $2,500,000 - $7,500,000
+- Environmental flags: Depends on prior industrial use. Phase I ESA recommended.
+
+**Transportation:**
+- Nearest highway interchange: I-287 (4.2 mi)
+- Nearest fiber route (estimated): 4.2 mi
+- Nearest airport: Morristown Airport (MMU) (11.1 mi)
+
+**Acquirability:**
+- Owner / motivation: Company is leaving — they need to dispose of the site. Direct outreach to corporate RE.
+- Estimated acquisition cost: $2,500,000 - $7,500,000
+- Recommended approach: Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+
+**Data Center Developer Value:**
+- Estimated developer price: $15,000,000 - $35,000,000
+- Estimated spread: $7,500,000 - $32,500,000
+- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
+
+**Next Steps:**
+- Verify current ownership via NJ County property records
+- Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+- Confirm utility interconnection availability with PSEG commercial team
+- Request Phase I ESA or review existing environmental reports
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
+
+*Ralph should see this site.*
+
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
+
+---
+
+### 6. Chambers Cogeneration LP 
+**NJ**
+*NJ*
+
+**Composite Score: 77.5/100**
+
+**The Opportunity:**
+Chambers Cogeneration LP is a 285MW retired coal plant in NJ with existing transmission infrastructure (CHAMBERS 230kV substation 0.08 mi away). 285MW retired coal plant in Salem County NJ that closed May 2022. Unlike sister plant Logan which was demolished, Chambers structures remain intact. Strong transmission infrastructure, adjacent to Chemours chemical complex, confirmed battery storage redevelopment plans indicate viable grid connection and regulatory approval pathway.
 
 **Power Story:**
 - Estimated available capacity: 285 MW
@@ -387,12 +325,11 @@ Chambers Cogeneration LP is a 285MW retired coal/biomass plant in Carneys Point,
 - Confidence level: High
 
 **Site Details:**
-- Parcel size: 100 acres
 - Current use / condition: idle
 - Zoning: industrial
 - Owner type: private_equity
-- Estimated current value: $2,000,000 - $6,000,000
-- Environmental flags: Coal ash remediation required
+- Estimated current value: $5,700,000 - $17,100,000
+- Environmental flags: Coal ash remediation likely required
 
 **Transportation:**
 - Nearest highway interchange: NJ Turnpike (16.0 mi)
@@ -400,90 +337,37 @@ Chambers Cogeneration LP is a 285MW retired coal/biomass plant in Carneys Point,
 - Nearest airport: Atlantic City (ACY) (51.1 mi)
 
 **Acquirability:**
-- Owner / motivation: Asset disposition — Atlantic Power Corporation retiring/divesting older generation assets
-- Estimated acquisition cost: $2,000,000 - $6,000,000
-- Recommended approach: Atlantic Power has been divesting. Acquisition feasible but remediation costs factor in.
+- Owner / motivation: Private/LLC ownership suggests direct negotiation possible.
+- Estimated acquisition cost: $5,700,000 - $17,100,000
+- Recommended approach: Direct outreach to Starwood Energy Group Global LLC (60%), Atlantic Power Corporation (40%) about site disposition or ground lease.
 - Notes: Joint ownership between Starwood Energy (60%) and Atlantic Power (40%) with committed battery storage redevelopment plans but no active demolition yet
 
 **Data Center Developer Value:**
-- Estimated developer price: $30,000,000 - $60,000,000
-- Estimated spread: $24,000,000 - $58,000,000
+- Estimated developer price: $71,250,000 - $171,000,000
+- Estimated spread: $54,150,000 - $165,300,000
 - Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
 
 **Next Steps:**
-- Verify current ownership via Salem County property records
-- Contact Atlantic Power Corporation about site disposition/partnership
+- Verify current ownership via NJ County property records
+- Direct outreach to Starwood Energy Group Global LLC (60%), Atlantic Power Corporation (40%) about site disposition or ground lease.
 - Confirm utility interconnection availability with PSEG commercial team
 - Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
 
 *Ralph should see this site.*
 
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
 
 ---
 
-### 8. Logan Generating Plant 
-**Swedesboro, Gloucester County, NJ**
-*Swedesboro, Gloucester County, NJ*
+### 7. Pedricktown Cogeneration Company LP 
+**NJ**
+*NJ*
 
-**Composite Score: 84.0/100**
-
-**The Opportunity:**
-Logan Generating Plant is a 242MW retired coal plant in Swedesboro, Gloucester County, NJ with transmission infrastructure (230kV substation 0.08 mi away). Large coal plant near NJ Turnpike Exit 1. 242MW. Environmental remediation from coal ash likely required.
-
-**Power Story:**
-- Estimated available capacity: 242 MW
-- Source of capacity: retired plant
-- Utility territory: PSEG
-- Transmission: BRIDGEPORT (230kV, 0.08 mi)
-- Confidence level: High
-
-**Site Details:**
-- Parcel size: 80 acres
-- Current use / condition: idle
-- Zoning: industrial
-- Owner type: private
-- Estimated current value: $1,500,000 - $5,000,000
-- Environmental flags: Coal ash remediation required
-
-**Transportation:**
-- Nearest highway interchange: NJ Turnpike (13.9 mi)
-- Nearest fiber route (estimated): 13.9 mi
-- Nearest airport: Trenton-Mercer (TTN) (47.4 mi)
-
-**Acquirability:**
-- Owner / motivation: Asset disposition — PSEG/Constellation retiring/divesting older generation assets
-- Estimated acquisition cost: $1,500,000 - $5,000,000
-- Recommended approach: Partnership approach needed. Coal remediation adds timeline risk but site has massive capacity potential.
-- Notes: Requires further research on current ownership and status.
-
-**Data Center Developer Value:**
-- Estimated developer price: $25,000,000 - $50,000,000
-- Estimated spread: $20,000,000 - $48,500,000
-- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
-
-**Next Steps:**
-- Verify current ownership via Gloucester County property records
-- Contact PSEG/Constellation about site disposition/partnership
-- Confirm utility interconnection availability with PSEG commercial team
-- Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
-
-*Ralph should see this site.*
-
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
-
----
-
-### 9. Pedricktown Cogeneration Company LP 
-**Pedricktown, Salem County, NJ**
-*Pedricktown, Salem County, NJ*
-
-**Composite Score: 84.0/100**
+**Composite Score: 77.5/100**
 
 **The Opportunity:**
-Pedricktown Cogeneration Company LP is a 140MW retired natural gas plant in Pedricktown, Salem County, NJ with transmission infrastructure (230kV substation 0.06 mi away). Gas-fired cogen in Salem County near Delaware River. Clean fuel source means minimal remediation.
+Pedricktown Cogeneration Company LP is a 140MW retired natural gas combined cycle plant in NJ with existing transmission infrastructure (PEDRICKTOWN 230kV substation 0.06 mi away). 
 
 **Power Story:**
 - Estimated available capacity: 140 MW
@@ -493,11 +377,10 @@ Pedricktown Cogeneration Company LP is a 140MW retired natural gas plant in Pedr
 - Confidence level: High
 
 **Site Details:**
-- Parcel size: 30 acres
 - Current use / condition: idle
 - Zoning: industrial
 - Owner type: private_equity
-- Estimated current value: $1,500,000 - $4,000,000
+- Estimated current value: $5,608,000 - $16,824,000
 - Environmental flags: Minimal — natural gas site
 
 **Transportation:**
@@ -506,37 +389,37 @@ Pedricktown Cogeneration Company LP is a 140MW retired natural gas plant in Pedr
 - Nearest airport: Trenton-Mercer (TTN) (49.0 mi)
 
 **Acquirability:**
-- Owner / motivation: Asset disposition — Private retiring/divesting older generation assets
-- Estimated acquisition cost: $1,500,000 - $4,000,000
-- Recommended approach: Direct outreach to cogen operator. Private ownership makes negotiation simpler.
+- Owner / motivation: Private/LLC ownership suggests direct negotiation possible.
+- Estimated acquisition cost: $5,608,000 - $16,824,000
+- Recommended approach: Direct outreach to Pedricktown Cogeneration Company LP about site disposition or ground lease.
 - Notes: Cogeneration facility — may have private equity or industrial owner. Research needed.
 
 **Data Center Developer Value:**
-- Estimated developer price: $15,000,000 - $35,000,000
-- Estimated spread: $11,000,000 - $33,500,000
+- Estimated developer price: $35,050,000 - $84,120,000
+- Estimated spread: $18,226,000 - $78,512,000
 - Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
 
 **Next Steps:**
-- Verify current ownership via Salem County property records
-- Contact Private about site disposition/partnership
+- Verify current ownership via NJ County property records
+- Direct outreach to Pedricktown Cogeneration Company LP about site disposition or ground lease.
 - Confirm utility interconnection availability with PSEG commercial team
 - Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
 
 *Ralph should see this site.*
 
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
 
 ---
 
-### 10. B L England 
-**Beesley's Point, Cape May County, NJ**
-*Beesley's Point, Cape May County, NJ*
+### 8. B L England 
+**NJ**
+*NJ*
 
-**Composite Score: 84.0/100**
+**Composite Score: 75.0/100**
 
 **The Opportunity:**
-B L England is a 483MW retired coal/oil plant in Beesley's Point, Cape May County, NJ with transmission infrastructure (138kV substation 0.06 mi away). Large 484MW former coal plant. Developer RC Cape May acquired for redevelopment. Off-shore wind and mixed-use plans discussed. Coastal location.
+B L England is a 483MW retired coal plant in NJ with existing transmission infrastructure (BL ENGLAND STATION 138kV substation 0.06 mi away). 
 
 **Power Story:**
 - Estimated available capacity: 483 MW
@@ -546,12 +429,11 @@ B L England is a 483MW retired coal/oil plant in Beesley's Point, Cape May Count
 - Confidence level: High
 
 **Site Details:**
-- Parcel size: 80 acres
 - Current use / condition: idle
 - Zoning: industrial
 - Owner type: private
-- Estimated current value: $5,000,000 - $15,000,000
-- Environmental flags: Coal ash remediation required
+- Estimated current value: $9,672,000 - $29,016,000
+- Environmental flags: Coal ash remediation likely required
 
 **Transportation:**
 - Nearest highway interchange: Garden State Parkway (11.7 mi)
@@ -559,26 +441,128 @@ B L England is a 483MW retired coal/oil plant in Beesley's Point, Cape May Count
 - Nearest airport: Atlantic City (ACY) (11.9 mi)
 
 **Acquirability:**
-- Owner / motivation: Asset disposition — RC Cape May Holdings retiring/divesting older generation assets
-- Estimated acquisition cost: $5,000,000 - $15,000,000
-- Recommended approach: Contact RC Cape May Holdings about data center component. Developer may be open to anchor tenant. Environmental remediation underway.
+- Owner / motivation: Private/LLC ownership suggests direct negotiation possible.
+- Estimated acquisition cost: $9,672,000 - $29,016,000
+- Recommended approach: Direct outreach to RC Cape May Holdings LLC about site disposition or ground lease.
 - Notes: Requires further research on current ownership and status.
 
 **Data Center Developer Value:**
-- Estimated developer price: $40,000,000 - $80,000,000
-- Estimated spread: $25,000,000 - $75,000,000
+- Estimated developer price: $120,900,000 - $290,160,000
+- Estimated spread: $91,884,000 - $280,488,000
 - Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
 
 **Next Steps:**
-- Verify current ownership via Cape May County property records
-- Contact RC Cape May Holdings about site disposition/partnership
+- Verify current ownership via NJ County property records
+- Direct outreach to RC Cape May Holdings LLC about site disposition or ground lease.
 - Confirm utility interconnection availability with PSEG commercial team
 - Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph — assess physical condition, access, surrounding uses
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
 
 *Ralph should see this site.*
 
-*BPU contact: Yes — PSEG territory. Brian's BPU contacts can validate power availability and interconnection timeline.*
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
+
+---
+
+### 9. PSEG Essex Generating Station 
+**NJ**
+*NJ*
+
+**Composite Score: 74.5/100**
+
+**The Opportunity:**
+PSEG Essex Generating Station is a 595MW retired natural gas combustion turbine plant in NJ with existing transmission infrastructure (ESSEX 230kV substation 0.08 mi away). Plant closed in 2022 after transitioning from coal to gas peaking facility. Major environmental contamination contributor to Diamond Alkali Superfund site on Passaic River. Located in environmental justice community with persistent air quality issues. Switch house remains but main turbine hall was demolished. Site has documented history of kerosene leaks, oil spills, and regulatory violations dating to 1970s.
+
+**Power Story:**
+- Estimated available capacity: 595 MW
+- Source of capacity: retired plant
+- Utility territory: PSEG
+- Transmission: ESSEX (230kV, 0.08 mi)
+- Confidence level: High
+
+**Site Details:**
+- Current use / condition: idle
+- Zoning: industrial
+- Owner type: utility
+- Estimated current value: $23,808,000 - $71,424,000
+- Environmental flags: Minimal — natural gas site
+
+**Transportation:**
+- Nearest highway interchange: NJ Turnpike (3.3 mi)
+- Nearest fiber route (estimated): 3.3 mi
+- Nearest airport: Newark Liberty (EWR) (4.3 mi)
+
+**Acquirability:**
+- Owner / motivation: Private/LLC ownership suggests direct negotiation possible.
+- Estimated acquisition cost: $23,808,000 - $71,424,000
+- Recommended approach: Direct outreach to PSEG Fossil LLC about site disposition or ground lease.
+- Notes: Site remains owned by PSEG with extensive environmental contamination history and ongoing Superfund liabilities. Major environmental justice concerns in Ironbound neighborhood. Property appears abandoned but still under utility control with active environmental monitoring obligations.
+
+**Data Center Developer Value:**
+- Estimated developer price: $148,800,000 - $357,120,000
+- Estimated spread: $77,376,000 - $333,312,000
+- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
+
+**Next Steps:**
+- Verify current ownership via NJ County property records
+- Direct outreach to PSEG Fossil LLC about site disposition or ground lease.
+- Confirm utility interconnection availability with PSEG commercial team
+- Request Phase I ESA or review existing environmental reports
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
+
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
+
+---
+
+### 10. Bayonne Plant Holding LLC 
+**NJ**
+*NJ*
+
+**Composite Score: 74.2/100**
+
+**The Opportunity:**
+Bayonne Plant Holding LLC is a 191MW retired natural gas combined cycle plant in NJ with existing transmission infrastructure (BAYONNE SWITCHING STATION 345kV substation 2.71 mi away). 
+
+**Power Story:**
+- Estimated available capacity: 191 MW
+- Source of capacity: retired plant
+- Utility territory: PSEG
+- Transmission: BAYONNE SWITCHING STATION (345kV, 2.71 mi)
+- Confidence level: Medium
+
+**Site Details:**
+- Current use / condition: idle
+- Zoning: industrial
+- Owner type: private
+- Estimated current value: $7,664,000 - $22,992,000
+- Environmental flags: Minimal — natural gas site
+
+**Transportation:**
+- Nearest highway interchange: NJ Turnpike (5.1 mi)
+- Nearest fiber route (estimated): 5.1 mi
+- Nearest airport: Newark Liberty (EWR) (4.0 mi)
+
+**Acquirability:**
+- Owner / motivation: Private/LLC ownership suggests direct negotiation possible.
+- Estimated acquisition cost: $7,664,000 - $22,992,000
+- Recommended approach: Direct outreach to Morris Energy Operations Company, LLC about site disposition or ground lease.
+- Notes: Requires further research on current ownership and status.
+
+**Data Center Developer Value:**
+- Estimated developer price: $47,900,000 - $114,960,000
+- Estimated spread: $24,908,000 - $107,296,000
+- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
+
+**Next Steps:**
+- Verify current ownership via NJ County property records
+- Direct outreach to Morris Energy Operations Company, LLC about site disposition or ground lease.
+- Confirm utility interconnection availability with PSEG commercial team
+- Request Phase I ESA or review existing environmental reports
+- Drive the site with Ralph -- assess physical condition, access, surrounding uses
+
+*Ralph should see this site.*
+
+*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
 
 ---
 

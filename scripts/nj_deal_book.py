@@ -1412,36 +1412,80 @@ def run_part4(dry_run=False):
 
 
 def score_site(site):
-    """Score a site on the 5-dimension model from the spec."""
+    """Score a site on the deal-book-weighted 5-dimension model.
 
-    # 1. Power Availability (30%)
-    est_mw = site.get("estimated_mw", site.get("capacity_mw", 0))
+    Weights tuned for Brian/Ralph acquirability:
+      Acquirability     30%  — Can Brian and Ralph actually get this?
+      Power Availability 20% — Is there confirmed or estimated stranded capacity?
+      Transmission       15% — Distance to 138kV+ substation
+      Transportation     15% — Highway, fiber, airport proximity
+      Site Readiness     20% — Condition, recency, environmental
+    """
+
+    est_mw = site.get("estimated_mw", site.get("capacity_mw", 0)) or 0
     closure_status = site.get("closure_status", "")
     source = site.get("source", "")
 
+    # 1. Acquirability (30%) — the most important dimension for a deal book
+    acq = site.get("acquirability", "")
+    owner_type = site.get("owner_type", "")
+    tax_status = site.get("tax_status", "")
+    motivated = site.get("motivated_seller_signals", [])
+    owner = (site.get("current_owner") or site.get("owner") or "").lower()
+
+    if acq == "high" or tax_status == "delinquent":
+        acq_score = 95
+    elif owner_type in ("estate", "trust", "out_of_state"):
+        acq_score = 90
+    elif source in ("warn_act", "news_scan"):
+        # WARN/news closures — company is leaving, site will need disposition
+        acq_score = 85
+    elif source == "utility_scan":
+        acq_score = 75
+    elif acq == "medium" and owner_type == "private_equity":
+        acq_score = 70
+    elif owner_type == "private" or "llc" in owner:
+        # Private LLC ownership — direct negotiation possible
+        acq_score = 75
+    elif owner_type == "municipal":
+        acq_score = 55
+    elif acq == "institutional" or owner_type == "utility":
+        # PSEG/utility-owned — hard for Brian to option directly
+        acq_score = 25
+    elif source == "substation_proximity":
+        n_signals = len(motivated) if isinstance(motivated, list) else 0
+        acq_score = min(90, 40 + n_signals * 12)
+    elif acq == "medium":
+        # Generic "medium" from enrichment — penalize unknown
+        acq_score = 50
+    else:
+        acq_score = 40
+
+    # Penalize if owner is a major utility (GenOn, Calpine, PSEG, NRG, ConEd)
+    major_utilities = ["pseg", "genon", "calpine", "nrg", "consolidated edison",
+                       "con edison", "exelon", "nextera", "duke", "dominion"]
+    if any(u in owner for u in major_utilities) and source == "eia_plants":
+        acq_score = min(acq_score, 40)
+
+    # 2. Power Availability (20%)
     power_score = 0
     if est_mw >= 50:
         power_score = 95
     elif est_mw >= 30:
         power_score = 80
     elif est_mw >= 20:
-        power_score = 65
+        power_score = 70
     elif est_mw >= 10:
-        power_score = 50
+        power_score = 55
     else:
         power_score = 30
 
-    # Boost for confirmed closures
     if closure_status in ("closed", "retired"):
-        power_score = min(100, power_score + 10)
-    elif closure_status in ("closing", "retiring"):
         power_score = min(100, power_score + 5)
-
-    # Boost for direct utility source
     if source == "utility_scan":
         power_score = min(100, power_score + 5)
 
-    # 2. Transmission Proximity (20%)
+    # 3. Transmission Proximity (15%)
     sub_miles = site.get("nearest_sub_miles", 999)
     sub_kv = site.get("nearest_sub_kv", 0)
 
@@ -1458,34 +1502,10 @@ def score_site(site):
     else:
         trans_score = 20
 
-    # Voltage bonus
     if sub_kv >= 345:
         trans_score = min(100, trans_score + 10)
     elif sub_kv >= 230:
         trans_score = min(100, trans_score + 5)
-
-    # 3. Acquirability (20%)
-    acq = site.get("acquirability", "")
-    owner_type = site.get("owner_type", "")
-    tax_status = site.get("tax_status", "")
-    motivated = site.get("motivated_seller_signals", [])
-
-    if acq == "high" or tax_status == "delinquent":
-        acq_score = 95
-    elif acq == "medium" or owner_type in ("estate", "trust", "out_of_state"):
-        acq_score = 80
-    elif owner_type == "private":
-        acq_score = 70
-    elif acq == "institutional" or owner_type == "utility":
-        acq_score = 30
-    elif owner_type == "municipal":
-        acq_score = 60
-    elif source == "substation_proximity":
-        # Parcel data — base on signals
-        n_signals = len(motivated) if isinstance(motivated, list) else 0
-        acq_score = min(95, 50 + n_signals * 10)
-    else:
-        acq_score = 50
 
     # 4. Transportation Access (15%)
     transport = site.get("transport", {})
@@ -1505,42 +1525,60 @@ def score_site(site):
     else:
         trans_access_score = 30
 
-    # Airport bonus
     if airport_dist <= 10:
         trans_access_score = min(100, trans_access_score + 5)
 
-    # 5. Site Readiness (15%)
+    # 5. Site Readiness (20%) — includes recency
     current_status = site.get("current_site_status", "")
     current_use = site.get("current_use", "")
     env_status = site.get("environmental_status", "")
 
     if current_status == "idle" or current_use == "vacant":
-        readiness_score = 90
+        readiness_score = 85
     elif current_status == "demolition" or current_use == "underutilized":
         readiness_score = 70
-    elif current_status in ("remediation", ) or env_status == "remediation_active":
-        readiness_score = 40
+    elif current_status in ("remediation",) or env_status == "remediation_active":
+        readiness_score = 35
     elif current_status == "redevelopment":
-        readiness_score = 30  # Already claimed
+        readiness_score = 25  # Already claimed
+    elif source in ("warn_act", "news_scan"):
+        readiness_score = 75  # Recent closure — site likely still in transition
     elif source == "eia_plants":
-        readiness_score = 60  # Default for plants
-    else:
         readiness_score = 55
+    else:
+        readiness_score = 50
 
-    # Composite
+    # Recency penalty — plants retired 5+ years ago likely already claimed or problematic
+    retirement_date = site.get("retirement_date", site.get("closure_date", ""))
+    if retirement_date:
+        try:
+            year = int(retirement_date[:4])
+            years_ago = 2026 - year
+            if years_ago >= 10:
+                readiness_score = max(10, readiness_score - 30)
+            elif years_ago >= 7:
+                readiness_score = max(15, readiness_score - 20)
+            elif years_ago >= 5:
+                readiness_score = max(20, readiness_score - 10)
+            elif years_ago <= 2:
+                readiness_score = min(100, readiness_score + 10)  # Recent — bonus
+        except (ValueError, IndexError):
+            pass
+
+    # Composite — deal-book weights
     composite = (
-        power_score * 0.30 +
-        trans_score * 0.20 +
-        acq_score * 0.20 +
+        acq_score * 0.30 +
+        power_score * 0.20 +
+        trans_score * 0.15 +
         trans_access_score * 0.15 +
-        readiness_score * 0.15
+        readiness_score * 0.20
     )
 
     return {
         "composite_score": round(composite, 1),
+        "acquirability_score": round(acq_score, 1),
         "power_availability": round(power_score, 1),
         "transmission_proximity": round(trans_score, 1),
-        "acquirability_score": round(acq_score, 1),
         "transportation_access": round(trans_access_score, 1),
         "site_readiness": round(readiness_score, 1),
     }
