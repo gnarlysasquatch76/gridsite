@@ -59,7 +59,7 @@ This deal book presents 10 high-potential data center development sites in New J
 **Composite Score: 82.5/100**
 
 **The Opportunity:**
-Novartis East Hanover Facility is closing its chemical plant facility in East Hanover, displacing ~427 employees and an estimated 38MW of power demand. The utility infrastructure serving this site remains in place. Major pharmaceutical layoffs, not full closure. Headquarters location with previous 235 layoffs in 2024. Part of company restructuring.
+The 230-acre Novartis campus in East Hanover is being sold off in parcels while Novartis retains ~100 acres. Russo Development & Onyx Equities acquired 62 acres for industrial; New Vernon Equities is developing an office/innovation hub; RealCold has a cold storage deal. But none of the current developers are positioning for data center use -- and the 230kV Whippany substation 0.7 miles away is the key asset they're not leveraging. Brian knows Kevin Dudley (CBRE, brokering the industrial portion) and Ed Russo personally. Ralph is on the same developer caliber. This is an insider track, not a cold call.
 
 **Power Story:**
 - Estimated available capacity: 38 MW
@@ -81,25 +81,27 @@ Novartis East Hanover Facility is closing its chemical plant facility in East Ha
 - Nearest airport: Morristown Airport (MMU) (11.1 mi)
 
 **Acquirability:**
-- Owner / motivation: Company is leaving — they need to dispose of the site. Direct outreach to corporate RE.
-- Estimated acquisition cost: $1,900,000 - $5,700,000
-- Recommended approach: Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+- Owner / motivation: Novartis is actively divesting. CBRE (Kevin Dudley) and JLL (Tim Greiner) are marketing remaining parcels. Multiple deals already closed.
+- Estimated acquisition cost: $5M-$15M for a remaining 20-40 acre parcel with power positioning
+- Recommended approach: 1. Call Kevin Dudley directly -- Brian knows him. Ask what parcels remain and whether a data center use has been pitched. 2. Call Ed Russo -- he already bought 62 acres. Ask if he'd JV on a DC pad or if there are adjacent parcels he passed on. 3. Position the 230kV Whippany substation proximity as the differentiator -- no other buyer is leading with power availability.
+- Notes: Brian's personal relationships with Dudley (CBRE) and Russo (developer) create a direct path. Ralph's developer credibility matters here -- Novartis/CBRE want serious buyers.
 
 **Data Center Developer Value:**
-- Estimated developer price: $11,400,000 - $26,600,000
-- Estimated spread: $5,700,000 - $24,700,000
-- Comparable transactions: NJ data center land trades at $300K-$1M/MW of supportable capacity in Tier 1 markets
+- Estimated developer price: $25M-$50M for a 20-40MW data center-ready site with transmission proximity
+- Estimated spread: $10M-$35M if a remaining parcel can be positioned with power
+- Comparable transactions: NJ data center land with confirmed power trades at $500K-$1.5M per supportable MW. 30MW site = $15-45M developer value.
 
 **Next Steps:**
-- Verify current ownership via Morris County property records
-- Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
-- Confirm utility interconnection availability with PSEG commercial team
-- Request Phase I ESA or review existing environmental reports
-- Drive the site with Ralph -- assess physical condition, access, surrounding uses
+- Call Kevin Dudley (CBRE) -- ask what parcels remain and whether DC use has been proposed
+- Call Ed Russo -- ask about JV opportunity or adjacent parcels he didn't take
+- Have Brian's BPU contact confirm Whippany substation available capacity and interconnection timeline
+- Research East Hanover Township planning board minutes for remaining Novartis approvals
+- Drive the campus with Ralph -- identify which remaining parcels have best substation line-of-sight
+- Prepare a 1-page data center use case brief for Dudley showing MW value vs. industrial/office rents
 
 *Ralph should see this site.*
 
-*BPU contact: Yes -- PSEG territory. Brian's BPU contacts can validate power availability.*
+*BPU contact: Critical -- PSEG territory. BPU contact should confirm Whippany substation capacity before Brian pitches DC use to Dudley/Russo. Power confirmation is what differentiates Brian's pitch.*
 
 ---
 
@@ -289,6 +291,7 @@ Novartis Pharmaceuticals Corporation is closing its pharmaceutical facility in E
 - Owner / motivation: Company is leaving — they need to dispose of the site. Direct outreach to corporate RE.
 - Estimated acquisition cost: $2,500,000 - $7,500,000
 - Recommended approach: Contact owner corporate real estate team about site disposition. WARN Act filing signals motivated timeline.
+- Notes: Same Novartis campus as #1. WARN Act filing confirms ongoing workforce reductions. Brian knows Kevin Dudley (CBRE broker) and Ed Russo (bought 62 acres). Insider track.
 
 **Data Center Developer Value:**
 - Estimated developer price: $15,000,000 - $35,000,000
