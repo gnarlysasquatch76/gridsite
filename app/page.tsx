@@ -21,15 +21,17 @@ export default function Home() {
     utilityTerritories: false,
     lmpNodes: false,
     oasisAtc: false,
+    warnFilings: false,
   });
   var [layerGroupOpen, setLayerGroupOpen] = useState<LayerGroupState>({
     infrastructure: true,
     capacity: false,
     risk: false,
     connectivity: false,
+    dealSignals: false,
   });
 
-  var [minMW, setMinMW] = useState(50);
+  var [minMW, setMinMW] = useState(30);
   var [selectedState, setSelectedState] = useState("");
   var [siteTypeFilter, setSiteTypeFilter] = useState("all");
   var [scoredSites, setScoredSites] = useState<ScoredSite[]>([]);
@@ -38,12 +40,14 @@ export default function Home() {
 
   var filteredSites = useMemo(function () {
     return scoredSites.filter(function (site) {
-      if (site.total_capacity_mw > 0 && site.total_capacity_mw < minMW) return false;
+      var mw = site.total_capacity_mw || site.estimated_mw || 0;
+      if (mw > 0 && mw < minMW) return false;
       if (selectedState && site.state !== selectedState) return false;
       if (siteTypeFilter !== "all") {
         if (siteTypeFilter === "retired_plant" && site.opportunity_type !== "retired_plant") return false;
         if (siteTypeFilter === "adaptive_reuse" && site.opportunity_type !== "adaptive_reuse") return false;
         if (siteTypeFilter === "greenfield" && site.opportunity_type !== "greenfield") return false;
+        if (siteTypeFilter === "stranded_capacity" && site.opportunity_type !== "stranded_capacity") return false;
       }
       return true;
     });

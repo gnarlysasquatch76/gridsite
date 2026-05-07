@@ -26,9 +26,13 @@ QUEUE_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "queue-withdrawals
 BROWNFIELDS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "epa-brownfields.geojson")
 LMP_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "lmp-nodes.geojson")
 ATC_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "oasis-atc.geojson")
+AVAILABILITY_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "availability.json")
+WARN_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "warn-closures.geojson")
+NEWS_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "industrial-closures.geojson")
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, "..", "public", "data", "scored-sites.geojson")
 
-TOP_N = 100
+MIN_SCORE = 60       # Minimum score for any site type
+MAX_BROWNFIELDS = 100  # Cap brownfields to keep output size manageable
 
 # FEMA high-risk flood zone states/regions
 FLOOD_RISK_STATES = {
@@ -218,6 +222,16 @@ def compute_contamination(site):
     """Contamination risk score."""
     if site["site_type"] == "power_plant":
         return CONTAMINATION_SCORES.get(site["fuel_type"], 60)
+    if site["site_type"] == "stranded_capacity":
+        # Industrial sites vary — chemical/refinery lower, warehouse/assembly higher
+        sub_type = site.get("sub_type", "").lower()
+        if any(k in sub_type for k in ["chemical", "refinery", "smelter"]):
+            return 50
+        if any(k in sub_type for k in ["foundry", "steel", "paper"]):
+            return 60
+        if any(k in sub_type for k in ["warehouse", "distribution", "fulfillment", "assembly"]):
+            return 80
+        return 65  # generic industrial
     return 55  # brownfield
 
 
@@ -334,8 +348,9 @@ def score_time_to_power(site, nearest, nearby_withdrawals, lmp_score, atc_score=
 
 def score_site_readiness(site):
     """
-    20% weight. Renamed from Site Characteristics.
+    20% weight (15% when economic motivation is active).
     Power plants: fuel type suitability + capacity scale
+    Stranded capacity: higher base (75) — proven industrial infrastructure
     Brownfields: base reuse score (flat 65)
     """
     if site["site_type"] == "power_plant":
@@ -344,6 +359,10 @@ def score_site_readiness(site):
         scale_score = compute_capacity_scale(capacity)
         dim = fuel_score * 0.60 + scale_score * 0.40
         return dim, fuel_score, scale_score
+    if site["site_type"] == "stranded_capacity":
+        # Stranded capacity sites have proven utility infrastructure sized
+        # for large loads — higher base than generic brownfields
+        return 75, 0, 0
     return 65, 0, 0
 
 
@@ -374,6 +393,64 @@ def score_risk_factors(site):
         dim = contam_score * 0.65 + flood_score * 0.35
 
     return dim, contam_score, status_score, flood_score
+
+
+def score_economic_motivation(site):
+    """
+    15% weight (for stranded capacity sites).
+    Factors: employee count, recency of closure, estimated MW.
+    Stranded capacity sites get this dimension; other site types get 0.
+    """
+    if site.get("site_type") != "stranded_capacity":
+        return 0, 0, 0, 0
+
+    # Employee count score (proxy for community impact)
+    emp = site.get("employee_count", 0)
+    if emp >= 1000:
+        emp_score = 95
+    elif emp >= 500:
+        emp_score = 85
+    elif emp >= 300:
+        emp_score = 70
+    elif emp >= 200:
+        emp_score = 55
+    else:
+        emp_score = 35
+
+    # Recency score (more recent = more motivated community/utility)
+    closure_date = site.get("closure_date", "")
+    recency_score = 50  # default
+    if closure_date:
+        try:
+            year = int(closure_date[:4])
+            if year >= 2026:
+                recency_score = 95
+            elif year >= 2025:
+                recency_score = 85
+            elif year >= 2024:
+                recency_score = 70
+            elif year >= 2023:
+                recency_score = 55
+            else:
+                recency_score = 35
+        except (ValueError, IndexError):
+            pass
+
+    # Estimated MW score (larger = better)
+    est_mw = site.get("estimated_mw", 0)
+    if est_mw >= 100:
+        mw_score = 95
+    elif est_mw >= 60:
+        mw_score = 80
+    elif est_mw >= 40:
+        mw_score = 65
+    elif est_mw >= 30:
+        mw_score = 50
+    else:
+        mw_score = 30
+
+    dim = emp_score * 0.40 + recency_score * 0.35 + mw_score * 0.25
+    return dim, emp_score, recency_score, mw_score
 
 
 # ── Main ──────────────────────────────────────────────────────────────────
@@ -461,6 +538,38 @@ def main():
     else:
         print("  Brownfields file not found, skipping")
 
+    # Load stranded capacity sites (WARN closures + news scan)
+    stranded_sites = []
+    for sc_file, sc_label in [(WARN_FILE, "WARN closures"), (NEWS_FILE, "News closures")]:
+        if os.path.exists(sc_file):
+            with open(sc_file) as f:
+                sc_geojson = json.load(f)
+            for feat in sc_geojson["features"]:
+                p = feat["properties"]
+                coords = feat["geometry"]["coordinates"]
+                stranded_sites.append({
+                    "plant_name": p.get("name", p.get("plant_name", "Unknown")),
+                    "state": p.get("state", ""),
+                    "latitude": coords[1],
+                    "longitude": coords[0],
+                    "total_capacity_mw": 0,
+                    "fuel_type": p.get("sub_type", "Stranded Capacity"),
+                    "status": p.get("closure_status", "closed"),
+                    "site_type": "stranded_capacity",
+                    "estimated_mw": p.get("estimated_mw", 0),
+                    "employee_count": p.get("employee_count", 0),
+                    "closure_date": p.get("closure_date", ""),
+                    "closure_status": p.get("closure_status", ""),
+                    "sub_type": p.get("sub_type", ""),
+                    "company": p.get("company", ""),
+                    "source": p.get("source", ""),
+                    "location_approximate": p.get("location_approximate", False),
+                })
+            print("  {} loaded: {}".format(sc_label, len(sc_geojson["features"])))
+        else:
+            print("  {} not found, skipping".format(sc_label))
+    print("  Stranded capacity sites total: " + str(len(stranded_sites)))
+
     # Filter to retired/retiring plants (exclude retooled — still have active generators)
     plant_candidates = []
     retooled_skipped = 0
@@ -477,7 +586,7 @@ def main():
         print("  Retooled plants excluded: " + str(retooled_skipped))
 
     # Combine all candidates
-    candidates = plant_candidates + brownfield_sites
+    candidates = plant_candidates + brownfield_sites + stranded_sites
     print("  Total candidates: " + str(len(candidates)))
 
     # Filter substations to 345kV+
@@ -566,8 +675,13 @@ def main():
         sr, fuel_s, scale_s = score_site_readiness(site)
         co, lon_s, lat_s, bb_s = score_connectivity(site)
         rf, contam_s, status_s, flood_s = score_risk_factors(site)
+        em, emp_s, recency_s, mw_s = score_economic_motivation(site)
 
-        composite = (ttp * 0.50) + (sr * 0.20) + (co * 0.15) + (rf * 0.15)
+        # Reweight composite when economic motivation is active
+        if em > 0:
+            composite = (ttp * 0.40) + (em * 0.15) + (sr * 0.15) + (co * 0.15) + (rf * 0.15)
+        else:
+            composite = (ttp * 0.50) + (sr * 0.20) + (co * 0.15) + (rf * 0.15)
         composite = round(clamp(composite), 1)
 
         scored.append({
@@ -609,14 +723,68 @@ def main():
             "nearest_sub_lines": nearest["lines"],
             "queue_count_20mi": qw_count,
             "queue_mw_20mi": round(qw_total_mw, 1),
+            "economic_motivation": round(em, 1),
+            "employee_count_score": round(emp_s, 1),
+            "recency_score": round(recency_s, 1),
+            "estimated_mw_score": round(mw_s, 1),
             "site_type": site["site_type"],
             "owner_name": site.get("owner_name", ""),
             "utility_id": site.get("utility_id"),
+            "estimated_mw": site.get("estimated_mw", 0),
+            "employee_count": site.get("employee_count", 0),
+            "closure_date": site.get("closure_date", ""),
+            "closure_status": site.get("closure_status", ""),
+            "sub_type": site.get("sub_type", ""),
+            "company": site.get("company", ""),
+            "location_approximate": site.get("location_approximate", False),
         })
 
-    # Sort by composite score descending, take top N
+    # Load availability data from Deal Scout (if available)
+    availability = {}
+    if os.path.exists(AVAILABILITY_FILE):
+        with open(AVAILABILITY_FILE) as f:
+            avail_data = json.load(f)
+        availability = avail_data.get("sites", {})
+        print("  Availability data loaded: {} sites".format(len(availability)))
+    else:
+        print("  Availability data not found, skipping")
+
+    # Apply availability adjustments
+    excluded = 0
+    for s in scored:
+        avail_key = "{}|{}|{},{}".format(
+            s["plant_name"], s["state"],
+            round(s["latitude"], 3), round(s["longitude"], 3)
+        )
+        avail = availability.get(avail_key)
+        if avail:
+            status = avail.get("status", "unknown")
+            if status in ("taken", "still_operating"):
+                s["_excluded"] = True
+                excluded += 1
+            elif status == "competitor_activity":
+                s["composite_score"] = round(max(0, s["composite_score"] - 20), 1)
+            elif status == "environmental_hold":
+                s["composite_score"] = round(max(0, s["composite_score"] - 15), 1)
+
+    if excluded > 0:
+        print("  Excluded (taken/still_operating): {}".format(excluded))
+        scored = [s for s in scored if not s.get("_excluded")]
+
+    # Sort by composite score descending
+    # Include ALL power plants and stranded capacity sites >= MIN_SCORE
+    # Cap brownfields to MAX_BROWNFIELDS to keep output manageable
     scored.sort(key=lambda x: -x["composite_score"])
-    top = scored[:TOP_N]
+    top = []
+    bf_count_added = 0
+    for s in scored:
+        if s["composite_score"] < MIN_SCORE:
+            continue
+        if s["site_type"] == "brownfield":
+            if bf_count_added >= MAX_BROWNFIELDS:
+                continue
+            bf_count_added += 1
+        top.append(s)
 
     # Build GeoJSON
     features = []
@@ -703,11 +871,15 @@ def main():
         ))
 
     # Count by type
-    plant_count = sum(1 for s in top if s["site_type"] == "power_plant")
-    bf_count = sum(1 for s in top if s["site_type"] == "brownfield")
+    type_counts = {}
+    for s in top:
+        st = s["site_type"]
+        type_counts[st] = type_counts.get(st, 0) + 1
     print("")
     print("Output: " + OUTPUT_FILE + " (" + str(file_size) + " KB)")
-    print("Top " + str(TOP_N) + " sites: " + str(plant_count) + " power plants, " + str(bf_count) + " brownfields")
+    print("Sites >= " + str(MIN_SCORE) + " score: " + str(len(top)))
+    for t, c in sorted(type_counts.items(), key=lambda x: -x[1]):
+        print("  {:25s} {}".format(t, c))
     print("Total scored: " + str(len(scored)))
 
     # Score distribution

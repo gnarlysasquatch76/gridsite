@@ -22,9 +22,11 @@ import {
   UTILITY_TERRITORIES_SOURCE, UTILITY_TERRITORIES_LAYER, UTILITY_TERRITORIES_OUTLINE_LAYER,
   LMP_NODES_SOURCE, LMP_NODES_LAYER,
   OASIS_ATC_SOURCE, OASIS_ATC_LAYER,
+  WARN_FILINGS_SOURCE, WARN_FILINGS_LAYER, WARN_FILINGS_GLOW_LAYER,
   OPPORTUNITY_LABELS, OPPORTUNITY_COLORS,
+  AVAILABILITY_LABELS, AVAILABILITY_COLORS,
   DIAMOND_ICON, STAR_ICON, TRIANGLE_ICON, SQUARE_ICON,
-  type ScoredSite, type ProximityResult, type LayerState,
+  type ScoredSite, type ProximityResult, type LayerState, type AvailabilityStatus,
 } from "../lib/constants";
 
 export interface MapHandle {
@@ -357,6 +359,12 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       badgesHtml += "<span style=\"font-size:11px;color:#64748b;\">" + s.fuel_type + " &middot; " + s.status + "</span>";
     }
     badgesHtml += "<span style=\"background:" + ttpColor + ";color:" + (ttp.tier === "red" ? "#fff" : "#000") + ";border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;\">" + ttp.label + "</span>";
+    if (s.availability_status) {
+      var availColor = AVAILABILITY_COLORS[s.availability_status] || "#94a3b8";
+      var availLabel = AVAILABILITY_LABELS[s.availability_status] || "Unverified";
+      var availTextColor = (s.availability_status === "available" || s.availability_status === "taken" || s.availability_status === "still_operating") ? "#fff" : "#000";
+      badgesHtml += "<span style=\"background:" + availColor + ";color:" + availTextColor + ";border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;\">" + availLabel + "</span>";
+    }
     badgesHtml += "</div>";
 
     return "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:260px;\">" +
@@ -423,6 +431,57 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
         "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Source Sub</span><strong>" + sourceSub + "</strong></div>" +
         "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Sink Sub</span><strong>" + sinkSub + "</strong></div>" +
       "</div></div>";
+  }, []);
+
+  var buildWarnPopupHTML = useCallback(function (props: Record<string, any>): string {
+    var company = props.company || props.name || "Unknown";
+    var city = props.city || "";
+    var state = props.state || "";
+    var location = [city, state].filter(Boolean).join(", ");
+    var employees = props.employees_affected || 0;
+    var filingDate = props.filing_date || "";
+    var effectiveDate = props.effective_date || "";
+    var industry = props.industry || "";
+    var closureType = props.closure_type || "";
+    var subName = props.nearest_substation_name || "";
+    var subMiles = props.nearest_substation_miles || 0;
+    var subKv = props.nearest_substation_kv || 0;
+    var sourceUrl = props.source_url || "";
+    var approx = props.location_approximate;
+
+    var empColor = employees >= 500 ? "#ef4444" : employees >= 250 ? "#f97316" : "#fb923c";
+
+    var html = "<div style=\"font-family:system-ui,sans-serif;padding:4px;min-width:260px;\">" +
+      "<div style=\"font-size:15px;font-weight:700;color:#1B2A4A;margin-bottom:2px;\">" + company + "</div>" +
+      "<div style=\"font-size:12px;color:#64748b;margin-bottom:8px;\">" + location + (approx ? " (approx.)" : "") + "</div>" +
+      "<div style=\"display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;\">" +
+        "<span style=\"background:" + empColor + ";color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;\">" + employees.toLocaleString() + " employees</span>";
+    if (closureType) {
+      html += "<span style=\"background:#1e293b;color:#94a3b8;border-radius:4px;padding:2px 8px;font-size:11px;\">" + closureType + "</span>";
+    }
+    html += "</div>" +
+      "<div style=\"border-top:1px solid #e2e8f0;padding-top:6px;font-size:12px;color:#334155;\">";
+    if (filingDate) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Filed</span><strong>" + filingDate + "</strong></div>";
+    }
+    if (effectiveDate) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Effective</span><strong>" + effectiveDate + "</strong></div>";
+    }
+    if (industry) {
+      html += "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Industry</span><strong>" + industry + "</strong></div>";
+    }
+    if (subMiles > 0) {
+      html += "<div style=\"border-top:1px solid #e2e8f0;margin-top:6px;padding-top:6px;\">" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>\u26A1 Nearest Substation</span><strong>" + subMiles + " mi</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Voltage</span><strong>" + subKv + " kV</strong></div>" +
+        "<div style=\"display:flex;justify-content:space-between;margin:3px 0;\"><span>Name</span><strong style=\"max-width:140px;text-align:right;overflow:hidden;text-overflow:ellipsis;\">" + subName + "</strong></div>" +
+      "</div>";
+    }
+    if (sourceUrl) {
+      html += "<div style=\"margin-top:6px;\"><a href=\"" + sourceUrl + "\" target=\"_blank\" style=\"color:#3b82f6;font-size:11px;\">Source filing \u2192</a></div>";
+    }
+    html += "</div></div>";
+    return html;
   }, []);
 
   // --- Score any location on right-click ---
@@ -992,6 +1051,83 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
     if (mapLoaded.current) setup(); else map.on("load", setup);
   }, [layers.oasisAtc, buildAtcPopupHTML]);
 
+  // --- WARN Filings layer ---
+
+  useEffect(function () {
+    var map = mapRef.current;
+    if (!map) return;
+    function setup() {
+      if (!map) return;
+      if (map.getLayer(WARN_FILINGS_LAYER)) {
+        map.setLayoutProperty(WARN_FILINGS_LAYER, "visibility", layers.warnFilings ? "visible" : "none");
+        if (map.getLayer(WARN_FILINGS_GLOW_LAYER)) {
+          map.setLayoutProperty(WARN_FILINGS_GLOW_LAYER, "visibility", layers.warnFilings ? "visible" : "none");
+        }
+        return;
+      }
+      if (!layers.warnFilings) return;
+      map.addSource(WARN_FILINGS_SOURCE, { type: "geojson", data: "/data/warn-filings.geojson" });
+
+      // Outer glow for 500+ employee filings
+      map.addLayer({
+        id: WARN_FILINGS_GLOW_LAYER, type: "circle", source: WARN_FILINGS_SOURCE,
+        filter: [">=", ["get", "employees_affected"], 500],
+        paint: {
+          "circle-color": "#ef4444",
+          "circle-radius": 18,
+          "circle-opacity": 0.15,
+          "circle-blur": 1,
+        },
+      });
+
+      // Main markers — size by employees, color intensity by severity
+      map.addLayer({
+        id: WARN_FILINGS_LAYER, type: "circle", source: WARN_FILINGS_SOURCE,
+        paint: {
+          "circle-color": [
+            "step", ["get", "employees_affected"],
+            "#fb923c",   // 100-249: orange-400
+            250, "#f97316",  // 250-499: orange-500
+            500, "#ef4444",  // 500+: red-500
+          ],
+          "circle-radius": [
+            "step", ["get", "employees_affected"],
+            4,    // 100-249: small
+            250, 7,  // 250-499: medium
+            500, 11,  // 500+: large
+          ],
+          "circle-opacity": 0.9,
+          "circle-stroke-color": [
+            "step", ["get", "employees_affected"],
+            "#fdba74",   // orange-300
+            500, "#fca5a5",  // red-300
+          ],
+          "circle-stroke-width": [
+            "step", ["get", "employees_affected"],
+            0.5,
+            500, 2,  // Thick border on 500+ to make them pop
+          ],
+        },
+      });
+
+      map.on("click", WARN_FILINGS_LAYER, function (e) {
+        if (!e.features || e.features.length === 0) return;
+        var feature = e.features[0];
+        var coords = (feature.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
+        var p = feature.properties as Record<string, any>;
+        if (typeof p.employees_affected === "string") p.employees_affected = parseInt(p.employees_affected);
+        if (typeof p.nearest_substation_miles === "string") p.nearest_substation_miles = parseFloat(p.nearest_substation_miles);
+        if (typeof p.nearest_substation_kv === "string") p.nearest_substation_kv = parseFloat(p.nearest_substation_kv);
+        if (typeof p.location_approximate === "string") p.location_approximate = p.location_approximate === "true";
+        if (popupRef.current) popupRef.current.remove();
+        popupRef.current = new mapboxgl.Popup({ offset: 12, maxWidth: "320px" }).setLngLat(coords).setHTML(buildWarnPopupHTML(p)).addTo(map!);
+      });
+      map.on("mouseenter", WARN_FILINGS_LAYER, function () { map!.getCanvas().style.cursor = "pointer"; });
+      map.on("mouseleave", WARN_FILINGS_LAYER, function () { map!.getCanvas().style.cursor = ""; });
+    }
+    if (mapLoaded.current) setup(); else map.on("load", setup);
+  }, [layers.warnFilings, buildWarnPopupHTML]);
+
   // --- Load unified sites (scored + opportunities merged) ---
 
   useEffect(function () {
@@ -1001,21 +1137,39 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
       if (!map) return;
       if (map.getSource(SCORED_SITES_SOURCE)) return;
 
-      var SITE_TYPE_TO_OPP: Record<string, string> = { power_plant: "retired_plant", brownfield: "adaptive_reuse" };
+      var SITE_TYPE_TO_OPP: Record<string, string> = { power_plant: "retired_plant", brownfield: "adaptive_reuse", "Stranded Capacity": "stranded_capacity", stranded_capacity: "stranded_capacity" };
 
       Promise.all([
-        fetch("/data/scored-sites.geojson").then(function (r) { return r.json(); }),
+        fetch("/data/all-sites.geojson").then(function (r) { return r.json(); }).catch(function () {
+          // Fallback to scored-sites + opportunities if all-sites doesn't exist
+          return fetch("/data/scored-sites.geojson").then(function (r) { return r.json(); });
+        }),
         fetch("/data/opportunities.geojson").then(function (r) { return r.json(); }).catch(function () { return { type: "FeatureCollection", features: [] }; }),
+        fetch("/data/availability.json").then(function (r) { return r.json(); }).catch(function () { return { sites: {} }; }),
       ]).then(function (results) {
         var scoredGeo = results[0];
         var oppsGeo = results[1];
+        var availData = results[2] as { sites: Record<string, any> };
         if (!map || map.getSource(SCORED_SITES_SOURCE)) return;
 
-        // Add opportunity_type to scored-sites features based on site_type
+        // Normalize properties across different source formats
         for (var si = 0; si < scoredGeo.features.length; si++) {
           var sp = scoredGeo.features[si].properties;
+          // Stranded capacity uses "name" instead of "plant_name"
+          if (!sp.plant_name && sp.name) {
+            sp.plant_name = sp.name;
+          }
+          // Map site_type to opportunity_type
           if (!sp.opportunity_type && sp.site_type) {
             sp.opportunity_type = SITE_TYPE_TO_OPP[sp.site_type] || "adaptive_reuse";
+          }
+          // Ensure latitude/longitude are set from geometry if missing
+          if (!sp.latitude || !sp.longitude) {
+            var coords = scoredGeo.features[si].geometry.coordinates;
+            if (coords) {
+              sp.latitude = coords[1];
+              sp.longitude = coords[0];
+            }
           }
         }
 
@@ -1071,15 +1225,50 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
               nearest_lmp_node: p.nearest_lmp_node || "",
               atc_score: pf(p.atc_score), nearest_atc_mw: pf(p.nearest_atc_mw),
               nearest_atc_interface: p.nearest_atc_interface || "",
-              nearest_sub_name: p.nearest_sub_name,
+              nearest_sub_name: p.nearest_sub_name || p.nearest_substation_name || "",
               nearest_sub_distance_miles: pf(p.nearest_sub_distance_miles),
               nearest_sub_voltage_kv: pf(p.nearest_sub_voltage_kv),
               nearest_sub_lines: pf(p.nearest_sub_lines),
               queue_count_20mi: pf(p.queue_count_20mi),
               queue_mw_20mi: pf(p.queue_mw_20mi),
+              // Economic Motivation (stranded capacity)
+              economic_motivation: pf(p.economic_motivation) || undefined,
+              employee_count_score: pf(p.employee_count_score) || undefined,
+              recency_score: pf(p.recency_score) || undefined,
+              estimated_mw_score: pf(p.estimated_mw_score) || undefined,
+              // Stranded capacity fields
+              estimated_mw: pf(p.estimated_mw) || undefined,
+              employee_count: pf(p.employee_count) || undefined,
+              closure_date: p.closure_date || undefined,
+              closure_status: p.closure_status || undefined,
+              sub_type: p.sub_type || undefined,
+              company: p.company || undefined,
+              location_approximate: p.location_approximate || undefined,
             } as ScoredSite;
           })
           .sort(function (a: ScoredSite, b: ScoredSite) { return b.composite_score - a.composite_score; });
+
+        // Merge availability data from Deal Scout
+        if (availData.sites && Object.keys(availData.sites).length > 0) {
+          for (var ai = 0; ai < sites.length; ai++) {
+            var s = sites[ai];
+            var availKey = s.plant_name + "|" + s.state + "|" + Math.round(s.latitude * 1000) / 1000 + "," + Math.round(s.longitude * 1000) / 1000;
+            var avail = availData.sites[availKey];
+            if (avail) {
+              s.availability_status = avail.status || "unknown";
+              s.availability_confidence = avail.confidence || "low";
+              s.availability_owner = avail.owner || undefined;
+              s.availability_competitor = avail.competitor || undefined;
+              s.availability_competitor_details = avail.competitor_details || undefined;
+              s.availability_environmental = avail.environmental_issues || undefined;
+              s.availability_recent_activity = avail.recent_activity || undefined;
+              s.availability_sources = avail.sources || undefined;
+              s.availability_notes = avail.notes || undefined;
+              s.availability_researched_at = avail.researched_at || undefined;
+            }
+          }
+        }
+
         onScoredSitesLoaded(sites);
 
         map.addSource(SCORED_SITES_SOURCE, { type: "geojson", data: mergedGeo as any });
@@ -1092,7 +1281,7 @@ var MapComponent = forwardRef<MapHandle, MapProps>(function MapComponent(props, 
           },
           paint: {
             "icon-color": ["match", ["get", "opportunity_type"],
-              "retired_plant", "#ef4444", "adaptive_reuse", "#f59e0b", "greenfield", "#22c55e", "#eab308"],
+              "retired_plant", "#ef4444", "adaptive_reuse", "#f59e0b", "greenfield", "#22c55e", "stranded_capacity", "#8b5cf6", "#eab308"],
             "icon-opacity": 0.95, "icon-halo-color": "#000000", "icon-halo-width": 0.5,
           },
         });

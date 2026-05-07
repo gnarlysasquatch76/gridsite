@@ -1,6 +1,6 @@
 # GridSite Architecture
 
-Adaptive reuse site intelligence platform for data center development. Identifies and scores locations nationwide by aggregating public infrastructure data — retired power plants, EPA brownfield sites, transmission infrastructure, interconnection queue activity, flood zones, and broadband coverage. First client: Raeden. Deadline: April 30.
+Adaptive reuse site intelligence platform for data center development. Identifies and scores locations nationwide by aggregating public infrastructure data — retired power plants, EPA brownfield sites, transmission infrastructure, interconnection queue activity, flood zones, and broadband coverage. First client: Raeden.
 
 ## Current State
 
@@ -44,10 +44,10 @@ gridsite/
     layout.tsx        # Root layout with Geist fonts
     globals.css       # Tailwind import + CSS variables
   public/data/
-    power-plants.geojson        # 2.1 MB — EIA-860 retired/retiring plants >= 50 MW
+    power-plants.geojson        # 2.1 MB — EIA-860 retired/retiring plants >= 30 MW
     substations.geojson         # 6.5 MB — HIFLD 19,847 transmission-level substations
     transmission-lines.geojson  # 54 MB  — HIFLD 29,399 lines >= 138 kV
-    queue-withdrawals.geojson   # 6.4 MB — LBNL 11,973 withdrawn projects >= 50 MW
+    queue-withdrawals.geojson   # 6.4 MB — LBNL 11,973 withdrawn projects >= 30 MW
     epa-brownfields.geojson     # 11 MB  — EPA FRS 40,680 brownfield sites
     scored-sites.geojson        # 84 KB  — Top 100 scored sites (output of score-sites.py)
   scripts/
@@ -133,10 +133,10 @@ Top 100 breakdown: 26 power plants, 74 brownfield sites.
 
 | Source | Dataset | Records | File Size | Update Freq | Script |
 |--------|---------|---------|-----------|-------------|--------|
-| EIA-860 | Retired/retiring power plants >= 50 MW | 793 | 2.1 MB | Annual | `process-eia.py` |
+| EIA-860 | Retired/retiring power plants >= 30 MW | 793 | 2.1 MB | Annual | `process-eia.py` |
 | HIFLD | Transmission-level substations | 19,847 | 6.5 MB | Semi-annual | `fetch-substations.py` |
 | HIFLD | Transmission lines >= 138 kV | 29,399 | 54 MB | Semi-annual | `fetch-transmission-lines.py` |
-| LBNL | Interconnection queue withdrawals >= 50 MW | 11,973 | 6.4 MB | Quarterly | `process-queue.py` |
+| LBNL | Interconnection queue withdrawals >= 30 MW | 11,973 | 6.4 MB | Quarterly | `process-queue.py` |
 | EPA FRS | Brownfield/ACRES assessment sites | 40,680 | 11 MB | Quarterly | `fetch-brownfields.py` |
 | FEMA NFHL | Flood Hazard Zones (layer 28) | Raster tiles | Dynamic | Irregular | ArcGIS MapServer export |
 | Census/FCC | Broadband coverage indicator | Raster tiles | Dynamic | Semi-annual | ArcGIS MapServer export |

@@ -36,10 +36,16 @@ export var LMP_NODES_SOURCE = "lmp-nodes";
 export var LMP_NODES_LAYER = "lmp-nodes-circles";
 export var OASIS_ATC_SOURCE = "oasis-atc";
 export var OASIS_ATC_LAYER = "oasis-atc-circles";
+export var STRANDED_CAPACITY_SOURCE = "stranded-capacity";
+export var STRANDED_CAPACITY_LAYER = "stranded-capacity-icons";
+export var WARN_FILINGS_SOURCE = "warn-filings";
+export var WARN_FILINGS_LAYER = "warn-filings-circles";
+export var WARN_FILINGS_GLOW_LAYER = "warn-filings-glow";
 export var DIAMOND_ICON = "diamond-icon";
 export var STAR_ICON = "star-icon";
 export var TRIANGLE_ICON = "triangle-icon";
 export var SQUARE_ICON = "square-icon";
+export var FACTORY_ICON = "factory-icon";
 
 export interface ScoredSite {
   plant_name: string;
@@ -57,6 +63,30 @@ export interface ScoredSite {
   owner_name?: string;
   utility_id?: number;
   composite_score: number;
+  // Availability (from Deal Scout)
+  availability_status?: AvailabilityStatus;
+  availability_confidence?: "high" | "medium" | "low";
+  availability_owner?: string;
+  availability_competitor?: string;
+  availability_competitor_details?: string;
+  availability_environmental?: string;
+  availability_recent_activity?: string;
+  availability_sources?: string[];
+  availability_notes?: string;
+  availability_researched_at?: string;
+  // Economic Motivation (stranded capacity)
+  economic_motivation?: number;
+  employee_count_score?: number;
+  recency_score?: number;
+  estimated_mw_score?: number;
+  // Stranded capacity fields
+  estimated_mw?: number;
+  employee_count?: number;
+  closure_date?: string;
+  closure_status?: string;
+  sub_type?: string;
+  company?: string;
+  location_approximate?: boolean;
   // 4 dimensions
   time_to_power: number;
   site_readiness: number;
@@ -131,6 +161,7 @@ export type LayerState = {
   utilityTerritories: boolean;
   lmpNodes: boolean;
   oasisAtc: boolean;
+  warnFilings: boolean;
 };
 
 export type LayerGroupState = {
@@ -138,6 +169,7 @@ export type LayerGroupState = {
   capacity: boolean;
   risk: boolean;
   connectivity: boolean;
+  dealSignals: boolean;
 };
 
 export var LAYER_GROUPS = {
@@ -145,21 +177,44 @@ export var LAYER_GROUPS = {
   capacity: ["utilityTerritories", "queueWithdrawals", "lmpNodes", "oasisAtc"] as const,
   risk: ["floodZones", "brownfields"] as const,
   connectivity: ["broadband"] as const,
+  dealSignals: ["warnFilings"] as const,
 };
 
-export var OPPORTUNITY_TYPES = ["retired_plant", "adaptive_reuse", "greenfield"] as const;
+export var OPPORTUNITY_TYPES = ["retired_plant", "adaptive_reuse", "greenfield", "stranded_capacity"] as const;
 export type OpportunityType = typeof OPPORTUNITY_TYPES[number];
 
 export var OPPORTUNITY_LABELS: Record<string, string> = {
   retired_plant: "Retired Plant",
   adaptive_reuse: "Adaptive Reuse",
   greenfield: "Greenfield",
+  stranded_capacity: "Stranded Capacity",
 };
 
 export var OPPORTUNITY_COLORS: Record<string, string> = {
   retired_plant: "#ef4444",
   adaptive_reuse: "#f59e0b",
   greenfield: "#22c55e",
+  stranded_capacity: "#8b5cf6",
+};
+
+export type AvailabilityStatus = "available" | "competitor_activity" | "taken" | "still_operating" | "environmental_hold" | "unknown";
+
+export var AVAILABILITY_LABELS: Record<AvailabilityStatus, string> = {
+  available: "Available",
+  competitor_activity: "Competitor Activity",
+  taken: "Taken",
+  still_operating: "Still Operating",
+  environmental_hold: "Environmental Hold",
+  unknown: "Unverified",
+};
+
+export var AVAILABILITY_COLORS: Record<AvailabilityStatus, string> = {
+  available: "#22c55e",
+  competitor_activity: "#f59e0b",
+  taken: "#ef4444",
+  still_operating: "#ef4444",
+  environmental_hold: "#f59e0b",
+  unknown: "#94a3b8",
 };
 
 export var FLOOD_RISK_STATES = new Set(["LA", "FL", "TX", "MS", "AL", "SC", "NC"]);

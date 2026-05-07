@@ -1,0 +1,481 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2558243,
+          29.7616569
+        ]
+      },
+      "properties": {
+        "name": "Ardagh Glass Packaging, Inc.",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Glass Plant",
+        "company": "Ardagh Glass Packaging, Inc.",
+        "location": "4202 Fidelity Street, Houston, TX 77029",
+        "state": "TX",
+        "estimated_mw": 45,
+        "employee_count": 220,
+        "closure_date": "2024-06-24",
+        "closure_status": "announced",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "UNKNOWN305622",
+        "nearest_substation_km": 0.3,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 220 employees affected.",
+        "sources": [
+          "https://data.texas.gov/resource/8w53-c4f6.csv"
+        ],
+        "researched_at": "2026-03-16T22:12:21.560975+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.945199,
+          38.3870031
+        ]
+      },
+      "properties": {
+        "name": "First Brands Group, LLC",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Facility",
+        "company": "First Brands Group, LLC",
+        "location": "1010 1st Ave W, Jasper, IN 47546",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 345,
+        "closure_date": "2026-04-30",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "UNKNOWN127790",
+        "nearest_substation_km": 7.1,
+        "nearest_substation_kv": 161.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 345 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:12:30.246849+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.831904,
+          41.236045
+        ]
+      },
+      "properties": {
+        "name": "Dalton Corporation",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Facility",
+        "company": "Dalton Corporation",
+        "location": "1900 E Jefferson Street, Warsaw, IN 46580",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 257,
+        "closure_date": "2026-02-27",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "UNKNOWN122871",
+        "nearest_substation_km": 3.4,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 257 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:12:36.695871+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.1583502,
+          39.7683331
+        ]
+      },
+      "properties": {
+        "name": "AAR Aircraft Services",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Facility",
+        "company": "AAR Aircraft Services",
+        "location": "Indianapolis, IN",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 329,
+        "closure_date": "2026-02-15",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": true,
+        "nearest_substation_name": "RISER167166",
+        "nearest_substation_km": 0.8,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 329 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:12:42.860500+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4206528,
+          41.721372
+        ]
+      },
+      "properties": {
+        "name": "Cruiser RV",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Facility",
+        "company": "Cruiser RV",
+        "location": "Howe, IN",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 251,
+        "closure_date": "2025-06-20",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": true,
+        "nearest_substation_name": "LAGRANGE",
+        "nearest_substation_km": 9.5,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "WARN Act filing. 251 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:12:50.311351+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.8217513,
+          38.3276539
+        ]
+      },
+      "properties": {
+        "name": "General Mills",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Mill",
+        "company": "General Mills",
+        "location": "707 Pillsbury Lane, New Albany, IN 47150",
+        "state": "IN",
+        "estimated_mw": 45,
+        "employee_count": 343,
+        "closure_date": "Sept. 2016",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "FLOYDS KNOBS",
+        "nearest_substation_km": 1.9,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 343 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:12:56.302977+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3370646,
+          41.6020962
+        ]
+      },
+      "properties": {
+        "name": "United States Steel Corporation Gary Works Plant",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Steel Mill",
+        "company": "United States Steel Corporation Gary Works Plant",
+        "location": "Gary, IN",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 323,
+        "closure_date": "No closure date announced. Layoffs to commence 05/27/2015",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": true,
+        "nearest_substation_name": "UNKNOWN122537",
+        "nearest_substation_km": 0.8,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 323 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:13:03.103195+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5715641,
+          37.970495
+        ]
+      },
+      "properties": {
+        "name": "Whirlpool Corporation",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Facility",
+        "company": "Whirlpool Corporation",
+        "location": "Evansville, IN",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 217,
+        "closure_date": "year end 2014",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": true,
+        "nearest_substation_name": "HEIDELBACH",
+        "nearest_substation_km": 1.3,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 217 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:13:12.237113+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4884616,
+          41.156928
+        ]
+      },
+      "properties": {
+        "name": "Fort Wayne Foundry",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Foundry",
+        "company": "Fort Wayne Foundry",
+        "location": "Columbia City, IN",
+        "state": "IN",
+        "estimated_mw": 40,
+        "employee_count": 287,
+        "closure_date": "5/28/2009 to 6/30/2009",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": true,
+        "nearest_substation_name": "RABER",
+        "nearest_substation_km": 6.1,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 287 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:13:18.932385+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.857398,
+          40.4045973
+        ]
+      },
+      "properties": {
+        "name": "Wabash National",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Facility",
+        "company": "Wabash National",
+        "location": "1000 Sagamore Parkway South, Lafayette, IN 47905",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 790,
+        "closure_date": "1st Quarter 2009",
+        "closure_status": "announced",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "UNKNOWN154089",
+        "nearest_substation_km": 0.8,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "WARN Act filing. 790 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:13:25.317916+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7989483,
+          41.5454901
+        ]
+      },
+      "properties": {
+        "name": "Keystone RV Company",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Industrial Facility",
+        "company": "Keystone RV Company",
+        "location": "2642 Hackberry Drive, Goshen, IN 46526",
+        "state": "IN",
+        "estimated_mw": 30,
+        "employee_count": 265,
+        "closure_date": "04/03/2009&nbsp;to 5/01/2009",
+        "closure_status": "closing",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "UNKNOWN122933",
+        "nearest_substation_km": 4.3,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "WARN Act filing. 265 employees affected.",
+        "sources": [
+          "https://www.in.gov/dwd/warn-notices/current-warn-notices/"
+        ],
+        "researched_at": "2026-03-16T22:13:38.018235+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3925163,
+          40.8068135
+        ]
+      },
+      "properties": {
+        "name": "Novartis Pharmaceuticals Corporation",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Pharmaceutical",
+        "company": "Novartis Pharmaceuticals Corporation",
+        "location": "One Health Plaza, East Hanover, NJ 07936",
+        "state": "NJ",
+        "estimated_mw": 35,
+        "employee_count": 561,
+        "closure_date": "2014-04-14 00:00:00",
+        "closure_status": "announced",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "UNKNOWN132393",
+        "nearest_substation_km": 1.8,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "WARN Act filing. 561 employees affected.",
+        "sources": [
+          "https://www.nj.gov/labor/assets/PDFs/WARN/WARN_Notice_Archive.xlsx"
+        ],
+        "researched_at": "2026-03-16T22:13:44.339500+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3925163,
+          40.8068135
+        ]
+      },
+      "properties": {
+        "name": "Novartis Pharmaceuticals Corporation",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Pharmaceutical",
+        "company": "Novartis Pharmaceuticals Corporation",
+        "location": "One Health Plaza, East Hanover, NJ 07936",
+        "state": "NJ",
+        "estimated_mw": 35,
+        "employee_count": 1380,
+        "closure_date": "2012-06-08 00:00:00",
+        "closure_status": "announced",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "UNKNOWN132393",
+        "nearest_substation_km": 1.8,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "WARN Act filing. 1380 employees affected.",
+        "sources": [
+          "https://www.nj.gov/labor/assets/PDFs/WARN/WARN_Notice_Archive.xlsx"
+        ],
+        "researched_at": "2026-03-16T22:13:44.353864+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.026643,
+          39.42106
+        ]
+      },
+      "properties": {
+        "name": "GLASS GROUP",
+        "source": "warn_act",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Glass Plant",
+        "company": "GLASS GROUP",
+        "location": "1300 Wheaton Ave, Millville, NJ 08332",
+        "state": "NJ",
+        "estimated_mw": 45,
+        "employee_count": 600,
+        "closure_date": "2005-08-31 00:00:00",
+        "closure_status": "announced",
+        "utility": "",
+        "location_approximate": false,
+        "nearest_substation_name": "LINCOLN STATION",
+        "nearest_substation_km": 1.0,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "WARN Act filing. 600 employees affected.",
+        "sources": [
+          "https://www.nj.gov/labor/assets/PDFs/WARN/WARN_Notice_Archive.xlsx"
+        ],
+        "researched_at": "2026-03-16T22:13:53.003843+00:00"
+      }
+    }
+  ]
+}

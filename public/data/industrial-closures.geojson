@@ -1,0 +1,568 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.3676974,
+          29.7589382
+        ]
+      },
+      "properties": {
+        "name": "Houston Refinery",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Refinery",
+        "company": "LyondellBasell Industries",
+        "location": "Houston, TX",
+        "state": "TX",
+        "estimated_mw": 400,
+        "employee_count": 600,
+        "closure_date": "February 2025",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "DOWNTOWN",
+        "nearest_substation_km": 0.6,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "Houston's oldest refinery, 263,776 bpd capacity, operated for over a century",
+        "sources": [
+          "https://www.houstonpublicmedia.org/articles/news/energy-environment/2025/01/23/511770/lyondells-houston-refinery-to-begin-closure-this-month/"
+        ],
+        "researched_at": "2026-03-16T21:16:04.010063+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.1624501,
+          26.3013982
+        ]
+      },
+      "properties": {
+        "name": "Edinburg Box Plant and Sheet Plant",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Paper Mill",
+        "company": "International Paper",
+        "location": "Edinburg, TX",
+        "state": "TX",
+        "estimated_mw": 45,
+        "employee_count": 137,
+        "closure_date": "September 2025",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "UNKNOWN306136",
+        "nearest_substation_km": 2.4,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "Part of US-Mexico border footprint restructuring, converting sheet plant to warehouse",
+        "sources": [
+          "https://www.packagingdive.com/news/international-paper-restructure-footprint-texas-mexico/747731/"
+        ],
+        "researched_at": "2026-03-16T21:16:05.543838+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.1487199,
+          38.7014389
+        ]
+      },
+      "properties": {
+        "name": "Granite City Works",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Steel Mill",
+        "company": "U.S. Steel",
+        "location": "Granite City, IL",
+        "state": "IL",
+        "estimated_mw": 120,
+        "employee_count": 800,
+        "closure_date": "2025-10 (production stopped, restarting 2026)",
+        "closure_status": "closing",
+        "utility": "",
+        "nearest_substation_name": "UNKNOWN157801",
+        "nearest_substation_km": 1.9,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "Steel production halted, 800 workers retained for maintenance. 2.8M tons annual capacity. Production restarting in 2026",
+        "sources": [
+          "https://www.manufacturingdive.com/news/us-steel-cut-illinois-mill-production-retain-800-workers-Granite-City/759757/"
+        ],
+        "researched_at": "2026-03-16T21:16:07.100388+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6331021,
+          41.6333678
+        ]
+      },
+      "properties": {
+        "name": "Riverdale Steel Plant",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Steel Mill",
+        "company": "Cleveland-Cliffs",
+        "location": "Riverdale, IL",
+        "state": "IL",
+        "estimated_mw": 35,
+        "employee_count": 300,
+        "closure_date": "2025-06-30",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "TAP138194",
+        "nearest_substation_km": 1.9,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 345.0,
+        "data_center_suitability_notes": "Part of 950 jobs lost across 3 Cleveland-Cliffs facilities, produces specialized steel products",
+        "sources": [
+          "https://gmk.center/en/news/cleveland-cliffs-shuts-down-three-plants-in-the-us/"
+        ],
+        "researched_at": "2026-03-16T21:16:08.780317+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.8373558,
+          35.5328838
+        ]
+      },
+      "properties": {
+        "name": "Pactiv Evergreen Canton Paper Mill",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Paper Mill",
+        "company": "Pactiv Evergreen",
+        "location": "Canton, NC",
+        "state": "NC",
+        "estimated_mw": 45,
+        "employee_count": 1000,
+        "closure_date": "June 2023",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "CRAGGY",
+        "nearest_substation_km": 24.1,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "Century-old facility, largest employer in Canton area. Site sold to Spirtas Worldwide for demolition/redevelopment. $6.25M settlement with state.",
+        "sources": [
+          "https://www.packagingdive.com/news/pactiv-evergreen-canton-north-carolina-mill-closure-settlement/740225/"
+        ],
+        "researched_at": "2026-03-16T21:16:10.520823+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3343041,
+          33.4392245
+        ]
+      },
+      "properties": {
+        "name": "Georgetown Pulp & Paper Mill",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Paper Mill",
+        "company": "International Paper",
+        "location": "Georgetown, SC",
+        "state": "SC",
+        "estimated_mw": 45,
+        "employee_count": 674,
+        "closure_date": "End of 2024",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "UNKNOWN121178",
+        "nearest_substation_km": 9.5,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "Produces 300,000 tons of fluff pulp annually",
+        "sources": [
+          "https://www.packagingdive.com/news/international-paper-georgetown-south-carolina-gcf/731590/"
+        ],
+        "researched_at": "2026-03-16T21:16:12.211850+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3343041,
+          33.4392245
+        ]
+      },
+      "properties": {
+        "name": "Liberty Steel Georgetown",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Steel Mill",
+        "company": "Liberty Steel Group",
+        "location": "Georgetown, SC",
+        "state": "SC",
+        "estimated_mw": 55,
+        "employee_count": 200,
+        "closure_date": "October 2024",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "UNKNOWN121178",
+        "nearest_substation_km": 9.5,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "Electric arc furnace steel mill, permanently closed after decade of uncertainty",
+        "sources": [
+          "https://mountpleasantmagazine.com/2025/sc-carolina-coast/hammock-coast/georgetown/bending-with-the-times-georgetown-steel-mill-redevelopment-to-revitalize-riverfront/"
+        ],
+        "researched_at": "2026-03-16T21:16:12.230973+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7671658,
+          34.1984435
+        ]
+      },
+      "properties": {
+        "name": "AESC Florence Battery Plant",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Battery Manufacturing",
+        "company": "AESC (Automotive Energy Supply Corp.)",
+        "location": "Florence, SC",
+        "state": "SC",
+        "estimated_mw": 75,
+        "employee_count": 1600,
+        "closure_date": "Construction Paused 2025",
+        "closure_status": "announced",
+        "utility": "",
+        "nearest_substation_name": "UNKNOWN121224",
+        "nearest_substation_km": 2.1,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "EV battery plant construction halted due to policy uncertainty, $1.6B investment paused",
+        "sources": [
+          "https://scdailygazette.com/2025/06/05/electric-vehicle-battery-company-halts-construction-of-sc-manufacturing-plant/"
+        ],
+        "researched_at": "2026-03-16T21:16:13.791106+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.8413613,
+          40.2353679
+        ]
+      },
+      "properties": {
+        "name": "Cleveland-Cliffs Steelton Facility",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Steel Mill",
+        "company": "Cleveland-Cliffs Inc.",
+        "location": "Steelton, PA",
+        "state": "PA",
+        "estimated_mw": 45,
+        "employee_count": 550,
+        "closure_date": "2026-01-13",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "UNKNOWN123405",
+        "nearest_substation_km": 2.1,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "Oldest continuously operating steel plant in America producing railroad rails. 150-ton DC electric arc furnace. Plant idled June 2025, permanently closed January 2026",
+        "sources": [
+          "https://www.abc27.com/local-news/cleveland-cliffs-steelton-plant-to-permanently-close-early-2026/"
+        ],
+        "researched_at": "2026-03-16T21:16:15.659289+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.2714505,
+          40.6872885
+        ]
+      },
+      "properties": {
+        "name": "BVPV Styrenics Facility",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Chemical Plant",
+        "company": "Styropek USA/BVPV Styrenics LLC",
+        "location": "Monaca, PA",
+        "state": "PA",
+        "estimated_mw": 35,
+        "employee_count": 140,
+        "closure_date": "2026-01",
+        "closure_status": "closing",
+        "utility": "",
+        "nearest_substation_name": "VALLEY",
+        "nearest_substation_km": 4.0,
+        "nearest_substation_kv": 138.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "Petrochemical facility producing 123,000 tons/year of polystyrene beads. Operations idled May 2025, full closure early 2026",
+        "sources": [
+          "https://www.cbsnews.com/pittsburgh/news/pittsburgh-area-manufacturing-facility-in-monaca-set-to-close/"
+        ],
+        "researched_at": "2026-03-16T21:16:17.153478+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.0320518,
+          31.1861855
+        ]
+      },
+      "properties": {
+        "name": "Cedar Springs Containerboard Mill",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Paper Mill",
+        "company": "Georgia-Pacific",
+        "location": "Cedar Springs, GA",
+        "state": "GA",
+        "estimated_mw": 45,
+        "employee_count": 535,
+        "closure_date": "2025-08",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "UNKNOWN108997",
+        "nearest_substation_km": 9.0,
+        "nearest_substation_kv": 500.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "Mill permanently closed August 1, 2025. Facility processed containerboard with high power requirements for paper production machinery.",
+        "sources": [
+          "https://www.packagingdive.com/news/georgia-pacific-closing-containerboard-mill-cedar-springs-layoffs/748110/"
+        ],
+        "researched_at": "2026-03-16T21:16:18.875456+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.0921335,
+          32.0790074
+        ]
+      },
+      "properties": {
+        "name": "Savannah Containerboard Mill",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Paper Mill",
+        "company": "International Paper",
+        "location": "Savannah, GA",
+        "state": "GA",
+        "estimated_mw": 65,
+        "employee_count": 600,
+        "closure_date": "2025-09-30",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "BOULEVARD",
+        "nearest_substation_km": 6.6,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "Shut down in stages by September 30, 2025. Removed 1 million tons of annual containerboard capacity. High power demand facility for paper production.",
+        "sources": [
+          "https://www.packagingdive.com/news/international-paper-two-mill-closures-riceboro-savannah-georgia-layoffs/758254/"
+        ],
+        "researched_at": "2026-03-16T21:16:20.715389+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.4334408,
+          31.7354935
+        ]
+      },
+      "properties": {
+        "name": "Riceboro Containerboard Mill",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Paper Mill",
+        "company": "International Paper",
+        "location": "Riceboro, GA",
+        "state": "GA",
+        "estimated_mw": 35,
+        "employee_count": 300,
+        "closure_date": "2025-09-12",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "DORCHESTER",
+        "nearest_substation_km": 10.6,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "Shut down in stages by September 12, 2025. Reduced IP's annual capacity by 430,000 tons. Part of company's 80/20 optimization plan.",
+        "sources": [
+          "https://www.packagingdive.com/news/international-paper-two-mill-closures-riceboro-savannah-georgia-layoffs/758254/"
+        ],
+        "researched_at": "2026-03-16T21:16:22.264436+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.7808568,
+          32.998027
+        ]
+      },
+      "properties": {
+        "name": "Hayden Smelter",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Copper Smelter",
+        "company": "ASARCO (Grupo Mexico)",
+        "location": "Hayden, AZ",
+        "state": "AZ",
+        "estimated_mw": 150,
+        "employee_count": 800,
+        "closure_date": "2020-mothballed",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "SILVER KING",
+        "nearest_substation_km": 44.9,
+        "nearest_substation_kv": 500.0,
+        "nearest_transmission_kv": 0,
+        "data_center_suitability_notes": "Major copper smelter closed in 2020 during labor dispute, remains mothballed as of 2025. High power infrastructure likely intact.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Hayden_Smelter",
+          "https://downloads.regulations.gov/BIS-2025-0010-0018/attachment_1.pdf"
+        ],
+        "researched_at": "2026-03-16T21:16:24.051155+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.940016,
+          33.4255117
+        ]
+      },
+      "properties": {
+        "name": "Fab 2",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Semiconductor Fabrication",
+        "company": "Microchip Technology",
+        "location": "Tempe, AZ",
+        "state": "AZ",
+        "estimated_mw": 50,
+        "employee_count": 500,
+        "closure_date": "2025-05",
+        "closure_status": "closing",
+        "utility": "",
+        "nearest_substation_name": "OCOTILLO",
+        "nearest_substation_km": 2.7,
+        "nearest_substation_kv": 230.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "8-inch wafer fabrication facility closing due to excess inventory and capacity optimization. Semiconductor fabs have substantial power infrastructure.",
+        "sources": [
+          "https://www.azfamily.com/2024/12/05/semiconductor-factory-close-tempe-hundreds-employees-impacted/",
+          "https://www.datacenterdynamics.com/en/news/microchip-technology-to-cut-2000-chip-jobs-will-close-arizona-fab-earlier-than-planned/"
+        ],
+        "researched_at": "2026-03-16T21:16:25.529717+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.589723,
+          48.8466698
+        ]
+      },
+      "properties": {
+        "name": "Alcoa Intalco Works",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Aluminum Smelter",
+        "company": "Alcoa",
+        "location": "Ferndale, WA",
+        "state": "WA",
+        "estimated_mw": 280,
+        "employee_count": 700,
+        "closure_date": "2020 (demolition 2025-2026)",
+        "closure_status": "closing",
+        "utility": "",
+        "nearest_substation_name": "CUSTER",
+        "nearest_substation_km": 6.9,
+        "nearest_substation_kv": 500.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "Last aluminum smelter in Pacific Northwest, 1,600 acres, high-capacity electrical grid infrastructure intact, demolition 45% complete",
+        "sources": [
+          "https://oregoncapitalchronicle.com/2026/03/14/demolition-of-last-northwest-aluminum-smelter-signals-end-of-an-industrial-era/"
+        ],
+        "researched_at": "2026-03-16T21:16:28.643636+00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.310349,
+          47.4234599
+        ]
+      },
+      "properties": {
+        "name": "Alcoa Wenatchee Works",
+        "source": "news_scan",
+        "site_type": "Stranded Capacity",
+        "sub_type": "Aluminum Smelter",
+        "company": "Alcoa",
+        "location": "Wenatchee, WA",
+        "state": "WA",
+        "estimated_mw": 146,
+        "employee_count": 250,
+        "closure_date": "December 2021",
+        "closure_status": "closed",
+        "utility": "",
+        "nearest_substation_name": "ROCKY REACH",
+        "nearest_substation_km": 11.9,
+        "nearest_substation_kv": 345.0,
+        "nearest_transmission_kv": 500.0,
+        "data_center_suitability_notes": "146,000 metric tons annual capacity, permanently closed, ongoing cleanup activities",
+        "sources": [
+          "https://kpq.com/alcoa-wenatchee-smelter-closure-aluminum/"
+        ],
+        "researched_at": "2026-03-16T21:16:30.158959+00:00"
+      }
+    }
+  ]
+}

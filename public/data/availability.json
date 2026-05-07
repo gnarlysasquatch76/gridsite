@@ -1,0 +1,336 @@
+{
+  "metadata": {
+    "generated_at": "2026-03-16T18:18:06.147798+00:00",
+    "total_sites": 20,
+    "researched": 20,
+    "skipped_cached": 0,
+    "errors": 0,
+    "model": "claude-sonnet-4-20250514",
+    "elapsed_seconds": 418.9
+  },
+  "sites": {
+    "Mystic Generating Station|MA|42.391,-71.067": {
+      "status": "competitor_activity",
+      "confidence": "high",
+      "owner": "Constellation Energy (Units 8 & 9 sold to Eversource Dec 2024), Wynn Resorts (Units 1-7 purchased 2023)",
+      "competitor": "Wynn Resorts",
+      "competitor_details": "Wynn purchased 45-acre portion in March 2023 for $25M, planning casino expansion with sportsbook, poker room, nightclub, hotel tower. Also New England Revolution soccer stadium proposal. Eversource purchased remaining 26-acre Units 8&9 site for $70M in Dec 2024 for energy infrastructure.",
+      "environmental_issues": "Likely contamination from century of coal/oil operations (1940s-2003). Historical 'Filthy Five' designation. Site has coal units 1-6 legacy contamination. No active Superfund status found but potential brownfield cleanup needed.",
+      "recent_activity": "Site split: Wynn owns entertainment/stadium portion, Eversource owns energy infrastructure portion. Plant fully retired June 1, 2024. Decommissioning underway.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mystic_Generating_Station",
+        "https://www.bostonglobe.com/2024/12/24/business/eversource-mystic-river-plant-energy/",
+        "https://www.casino.org/news/wynn-resorts-acquiring-power-plant-next-encore-boston-harbor/"
+      ],
+      "notes": "Site definitively unavailable for data center development. Split ownership between Wynn Resorts (entertainment/gaming expansion) and Eversource (energy infrastructure). Historical coal operations likely require environmental remediation.",
+      "researched_at": "2026-03-16T18:11:32.050265+00:00"
+    },
+    "J M Stuart|OH|38.636,-83.694": {
+      "status": "environmental_hold",
+      "confidence": "high",
+      "owner": "Kingfisher Development LLC (CAPEXEL subsidiary)",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Active coal ash remediation ongoing since 2019. Groundwater contamination with arsenic, boron, chloride, cobalt, lithium and molybdenum. Three ash ponds violate EPA location restrictions due to aquifer proximity. Multiple coal ash disposal sites require federal regulatory compliance under 2015 and 2024 Coal Ash Rules.",
+      "recent_activity": "Site is being actively marketed for development with 214 acres available on a 500-acre property. Demolition completed in 2022, environmental remediation in progress. EPA approved relocation of coal ash to on-site lined landfill in December 2023.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/J.M._Stuart_Station",
+        "https://www.capexel.com/journal/aes-stuart-ohio-2e6cs",
+        "https://blog.ucs.org/jeremy-richardson/coal-ash-cleanup-victory-for-the-environment-the-economy-and-environmental-justice/",
+        "https://www.seohioproperties.com/ohiose/property/745-US-52--Manchester-Ohio/FA37F661-406B-4303-857A-FA8DC76EA054"
+      ],
+      "notes": "Site sold to Kingfisher Development/CAPEXEL in 2019 for remediation and redevelopment. Environmental cleanup ongoing with significant coal ash contamination issues that must be resolved before major development. Property actively marketed but development timeline depends on completion of environmental remediation activities required by EPA regulations.",
+      "researched_at": "2026-03-16T18:11:58.015536+00:00"
+    },
+    "Homer City Generating Station|PA|40.513,-79.196": {
+      "status": "competitor_activity",
+      "confidence": "high",
+      "owner": "Homer City Holdings (75% Knighthead Capital Management, 12% GoldenTree Asset Management)",
+      "competitor": "Homer City Redevelopment / Kiewit Power Constructors",
+      "competitor_details": "$10 billion project to build 4.5 GW gas-fired power plant and data center campus. Project announced April 2025, air permits approved by PA DEP, construction targeted to begin 2026 with first power by 2027",
+      "environmental_issues": "Coal ash disposal system with 14 ponds (3 unlined) and 3 landfills (2 unlined) regulated under CCR rule. Site has history of pollution violations and fines. Coal ash remediation ongoing under PA DEP oversight",
+      "recent_activity": "Site demolished March 2025, major data center project announced April 2025 with $5M state grant for gas line extension. PA DEP air quality plan approved. EQT contracted as natural gas supplier",
+      "sources": [
+        "https://www.utilitydive.com/news/homer-city-gas-fired-power-station-data-center-firstenergy/744332/",
+        "https://www.homercityredevelopment.com/project-overview",
+        "https://en.wikipedia.org/wiki/Homer_City_Generating_Station",
+        "https://ashtracker.org/facility/184/homer-city-generating-station"
+      ],
+      "notes": "Site is NOT available for development - actively being redeveloped by current owners into largest gas-fired power plant in US to support AI data centers. Chimneys/cooling towers demolished March 2025. Strong local opposition from environmental groups due to pollution concerns",
+      "researched_at": "2026-03-16T18:12:19.377923+00:00"
+    },
+    "Joliet 29|IL|41.495,-88.124": {
+      "status": "available",
+      "confidence": "medium",
+      "owner": "Midwest Generation EME LLC",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Active coal ash remediation issues with Illinois EPA denying inadequate preliminary closure proposal for toxic coal ash at Lincoln Stone Quarry in March 2026; coal ash contamination identified at Joliet 29 site with groundwater monitoring concerns",
+      "recent_activity": "Joliet 29 generating facility fully retired September 1, 2023. Environmental advocacy groups pushing for stronger coal ash cleanup enforcement after Illinois EPA denial of Midwest Generation's permit application for coal ash remediation in March 2026.",
+      "sources": [
+        "https://midwestgenerationllc.com/",
+        "https://earthjustice.org/press/2026/illinois-epa-denies-nrgs-inadequate-preliminary-closure-proposal-and-monitoring-plan-for-toxic-coal-ash-at-lincoln-stone-quarry",
+        "https://www.chicagobusiness.com/utilities/nrgs-giant-gas-fired-power-plant-joliet-close",
+        "https://www.senatorventura.com/issues/environmental-issues/coal-ash-ponds"
+      ],
+      "notes": "Plant operated by Midwest Generation (subsidiary of Edison International/NRG) from 1999 until retirement. Separate data center developments underway in Joliet area but not at this specific power plant site. Coal ash environmental remediation remains unresolved issue that could complicate redevelopment timeline.",
+      "researched_at": "2026-03-16T18:12:40.411491+00:00"
+    },
+    "W H Sammis|OH|40.532,-80.632": {
+      "status": "competitor_activity",
+      "confidence": "high",
+      "owner": "Energy Transition and Environmental Management (ETEM)",
+      "competitor": "ETEM",
+      "competitor_details": "Houston-based ETEM acquired the site in September 2023 and is actively pursuing data center development. They are seeking priority investment area designation from Jefferson County commissioners to access Ohio House Bill 15 tax benefits for data center development. Plans include building natural gas pipeline infrastructure and combined cycle gas turbines to power data centers.",
+      "environmental_issues": "Site is currently in demolition and remediation stage. Structure above State Route 7 scheduled for demolition in Q1 2026. Three-year transformation project underway with B&B Wrecking and Excavating handling dismantlement.",
+      "recent_activity": "June 2025: ETEM presented data center development plans to Jefferson County commissioners, requesting priority investment area designation under Ohio HB 15. Commissioners expressed support pending legal review. Demolition ongoing with smokestacks and boilers removed in 2024-2025.",
+      "sources": [
+        "https://www.theintelligencer.net/news/community/2025/06/opportunities-eyed-for-former-w-h-sammis-plant-site-in-stratton/",
+        "https://pitchbook.com/profiles/company/535436-83",
+        "https://www.wtrf.com/ohio/ohio-state-route-7-to-close-this-weekend-for-power-plant-demolition/"
+      ],
+      "notes": "Site closed in May 2023. ETEM purchased from Energy Harbor in Sept 2023. Active data center development proposal with county support. No competing developers identified. Demolition completion expected Q1 2027. Strong AI/data center focus with power generation component planned.",
+      "researched_at": "2026-03-16T18:13:02.249817+00:00"
+    },
+    "Widows Creek|AL|34.883,-85.755": {
+      "status": "competitor_activity",
+      "confidence": "high",
+      "owner": "Tennessee Valley Authority (TVA)",
+      "competitor": "Google",
+      "competitor_details": "Google built a $600 million data center on 360 acres adjacent to the retired power plant. Construction began in April 2018 and the facility became operational. As of 2022, the campus has two data center buildings, each approximately 135,000 sqft.",
+      "environmental_issues": "Coal ash handling completed by Barnard Inc - capped and covered nearly 400 acres of coal combustion residuals (CCR) with LLDPE geomembrane and soil cover. Past contamination included hexavalent chromium levels 5,000x California safety standards according to 2011 Earthjustice/Sierra Club report.",
+      "recent_activity": "TVA demolished remaining power plant structures (500-foot stacks, 1,001-foot chimney) between 2019-2021 to prepare site for further development. Google data center is operational with two buildings as of 2022.",
+      "sources": [
+        "https://www.local3news.com/watch-tva-demolishes-widows-creek-fossil-plant/article_b660f21e-9d06-5f26-ba04-a6d0960342b1.html",
+        "https://baxtel.com/data-center/google-bridgeport",
+        "https://www.barnard-inc.com/projects/widows-creek-project"
+      ],
+      "notes": "Site is not available for new data center development as Google already has an active, operational data center facility. TVA owns the land but has leased/sold portions to Google. Remediation of coal ash contamination was completed, but past environmental issues included severe hexavalent chromium contamination.",
+      "researched_at": "2026-03-16T18:13:27.706244+00:00"
+    },
+    "San Juan|NM|36.801,-108.439": {
+      "status": "environmental_hold",
+      "confidence": "high",
+      "owner": "Public Service Company of New Mexico (PNM)",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Active groundwater and soil contamination investigation ongoing with NMED. Known contaminants include nitrate, sulfate, arsenic, selenium, uranium, boron, and volatile organic compounds violating state laws. Site demolition ~90% complete as of October 2025, but environmental cleanup plan due November 2026.",
+      "recent_activity": "Site fully decommissioned in 2022, smokestacks demolished August 2024, currently undergoing environmental remediation assessment with state oversight through 2025-2026",
+      "sources": [
+        "https://sourcenm.com/2025/10/06/new-mexico-officials-to-hold-update-on-san-juan-generating-station-cleanup/",
+        "https://www.gem.wiki/San_Juan_Generating_Station",
+        "https://www.kunm.org/kunm-news-update/2024-08-26/mon-san-juan-generating-station-demolition-begins-more"
+      ],
+      "notes": "PNM owns the land and retains majority ownership. Site has transmission infrastructure remaining connected to grid via San Juan Solar project. No data center development identified at this specific site, though other major data center projects are active elsewhere in New Mexico. Environmental cleanup timeline could delay redevelopment for 1-2 years.",
+      "researched_at": "2026-03-16T18:13:45.994941+00:00"
+    },
+    "C & M PLATING COMPANY INC|IN|40.96,-85.374": {
+      "status": "environmental_hold",
+      "confidence": "high",
+      "owner": null,
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Listed as superfund site with manufacturing plant classification; appears on Indiana brownfields list suggesting contaminated status requiring remediation",
+      "recent_activity": "Site identified as superfund/brownfield with environmental contamination from historical plating operations",
+      "sources": [
+        "https://www.homefacts.com/environmentalhazards/Indiana/Huntington-County/Roanoke/Superfund-C-And-M-Plating-Ind005451752.html",
+        "https://secure.in.gov/ifa/brownfields/files/7.8.25-MS.pdf"
+      ],
+      "notes": "Historical metal plating facility in Roanoke, Huntington County with superfund designation. Environmental contamination would require extensive remediation before any redevelopment. No current competitor data center activity identified in area.",
+      "researched_at": "2026-03-16T18:14:10.017991+00:00"
+    },
+    "Collins|IL|41.346,-88.393": {
+      "status": "competitor_activity",
+      "confidence": "high",
+      "owner": "Vistra Corp (former Midwest Generation LLC)",
+      "competitor": "Tract",
+      "competitor_details": "Data center land developer Tract acquired 343-acre site in Morris, Illinois off I-80 for $51.5M in January 2026, developing Morris Technology Park - a 2.9M sq ft, 1GW data center campus targeting initial energization by June 2028",
+      "environmental_issues": null,
+      "recent_activity": "Collins Station permanently closed in December 2004 by Midwest Generation (now Vistra Corp). Site now overshadowed by Tract's nearby Morris Technology Park data center project approved by Morris City Council in 2025, launching major data center expansion in Grundy County",
+      "sources": [
+        "https://therealdeal.com/chicago/2026/01/28/tract-wants-to-build-data-center-in-morris-illinois/",
+        "https://www.bisnow.com/chicago/news/data-center-capital-markets/data-center-infrastructure-developer-takes-343-acre-chicago-area-swing-132919",
+        "https://www.gem.wiki/Midwest_Generation",
+        "https://vistracorp.com/generation/"
+      ],
+      "notes": "Collins Station was a 2,698 MW natural gas/oil plant owned by Midwest Generation (subsidiary of Edison International, later acquired by Dynegy 2013, then Vistra 2018). Plant permanently ceased operations September 30, 2004. Current focus in Morris area is on Tract's massive data center development and multiple data center projects throughout Grundy County. No indication of Collins site redevelopment activity.",
+      "researched_at": "2026-03-16T18:14:39.077207+00:00"
+    },
+    "Hatfields Ferry Power Station|PA|39.856,-79.927": {
+      "status": "available",
+      "confidence": "high",
+      "owner": "FirstEnergy (Allegheny Energy Supply Company LLC)",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Groundwater contamination from coal ash waste, settlement with environmental groups for landfill remediation measures including caps and reseeding to prevent water infiltration",
+      "recent_activity": "All major structures demolished by November 2023, site cleared and prepared for future development, original APV gas plant deal fell through in 2022",
+      "sources": [
+        "https://investors.firstenergycorp.com/investor-materials/news-releases/news-details/2017/FirstEnergy-to-Sell-Portion-of-Former-Hatfields-Ferry-Power-Station-to-APV-Renaissance-Partners/default.aspx",
+        "https://www.power-eng.com/coal/plant-decommissioning/emission-stacks-come-down-at-former-coal-fired-hatfields-ferry-plant/",
+        "https://www.cbsnews.com/pittsburgh/news/boiler-house-implosion-hatfields-ferry-power-station/",
+        "https://earthjustice.org/press/2017/new-safeguards-at-hatfield-s-ferry-coal-ash-landfill"
+      ],
+      "notes": "236-acre site cleared and prepared for sale after demolition completion in 2024. Maintains high-voltage substation and water intake structure. Coal ash remediation ongoing but not blocking redevelopment.",
+      "researched_at": "2026-03-16T18:14:55.946740+00:00"
+    },
+    "Willow Glen|LA|30.274,-91.116": {
+      "status": "taken",
+      "confidence": "high",
+      "owner": "Willow Glen Terminal LLC (owned by Zydeco Holdings LLC, a Yorktown Energy Partners portfolio company)",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": null,
+      "recent_activity": "Site successfully converted from retired power plant to operational bulk liquids storage terminal in 2022. Currently operating with 2.25M barrel capacity, approved for Foreign Trade Zone status in September 2024",
+      "sources": [
+        "https://www.businesswire.com/news/home/20220531005356/en/Willow-Glen-Terminal-Accepts-Inaugural-Shipment-in-St.-Gabriel",
+        "https://willowglenterminal.com/about-us/",
+        "https://www.federalregister.gov/documents/2024/09/24/2024-21726/approval-of-subzone-status-willow-glen-terminal-llc-saint-gabriel-louisiana",
+        "https://www.theadvocate.com/baton_rouge/news/business/willow-glen-terminal-a-revamped-st-gabriel-power-station-opens-its-shipping-terminal-for-business/article_234fea66-e12b-11ec-b93a-1f693962af94.html"
+      ],
+      "notes": "Former Entergy power plant retired in 2016, fully redeveloped into active commercial terminal. Site offers 700 acres with 400+ developable acres remaining. Facility includes existing infrastructure for rail, pipeline, and deep-water dock access. No environmental remediation issues identified in sources.",
+      "researched_at": "2026-03-16T18:15:12.852115+00:00"
+    },
+    "HULCE'S SUPERMARKET|IN|40.478,-85.967": {
+      "status": "still_operating",
+      "confidence": "high",
+      "owner": "Jeff Huffman (Heartland Markets, Inc.)",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Howard County has 2 active NPL Superfund sites, though none appear directly at this location",
+      "recent_activity": "The site appears to be currently operating as Heartland Market (formerly Hulce Supermarket) with active grocery operations and employee activity as of 2025",
+      "sources": [
+        "https://www.bbb.org/us/in/greentown/profile/grocery-store/heartland-market-0382-90017180",
+        "https://www.zoominfo.com/c/heartland-markets/411634593",
+        "https://www.homefacts.com/environmentalhazards/superfunds/Indiana/Howard-County.html"
+      ],
+      "notes": "The site at 114 W Main St, Greentown is currently an active grocery store (Heartland Market) owned by Jeff Huffman through Heartland Markets Inc. The business appears to have rebranded from Hulce Supermarket to Heartland Market but continues operations. Gary Hulce appears to be a contact/manager. Website shows under construction but business listings indicate active operations with current employees.",
+      "researched_at": "2026-03-16T18:15:38.153662+00:00"
+    },
+    "44 NORTH LIBERTY STREET|OH|40.159,-83.075": {
+      "status": "unknown",
+      "confidence": "low",
+      "owner": null,
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": null,
+      "recent_activity": null,
+      "sources": [],
+      "notes": "Unable to conduct research - web search tool unavailable",
+      "researched_at": "2026-03-16T18:15:42.826970+00:00"
+    },
+    "Conesville|OH|40.184,-81.881": {
+      "status": "competitor_activity",
+      "confidence": "high",
+      "owner": "Frontier Group of Companies",
+      "competitor": "Aligned Data Centers",
+      "competitor_details": "Aligned Data Centers has secured a 197-acre parcel within the Conesville Industrial Park for a mega-scale AI campus with multi-building development, targeting initial capacity delivery mid-2026 and already has a foundational customer secured",
+      "environmental_issues": "Site has undergone remediation and brownfield cleanup since 2020 acquisition by Frontier Group, including coal combustion residual removal, asbestos abatement, and 30-year environmental monitoring program",
+      "recent_activity": "Major competitor Aligned Data Centers announced $58.7M Ohio state investment for infrastructure improvements and secured data center development within the industrial park as of July 2025",
+      "sources": [
+        "https://aligneddc.com/blog/aligned-data-centers-expands-in-ohio-with-new-mega-scale-ai-campus/",
+        "https://frontier-companies.com/coshocton-port-authority-secures-58-7-million-from-ohio-department-of-development-for-site-redevelopment-at-the-conesville-industrial-park/",
+        "https://www.datacenterdynamics.com/en/news/aligned-to-develop-200-acre-data-center-campus-in-coshocton-ohio/"
+      ],
+      "notes": "Site is actively redeveloped by Frontier Group with over $80M private investment since 2020. Multiple tenants including Standard Power (crypto/blockchain) and Aligned Data Centers. Site marketed for advanced manufacturing, data processing, and energy industries with heavy utility infrastructure intact from power plant operations.",
+      "researched_at": "2026-03-16T18:16:01.952481+00:00"
+    },
+    "FORMER KEY BANK|IN|41.523,-86.275": {
+      "status": "still_operating",
+      "confidence": "high",
+      "owner": "KeyBank National Association",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": null,
+      "recent_activity": "KeyBank Roseland branch at 19730 Darden Road remains an active full-service banking location operating since 1960",
+      "sources": [
+        "https://www.key.com/locations/in/south-bend/BRCH01010503/19730-darden-rd?ppc=cmpyxt",
+        "https://www.bankbranchlocator.com/keybank-roseland-south-bend-branch.html",
+        "https://www.wheresmybank.com/branch-234841-keybank-roseland-branch"
+      ],
+      "notes": "This is not a former Key Bank location - it is currently an active KeyBank Roseland branch operating at 19730 Darden Road. The branch has been serving customers since 1960 and continues to offer full banking services with lobby and drive-thru access, Monday-Friday 9am-5pm.",
+      "researched_at": "2026-03-16T18:16:23.293926+00:00"
+    },
+    "UNDEVELOPED PARCELS|IN|41.525,-86.275": {
+      "status": "unknown",
+      "confidence": "low",
+      "owner": null,
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Coordinates fall within Marshall County Indiana which has established moratorium on large data centers (>5,000 sq ft); area has brownfield history but specific environmental status unclear",
+      "recent_activity": "Marshall County implemented moratorium on large-scale data centers alongside neighboring counties; significant regional data center activity by Amazon, Google, Microsoft driving concern",
+      "sources": [
+        "https://www.govtech.com/products/residents-push-indiana-community-toward-halt-on-data-centers",
+        "https://www.datacenterdynamics.com/en/news/google-behind-390-acre-data-center-development-in-morgan-county-indiana/"
+      ],
+      "notes": "Coordinates appear to be in rural Marshall County. County has active moratorium on hyperscale data centers following regional pattern of local resistance. Major data center activity occurring throughout Northern Indiana by tech giants. Unable to identify specific property owner or environmental remediation status at exact coordinates without more detailed property records access.",
+      "researched_at": "2026-03-16T18:16:45.753322+00:00"
+    },
+    "PSEG Hudson Generating Station|NJ|40.748,-74.072": {
+      "status": "taken",
+      "confidence": "high",
+      "owner": "Hilco Redevelopment Partners (HRP)",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Coal ash removal completed in 2017; site listed on NJ Known Contaminated Sites List; ongoing remediation addressed legacy contamination from coal ash, heavy metals, and other pollutants from decades of operation",
+      "recent_activity": "Site redeveloped as HRP Hudson Logistics Park with CVS leasing 427,155 sq ft in January 2024 and DB Schenker leasing 80,000 sq ft in June 2023. No data center development activity identified.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Hudson_Generating_Station",
+        "https://nj.pseg.com/newsroom/newsrelease51",
+        "https://ashtracker.org/facility/552/hudson-generating-station",
+        "https://www.roi-nj.com/2024/02/01/real_estate/cvs-leases-427k-sq-ft-of-industrial-space-in-jersey-city-intends-to-be-operational-by-midyear/"
+      ],
+      "notes": "Site sold by PSEG to Hilco Redevelopment Partners in January 2019 for $undisclosed. Plant demolished 2020, coal ash ponds cleaned 2017. Now operating as industrial logistics park with major tenants CVS and DB Schenker. No indication of data center interest or development.",
+      "researched_at": "2026-03-16T18:17:04.790280+00:00"
+    },
+    "Wansley|GA|33.413,-85.032": {
+      "status": "still_operating",
+      "confidence": "high",
+      "owner": "Georgia Power Company (53.5%), Oglethorpe Power Corporation (30%), MEAG Power (15.1%), Dalton Utilities (1.4%)",
+      "competitor": null,
+      "competitor_details": null,
+      "environmental_issues": "Coal ash dewatering/remediation ongoing - approved dewatering plan from EPD in November 2021. Groundwater contamination with elevated cobalt (10-20x EPA levels), boron, lithium, radium, and sulfate. Coal units retired August 2022 but natural gas units still operating.",
+      "recent_activity": "Major expansion approved December 2025 - Georgia Power will build new natural gas units at Plant Wansley as part of $16B data center power expansion plan. Site actively operating with existing natural gas combined-cycle units.",
+      "sources": [
+        "https://www.ajc.com/business/2025/12/georgia-power-gets-pscs-go-ahead-on-16b-data-center-power-plant-expansion/",
+        "https://www.gem.wiki/Wansley_Plant",
+        "https://en.wikipedia.org/wiki/Hal_B._Wansley_Power_Plant",
+        "https://www.georgiapower.com/our-impact/environment/environmental-compliance/plant-list/plant-wansley.html"
+      ],
+      "notes": "Site is NOT available for redevelopment - it's an active power generation facility. Coal units retired in 2022 but multiple natural gas units still operating. Georgia Power just received approval to expand the site with new gas units for data centers. Multiple ownership structure with Georgia Power as majority owner.",
+      "researched_at": "2026-03-16T18:17:24.483936+00:00"
+    },
+    "Will County|IL|41.633,-88.063": {
+      "status": "competitor_activity",
+      "confidence": "high",
+      "owner": "NRG Energy",
+      "competitor": "Illinois Coal-to-Solar Program",
+      "competitor_details": "NRG received $158.4 million from Illinois Coal-to-Solar Energy Storage Grant Program to build 72 MW battery energy storage system at Will County site, expected to be commercially operational by 2025",
+      "environmental_issues": "Coal ash cleanup required under Illinois Coal Ash Pollution Prevention Act, but specific permit status for Will County site unclear",
+      "recent_activity": "Site part of Illinois Coal-to-Solar program with NRG awarded $158.4 million for 72 MW battery storage development, first payments expected in 2025",
+      "sources": [
+        "https://www.power-eng.com/coal/plant-decommissioning/retiring-illinois-coal-plants-awarded-funding-to-add-energy-storage/",
+        "https://www.gem.wiki/Will_County_Generating_Station",
+        "https://midwestgenerationllc.com/",
+        "https://www.publicpower.org/periodical/article/former-coal-plant-sites-get-second-life-with-energy-storage-systems"
+      ],
+      "notes": "Plant fully retired June 2022, total capacity was 1268.8 MW (all units combined over time). Site has committed redevelopment for battery energy storage rather than data center use. Coal ash cleanup requirements under state regulations may affect timing.",
+      "researched_at": "2026-03-16T18:17:45.928485+00:00"
+    },
+    "Brayton Point|MA|41.71,-71.193": {
+      "status": "taken",
+      "confidence": "high",
+      "owner": "Commercial Development Company / Brayton Point LLC",
+      "competitor": "Prysmian Group",
+      "competitor_details": "Italian company Prysmian Group signed contract in 2022 for $300 million cable manufacturing facility but withdrew January 2025 citing market conditions and Trump administration uncertainty",
+      "environmental_issues": "Environmental Liability Transfer Inc. handles legacy environmental liabilities from coal plant operations; active remediation ongoing with cleanup activities including asbestos abatement and infrastructure demolition",
+      "recent_activity": "Major setback as Prysmian Group cancelled $300 million cable plant in January 2025 after obtaining permits, citing offshore wind industry uncertainty under Trump administration. Site currently redeveloped as renewable energy commerce center with existing transmission infrastructure",
+      "sources": [
+        "https://rhodeislandcurrent.com/2025/01/17/brayton-point-loses-300-million-offshore-wind-cable-plant-development-project/",
+        "http://www.braytonpointcommercecenter.com/about/",
+        "https://www.offshorewind.biz/2025/01/24/prysmian-drops-plan-to-build-usd-200-million-offshore-wind-cable-factory-in-massachusetts/"
+      ],
+      "notes": "Site has excellent infrastructure for data centers including existing transmission lines (115kV and 345kV), 307 acres, deep water port, and I-195 access. CDC has been actively redeveloping since 2018 purchase. No current data center proposals identified but infrastructure well-suited for such development.",
+      "researched_at": "2026-03-16T18:18:06.144851+00:00"
+    }
+  }
+}

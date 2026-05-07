@@ -85,6 +85,9 @@ export default function LayerControls(props: LayerControlsProps) {
           {renderGroup("connectivity", "Connectivity", LAYER_GROUPS.connectivity, [
             { key: "broadband", label: "Broadband (FCC)" },
           ])}
+          {renderGroup("dealSignals", "Deal Signals", LAYER_GROUPS.dealSignals, [
+            { key: "warnFilings", label: "WARN Act Filings" },
+          ])}
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { US_STATES, OPPORTUNITY_LABELS, OPPORTUNITY_COLORS, type ScoredSite, type LayerState, type LayerGroupState } from "../lib/constants";
+import { US_STATES, OPPORTUNITY_LABELS, OPPORTUNITY_COLORS, AVAILABILITY_LABELS, AVAILABILITY_COLORS, type ScoredSite, type LayerState, type LayerGroupState } from "../lib/constants";
 import { estimateTimeToPower } from "../lib/scoring";
 import LayerControls from "./LayerControls";
 
@@ -93,14 +93,14 @@ export default function Sidebar(props: SidebarProps) {
                 </label>
                 <input
                   type="range"
-                  min={50}
+                  min={30}
                   max={500}
                   value={minMW}
                   onChange={(e) => onMinMWChange(Number(e.target.value))}
                   className="w-full accent-blue-500"
                 />
                 <div className="flex justify-between text-[10px] text-slate-500 mt-0.5">
-                  <span>50 MW</span>
+                  <span>30 MW</span>
                   <span>500 MW</span>
                 </div>
               </div>
@@ -136,6 +136,7 @@ export default function Sidebar(props: SidebarProps) {
                   <option value="retired_plant">Retired Plant</option>
                   <option value="adaptive_reuse">Adaptive Reuse</option>
                   <option value="greenfield">Greenfield</option>
+                  <option value="stranded_capacity">Stranded Capacity</option>
                 </select>
               </div>
             </div>
@@ -181,6 +182,7 @@ export default function Sidebar(props: SidebarProps) {
                         <div className="text-xs text-slate-400 mt-0.5">
                           {site.state}
                           {site.total_capacity_mw > 0 && <> &middot; {site.total_capacity_mw.toLocaleString()} MW</>}
+                          {!site.total_capacity_mw && site.estimated_mw != null && site.estimated_mw > 0 && <> &middot; ~{site.estimated_mw} MW</>}
                         </div>
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
                           {oppType && (
@@ -188,12 +190,28 @@ export default function Sidebar(props: SidebarProps) {
                               {oppLabel}
                             </span>
                           )}
-                          <span className="text-[11px] text-slate-500">
-                            {site.nearest_sub_distance_miles} mi to {site.nearest_sub_voltage_kv} kV sub
-                          </span>
+                          {site.nearest_sub_distance_miles != null && site.nearest_sub_distance_miles > 0 ? (
+                            <span className="text-[11px] text-slate-500">
+                              {site.nearest_sub_distance_miles} mi to {site.nearest_sub_voltage_kv} kV sub
+                            </span>
+                          ) : site.sub_type ? (
+                            <span className="text-[11px] text-slate-500">
+                              {site.sub_type}{site.estimated_mw ? " · ~" + site.estimated_mw + " MW" : ""}
+                            </span>
+                          ) : null}
                           <span className={"text-[10px] font-semibold px-1.5 py-0.5 rounded border " + ttpColor}>
                             {ttp.label}
                           </span>
+                          {site.availability_status && (function () {
+                            var as = site.availability_status;
+                            var aColor = AVAILABILITY_COLORS[as] || "#94a3b8";
+                            var aLabel = AVAILABILITY_LABELS[as] || "Unverified";
+                            return (
+                              <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: aColor + "22", color: aColor, border: "1px solid " + aColor + "44" }}>
+                                {aLabel}
+                              </span>
+                            );
+                          })()}
                         </div>
                       </div>
                       <div className={"text-xs font-bold rounded px-2 py-1 shrink-0 " + scoreColor}>
@@ -218,8 +236,10 @@ export default function Sidebar(props: SidebarProps) {
                   <div className="text-sm text-slate-400 mt-0.5">
                     {selectedSite.state}
                     {selectedSite.total_capacity_mw > 0 && <> &middot; {selectedSite.total_capacity_mw.toLocaleString()} MW</>}
-                    {selectedSite.fuel_type !== "Custom" && <> &middot; {selectedSite.fuel_type}</>}
-                    {selectedSite.status !== "custom" && selectedSite.status !== "brownfield" && <> &middot; {selectedSite.status.charAt(0).toUpperCase() + selectedSite.status.slice(1)}</>}
+                    {selectedSite.estimated_mw != null && selectedSite.estimated_mw > 0 && !selectedSite.total_capacity_mw && <> &middot; ~{selectedSite.estimated_mw} MW (est.)</>}
+                    {selectedSite.fuel_type && selectedSite.fuel_type !== "Custom" && <> &middot; {selectedSite.fuel_type}</>}
+                    {selectedSite.sub_type && !selectedSite.fuel_type && <> &middot; {selectedSite.sub_type}</>}
+                    {selectedSite.status && selectedSite.status !== "custom" && selectedSite.status !== "brownfield" && <> &middot; {selectedSite.status.charAt(0).toUpperCase() + selectedSite.status.slice(1)}</>}
                   </div>
                 </div>
 
@@ -284,7 +304,7 @@ export default function Sidebar(props: SidebarProps) {
                   var val = s.time_to_power;
                   var barColor = val >= 80 ? "#eab308" : val >= 60 ? "#a3a3a3" : "#78716c";
                   var subColor = function (v: number) { return v >= 80 ? "#eab308" : v >= 60 ? "#a3a3a3" : "#78716c"; };
-                  var isPowerPlant = s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
+                  var isPowerPlant = !!s.fuel_type && s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
                   return (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
@@ -336,7 +356,7 @@ export default function Sidebar(props: SidebarProps) {
                   var val = s.site_readiness;
                   var barColor = val >= 80 ? "#eab308" : val >= 60 ? "#a3a3a3" : "#78716c";
                   var subColor = function (v: number) { return v >= 80 ? "#eab308" : v >= 60 ? "#a3a3a3" : "#78716c"; };
-                  var isPowerPlant = s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
+                  var isPowerPlant = !!s.fuel_type && s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
                   return (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
@@ -405,7 +425,7 @@ export default function Sidebar(props: SidebarProps) {
                   var val = s.risk_factors;
                   var barColor = val >= 80 ? "#eab308" : val >= 60 ? "#a3a3a3" : "#78716c";
                   var subColor = function (v: number) { return v >= 80 ? "#eab308" : v >= 60 ? "#a3a3a3" : "#78716c"; };
-                  var isPowerPlant = s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
+                  var isPowerPlant = !!s.fuel_type && s.fuel_type !== "Custom" && s.fuel_type !== "Brownfield";
                   return (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
@@ -434,6 +454,97 @@ export default function Sidebar(props: SidebarProps) {
                     </div>
                   );
                 })()}
+
+                {/* --- Economic Motivation (15%, stranded capacity only) --- */}
+                {selectedSite.economic_motivation != null && selectedSite.economic_motivation > 0 && (function () {
+                  var s = selectedSite;
+                  var val = s.economic_motivation!;
+                  var barColor = val >= 80 ? "#8b5cf6" : val >= 60 ? "#a3a3a3" : "#78716c";
+                  var subColor = function (v: number) { return v >= 80 ? "#8b5cf6" : v >= 60 ? "#a3a3a3" : "#78716c"; };
+                  return (
+                    <div>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-300 font-semibold">Economic Motivation <span className="text-slate-500 font-normal">(15%)</span></span>
+                        <span className="font-medium" style={{ color: barColor }}>{val}</span>
+                      </div>
+                      <div className="w-full bg-[#0f1b33] rounded-full h-1.5 mb-2">
+                        <div className="h-1.5 rounded-full" style={{ width: val + "%", backgroundColor: barColor }}></div>
+                      </div>
+                      <div className="pl-3 space-y-1 border-l border-white/5">
+                        {s.employee_count_score != null && (
+                          <div className="text-[11px] text-slate-400 flex justify-between">
+                            <span>Community Impact</span>
+                            <span style={{ color: subColor(s.employee_count_score) }} className="font-medium">{s.employee_count_score} <span className="text-slate-500">({s.employee_count} emp)</span></span>
+                          </div>
+                        )}
+                        {s.recency_score != null && (
+                          <div className="text-[11px] text-slate-400 flex justify-between">
+                            <span>Closure Recency</span>
+                            <span style={{ color: subColor(s.recency_score) }} className="font-medium">{s.recency_score} <span className="text-slate-500">{s.closure_date ? "(" + s.closure_date + ")" : ""}</span></span>
+                          </div>
+                        )}
+                        {s.estimated_mw_score != null && (
+                          <div className="text-[11px] text-slate-400 flex justify-between">
+                            <span>Stranded MW</span>
+                            <span style={{ color: subColor(s.estimated_mw_score) }} className="font-medium">{s.estimated_mw_score} <span className="text-slate-500">(~{s.estimated_mw} MW)</span></span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {/* Closure Details (stranded capacity) */}
+                {selectedSite.company && selectedSite.sub_type && (
+                  <>
+                    <div className="border-t border-white/10"></div>
+                    <div className="space-y-1.5">
+                      <div className="text-xs font-semibold text-slate-300">Closure Details</div>
+                      <div className="text-xs text-slate-400 flex justify-between">
+                        <span>Company</span>
+                        <span className="text-slate-200 font-medium text-right max-w-[60%] truncate" title={selectedSite.company}>{selectedSite.company}</span>
+                      </div>
+                      <div className="text-xs text-slate-400 flex justify-between">
+                        <span>Facility Type</span>
+                        <span className="text-slate-200 font-medium">{selectedSite.sub_type}</span>
+                      </div>
+                      {selectedSite.employee_count != null && selectedSite.employee_count > 0 && (
+                        <div className="text-xs text-slate-400 flex justify-between">
+                          <span>Employees</span>
+                          <span className="text-slate-200 font-medium">{selectedSite.employee_count.toLocaleString()}</span>
+                        </div>
+                      )}
+                      {selectedSite.estimated_mw != null && selectedSite.estimated_mw > 0 && (
+                        <div className="text-xs text-slate-400 flex justify-between">
+                          <span>Est. Power</span>
+                          <span className="text-slate-200 font-medium">~{selectedSite.estimated_mw} MW</span>
+                        </div>
+                      )}
+                      {selectedSite.closure_date && (
+                        <div className="text-xs text-slate-400 flex justify-between">
+                          <span>Closure Date</span>
+                          <span className="text-slate-200 font-medium">{selectedSite.closure_date}</span>
+                        </div>
+                      )}
+                      {selectedSite.closure_status && (
+                        <div className="text-xs text-slate-400 flex justify-between">
+                          <span>Status</span>
+                          <span className={"font-medium " + (selectedSite.closure_status === "closed" ? "text-red-400" : selectedSite.closure_status === "closing" ? "text-orange-400" : "text-yellow-400")}>
+                            {selectedSite.closure_status.charAt(0).toUpperCase() + selectedSite.closure_status.slice(1)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                )}
+
+                {/* Approximate location warning */}
+                {selectedSite.location_approximate && (
+                  <div className="flex items-center gap-2 px-3 py-2 rounded bg-amber-500/10 border border-amber-500/20">
+                    <span className="text-amber-400 text-xs font-semibold">Approximate Location</span>
+                    <span className="text-[10px] text-slate-500">Geocoded to city center — verify actual facility address</span>
+                  </div>
+                )}
 
                 {/* Divider */}
                 <div className="border-t border-white/10"></div>
@@ -499,6 +610,58 @@ export default function Sidebar(props: SidebarProps) {
                     </div>
                   </>
                 )}
+
+                {/* Availability (Deal Scout) */}
+                {selectedSite.availability_status && (function () {
+                  var as = selectedSite.availability_status;
+                  var aColor = AVAILABILITY_COLORS[as] || "#94a3b8";
+                  var aLabel = AVAILABILITY_LABELS[as] || "Unverified";
+                  return (
+                    <>
+                      <div className="border-t border-white/10"></div>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <div className="text-xs font-semibold text-slate-300">Availability</div>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded" style={{ backgroundColor: aColor + "22", color: aColor, border: "1px solid " + aColor + "44" }}>
+                            {aLabel}
+                          </span>
+                          {selectedSite.availability_confidence && (
+                            <span className="text-[10px] text-slate-500">{selectedSite.availability_confidence} confidence</span>
+                          )}
+                        </div>
+                        {selectedSite.availability_owner && (
+                          <div className="text-xs text-slate-400 flex justify-between">
+                            <span>Owner</span>
+                            <span className="text-slate-200 font-medium text-right max-w-[60%] truncate" title={selectedSite.availability_owner}>{selectedSite.availability_owner}</span>
+                          </div>
+                        )}
+                        {selectedSite.availability_competitor && (
+                          <div className="text-xs text-slate-400 flex justify-between">
+                            <span>Competitor</span>
+                            <span className="text-red-400 font-medium text-right max-w-[60%] truncate" title={selectedSite.availability_competitor}>{selectedSite.availability_competitor}</span>
+                          </div>
+                        )}
+                        {selectedSite.availability_competitor_details && (
+                          <div className="text-xs text-slate-500 leading-relaxed">{selectedSite.availability_competitor_details}</div>
+                        )}
+                        {selectedSite.availability_environmental && (
+                          <div className="text-xs text-amber-400/80 leading-relaxed">{selectedSite.availability_environmental}</div>
+                        )}
+                        {selectedSite.availability_recent_activity && (
+                          <div className="text-xs text-slate-400 leading-relaxed">{selectedSite.availability_recent_activity}</div>
+                        )}
+                        {selectedSite.availability_sources && selectedSite.availability_sources.length > 0 && (
+                          <div className="text-[10px] text-slate-500">
+                            {selectedSite.availability_sources.length} source{selectedSite.availability_sources.length !== 1 ? "s" : ""}
+                            {selectedSite.availability_researched_at && (
+                              <> &middot; {selectedSite.availability_researched_at.substring(0, 10)}</>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
             ) : (
               <div className="text-center pt-12">
